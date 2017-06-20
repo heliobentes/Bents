@@ -10,8 +10,8 @@ class ModeloFormularioController
 
     public function ImprimirModeloFormularioViewAction()
     {
-        $cadastrarCorrespView = new ViewLib();
-        $cadastrarCorrespView->setView("../system/View/imprimir_modelos_formularios.php");
+        $cadastrarCorrespView = new View();
+        $cadastrarCorrespView->setView("../System/View/imprimir_modelos_formularios.php");
         $arrParams['bancos'] = FormularioDAO::ObterBancosTrabalhadosPorCorrespondentes();
         $arrParams['categoria_modelo_documento'] = FormularioDAO::ObterCategoriasModeloDocumentos();
         $cadastrarCorrespView->setParams($arrParams);
@@ -20,8 +20,8 @@ class ModeloFormularioController
 
     public function CadastrarModeloFormularioViewAction()
     {
-        $cadastrarCorrespView = new ViewLib();
-        $cadastrarCorrespView->setView("../system/View/cadastrar_modelos_formularios.php");
+        $cadastrarCorrespView = new View();
+        $cadastrarCorrespView->setView("../System/View/cadastrar_modelos_formularios.php");
 
         $arrParams['bancos'] = FormularioDAO::ObterBancosTrabalhadosPorCorrespondentes();
         $arrParams['categoria_modelo_documento'] = FormularioDAO::ObterCategoriasModeloDocumentos();

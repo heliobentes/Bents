@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="8ba04459-4379-4ac4-90b2-05f387d5ccb2" name="Local" url="http://localhost">
+        <fileTransfer port="0" mountedRoot="/var/www/comoresolvi" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

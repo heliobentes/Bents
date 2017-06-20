@@ -18,8 +18,8 @@
         <title>imovi :. COBA</title>
         <?php echo
             '<style type="text/css" media="all" >' .
-            file_get_contents('../system/View/css/reset.css') .
-            file_get_contents('../system/View/css/pages.css') .
+            file_get_contents('../System/View/css/reset.css') .
+            file_get_contents('../System/View/css/pages.css') .
             '</style>';
         ?>
     </head>
@@ -97,8 +97,8 @@ function CarregarEGerarOsJavaScriptsFundamentaisDoSitema($array)
 
 $script = array();
 
-$script[] = "../system/View/library/jquery/jquery.js";
-$script[] = "../system/View/js/pagesScripts.js";
+$script[] = "../System/View/library/jquery/jquery.js";
+$script[] = "../System/View/js/pagesScripts.js";
 
 $html = CarregarEGerarOsJavaScriptsFundamentaisDoSitema($script);
 

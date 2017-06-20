@@ -6,7 +6,7 @@ session_start();
 define('ALLOWED_REFERRER', '');
 
 if (!(isset($_SESSION['token']) && isset($_GET['token']) && $_GET['token'] == $_SESSION['token'])) {
-    die("Internal server error. Please contact system administrator.");
+    die("Internal server error. Please contact System administrator.");
 }
 
 $file_path = $_GET['file'];
@@ -30,7 +30,7 @@ if ($file_path == "") {
 if (ALLOWED_REFERRER !== ''
     && (!isset($_SERVER['HTTP_REFERER']) || strpos(strtoupper($_SERVER['HTTP_REFERER']), strtoupper(ALLOWED_REFERRER)) === false)
 ) {
-    die("Internal server error. Please contact system administrator.");
+    die("Internal server error. Please contact System administrator.");
 };
 
 // Allowed extensions list in format 'extension' => 'mime type'

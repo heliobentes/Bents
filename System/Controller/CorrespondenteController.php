@@ -5,7 +5,7 @@ class CorrespondenteController
 
     public function CadastrarCorrespondenteViewAction()
     {
-        $cadastrarCorrespView = new ViewLib();
+        $cadastrarCorrespView = new View();
         if (isset($_POST['conteudoDoCampo'])) {
             $correspondente = new EmpresaModel();
             $correspondente->setId($_POST['conteudoDoCampo']);
@@ -15,14 +15,14 @@ class CorrespondenteController
         }
         $arrParams['ufs'] = FormularioDAO::ObterUfsBrasil();
         $cadastrarCorrespView->setParams($arrParams);
-        $cadastrarCorrespView->setView("../system/View/cadastrar_correspondente.php");
+        $cadastrarCorrespView->setView("../System/View/cadastrar_correspondente.php");
         $cadastrarCorrespView->MostraConteudo();
     }
 
     public function PesquisarCorrespondenteViewAction()
     {
-        $cadastrarCorrespView = new ViewLib();
-        $cadastrarCorrespView->setView("../system/View/pesquisar_correspondente.php");
+        $cadastrarCorrespView = new View();
+        $cadastrarCorrespView->setView("../System/View/pesquisar_correspondente.php");
         $cadastrarCorrespView->MostraConteudo();
     }
 

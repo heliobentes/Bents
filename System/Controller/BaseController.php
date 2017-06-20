@@ -10,14 +10,14 @@ class BaseController
 {
     public function PrincipalAction()
     {
-        $view = new ViewLib();
-        $view->setView("../system/View/base.php");
+        $view = new View();
+        $view->setView("../System/View/base.php");
         $view->MostraConteudo();
     }
 
     public function CarregaViewAction()
     {
-        $view = new ViewLib();
+        $view = new View();
         $view->setView($_REQUEST['view']);
         $view->MostraConteudo();
 
@@ -25,8 +25,8 @@ class BaseController
 
     public function DashboardAction()
     {
-        $view = new ViewLib();
-        $view->setView("../system/View/dashboard.php");
+        $view = new View();
+        $view->setView("../System/View/dashboard.php");
         $view->MostraConteudo();
     }
 

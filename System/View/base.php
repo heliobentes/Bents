@@ -15,9 +15,9 @@ $usuarioNaSessao = unserialize($_SESSION['usuario']);
     <title>imovi :. COBA</title>
     <?php echo
         '<style type="text/css" media="all" >' .
-        file_get_contents('../system/View/css/reset.css') .
-        file_get_contents('../system/View/css/style.css') .
-        file_get_contents('../system/View/library/mCustomScrollbar/jquery.mCustomScrollbar.css') .
+        file_get_contents('../System/View/css/reset.css') .
+        file_get_contents('../System/View/css/style.css') .
+        file_get_contents('../System/View/library/mCustomScrollbar/jquery.mCustomScrollbar.css') .
         '</style>';
     ?>
 
@@ -237,17 +237,17 @@ function CarregarEGerarOsJavaScriptsFundamentaisDoSitema($array)
 
 $script = array();
 
-$script[] = "../system/View/library/jquery/jquery.js";
-$script[] = "../system/View/library/jquery/jquery.form.min.js";
-$script[] = "../system/View/library/jquery-ui.custom/js/jquery-ui.custom.min.js";
-$script[] = "../system/View/library/moment/moment.min.js";
-$script[] = "../system/View/library/mousewheel/jquery.mousewheel.min.js";
-$script[] = "../system/View/library/mCustomScrollbar/jquery.mCustomScrollbar.min.js";
-$script[] = "../system/View/library/autoresize/jquery.autosize-min.js";
-$script[] = "../system/View/library/masked/mask.js";
-$script[] = "../system/View/library/price_format/jquery.price_format.1.8.min.js";
-$script[] = "../system/View/library/cookie/jquery.cookie.js";
-$script[] = "../system/View/js/scripts.js";
+$script[] = "../System/View/library/jquery/jquery.js";
+$script[] = "../System/View/library/jquery/jquery.form.min.js";
+$script[] = "../System/View/library/jquery-ui.custom/js/jquery-ui.custom.min.js";
+$script[] = "../System/View/library/moment/moment.min.js";
+$script[] = "../System/View/library/mousewheel/jquery.mousewheel.min.js";
+$script[] = "../System/View/library/mCustomScrollbar/jquery.mCustomScrollbar.min.js";
+$script[] = "../System/View/library/autoresize/jquery.autosize-min.js";
+$script[] = "../System/View/library/masked/mask.js";
+$script[] = "../System/View/library/price_format/jquery.price_format.1.8.min.js";
+$script[] = "../System/View/library/cookie/jquery.cookie.js";
+$script[] = "../System/View/js/scripts.js";
 
 $html = CarregarEGerarOsJavaScriptsFundamentaisDoSitema($script);
 

@@ -58,7 +58,7 @@ class ParticipanteController
 
     public function DocumentacoesParticipanteViewAction()
     {
-        $documentacoes = new ViewLib();
+        $documentacoes = new View();
         if (isset($_POST['conteudoDoCampo'])) {
 
             $participante = new ParticipanteModel();
@@ -71,21 +71,21 @@ class ParticipanteController
         }
 
 
-        $documentacoes->setView("../system/View/documentacao_participante.php");
+        $documentacoes->setView("../System/View/documentacao_participante.php");
         $documentacoes->MostraConteudo();
     }
 
     public function ImoveisParticipanteViewAction()
     {
-        $imoveis = new ViewLib();
+        $imoveis = new View();
         //$documentacoesEImovel->setParams($arrParams);
-        $imoveis->setView("../system/View/imovel_participante.php");
+        $imoveis->setView("../System/View/imovel_participante.php");
         $imoveis->MostraConteudo();
     }
 
     public function CadastrarDocsImovelViewAction()
     {
-        $imoveis = new ViewLib();
+        $imoveis = new View();
         $arrImoveis = Array();
         $imovel = new ImovelParticipanteModel();
         $imovel->setId($_POST['conteudoDoCampo']);
@@ -97,15 +97,15 @@ class ParticipanteController
 
         $arrParams['imovel'] = $imovelEncontrado[0];
         $imoveis->setParams($arrParams);
-        $imoveis->setView("../system/View/cadastrar_docs_imovel.php");
+        $imoveis->setView("../System/View/cadastrar_docs_imovel.php");
         $imoveis->MostraConteudo();
     }
 
 
     public function CadastrarCompradorViewAction()
     {
-        $cadastrarParticView = new ViewLib();
-        $cadastrarParticView->setView("../system/View/cadastrar_comprador.php");
+        $cadastrarParticView = new View();
+        $cadastrarParticView->setView("../System/View/cadastrar_comprador.php");
         if (isset($_POST['conteudoDoCampo'])) {
             //É um ID de um participante, usado na edição
             if (DataValidator::isNumeric($_POST['conteudoDoCampo'])) {
@@ -146,8 +146,8 @@ class ParticipanteController
 
     public function CadastrarVendedorViewAction()
     {
-        $cadastrarParticView = new ViewLib();
-        $cadastrarParticView->setView("../system/View/cadastrar_vendedor.php");
+        $cadastrarParticView = new View();
+        $cadastrarParticView->setView("../System/View/cadastrar_vendedor.php");
         if (isset($_POST['conteudoDoCampo'])) {
             //É um ID de um participante, usado na edição
             if (DataValidator::isNumeric($_POST['conteudoDoCampo'])) {
@@ -764,8 +764,8 @@ class ParticipanteController
     public function PesquisarParticipanteViewAction()
     {
 
-        $cadastrarParticView = new ViewLib();
-        $cadastrarParticView->setView("../system/View/pesquisar_participante.php");
+        $cadastrarParticView = new View();
+        $cadastrarParticView->setView("../System/View/pesquisar_participante.php");
         $cadastrarParticView->MostraConteudo();
     }
 

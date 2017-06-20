@@ -5,8 +5,8 @@ class FinanciamentoController
 
     public function CadastrarFinanciamentoViewAction()
     {
-        $cadastrarFinancView = new ViewLib();
-        $cadastrarFinancView->setView("../system/View/cadastrar_financiamento.php");
+        $cadastrarFinancView = new View();
+        $cadastrarFinancView->setView("../System/View/cadastrar_financiamento.php");
         $arrParams['bancos'] = FormularioDAO::ObterBancosTrabalhadosPorCorrespondentes();
         $arrParams['tipos_participantes'] = FormularioDAO::ObterTiposParticipante();
 
@@ -16,8 +16,8 @@ class FinanciamentoController
 
     public function PesquisarFinanciamentoViewAction()
     {
-        $cadastrarFinancView = new ViewLib();
-        $cadastrarFinancView->setView("../system/View/pesquisar_financiamento.php");
+        $cadastrarFinancView = new View();
+        $cadastrarFinancView->setView("../System/View/pesquisar_financiamento.php");
         $arrParams['bancos'] = FormularioDAO::ObterBancosTrabalhadosPorCorrespondentes();
         $arrParams['situacoes'] = FormularioDAO::ObterTiposStatusFinanciamento();
         $cadastrarFinancView->setParams($arrParams);
@@ -27,7 +27,7 @@ class FinanciamentoController
 
     public function InteracoesViewAction()
     {
-        $cadastrarFinancView = new ViewLib();
+        $cadastrarFinancView = new View();
 
         $arrParams['interacoes'] = self::ObterTodasInteracoesPorIdFinanciamento($_POST['conteudoDoCampo']);
 
@@ -35,19 +35,19 @@ class FinanciamentoController
         $arrParams['tipos_status_interacoes'] = FormularioDAO::ObterTiposStatusFinanciamento();
         $arrParams['id_financiamento'] = $_POST['conteudoDoCampo'];
         $cadastrarFinancView->setParams($arrParams);
-        $cadastrarFinancView->setView("../system/View/interacoes_financiamento.php");
+        $cadastrarFinancView->setView("../System/View/interacoes_financiamento.php");
         $cadastrarFinancView->MostraConteudo();
     }
 
     public function DocumentacoesViewAction()
     {
-        $visualizarDocumentacoes = new ViewLib();
+        $visualizarDocumentacoes = new View();
 
         $arrParams['documentacoes'] = self::ObterArraysDocumentosPorIdFinanciamento($_POST['conteudoDoCampo']);
 
 
         $visualizarDocumentacoes->setParams($arrParams);
-        $visualizarDocumentacoes->setView("../system/View/baixar_documentacao_financiamento.php");
+        $visualizarDocumentacoes->setView("../System/View/baixar_documentacao_financiamento.php");
         $visualizarDocumentacoes->MostraConteudo();
     }
 
@@ -128,11 +128,11 @@ class FinanciamentoController
 
     public function OcorrenciasViewAction()
     {
-        $cadastrarFinancView = new ViewLib();
+        $cadastrarFinancView = new View();
         $arrParams['ocorrencias'] = self::ObterArraysOcorrenciasPorIdFinanciamento($_POST['conteudoDoCampo']);
         $arrParams['id_financiamento'] = $_POST['conteudoDoCampo'];
         $cadastrarFinancView->setParams($arrParams);
-        $cadastrarFinancView->setView("../system/View/ocorrencias_financiamento.php");
+        $cadastrarFinancView->setView("../System/View/ocorrencias_financiamento.php");
         $cadastrarFinancView->MostraConteudo();
     }
 

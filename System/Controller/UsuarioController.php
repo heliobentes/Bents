@@ -33,8 +33,8 @@ class UsuarioController
 
     public function CadastrarUsuarioViewAction()
     {
-        $cadastrarUsuarioView = new ViewLib();
-        $cadastrarUsuarioView->setView("../system/View/cadastrar_usuario.php");
+        $cadastrarUsuarioView = new View();
+        $cadastrarUsuarioView->setView("../System/View/cadastrar_usuario.php");
         $arrParams['tipos_usuario'] = FormularioDAO::ObterTiposUsuario();
         $arrParams['funcoes_sistema'] = UsuarioDAO::ObterTodasFuncoesDoSistema();
 
@@ -50,15 +50,15 @@ class UsuarioController
 
     public function AlterarSenhaViewAction()
     {
-        $cadastrarUsuarioView = new ViewLib();
-        $cadastrarUsuarioView->setView("../system/View/alterar_senha.php");
+        $cadastrarUsuarioView = new View();
+        $cadastrarUsuarioView->setView("../System/View/alterar_senha.php");
         $cadastrarUsuarioView->MostraConteudo();
     }
 
     public function PesquisarUsuarioViewAction()
     {
-        $cadastrarUsuarioView = new ViewLib();
-        $cadastrarUsuarioView->setView("../system/View/pesquisar_usuario.php");
+        $cadastrarUsuarioView = new View();
+        $cadastrarUsuarioView->setView("../System/View/pesquisar_usuario.php");
         $arrParams['tipos_usuario'] = FormularioDAO::ObterTiposUsuario();
         $cadastrarUsuarioView->setParams($arrParams);
         $cadastrarUsuarioView->MostraConteudo();

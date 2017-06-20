@@ -90,7 +90,7 @@ function carregarViewComParametro(controller, action, conteudoDoCampo) {
 function geraAutocomplete(identificador, controller, action, controllerAAbrir, actionAAbrir) {
     $(identificador).autocomplete({
         /*{TODO}  Colocar aki o controler e a action para pegar o autocomplete*/
-        /* source: "../system/View/search.php", */
+        /* source: "../System/View/search.php", */
         /* source: "?controller=Participante&action=PesquisarParticipanteParaAutocomplete", */
         source: function (request, response) {
             $.ajax({
@@ -182,7 +182,7 @@ function geraAutocomplete(identificador, controller, action, controllerAAbrir, a
 function geraAutocompleteDocumentacoesEImoveisParticipante(identificador, controller, action, controllerAAbrir, actionAAbrir, action2AAbrir) {
     $(identificador).autocomplete({
         /*{TODO}  Colocar aki o controler e a action para pegar o autocomplete*/
-        /* source: "../system/View/search.php", */
+        /* source: "../System/View/search.php", */
         /* source: "?controller=Participante&action=PesquisarParticipanteParaAutocomplete", */
         source: function (request, response) {
             $.ajax({
