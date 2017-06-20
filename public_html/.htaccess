@@ -1,0 +1,21 @@
+# seta conjunto de caracteres para todas as paginas
+AddDefaultCharset utf-8
+# seta cache do navegador
+# cache dos arquivos por 10 dias
+<FilesMatch "\.(ico|jpg|jpeg|png|gif|html|php|htm|xml|txt|xsl|css|js)$">
+ Header set Cache-Control "max-age=864000, public, must-revalidate"
+</FilesMatch>
+# seta compactacao dos arquivos
+SetOutputFilter DEFLATE
+<IfModule mod_deflate.c>
+<FilesMatch "\.(js|css|php|html|png)$">
+SetOutputFilter DEFLATE
+</FilesMatch>
+</IfModule>
+# difinindo as URLs amigáveis
+#<IfModule mod_rewrite.c>
+#RewriteEngine on
+#RewriteCond %{SCRIPT_FILENAME} !-f
+#RewriteCond %{SCRIPT_FILENAME} !-d
+#RewriteRule ^(.*)/(.*)$ /index.php?controller=$1&action=$2 [L]
+#</IfModule>

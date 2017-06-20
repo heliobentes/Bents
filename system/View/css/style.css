@@ -1,0 +1,1114 @@
+/* 
+    Document   : style.css
+    Created on : 22/05/2013, 14:49
+    Author     : Helio Bentes
+    Description:
+        Folha de estilos do sistema.
+*/
+@font-face {
+    font-family: 'Century Gothic';
+    src: local('Century Gothic'), url('css/fonts/CenturyGothic.ttf') format('ttf'), url('css/fonts/CenturyGothic.woff') format('woff'), url('css/fonts/CenturyGothic.svg') format('svg'), url('css/fonts/CenturyGothic.eot') format('eot');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background: #2c3b57;
+    font-family: 'Century Gothic', cursive;
+    font-size: 100%;
+    min-width: 960px;
+    color: #545454;
+    cursor: default;
+}
+
+input, select {
+    font-family: 'Century Gothic', cursive;
+}
+
+input[required], select[required], textarea[required] {
+    border-left: 3px solid #900 !important;
+}
+
+input[required]:focus, select[required]:focus, textarea[required]:focus {
+    border-left: 1px solid #ddd !important;
+}
+
+#all {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    min-width: 960px;
+    transition:
+}
+
+#top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: #efefef;
+    border-top: 4px solid #1298BA;
+    z-index: 5;
+}
+
+#logoSistema {
+    float: left;
+    margin-left: 5px;
+    width: 110px;
+    height: 30px;
+    margin-top: 4px;
+    background: url('img/logo.png') center no-repeat;
+}
+
+#espacadorAzul {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 44px;
+    height: 27px;
+    background: #2c3b57;
+    z-index: 3;
+}
+
+#notificacoes {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 51px;
+    top: 20px;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    line-height: 80px;
+    opacity: 0;
+    z-index: 4;
+    text-shadow: 0px 0px 8px #000;
+}
+
+#contentWrap {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    overflow: hidden;
+    min-width: 960px;
+}
+
+#menu {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 0px;
+    width: 200px;
+    background: #efefef;
+    z-index: 0;
+    border-right: 1px solid #ddd;
+
+}
+
+.sombraMenu {
+    height: 32px;
+    position: absolute;
+    width: 200px;
+    top: 0;
+    left: 0;
+    background: rgba(246, 246, 246, 0.7);
+}
+
+#menu div.modulo.ui-state-active {
+    background: #1298BA !important;
+    color: #fff;
+    border-bottom: 1px solid #1298BA;
+}
+
+#menu div.modulo {
+    padding: 2px 0px 2px 8px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+}
+
+#menu div.modulo:hover {
+    background: #f6f6f6;
+}
+
+#menu div.modulo div.menuIcon {
+    position: relative;
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    background: url('img/menuSprite.png') no-repeat;
+}
+
+#modulo1 .menuIcon {
+    background-position-y: 0 !important;
+}
+
+#modulo2 .menuIcon {
+    background-position-y: -32px !important;
+}
+
+#modulo3 .menuIcon {
+    background-position-y: -64px !important;
+}
+
+#modulo4 .menuIcon {
+    background-position-y: -96px !important;
+}
+
+#modulo5 .menuIcon {
+    background-position-y: -128px !important;
+}
+
+#modulo6 .menuIcon {
+    background-position-y: -160px !important;
+}
+
+#menu div.modulo.ui-state-active .menuIcon {
+    background-position-x: -32px !important;
+}
+
+#menu div.modulo div.menuText {
+    position: relative;
+    display: inline-block;
+    height: 32px;
+    width: 145px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 32px;
+    margin-left: 8px;
+}
+
+#menu ul li {
+    position: relative;
+    display: inline-block;
+    clear: both;
+    width: 200px;
+    box-sizing: border-box;
+    font-size: 13px;
+    border-bottom: 1px solid #ddd;
+    padding: 7px 10px;
+    background: #f6f6f6;
+    cursor: pointer;
+    color: #777;
+    text-align: left;
+    overflow: hidden;
+}
+
+#menu ul li:hover {
+    background: #fefefe;
+    color: #7598c2;
+}
+
+#menu ul li:active {
+    background: #fdfdfd;
+    border-right: 1px solid #ddd;
+    box-shadow: inset 0px 0px 10px #ddd;
+    color: #2c3b57;
+}
+
+#content {
+    position: absolute;
+    background: #fff;
+    border: 1px solid #ddd;
+    left: 48px;
+    right: 220px;
+    bottom: 0;
+    top: 0px;
+    transition: all 200ms ease-out;
+    z-index: 1;
+    max-height: 100%;
+    overflow: hidden;
+
+}
+
+.grafico {
+    float: left;
+    border: 1px solid #ddd;
+    margin: 0 0 20px 20px;
+    box-sizing: border-box;
+    width: 47%;
+    min-width: 360px;
+    overflow: hidden;
+    background: #fff;
+    cursor: move;
+}
+
+.sortable-placeholder:before {
+    content: "Solte o gráfico aqui";
+    text-align: center;
+    border: 2px dashed #ccc;
+    background: #fdfdfd;
+    float: left;
+    margin: 0 0 20px 20px;
+    box-sizing: border-box;
+    width: 47%;
+    min-width: 360px;
+    height: 402px;
+    overflow: hidden;
+    padding-top: 10px;
+    font-size: 22px;
+    color: #ccc;
+}
+
+#lightBox {
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 71px;
+    z-index: 9999999;
+    display: none;
+}
+
+#lightBox #lightBoxPageContent {
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    width: 960px;
+    background: #fff;
+    left: 50%;
+    margin-left: -480px;
+    box-shadow: 0px 0px 15px #333;
+    overflow: hidden;
+}
+
+.pageLoader {
+    position: absolute;
+    background: #fff;
+    background: rgba(255, 255, 255, 0.9);
+    left: 201px;
+    right: 0;
+    bottom: 0;
+    top: 0px;
+    z-index: 99999;
+    max-height: 100%;
+    text-align: center;
+    padding-top: 100px;
+    line-height: 32px;
+    color: #1298BA;
+    display: none;
+    transition: left 200ms ease-out;
+}
+
+#lightBox .pageLoader {
+    position: absolute;
+    background: #fff;
+    top: 20px !important;
+    bottom: 20px !important;
+    width: 960px !important;
+    background: #fff;
+    left: 50% !important;
+    margin-left: -480px !important;
+    z-index: 99999999 !important;
+    text-align: center;
+    padding-top: 100px;
+    line-height: 32px;
+    color: #1298BA;
+    display: none;
+}
+
+.pageLoader img, #systemLoader img, #pageLoaderResults img {
+    position: relative;
+    clear: both;
+    margin-right: 10px;
+}
+
+#helpLoader {
+    position: absolute;
+    left: 0px;
+    right: 0;
+    bottom: 0;
+    top: 0px;
+    z-index: 2;
+    max-height: 100%;
+    padding-top: 50px;
+    padding-left: 15px;
+    line-height: 32px;
+    color: #1298BA;
+}
+
+#helpLoader img {
+    position: relative;
+    clear: both;
+    margin-right: 10px;
+}
+
+#systemLoader {
+    position: absolute;
+    background: #fff;
+    background: rgba(255, 255, 255, 0.95);
+    left: 0px;
+    right: 0;
+    bottom: 0;
+    top: 0px;
+    z-index: 999999999;
+    max-height: 100%;
+    text-align: center;
+    padding-top: 100px;
+    line-height: 32px;
+    color: #1298BA;
+}
+
+#pageLoaderResults {
+    position: absolute;
+    background: #fff;
+    background: rgba(255, 255, 255, 0.9);
+    left: 0px;
+    right: 0;
+    bottom: 0;
+    top: 0px;
+    z-index: 99999;
+    max-height: 100%;
+    text-align: center;
+    padding-top: 100px;
+    line-height: 32px;
+    color: #1298BA;
+    display: none;
+}
+
+/*PAGINAS*/
+#pageContent {
+    position: absolute;
+    padding: 20px 20px 20px 0;
+    overflow: auto;
+    top: 36px;
+    bottom: 0px;
+    right: 0;
+    left: 0;
+    box-sizing: border-box;
+    z-index: 0;
+}
+
+.pageTitle {
+    position: absolute;
+    width: 100%;
+    margin: -1px -1px 0px 0px;
+    padding-left: 20px;
+    background: #eee;
+    height: 36px;
+    line-height: 36px;
+    text-align: left;
+    font-size: 14px;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    z-index: 3;
+    box-shadow: 0px 0px 30px #fff, 0px 0px 20px #fff;
+}
+
+.box {
+    width: 760px;
+    position: relative;
+    box-sizing: border-box;
+    margin-bottom: 40px;
+}
+
+.boxIcon {
+    position: relative;
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    background: url('img/iconsSprite.png') no-repeat #fff;
+    margin-left: 10px;
+    z-index: 0;
+}
+
+.boxTitulo {
+    position: relative;
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    border-left: 1px solid #ddd;
+    margin-left: 11px;
+    padding-left: 20px;
+    font-size: 16px;
+    line-height: 40px;
+    font-weight: bold;
+    background: #fff;
+    z-index: 1;
+    width: 660px;
+}
+
+.boxContent {
+    position: relative;
+    margin-left: 71px;
+    padding-left: 25px;
+    border-left: 1px solid #ddd;
+    min-height: 100px;
+    height: auto;
+}
+
+.blocoDeCampos {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+
+.campo {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: 14px;
+    margin-bottom: 20px;
+    padding-right: 20px;
+    min-width: 50px;
+}
+
+.campo .label {
+    position: relative;
+    clear: both;
+    margin-bottom: 3px;
+}
+
+.campo .item {
+    width: 100%;
+}
+
+.campo .item div.input {
+    position: relative;
+    display: inline-table;
+    line-height: 25px;
+    text-align: center;
+    width: 1px;
+    white-space: nowrap;
+    position: relative;
+}
+
+.campo .item div.leftText {
+    position: relative;
+    display: inline-table;
+    line-height: 25px;
+    text-align: center;
+    width: 1px;
+    white-space: nowrap;
+    padding-right: 5px;
+}
+
+.campo .item div.rightText {
+    position: relative;
+    display: inline-table;
+    line-height: 25px;
+    text-align: center;
+    width: 1px;
+    white-space: nowrap;
+    padding-left: 5px;
+}
+
+.campo .item div.infoText {
+    position: relative;
+    display: inline-table;
+    line-height: 25px;
+    text-align: center;
+    width: 1px;
+    white-space: nowrap;
+    padding-left: 5px;
+    color: #999;
+    font-size: 12px;
+
+}
+
+.campo .item div.input input {
+    height: 25px;
+    border: 1px solid #bbb;
+    width: 100%;
+    min-width: 40px;
+    outline-color: #1298BA;
+    padding: 0 5px;
+    font-size: 13px;
+    box-sizing: border-box;
+    color: #555;
+
+}
+
+.campo .item div.input textarea {
+    height: 80px;
+    border: 1px solid #bbb;
+    width: 100%;
+    min-width: 70px;
+    outline-color: #1298BA;
+    padding: 5px;
+    font-size: 13px;
+    box-sizing: border-box;
+    color: #555;
+    resize: none;
+
+}
+
+.campo .item div.input .file {
+    position: absolute;
+    display: block !important;
+    left: 1px;
+    top: 1px;
+    height: 23px;
+    width: 188px;
+    max-width: 188px;
+    line-height: 23px;
+    font-size: 13px;
+    background-image: url('img/fileIcon.png');
+    background-position: 5px 4px;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    pointer-events: none;
+    padding-left: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 5px;
+    text-align: left;
+}
+
+.campo .item div.input input.destaque {
+    border: 1px solid #f60;
+    outline-color: #f60;
+}
+
+.campo .item div.input select {
+    height: 25px;
+    border: 1px solid #bbb;
+    width: 100%;
+    min-width: 70px;
+    outline-color: #1298BA;
+    font-size: 13px;
+    line-height: 15px;
+    background: #fff;
+
+}
+
+.campo .item div.input .select {
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    background: url('img/setaSelect.png') center 4px no-repeat #fff;
+    height: 23px;
+    width: 23px;
+    pointer-events: none;
+}
+
+.campo .item div.input label {
+    line-height: 25px;
+    margin-right: 20px;
+    font-size: 13px;
+}
+
+.campo .item div.input input[type=radio], .campo .item div.input input[type=checkbox] {
+    height: 25px;
+    border: 1px solid #bbb;
+    width: 16px;
+    min-width: 16px;
+    outline-color: #1298BA;
+    box-sizing: border-box;
+    margin: 0px;
+}
+
+.clear {
+    position: relative;
+    clear: both;
+}
+
+.box h1 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #1298BA;
+}
+
+/*ICONES*/
+.box .iconPessoa {
+    background-position: -913px -485px;
+}
+
+.box .iconPessoas {
+    background-position: -760px -485px;
+}
+
+.box .iconFinanceiro {
+    background-position: -373px -605px;
+}
+
+.box .iconFinanceiroDados {
+    background-position: -66px -605px;
+}
+
+.box .iconEndereco {
+    background-position: -373px 10px;
+}
+
+.box .iconContato {
+    background-position: -760px -300px;
+}
+
+.box .iconPatrimonios {
+    background-position: -990px -237px;
+}
+
+.box .iconDocumentos {
+    background-position: -142px -605px;
+}
+
+.box .iconPrancheta {
+    background-position: -524px -605px;
+}
+
+.box .iconSearch {
+    background-position: -605px 10px;
+}
+
+.box .iconSenha {
+    background-position: -757px -118px;
+}
+
+.box .iconInteracao {
+    background-position: -680px -858px;
+}
+
+.box .iconOcorrencia {
+    background-position: -990px -423px;
+}
+
+.resultsInTable {
+    position: relative;
+    margin-left: 71px;
+    width: auto;
+    max-width: 760px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    min-height: 50px;
+}
+
+.resultsInTable .item {
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+.resultsInTable thead th, .resultsInTable tr td {
+    padding: 5px 5px;
+    border-right: 1px solid #ddd;
+    font-size: 14px;
+    text-align: center;
+}
+
+.resultsInTable thead th:last-child, .resultsInTable tr td:last-child {
+    padding: 5px 5px;
+    border-right: none;
+}
+
+.resultsInTable tr td:first-child {
+    text-align: left;
+}
+
+.resultsInTable tr td {
+    border-top: 1px solid #ddd;
+}
+
+.resultsInTable tr:nth-child(odd):not(th) {
+    background: #fff;
+}
+
+.resultsInTable tr:nth-child(even):not(th) {
+    background: #f6f6f6;
+}
+
+.resultsInTable tr:not(th):hover {
+    background: #fff6ed !important;
+}
+
+.resultsInTable th {
+    background: #eee !important;
+    cursor: default;
+}
+
+/*BOTOES*/
+/*especificos*/
+#sairDoSistema {
+    float: right;
+}
+
+#fecharJanelaDeCadastroRapido {
+    position: absolute;
+    z-index: 9999999;
+    top: 18px;
+    left: 50%;
+    width: 20px;
+    margin-left: 438px;
+}
+
+.button div {
+    float: left;
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+    background: url('img/iconsSpriteSmall.png') no-repeat;
+}
+
+.btnAdd div {
+    background-position: -100px -187px;
+}
+
+.btnClose div {
+    background-position: -66px -187px;
+    margin-right: 0px;
+}
+
+.button {
+    position: relative;
+    display: inline-table;
+    height: 25px;
+    margin: 6px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: #e9e9e9;
+    color: #555;
+    padding: 0 8px;
+    font-size: 14px;
+    line-height: 25px;
+    cursor: pointer;
+    text-shadow: 0px 0px 4px #fff;
+    text-align: center;
+    width: auto;
+    margin-bottom: 30px;
+}
+
+.button:hover {
+    border: 1px solid #d6d6d6;
+    border-radius: 3px;
+    background: #e6e6e6;
+    color: #333;
+}
+
+.button:active {
+    box-shadow: inset 0px 0px 10px #dadada;
+    color: #666;
+}
+
+.botoes {
+    position: relative;
+    margin-left: 71px;
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+
+.buttonForm {
+    position: relative;
+    display: inline-table;
+    height: 28px;
+    margin: 6px;
+    border: 1px solid #008855;
+    border-radius: 3px;
+    background: #009966;
+    color: #fff;
+    padding: 0 8px;
+    font-size: 15px;
+    line-height: 28px;
+    cursor: pointer;
+    text-align: center;
+    width: auto;
+    margin-bottom: 30px;
+}
+
+.buttonForm:hover {
+    background: #009050;
+}
+
+.buttonForm:active {
+    box-shadow: inset 0px 0px 10px #007733;
+}
+
+.buttonForm div {
+    float: left;
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+    background: url('img/iconsSpriteSmallWhite.png') no-repeat;
+}
+
+.buttonFormBlue {
+    position: relative;
+    display: inline-table;
+    height: 28px;
+    margin: 6px;
+    border: 1px solid #1298BA;
+    border-radius: 3px;
+    background: #1298BA;
+    color: #fff;
+    padding: 0 8px;
+    font-size: 15px;
+    line-height: 28px;
+    cursor: pointer;
+    text-align: center;
+    width: auto;
+    margin-bottom: 30px;
+}
+
+.buttonFormBlue:hover {
+    background: #1188b0;
+}
+
+.buttonFormBlue:active {
+    box-shadow: inset 0px 0px 10px #006699;
+}
+
+.buttonFormBlue div {
+    float: left;
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+    background: url('img/iconsSpriteSmallWhite.png') no-repeat;
+}
+
+.btnCad div {
+    background-position: -30px -186px;
+}
+
+.btnSearch div {
+    background-position: -272px 6px;
+}
+
+.btnSave div {
+    background-position: -238px -241px;
+}
+
+.acao {
+    position: relative;
+    display: inline-table;
+    width: 30px;
+    height: 25px;
+    margin-left: 3px;
+    margin-right: 3px;
+    background: url('img/iconsSprite.png') no-repeat;
+    background-size: 600px 522px;
+    cursor: pointer;
+}
+
+.acao:hover {
+    -webkit-filter: sepia(100%) invert(100%) saturate(180%) contrast(140%) hue-rotate(340deg);
+}
+
+.acao:active {
+    -webkit-filter: sepia(100%) invert(100%) saturate(200%) contrast(150%) hue-rotate(145deg);
+}
+
+.acaoEditar {
+    background-position: -128px -320px
+}
+
+.acaoExcluir {
+    background-position: -575px -32px
+}
+
+.acaoInterar {
+    background-position: -395px -500px
+}
+
+.acaoDownload {
+    background-position: -263px -69px
+}
+
+.acaoOcorrencias {
+    background-position: -575px -248px
+}
+
+/* Autocomplete
+----------------------------------*/
+.ui-helper-hidden-accessible {
+    display: none;
+}
+
+.ui-autocomplete {
+    position: absolute;
+    cursor: default;
+    z-index: 99999999;
+    background: #fff;
+    border: 1px solid #1298BA;
+    border-top: none;
+    font-size: 14px;
+    margin-top: -1px !important;
+    box-shadow: 0px 5px 20px #fff, 0px 5px 15px #fff, 0px 5px 10px #fff, 0px 5px 5px #fff;
+}
+
+.ui-autocomplete-loading {
+    background: white url('img/loader.gif') 99% center no-repeat;
+    background-size: 16px;
+}
+
+/* workarounds */
+* html .ui-autocomplete {
+    width: 1px;
+}
+
+/* without this, the menu expands to 100% in IE6 */
+
+/* Menu
+----------------------------------*/
+.ui-menu {
+    list-style: none;
+    margin: 0;
+    display: block;
+}
+
+.ui-menu .ui-menu {
+    margin-top: -1px;
+}
+
+.ui-menu .ui-menu-item {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.ui-menu .ui-menu-item a {
+    text-decoration: none;
+    display: block;
+    padding: 8px 5px;
+    line-height: 1.5;
+    zoom: 1;
+}
+
+.ui-menu .ui-menu-item a.ui-state-hover,
+.ui-menu .ui-menu-item a.ui-state-focus,
+.ui-menu .ui-menu-item a.ui-state-active {
+    margin: 0;
+    background: #1298BA !important;
+    color: #fff !important;
+}
+
+.addToAutocomplete {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    width: auto;
+    color: #fff;
+    background: #1298BA;
+    line-height: 22px;
+    padding: 8px 5px;
+    cursor: pointer;
+    text-align: left;
+    z-index: 999999;
+    box-sizing: border-box;
+    box-shadow: 0px 5px 25px #fff, 0px 5px 20px #fff, 0px 5px 15px #fff, 0px 5px 10px #fff, 0px 5px 5px #fff;
+    min-width: 200px;
+    font-size: 12px;
+}
+
+.addToAutocomplete:hover {
+    background: #1188b0;
+}
+
+.addToAutocomplete strong {
+    color: #fff;
+    font-size: 14px;
+}
+
+.addToAutocomplete div {
+    float: left;
+    height: 22px;
+    width: 28px;
+    background: url('img/iconsSpriteSmallWhite.png') -97px -188px no-repeat;
+}
+
+.addToAutocomplete.naoExiste {
+    background: #900;
+}
+
+.addToAutocomplete.naoExiste:hover {
+    background: #a00;
+}
+
+.addToAutocomplete.naoExiste:active {
+    background: #800;
+}
+
+.addToAutocomplete.naoExiste div {
+    display: none;
+}
+
+#help {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    bottom: 0;
+    width: 210px;
+    padding-left: 10px;
+    background: #fff;
+    z-index: 0;
+}
+
+#helpToggle {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 32px;
+    width: 32px;
+    background: url('img/iconsSprite.png') -83px -244px #fff;
+    background-size: 600px 522px;
+    border-radius: 3px;
+    z-index: 5;
+    cursor: pointer;
+    border: 1px solid #fff;
+    transition: right ease-in 200ms, top ease-in 200ms;
+}
+
+#helpToggle:hover {
+    border: 1px solid #ddd !important;
+    background-color: #f6f6f6;
+    transition: right ease-in 200ms, top ease-in 200ms;
+}
+
+#help #helpContent {
+    position: absolute;
+    top: 30px;
+    bottom: 80px;
+    overflow: hidden;
+    box-shadow: inset 0 0 15px #fff;
+}
+
+#help #helpContent li {
+
+    list-style: inside square;
+    padding: 10px 15px;
+    font-size: 14px;
+}
+
+#help h1 {
+    margin-top: 8px;
+    font-size: 16px;
+    color: #f6a828;
+}
+
+#help h2 {
+    position: absolute;
+    bottom: 50px;
+    font-size: 14px;
+    color: #1298BA;
+    margin-top: 10px;
+}
+
+#help h3 {
+    position: absolute;
+    bottom: 15px;
+    font-size: 12px;
+    color: #666;
+    font-weight: normal;
+}
+
+.progress {
+    position: relative;
+    width: 400px;
+    border: 1px solid #ddd;
+    padding: 1px;
+    border-radius: 3px;
+}
+
+.bar {
+    background-color: #B4F5B4;
+    width: 0%;
+    height: 20px;
+    border-radius: 3px;
+}
+
+.percent {
+    position: absolute;
+    display: inline-block;
+    top: 3px;
+    left: 48%;
+}
