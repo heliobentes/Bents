@@ -5,6 +5,6 @@
  * Date: 6/19/17
  * Time: 12:30 PM
  */
-include "../System/Application.php";
+include "../Bents/Application.php";
 
-\System\Application::Init();
+\Bents\Application::Init();
