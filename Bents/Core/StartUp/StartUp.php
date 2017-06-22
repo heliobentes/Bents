@@ -7,7 +7,7 @@
  * Description: Classe geral do gsampi
  */
 
-namespace Bents\Core {
+namespace Bents\Core\StartUp {
 
     class StartUp
     {
@@ -40,7 +40,7 @@ namespace Bents\Core {
 
         public function __construct()
         {
-            self::$path = str_replace('Core', 'App', __DIR__);
+            self::$path = str_replace(array('Core', 'StartUp'), array('App', ''), __DIR__);
 
             $this->LoadRoute();
 
@@ -55,7 +55,7 @@ namespace Bents\Core {
             if (class_exists($class)) {
                 $o_class = new $class;
             } else {
-                header("Location: ?sair");
+                http_response_code(404);
             }
 
             //verificando se o metodo existe
@@ -63,7 +63,7 @@ namespace Bents\Core {
             if (method_exists($o_class, $method)) {
                 $o_class->$method();
             } else {
-                header("Location: ?sair");
+                http_response_code(404);
             }
 
         }
@@ -84,7 +84,7 @@ namespace Bents\Core {
              * Se a action nao for passada
              * assume-se como padrão a action de login
              */
-            self::$action = $_REQUEST['action']??'Index';
+            self::$action = ($_REQUEST['action'] == null || $_REQUEST['action'] == '') ? 'Index' : $_REQUEST['action'];
         }
 
         /**

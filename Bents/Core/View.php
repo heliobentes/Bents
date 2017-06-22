@@ -9,6 +9,9 @@
 namespace Bents\Core {
 
 
+    use Bents\Core\StartUp\Bundle;
+    use Bents\Core\StartUp\StartUp;
+
     class View
     {
 
@@ -89,7 +92,7 @@ namespace Bents\Core {
         public function SetView($view)
         {
             //Se a view não for definida, seta a view como nome do controller atual + index
-            if ($view == null) {
+            if ($view == null || $view == '') {
                 $view = StartUp::$controller . '/' . StartUp::$action;
             }
 

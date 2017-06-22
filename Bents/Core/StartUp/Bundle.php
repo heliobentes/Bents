@@ -6,7 +6,7 @@
  * Time: 9:11 PM
  */
 
-namespace Bents\Core {
+namespace Bents\Core\StartUp {
 
     class Bundle
     {

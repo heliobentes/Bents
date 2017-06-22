@@ -9,16 +9,12 @@
 namespace Bents {
 
     use Bents\Core\Config;
-    use Bents\Core\StartUp;
+    use Bents\Core\StartUp\StartUp;
 
     class Application
     {
         public static function Init()
         {
-
-            ini_set("display_errors", 1);
-            error_reporting(E_ALL);
-
 
             require_once 'Core/Config.php';
 
@@ -45,4 +41,5 @@ namespace Bents {
         }
     }
 
+    Application::Init();
 }
