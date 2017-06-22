@@ -98,8 +98,8 @@ if ($allowed_ext[$file_extension] == '') {
 
 header("Pragma: public"); // required
 header("Expires: 0");
-header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-header("Cache-Control: private", false); // required for certain browsers
+header("cache-Control: must-revalidate, post-check=0, pre-check=0");
+header("cache-Control: private", false); // required for certain browsers
 header("Content-Description: File Transfer");
 header("Content-Type: $mtype");
 // change, added quotes to allow spaces in filenames, by Rajkumar Singh

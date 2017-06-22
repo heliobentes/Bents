@@ -6,4 +6,4 @@
  * Time: 7:24 PM
  */
 
-echo "teste";
+self::$layout = "_Layout";

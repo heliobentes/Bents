@@ -9,7 +9,7 @@ namespace Bents\Core {
             $view->SetView($viewName);
             $view->SetParams($params);
 
-            echo $view->GetContents();
+            echo $view->Render();
 
             //closing the connection
             DAO::$dbCon == null;

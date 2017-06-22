@@ -10,7 +10,7 @@ namespace Bents\Core {
 
     use PDO as PDO;
 
-    class  DAO extends DB
+    class  DAO
     {
         /**
          * @var PDO
@@ -30,13 +30,13 @@ namespace Bents\Core {
 
             if (self::$dbCon == null) {
 
-                $dsn = $this->dbtype . ":host=" . $this->hostname . ";dbname=" . $this->dbName;
+                $dsn = Config::$dbType . ":host=" . Config::$hostName . ";dbname=" . Config::$dbName;
 
                 try {
-                    self::$dbCon = new PDO($dsn, $this->username, $this->password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8", PDO::ATTR_ERRMODE => PDO::ERRMODE_SILENT));//ERRMODE_WARNING
+                    self::$dbCon = new PDO($dsn, Config::$userName, Config::$password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8", PDO::ATTR_ERRMODE => PDO::ERRMODE_SILENT));//ERRMODE_WARNING
                 } catch (\Exception $e) {
                     Log::SaveLog($e);
-
+                    http_response_code(500);
                     //TODO: Redirect to an error page
                 }
             }
