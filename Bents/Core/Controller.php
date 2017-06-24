@@ -1,6 +1,10 @@
 <?php
 
 namespace Bents\Core {
+
+    use Bents\Core\Configuration\Config;
+    use Bents\Core\Security\Security;
+
     class Controller
     {
         /**
@@ -8,6 +12,38 @@ namespace Bents\Core {
          * @var array
          */
         protected $unprotectedActions = array();
+
+        public static function RedirectToAction($controller, $action)
+        {
+            //Protect the Controller
+            if (Config::systemBehavior()->isProtectedController($controller)) {
+                Security::Protect();
+            }
+            //Checking if there is the Controller
+            $class = 'Bents\\App\\Controller\\' . $controller . 'Controller';
+
+            if (class_exists($class)) {
+                $o_class = new $class;
+            } else {
+                http_response_code(404);
+                die();
+            }
+
+            //Checking if there is such method in the Controller
+
+            if (method_exists($o_class, $action)) {
+
+                //Protect the Action
+                if (Config::systemBehavior()->isProtectedController($controller) and $o_class->isProtectedAction($action)) {
+                    Security::Protect();
+                }
+
+                $o_class->$action();
+            } else {
+                http_response_code(404);
+                die();
+            }
+        }
 
         /**
          * @var $action string

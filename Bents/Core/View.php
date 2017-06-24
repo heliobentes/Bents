@@ -10,6 +10,7 @@ namespace Bents\Core {
 
 
     use Bents\Application;
+    use Bents\Core\Configuration\Config;
     use Bents\Core\StartUp\Bundle;
     use Bents\Core\StartUp\StartUp;
 

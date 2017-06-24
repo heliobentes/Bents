@@ -6,8 +6,10 @@
  * Time: 6:13 PM
  */
 
-namespace Bents\Core {
+namespace Bents\Core\Configuration {
 
+
+    use Bents\Application;
 
     class Config
     {
@@ -35,6 +37,13 @@ namespace Bents\Core {
             return new DataBase();
         }
 
+        /**
+         * @return Globalization
+         */
+        public static function globalization(): Globalization
+        {
+            return new Globalization();
+        }
     }
 
     //====================
@@ -42,29 +51,41 @@ namespace Bents\Core {
     //====================
     class SystemBehavior
     {
-
         /**
          * Choose if you want to remove white spaces, line breaks, comments etc from HTML pages
          * @var bool
          */
-        private $sanitizeHTML = true;
+        protected $sanitizeHTML;
 
         /**
          * Define what Controller deals with login stuff like login form
          * @var string
          */
-        private $loginController = 'Login';
+        protected $loginController;
         /**
          * Define what Action is to show the login form
          * @var string
          */
-        private $loginAction = 'Login';
+        protected $loginAction;
 
         /**
          * List Controllers that will bypass login check
          * @var array
          */
-        private $unprotectedControllers = array('Home');
+        protected $unprotectedControllers;
+
+        /**
+         * SystemBehavior constructor.
+         */
+        public function __construct()
+        {
+            $json = file_get_contents(Application::$appPath . 'config.json');
+            $obj = json_decode($json);
+            $this->sanitizeHTML = $obj->SystemBehavior->sanitizeHTML;
+            $this->loginController = $obj->SystemBehavior->loginController;
+            $this->loginAction = $obj->SystemBehavior->loginAction;
+            $this->unprotectedControllers = $obj->SystemBehavior->unprotectedControllers;
+        }
 
         /**
          * @return bool
@@ -98,8 +119,6 @@ namespace Bents\Core {
         {
             return $this->loginAction;
         }
-
-
     }
 
     //====================
@@ -111,31 +130,45 @@ namespace Bents\Core {
          * Type of DataBase
          * @var string
          */
-        private $dbType = 'mysql';
+        protected $dbType;
 
         /**
          * DB user
          * @var string
          */
-        private $userName = 'root';
+        protected $userName;
 
         /**
          * Password for DB user
          * @var string
          */
-        private $password = '31635071';
+        protected $password;
 
         /**
          * IP or NameServer of the DB instance
          * @var string
          */
-        private $hostName = '127.0.0.1';
+        protected $hostName;
 
         /**
          * The name of the database to connect
          * @var string
          */
-        private $dbName = 'bents';
+        protected $dbName;
+
+        /**
+         * DataBase constructor.
+         */
+        public function __construct()
+        {
+            $json = file_get_contents(Application::$appPath . 'config.json');
+            $obj = json_decode($json);
+            $this->dbName = $obj->DataBase->dbName;
+            $this->dbType = $obj->DataBase->dbType;
+            $this->password = $obj->DataBase->password;
+            $this->userName = $obj->DataBase->userName;
+            $this->hostName = $obj->DataBase->hostName;
+        }
 
         /**
          * @return string
@@ -190,20 +223,32 @@ namespace Bents\Core {
          * Set it to false for production environment
          * @var bool
          */
-        private $debug = false;
+        protected $debug;
 
         /**
          * enable or disable log. If it's enabled the system will save a file log.txt at Bents/Core/Logs
          * @var bool
          */
-        private $saveLog = true;
+        protected $saveLo;
 
         /**
          * Report or do not report error
          * Set it to false for production environment
          * @var bool
          */
-        private $showError = true;
+        protected $showError;
+
+        /**
+         * Debug constructor.
+         */
+        public function __construct()
+        {
+            $json = file_get_contents(Application::$appPath . 'config.json');
+            $obj = json_decode($json);
+            $this->debug = $obj->Debug->debug;
+            $this->saveLog = $obj->Debug->saveLog;
+            $this->showError = $obj->Debug->showError;
+        }
 
         public function isDebugging(): bool
         {
@@ -225,6 +270,38 @@ namespace Bents\Core {
         {
             return $this->showError;
         }
+
+    }
+
+    //====================
+    //Globalization
+    //====================
+    class Globalization
+    {
+        /**
+         * Set System Language
+         * @var string
+         */
+        protected $lang;
+
+        /**
+         * Globalization constructor.
+         */
+        public function __construct()
+        {
+            $json = file_get_contents(Application::$appPath . 'config.json');
+            $obj = json_decode($json);
+            $this->lang = $obj->Globalization->lang;
+        }
+
+        /**
+         * @return string
+         */
+        public function getLang(): string
+        {
+            return $this->lang;
+        }
+
 
     }
 }

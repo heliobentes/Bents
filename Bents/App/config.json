@@ -1,0 +1,26 @@
+{
+  "Debug": {
+    "debug": false,
+    "saveLog": true,
+    "showError": true
+  },
+  "SystemBehavior": {
+    "sanitizeHTML": true,
+    "loginController": "Login",
+    "loginAction": "Login",
+    "unprotectedControllers": [
+      "Home",
+      "Login"
+    ]
+  },
+  "DataBase": {
+    "dbType": "mysql",
+    "userName": "root",
+    "password": "31635071",
+    "hostName": "127.0.0.1",
+    "dbName": "bents"
+  },
+  "Globalization": {
+    "lang": "en-US"
+  }
+}

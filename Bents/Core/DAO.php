@@ -8,6 +8,7 @@
 
 namespace Bents\Core {
 
+    use Bents\Core\Configuration\Config;
     use PDO as PDO;
 
     class  DAO

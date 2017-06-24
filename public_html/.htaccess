@@ -1,5 +1,5 @@
 # seta conjunto de caracteres para todas as paginas
-#AddDefaultCharset utf-8
+AddDefaultCharset utf-8
 # seta cache do navegador
 # cache dos arquivos por 10 dias
 <FilesMatch "\.(ico|jpg|jpeg|png|gif|html|php|htm|xml|txt|xsl|css|js)$">
@@ -7,20 +7,26 @@
 </FilesMatch>
 # seta compactacao dos arquivos
 <IfModule mod_deflate.c>
-    <FilesMatch "\.(js|css|php|html|png)$">
-        SetOutputFilter DEFLATE
-    </FilesMatch>
+#The following line is enough for .js and .css
+    AddOutputFilter DEFLATE js css
+
+    #The following line also enables compression by file content type, for the following list of Content-Type:s
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml
+
+    #The following lines are to avoid bugs with some browsers
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
 </IfModule>
 # definindo as URLs amigáveis
 <IfModule mod_rewrite.c>
     RewriteEngine on
-
-
     RewriteCond %{SCRIPT_FILENAME} !-f
     RewriteCond %{SCRIPT_FILENAME} !-d
     RewriteRule ^([a-zA-Z0-9-_]*)(/([a-zA-Z0-9-_]*))?/?([a-zA-Z0-9-_]*)?/?$ /index.php?controller=$1&action=$3&id=$4&%{QUERY_STRING} [L]
-
-#    RewriteCond %{SCRIPT_FILENAME} !-f
-#    RewriteCond %{SCRIPT_FILENAME} !-d
-#    RewriteRule ^(.*)$ /index.php?controller=$1 [L]
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|xml|gz)$">
+    Header append Vary: Accept-Encoding
+  </FilesMatch>
 </IfModule>

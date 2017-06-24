@@ -6,7 +6,10 @@
  * Time: 7:24 PM
  */
 
+use Bents\Core\Globalization\Globalization;
+
 self::$layout = "Shared/_Layout";
+
 
 ?>
 <ul>
@@ -18,6 +21,8 @@ self::$layout = "Shared/_Layout";
 </ul>
 
 <?php echo self::$bag['teste']; ?>
+
+<?php echo Globalization::Res()->how_are_you; ?>
 
 <?php self::$jsBundle[] = <<<EOT
 <script type="application/javascript" async defer>

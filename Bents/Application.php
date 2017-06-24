@@ -8,7 +8,7 @@
 
 namespace Bents {
 
-    use Bents\Core\Config;
+    use Bents\Core\Configuration\Config;
     use Bents\Core\StartUp\StartUp;
 
     class Application
@@ -44,6 +44,11 @@ namespace Bents {
          */
         public static $daoPath;
         /**
+         * Caminho padrao do DAO
+         * @var string
+         */
+        public static $resPath;
+        /**
          * Caminho padrao do Core
          * @var string
          */
@@ -62,6 +67,7 @@ namespace Bents {
             self::$modelPath = __DIR__ . '/App/Model/';
             self::$controllerPath = __DIR__ . '/App/Controller/';
             self::$daoPath = __DIR__ . '/App/DAO/';
+            self::$resPath = __DIR__ . '/App/Res/';
             self::$corePath = __DIR__ . '/Core/';
 
             self::$publicPath = str_replace('Bents', 'public_html/', __DIR__);
