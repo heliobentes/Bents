@@ -17,7 +17,7 @@ namespace Bents\Core {
          */
         public static function SaveLog($e)
         {
-            if (Config::$saveLog) {
+            if (Config::debug()->isLogEnabled()) {
                 $fp = fopen(__DIR__ . '/Logs/log.txt', 'a');
 
                 $content = "======== ERROR ========\r\n";

@@ -37,7 +37,6 @@ namespace Bents\Core {
                 } catch (\Exception $e) {
                     Log::SaveLog($e);
                     http_response_code(500);
-                    //TODO: Redirect to an error page
                 }
             }
         }

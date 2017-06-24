@@ -7,10 +7,11 @@ namespace Bents\App\Controller {
 
     class HomeController extends Controller
     {
+        protected $unprotectedActions = array('');
 
         public function Index()
         {
-            View::$bag['teste'] = 'teste';
+            View::$bag['teste'] = 'teste 2';
             $this->RenderView();
 
         }

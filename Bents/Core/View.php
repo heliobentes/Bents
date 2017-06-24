@@ -9,6 +9,7 @@
 namespace Bents\Core {
 
 
+    use Bents\Application;
     use Bents\Core\StartUp\Bundle;
     use Bents\Core\StartUp\StartUp;
 
@@ -16,41 +17,68 @@ namespace Bents\Core {
     {
 
         /**
-         * Parametros passados para a view
+         * Data and Parameters to be passed to the view
          * @var mixed
          */
-        public static $bag;
+        public static $bag = array();
 
+        /**
+         * The page page will use
+         * @var mixed
+         */
+        public static $model;
+
+        /**
+         * Add more scripts to the bundle
+         * You have to push some codes here if they depends on Layouts' scripts
+         * @var array
+         */
+        public static $jsBundle = array();
+
+        /**
+         * The Layout for Views
+         * @var string
+         */
         public static $layout = 'Shared/_Layout';
 
         /**
-         * Armazena o conteudo HTML
+         * Saves HTML content to be injected into the Layout
          * @var string
          */
         private static $contents;
+
         /**
-         * View que será chamada
+         * View to call
          * @var
          */
         private $view;
 
+        /**
+         * Render View into the Layout
+         */
         public static function RenderBody()
         {
             echo self::$contents;
         }
 
+        /**
+         * Render all JavaScripts into a single file
+         * Work with cached file
+         */
         public static function RenderJavaScriptBundle()
         {
-            $filename = __DIR__ . '/../../public_html/cache/jsbundle.js';
-            if (!file_exists($filename) || Config::$debug) {
+            $filename = Application::$publicPath . 'cache/jsbundle.js';
+            if (!file_exists($filename) || Config::debug()->isDebugging()) {
                 $bundle = new Bundle();
                 $array = $bundle->JavaScriptBundle();
+
+                $array[] = self::$jsBundle;
 
                 $fp = fopen($filename, 'w');
                 $script = '';
                 for ($x = 0; $x < sizeof($array); $x++) {
                     try {
-                        $script .= ' ' . file_get_contents(__DIR__ . '/../../public_html/' . $array[$x]);
+                        $script .= ' ' . file_get_contents(self::$publicPath . $array[$x]);
                     } catch (\Exception $e) {
                         Log::SaveLog($e);
                     }
@@ -63,17 +91,21 @@ namespace Bents\Core {
             echo '<script async defer language="javascript" type="text/javascript" src="/cache/jsbundle.js"></script>';;
         }
 
+        /**
+         * Render all CSSs into a single file
+         * Work with cached file
+         */
         public static function RenderCSSBundle()
         {
-            $filename = __DIR__ . '/../../public_html/cache/cssbundle.css';
-            if (!file_exists($filename) || Config::$debug) {
+            $filename = Application::$publicPath . 'cache/cssbundle.css';
+            if (!file_exists($filename) || Config::debug()->isDebugging()) {
                 $bundle = new Bundle();
                 $array = $bundle->CSSBundle();
                 $fp = fopen($filename, 'w');
                 $style = '';
                 for ($x = 0; $x < sizeof($array); $x++) {
                     try {
-                        $style .= ' ' . file_get_contents(__DIR__ . '/../../public_html/' . $array[$x]);
+                        $style .= ' ' . file_get_contents(self::$publicPath . $array[$x]);
                     } catch (\Exception $e) {
                         Log::SaveLog($e);
                     }
@@ -85,69 +117,60 @@ namespace Bents\Core {
         }
 
         /**
-         * Define qual arquivo html deve ser renderizado
-         * @param string $st_view
-         * @throws Exception
+         * Define what view will be render
+         * @param string $view
          */
         public function SetView($view)
         {
-            //Se a view não for definida, seta a view como nome do controller atual + index
+            //If $view is null or empty use $view as "current controller + index"
             if ($view == null || $view == '') {
                 $view = StartUp::$controller . '/' . StartUp::$action;
             }
 
-            $view = StartUp::$path . '/View/' . $view . '.php';
+            $view = Application::$viewPath . $view . '.phtml';
 
-            if (file_exists($view))
+            if (file_exists($view)) {
                 $this->view = $view;
-            else
-                throw new \Exception("Arquivo View '$view' não existe!");
+            } else {
+                http_response_code(404);
+            }
         }
 
-        /**
-         * Define os dados que devem ser repassados pra view
-         * @param Array $v_params
-         */
-        public function SetParams(Array $v_params = null)
-        {
-            $this->viewBag = $v_params;
-        }
 
         /**
-         * Retorna uma string contendo
-         * o conteudo do arquivo de visualização
-         *
+         * Return a string with the content of the view injected into the Layout
          * @return string
+         * @var $model mixed
          */
-        public function Render()
+        public function Render($model = null)
         {
+            self::$model = $model;
+
             ob_start();
-            if (isset($this->view))
+            if (isset($this->view)) {
                 require_once $this->view;
+            }
 
             self::$contents = ob_get_contents();
             ob_end_clean();
 
             ob_start();
-            require_once __DIR__ . '/../App/View/' . self::$layout . '.php';
+            require_once Application::$viewPath . self::$layout . '.phtml';
             $globalContent = ob_get_contents();
             ob_end_clean();
-
 
             return $this->SanitizeOutput($globalContent);
 
         }
 
         /**
-         * Comprimir o HTML impresso
-         * Retira espaços não usados, comentarios, quebra de linhas etc
-         * @param $buffer
-         * @return mixed
+         * Sanitizing the HTML content to be printed
+         * Remove white spaces, comments, line breaks etc
+         * @param $buffer string
+         * @return string
          */
-        //TODO: reorganizar esse satize para ficar amis inteligente
-
-        private
-        function SanitizeOutput($buffer)
+        //TODO: reorganize to be more intelligent
+        private function SanitizeOutput($buffer)
         {
             $search = array(
                 '/\>+/s', //strip whitespaces after tags, except space
@@ -175,8 +198,11 @@ namespace Bents\Core {
                 '',
                 ' '
             );
-            $buffer = preg_replace($search, $replace, $buffer);
-            //$buffer = preg_replace('(\r|\n|\t)', '', $buffer);
+            if (Config::systemBehavior()->isSanitizableHTML()) {
+                $buffer = preg_replace($search, $replace, $buffer);
+            } else {
+                $buffer = preg_replace('(\r|\n|\t)', '', $buffer);
+            }
             return $buffer;
         }
 

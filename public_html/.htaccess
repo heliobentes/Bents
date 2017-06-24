@@ -14,9 +14,11 @@
 # definindo as URLs amigáveis
 <IfModule mod_rewrite.c>
     RewriteEngine on
+
+
     RewriteCond %{SCRIPT_FILENAME} !-f
     RewriteCond %{SCRIPT_FILENAME} !-d
-    RewriteRule ^([a-zA-Z0-9-_]*)(/([a-zA-Z0-9-_]*))?/?$ /index.php?controller=$1&action=$3&%{QUERY_STRING} [L]
+    RewriteRule ^([a-zA-Z0-9-_]*)(/([a-zA-Z0-9-_]*))?/?([a-zA-Z0-9-_]*)?/?$ /index.php?controller=$1&action=$3&id=$4&%{QUERY_STRING} [L]
 
 #    RewriteCond %{SCRIPT_FILENAME} !-f
 #    RewriteCond %{SCRIPT_FILENAME} !-d

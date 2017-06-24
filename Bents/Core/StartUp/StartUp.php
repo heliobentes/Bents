@@ -9,47 +9,40 @@
 
 namespace Bents\Core\StartUp {
 
+    use Bents\Core\Config;
+    use Bents\Core\Security\Security;
+
     class StartUp
     {
-        /**
-         * Caminho padrao do sistema
-         * @var string
-         */
-        public static $path;
 
         /**
-         * Usada para guardar p nome da classe de controle
-         * (Controller) a ser executada
+         * The Controller that should be executed
          * @var string
          */
         public static $controller;
 
         /**
-         * Usada para quardar o nome do metodo da
-         * clase de controle (Controller) que deverá ser executada
+         * The Action/Method/Function from the Controller that should be executed
          * @var string
          */
         public static $action;
 
         /**
-         * Instancia classe referente ao Controlador (Controller) e executa
-         * método referente e  acao (Action)
-         * @throws Exception
+         * Instantiate the Controller class and execute the Action
+         * Redirect to a 404 Error if there are no Controllers or Actions related
          */
-
-
         public function __construct()
         {
-            self::$path = str_replace(array('Core', 'StartUp'), array('App', ''), __DIR__);
 
             $this->LoadRoute();
 
-            if (self::$controller != 'Home') {
-                self::VerificaStatusLogado();
+            //Protect the Controller
+            if (Config::systemBehavior()->isProtectedController(self::$controller)) {
+                Security::Protect();
             }
 
 
-            //verificando se a classe existe
+            //Checking if there is the Controller
             $class = 'Bents\\App\\Controller\\' . self::$controller . 'Controller';
 
             if (class_exists($class)) {
@@ -58,9 +51,15 @@ namespace Bents\Core\StartUp {
                 http_response_code(404);
             }
 
-            //verificando se o metodo existe
+            //Checking if there is such method in the Controller
             $method = self::$action;
             if (method_exists($o_class, $method)) {
+
+                //Protect the Action
+                if ($o_class->isProtectedAction($method)) {
+                    Security::Protect();
+                }
+
                 $o_class->$method();
             } else {
                 http_response_code(404);
@@ -69,58 +68,40 @@ namespace Bents\Core\StartUp {
         }
 
         /**
-         * Verifica se os parametros de controlador (Controller) e acao (Action) foram
-         * passados via parametros "Post" ou "Get" e os carrega tais dados
-         * nos respectivos atributos da classe
+         * Check if the Controller and the Action were submitted like "domain.com/Controller/Action"
+         * If the Controller is null or empty it will be set as "Home"
+         * If the Action is null or empty it will be set as "Index"
          */
         private static function LoadRoute()
         {
-            /**
-             * Se o controller nao for passado
-             * assume-se como padrão o controler de login
-             */
             self::$controller = $_REQUEST['controller']??'Home';
-            /**
-             * Se a action nao for passada
-             * assume-se como padrão a action de login
-             */
+
             self::$action = ($_REQUEST['action'] == null || $_REQUEST['action'] == '') ? 'Index' : $_REQUEST['action'];
         }
 
-        /**
-         * verifica se o usuário está logado
-         */
-        private static function VerificaStatusLogado()
+        public static function RedirectToAction($controller, $action)
         {
-            if (!(isset($_SESSION['token']) and $_SESSION['token'] != null)) {
-                if (self::$action != 'Login' and self::$action != 'FazerLogin') {
-                    /**
-                     * Veio de Ajax
-                     */
-                    if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-                        $fromAjax = true;
-                    } else {
-                        $fromAjax = false;
-                    }
-                    self::GoToLogin($fromAjax);
-                }
-            }
-        }
+            //Checking if there is the Controller
+            $class = 'Bents\\App\\Controller\\' . $controller . 'Controller';
 
-        /**
-         * Redireciona a chamada http para outra pagina
-         * se $fromAjax for true, mata a execução para redirecionar via javascript
-         *
-         * @param bool $fromAjax
-         */
-        public static function GoToLogin($fromAjax = false)
-        {
-            if ($fromAjax) {
-                die("userNotLogged");
+            if (class_exists($class)) {
+                $o_class = new $class;
             } else {
-                $view = new View("Login", array('msg' => 'Digite seu login e senha!'));
-                $view->MostraConteudo();
-                die();
+                http_response_code(404);
+            }
+
+            //Checking if there is such method in the Controller
+
+            if (method_exists($o_class, $action)) {
+
+                //Protect the Action
+                if ($o_class->isProtectedAction($action)) {
+                    Security::Protect();
+                }
+
+                $o_class->$action();
+            } else {
+                http_response_code(404);
             }
         }
 
