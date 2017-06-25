@@ -98,10 +98,53 @@ namespace Bents\Core {
             }
 
             $fp = fopen($filename, 'w');
-            fwrite($fp, $script);
+            fwrite($fp, self::SanitizeOutput($script));
             fclose($fp);
-            echo $script;
             echo '<script async defer language="javascript" type="text/javascript" src="/cache/jsbundle.js"></script>';
+        }
+
+
+        private static function SanitizeOutput($buffer)
+        {
+            $search = array(
+
+                '/(\s)\/\/.*\n?/',   //remove inline comments
+                '/\>[\s]+/',         //strip whitespaces after tags
+                '/[\s]+\</',         //strip whitespaces before tags
+                '/:[\s]+/',          //shorten whitespaces after :
+                '/;[\s]+/',          //shorten whitespaces after ;
+                '/\{[\s]+/',         //shorten whitespaces after {
+                '/[\s]+\{/',         //shorten whitespaces before {
+                '/[\s]+\}/',         //shorten whitespaces before }
+                '/\}[\s]+/',         //shorten whitespaces after }
+                '/\n\s*\n/',         //remove line breaks
+                '/\n/',              //remove line breaks
+                '/!<\!--.*?\--\>!/', //remove html comments
+                '/\>[\s]+\</',       // remove whitespaces between tags
+                '/(\s|&nbsp;){2,}/', //shorten multiple whitespace sequences
+                '/\/\*.*\*\//'       //remove multi line comments
+            );
+            $replace = array(
+                '',
+                '>',
+                '<',
+                ':',
+                ';',
+                '{',
+                '{',
+                '}',
+                '}',
+                ' ',
+                ' ',
+                '',
+                '',
+                ' ',
+                '',
+            );
+            if (Config::SystemBehavior()->IsHTMLSanitizable()) {
+                $buffer = preg_replace($search, $replace, $buffer);
+            }
+            return $buffer;
         }
 
         /**
@@ -132,9 +175,8 @@ namespace Bents\Core {
                         $style .= ' ' . $match;
                     }
                 }
-                echo $style;
                 $fp = fopen($filename, 'w');
-                fwrite($fp, $style);
+                fwrite($fp, self::SanitizeOutput($style));
                 fclose($fp);
             }
             echo '<link rel="stylesheet" href="/cache/cssbundle.css">';
@@ -144,8 +186,7 @@ namespace Bents\Core {
          * Define what view will be render
          * @param string $view
          */
-        public
-        function SetView($view)
+        public function SetView($view)
         {
             //If $view is null or empty use $view as "current controller + index"
             if ($view == null || $view == '') {
@@ -161,14 +202,19 @@ namespace Bents\Core {
             }
         }
 
-
+        /**
+         * Sanitizing the HTML content to be printed
+         * Remove white spaces, comments, line breaks etc
+         * @param $buffer string
+         * @return string
+         */
+        //TODO: reorganize to be more intelligent
         /**
          * Return a string with the content of the view injected into the Layout
          * @return string
          * @var $model mixed
          */
-        public
-        function Render($model = null)
+        public function Render($model = null)
         {
             self::$model = $model;
 
@@ -185,60 +231,8 @@ namespace Bents\Core {
             $globalContent = ob_get_contents();
             ob_end_clean();
 
-            return $this->SanitizeOutput($globalContent);
+            return self::SanitizeOutput($globalContent);
 
-        }
-
-        /**
-         * Sanitizing the HTML content to be printed
-         * Remove white spaces, comments, line breaks etc
-         * @param $buffer string
-         * @return string
-         */
-        //TODO: reorganize to be more intelligent
-        private function SanitizeOutput($buffer)
-        {
-            $search = array(
-
-                '/\/\/.*\n/', //remove after tags, except space
-                '/\>[\s]+/',//strip whitespaces after tags
-                '/[\s]+\</', //strip whitespaces before tags
-                '/:[\s]+/', //shorten whitespaces after :
-                '/;[\s]+/', //shorten whitespaces after ;
-                '/\{[\s]+/', //shorten whitespaces after {
-                '/[\s]+\{/', //shorten whitespaces before {
-                '/[\s]+\}/', //shorten whitespaces before }
-                '/[\s]+\{/', //shorten whitespaces after }
-                '/\n\s*\n/', //remove line breaks
-                '/\n/', //remove line breaks
-                '/!<\!--.*?\--\>!/', //remove html comments
-                '/\>[\s]+\</', // remove whitespaces between tags
-                '/(\s|&nbsp;){2,}/', //shorten multiple whitespace sequences
-                '/\/\*.*\*\//' //remove multi line comments
-            );
-            $replace = array(
-                '',
-                '>',
-                '<',
-                ':',
-                ';',
-                '{',
-                '{',
-                '}',
-                '}',
-                ' ',
-                ' ',
-                '',
-                '',
-                ' ',
-                '',
-            );
-            if (Config::SystemBehavior()->IsHTMLSanitizable()) {
-                $buffer = preg_replace($search, $replace, $buffer);
-            } else {
-                $buffer = preg_replace('(\r|\n|\t)', '', $buffer);
-            }
-            return $buffer;
         }
 
     }

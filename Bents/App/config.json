@@ -5,13 +5,17 @@
     "showError": true
   },
   "SystemBehavior": {
-    "sanitizeHTML": true,
+    "sanitizeHTML": true
+  },
+  "Security": {
     "loginController": "Login",
     "loginAction": "Login",
     "unprotectedControllers": [
       "Home",
       "Login"
-    ]
+    ],
+    "useRoles": true,
+    "useIndividualPermissions": true
   },
   "DataBase": {
     "dbType": "mysql",

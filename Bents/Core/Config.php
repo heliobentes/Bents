@@ -12,6 +12,7 @@ namespace Bents\Core {
     use Bents\Core\Configuration\DataBase;
     use Bents\Core\Configuration\Debug;
     use Bents\Core\Configuration\Globalization;
+    use Bents\Core\Configuration\Security;
     use Bents\Core\Configuration\SystemBehavior;
 
     class Config
@@ -46,6 +47,14 @@ namespace Bents\Core {
         public static function Globalization(): Globalization
         {
             return new Globalization();
+        }
+
+        /**
+         * @return Security
+         */
+        public static function Security(): Security
+        {
+            return new Security();
         }
     }
 }

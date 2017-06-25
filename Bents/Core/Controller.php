@@ -2,7 +2,6 @@
 
 namespace Bents\Core {
 
-    use Bents\Core\Security\Security;
     use Bents\Core\StartUp\StartUp;
 
     class Controller
@@ -13,41 +12,17 @@ namespace Bents\Core {
          */
         protected $unprotectedActions = array();
 
+        public static function RedirectToRequest($controller, $action)
+        {
+            $current_url = urlencode((isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+            header('Location:/' . $controller . '/' . $action . '?destination=' . $current_url);
+        }
+
         public static function RedirectToAction($controller, $action)
         {
-            StartUp::$controller = $controller;
-            StartUp::$action = $action;
-            //Protect the Controller
-            if (Security::IsProtectedController($controller)) {
-                Security::Protect();
-            }
-            //Checking if there is the Controller
-            $class = 'Bents\\App\\Controller\\' . $controller . 'Controller';
 
-            if (class_exists($class)) {
-                /**
-                 * @var $o_class Controller
-                 */
-                $o_class = new $class;
-            } else {
-                http_response_code(404);
-                die();
-            }
 
-            //Checking if there is such method in the Controller
-
-            if (method_exists($o_class, $action)) {
-
-                //Protect the Action
-                if (Security::IsProtectedController($controller) and $o_class->IsProtectedAction($action)) {
-                    Security::Protect();
-                }
-
-                $o_class->$action();
-            } else {
-                http_response_code(404);
-                die();
-            }
+            StartUp::InitRequest($controller, $action);
         }
 
         /**
@@ -71,7 +46,7 @@ namespace Bents\Core {
             echo $view->Render($model);
 
             //closing the connection
-            DAO::$dbCon == null;
+            DAO::$dbConn == null;
         }
 
     }

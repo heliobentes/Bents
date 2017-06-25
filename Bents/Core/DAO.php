@@ -15,7 +15,7 @@ namespace Bents\Core {
         /**
          * @var PDO
          */
-        public static $dbCon = null;
+        public static $dbConn = null;
 
         /**
          * DB constructor.
@@ -28,12 +28,12 @@ namespace Bents\Core {
         function getInstance()
         {
 
-            if (self::$dbCon == null) {
+            if (self::$dbConn == null) {
 
-                $dsn = Config::$dbType . ":host=" . Config::$hostName . ";dbname=" . Config::$dbName;
+                $dsn = Config::DataBase()->GetDbType() . ":host=" . Config::DataBase()->GetHostName() . ";dbname=" . Config::DataBase()->GetDbName();
 
                 try {
-                    self::$dbCon = new PDO($dsn, Config::$userName, Config::$password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8", PDO::ATTR_ERRMODE => PDO::ERRMODE_SILENT));//ERRMODE_WARNING
+                    self::$dbConn = new PDO($dsn, Config::DataBase()->GetUserName(), Config::DataBase()->GetPassword(), array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8", PDO::ATTR_ERRMODE => PDO::ERRMODE_SILENT));//ERRMODE_WARNING
                 } catch (\Exception $e) {
                     Log::SaveLog($e);
                     http_response_code(500);

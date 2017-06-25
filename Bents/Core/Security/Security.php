@@ -11,6 +11,7 @@ namespace Bents\Core\Security {
 
     use Bents\Core\Config;
     use Bents\Core\Controller;
+    use Bents\Core\DAO\UserDAO;
 
     class Security
     {
@@ -43,9 +44,9 @@ namespace Bents\Core\Security {
             if ($fromAjax) {
                 die("userNotLogged");
             } else {
-                Controller::RedirectToAction(Config::SystemBehavior()->GetLoginController(), Config::SystemBehavior()->GetLoginAction());
+                Controller::RedirectToRequest(Config::Security()->GetLoginController(), Config::Security()->GetLoginAction());
             }
-            die();
+            exit;
         }
 
         /**
@@ -54,7 +55,33 @@ namespace Bents\Core\Security {
          */
         public static function IsProtectedController($controller): bool
         {
-            return !in_array($controller, Config::SystemBehavior()->GetUnprotectedControllers());
+            return !in_array($controller, Config::Security()->GetUnprotectedControllers());
         }
+
+        /**
+         * @param $action string
+         * @param $controller string
+         */
+        public static function CheckUserPermission($controller, $action)
+        {
+            if (Config::Security()->UseIndividualPermissions()) {
+                $hasPermission = false;
+                $userDAO = new UserDAO();
+
+                $permissions = $userDAO->GetUserRoles($_SESSION['login']);
+
+                foreach ($permissions as $permission) {
+                    if ($permission->getController() == $controller and $permission->getAction() == $action) {
+                        $hasPermission = true;
+                        break;
+                    }
+                }
+                if (!$hasPermission) {
+                    header("HTTP/1.0 403 Forbidden");
+                    exit;
+                }
+            }
+        }
+
     }
 }

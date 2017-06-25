@@ -96,6 +96,8 @@ namespace Bents {
 
             date_default_timezone_set('UTC');
 
+            $_SESSION['login'] = 'heliobentes@gmail.com';
+
             new StartUp();
         }
     }

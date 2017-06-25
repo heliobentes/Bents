@@ -11,7 +11,8 @@ namespace Bents\App\Controller {
 
         public function Login()
         {
-            View::$bag['teste'] = 'teste 2';
+            View::$bag['destination'] = filter_var($_GET['destination'], FILTER_VALIDATE_URL);
+
             $this->RenderView();
 
         }

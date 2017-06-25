@@ -14,7 +14,7 @@ namespace Bents\App\DAO {
     {
         public function GetDbCon()
         {
-            return self::$dbCon;
+            return self::$dbConn;
         }
     }
 }
