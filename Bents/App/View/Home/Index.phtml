@@ -6,18 +6,43 @@
  * Time: 7:24 PM
  */
 
+
 use Bents\Core\Globalization\Globalization;
 
+/**
+ * @uses \Bents\Core\View self
+ */
 self::$layout = "Shared/_Layout";
 
 
 ?>
+
+<?php self::$cssBundle[] = <<<EOT
+<style type="text/css" media="screen">
+    .body {}
+</style>
+<style type="text/css">
+     .body2 {}
+</style>
+EOT;
+self::$cssBundle[] = <<<EOT
+<style type="text/css">
+     .body3 {}
+</style>
+EOT;
+self::$cssBundle[] = <<<EOT
+<style> .body4 {}</style>
+EOT;
+self::$cssBundle[] = <<<EOT
+EOT;
+?>
+
 <ul>
     <li>1</li>
     <li>2</li>
     <li>3</li>
     <li>4</li>
-    <li>5</li>
+    <li>5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 </ul>
 
 <?php echo self::$bag['teste']; ?>
@@ -26,14 +51,22 @@ self::$layout = "Shared/_Layout";
 
 <?php self::$jsBundle[] = <<<EOT
 <script type="application/javascript" async defer>
-    let a = 1;
+//comment 2
+    let a = 1;                       
+    //comment 1
 </script>
 <script type="application/javascript" async>
-    let a = 1;
+    let a = 2;
 </script>
+EOT;
+self::$jsBundle[] = <<<EOT
 <script type="application/javascript">
-    let a = 1;
+    let a = 3;
 </script>
-<script>let a = 1;</script>
+EOT;
+self::$jsBundle[] = <<<EOT
+<script>let a = 4; //comment</script>
+EOT;
+self::$jsBundle[] = <<<EOT
 EOT;
 ?>

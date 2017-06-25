@@ -37,7 +37,7 @@ namespace Bents\Core\StartUp {
             $this->LoadRoute();
 
             //Protect the Controller
-            if (Config::systemBehavior()->isProtectedController(self::$controller)) {
+            if (Security::IsProtectedController(self::$controller)) {
                 Security::Protect();
             }
 
@@ -46,6 +46,9 @@ namespace Bents\Core\StartUp {
             $class = 'Bents\\App\\Controller\\' . self::$controller . 'Controller';
 
             if (class_exists($class)) {
+                /**
+                 * @var $o_class Controller
+                 */
                 $o_class = new $class;
             } else {
                 http_response_code(404);
@@ -57,7 +60,7 @@ namespace Bents\Core\StartUp {
             if (method_exists($o_class, $method)) {
 
                 //Protect the Action
-                if (Config::systemBehavior()->isProtectedController(self::$controller) and $o_class->isProtectedAction($method)) {
+                if (Security::IsProtectedController(self::$controller) and $o_class->IsProtectedAction($method)) {
                     Security::Protect();
                 }
 

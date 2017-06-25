@@ -8,9 +8,6 @@
 
 namespace Bents\Core {
 
-
-    use Bents\Core\Configuration\Config;
-
     class Log
     {
         /**

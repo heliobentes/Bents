@@ -9,7 +9,7 @@
 namespace Bents\Core\Security {
 
 
-    use Bents\Core\Configuration\Config;
+    use Bents\Core\Config;
     use Bents\Core\Controller;
 
     class Security
@@ -43,9 +43,18 @@ namespace Bents\Core\Security {
             if ($fromAjax) {
                 die("userNotLogged");
             } else {
-                Controller::RedirectToAction(Config::systemBehavior()->getLoginController(), Config::systemBehavior()->getLoginAction());
+                Controller::RedirectToAction(Config::SystemBehavior()->GetLoginController(), Config::SystemBehavior()->GetLoginAction());
             }
             die();
+        }
+
+        /**
+         * @var $controller string
+         * @return bool
+         */
+        public static function IsProtectedController($controller): bool
+        {
+            return !in_array($controller, Config::SystemBehavior()->GetUnprotectedControllers());
         }
     }
 }

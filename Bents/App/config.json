@@ -1,6 +1,6 @@
 {
   "Debug": {
-    "debug": false,
+    "debug": true,
     "saveLog": true,
     "showError": true
   },

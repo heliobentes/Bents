@@ -10,13 +10,13 @@ namespace Bents\Core\Globalization {
 
 
     use Bents\Application;
-    use Bents\Core\Configuration\Config;
+    use Bents\Core\Config;
 
     class Globalization
     {
         public static function Res()
         {
-            $json = file_get_contents(Application::$resPath . Config::globalization()->getLang() . '.json');
+            $json = file_get_contents(Application::$resPath . Config::Globalization()->GetLang() . '.json');
             return json_decode($json);
         }
     }
