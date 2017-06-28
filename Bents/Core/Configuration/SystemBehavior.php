@@ -9,6 +9,7 @@
 namespace Bents\Core\Configuration {
 
 
+    use Bents\Application;
     use Bents\Core\Utils\Session;
 
     class SystemBehavior
@@ -19,6 +20,8 @@ namespace Bents\Core\Configuration {
          */
         protected $sanitizeHTML;
 
+        protected $errorPages;
+
         /**
          * SystemBehavior constructor.
          */
@@ -26,6 +29,7 @@ namespace Bents\Core\Configuration {
         {
             $obj = Session::GetConfigurationFromSession();
             $this->sanitizeHTML = $obj->SystemBehavior->sanitizeHTML;
+            $this->errorPages = $obj->SystemBehavior->errorPages;
         }
 
         /**
@@ -36,6 +40,19 @@ namespace Bents\Core\Configuration {
             return $this->sanitizeHTML;
         }
 
+        /**
+         * @param int $error
+         * @return string
+         */
+        public function getErrorPage($error): string
+        {
+
+            if (isset($this->errorPages->$error)) {
+                return Application::$publicPath . 'error/' . $this->errorPages->$error;
+            } else {
+                return Application::$publicPath . 'error/default.html';
+            }
+        }
 
     }
 }

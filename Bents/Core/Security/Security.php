@@ -17,20 +17,76 @@ namespace Bents\Core\Security {
     {
         /**
          * Check if user is logged in
+         * @var string $controller
+         * @var string|null $action
          */
-        public static function Protect()
+        public static function Protect($controller, $action = null)
         {
-            if (!(isset($_SESSION['token']) and $_SESSION['token'] != null)) {
-
-                //Came from Ajax
-                if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-                    $fromAjax = true;
-                } else {
-                    $fromAjax = false;
+            $protect = false;
+            if (self::IsProtectedController($controller)) {
+                $protect = true;
+            } else {
+                if ($action != null and $action != '') {
+                    if (self::IsProtectedAction($controller, $action)) {
+                        $protect = true;
+                    }
                 }
-                self::GoToLogin($fromAjax);
+            }
+
+            if ($protect) {
+                if (!(isset($_SESSION['token']) and $_SESSION['token'] != null)) {
+
+                    //Came from Ajax
+                    if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+                        $fromAjax = true;
+                    } else {
+                        $fromAjax = false;
+                    }
+                    self::GoToLogin($fromAjax);
+
+                }
+            }
+
+        }
+
+        /**
+         * @var $controller string
+         * @return bool
+         */
+        public static function IsProtectedController($controller): bool
+        {
+            //return !in_array($controller, Config::Security()->GetUnprotectedControllers());
+            $class = 'Bents\\App\\Controller\\' . $controller . 'Controller';
+
+
+            $reflection = new \ReflectionClass($class);
+            if (preg_match("/@authorize/", $reflection->getDocComment())) {
+                return true;
+            } else {
+                return false;
+            }
+
+
+        }
+
+        /**
+         * @var $controller string
+         * @var string $action
+         * @return bool
+         */
+        public static function IsProtectedAction($controller, $action): bool
+        {
+            //return !in_array($controller, Config::Security()->GetUnprotectedControllers());
+            $class = 'Bents\\App\\Controller\\' . $controller . 'Controller';
+            $methodReflection = new \ReflectionMethod($class, $action);
+            if (preg_match("/@authorize/", $methodReflection->getDocComment())) {
+                return true;
+            } else {
+                return false;
 
             }
+
+
         }
 
         /**
@@ -50,25 +106,18 @@ namespace Bents\Core\Security {
         }
 
         /**
-         * @var $controller string
-         * @return bool
-         */
-        public static function IsProtectedController($controller): bool
-        {
-            return !in_array($controller, Config::Security()->GetUnprotectedControllers());
-        }
-
-        /**
          * @param $action string
          * @param $controller string
          */
         public static function CheckUserPermission($controller, $action)
         {
+            $hasPermission = false;
+
             if (Config::Security()->UseIndividualPermissions()) {
-                $hasPermission = false;
+
                 $userDAO = new UserDAO();
 
-                $permissions = $userDAO->GetUserRoles($_SESSION['login']);
+                $permissions = $userDAO->GetUserPermissions($_SESSION['login']);
 
                 foreach ($permissions as $permission) {
                     if ($permission->getController() == $controller and $permission->getAction() == $action) {
@@ -76,10 +125,27 @@ namespace Bents\Core\Security {
                         break;
                     }
                 }
-                if (!$hasPermission) {
-                    header("HTTP/1.0 403 Forbidden");
-                    exit;
+
+            }
+
+            if (Config::Security()->UseRoles()) {
+                $userDAO = new UserDAO();
+
+                $role = $userDAO->GetUserRole($_SESSION['login']);
+
+                //return !in_array($controller, Config::Security()->GetUnprotectedControllers());
+                $class = 'Bents\\App\\Controller\\' . $controller . 'Controller';
+                $methodReflection = new \ReflectionMethod($class, $action);
+                if (preg_match("/@roles\(.*\'$role\'.*\)/", $methodReflection->getDocComment())) {
+                    $hasPermission = true;
                 }
+            }
+
+            if (!$hasPermission) {
+                header("HTTP/1.1 401 Unauthorized");
+
+                include Config::SystemBehavior()->getErrorPage(401);
+                exit;
             }
         }
 

@@ -25,14 +25,6 @@ namespace Bents\Core {
             StartUp::InitRequest($controller, $action);
         }
 
-        /**
-         * @var $action string
-         * @return bool
-         */
-        public function IsProtectedAction($action): bool
-        {
-            return !in_array($action, $this->unprotectedActions);
-        }
 
         /**
          * @param mixed $model

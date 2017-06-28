@@ -68,9 +68,8 @@ namespace Bents\Core\StartUp {
             StartUp::$controller = $controller;
             StartUp::$action = $action;
             //Protect the Controller
-            if (Security::IsProtectedController($controller)) {
-                Security::Protect();
-            }
+            Security::Protect($controller);
+
 
             //Checking if there is the Controller
             $class = 'Bents\\App\\Controller\\' . $controller . 'Controller';
@@ -89,9 +88,8 @@ namespace Bents\Core\StartUp {
             if (method_exists($o_class, $action)) {
 
                 //Protect the Action
-                if (Security::IsProtectedController($controller) and $o_class->IsProtectedAction($action)) {
-                    Security::Protect();
-                }
+                Security::Protect($controller, $action);
+
                 //check permissions
                 Security::CheckUserPermission($controller, $action);
 

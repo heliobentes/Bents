@@ -15,11 +15,6 @@ namespace Bents\Core\Configuration {
     {
 
         /**
-         * List Controllers that will bypass login check
-         * @var array
-         */
-        protected $unprotectedControllers;
-        /**
          * @var bool
          */
         protected $useRoles;
@@ -46,7 +41,6 @@ namespace Bents\Core\Configuration {
         public function __construct()
         {
             $obj = Session::GetConfigurationFromSession();
-            $this->unprotectedControllers = $obj->Security->unprotectedControllers;
             $this->useRoles = $obj->Security->useRoles;
             $this->useIndividualPermissions = $obj->Security->useIndividualPermissions;
             $this->loginController = $obj->Security->loginController;
@@ -85,13 +79,6 @@ namespace Bents\Core\Configuration {
             return $this->useIndividualPermissions;
         }
 
-        /**
-         * @return array
-         */
-        public function GetUnprotectedControllers(): array
-        {
-            return $this->unprotectedControllers;
-        }
 
     }
 }

@@ -12,8 +12,17 @@ namespace Bents\Core\Model {
     use Bents\Core\DAO\UserDAO;
     use Bents\Core\Model;
 
+    /**
+     * Class User
+     * @package Bents\Core\Model
+     * @table User
+     */
     class User extends Model
     {
+        /**
+         * @var int
+         * @key
+         */
         private $idUser;
         private $login;
         private $pwHash;

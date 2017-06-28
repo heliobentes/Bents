@@ -9,19 +9,19 @@
 namespace Bents\Core\Model {
 
 
-    class Role
+    class Permission
     {
         private $controller;
         private $action;
 
         /**
          * Rule constructor.
-         * @param $role array
+         * @param $permission array
          */
-        public function __construct(array $role)
+        public function __construct(array $permission)
         {
-            $this->controller = $role['controller'];
-            $this->action = $role['action'];
+            $this->controller = $permission['controller'];
+            $this->action = $permission['action'];
         }
 
         /**

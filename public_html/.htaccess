@@ -1,3 +1,4 @@
+ErrorDocument 401 /401.html
 # seta conjunto de caracteres para todas as paginas
 AddDefaultCharset utf-8
 # seta cache do navegador

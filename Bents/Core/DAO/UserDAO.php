@@ -10,41 +10,75 @@ namespace Bents\Core\DAO {
 
 
     use Bents\Core\DAO;
+    use Bents\Core\Model\Permission;
     use Bents\Core\Model\Role;
 
     class UserDAO extends DAO
     {
         /**
          * @param $login string
-         * @return Role[]
+         * @return Permission[]
          */
-        public function GetUserRoles($login): array
+        public function GetUserPermissions($login): array
         {
             $pdo = self::$dbConn;
 
-            $sql = "SELECT R.controller, R.action 
-                    FROM Role R
-                    JOIN User U on R.idUser = U.idUser
+            $sql = "SELECT P.controller, P.action 
+                    FROM Permissions P
+                    JOIN User U on P.idUser = U.idUser
                     WHERE U.login =:login";
 
             $stmt = $pdo->prepare($sql);
 
             $stmt->bindValue(':login', $login);
 
-            $arrayRules = array();
+            $arrayPermissions = array();
 
             try {
                 $stmt->execute();
 
                 while ($row = $stmt->fetch()) {
-                    $arrayRules[] = new Role($row);
+                    $arrayPermissions[] = new Permission($row);
                 }
 
             } catch (Exception $e) {
                 Log::SaveLog($e);
                 http_response_code(500);
             }
-            return $arrayRules;
+            return $arrayPermissions;
+        }
+
+        /**
+         * @param $login string
+         * @return string
+         */
+        public function GetUserRole($login): string
+        {
+            $pdo = self::$dbConn;
+
+            $sql = "SELECT R.role
+                    FROM Role R
+                    JOIN User U on R.idRole = U.idRole
+                    WHERE U.login =:login";
+
+            $stmt = $pdo->prepare($sql);
+
+            $stmt->bindValue(':login', $login);
+
+            $role = '';
+
+            try {
+                $stmt->execute();
+
+                while ($row = $stmt->fetch()) {
+                    $role = $row['role'];
+                }
+
+            } catch (Exception $e) {
+                Log::SaveLog($e);
+                http_response_code(500);
+            }
+            return $role;
         }
     }
 }
