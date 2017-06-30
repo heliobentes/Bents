@@ -80,7 +80,8 @@ namespace Bents\Core\StartUp {
                  */
                 $o_class = new $class;
             } else {
-                header("HTTP/1.0 404 Not Found");
+                header($_SERVER['SERVER_PROTOCOL'] . '404 Not Found', true, 404);
+                include Config::SystemBehavior()->getErrorPage(404);
                 exit;
             }
 
@@ -95,7 +96,8 @@ namespace Bents\Core\StartUp {
 
                 $o_class->$action();
             } else {
-                header("HTTP/1.0 404 Not Found");
+                header($_SERVER['SERVER_PROTOCOL'] . '404 Not Found', true, 404);
+                include Config::SystemBehavior()->getErrorPage(404);
                 exit;
             }
         }

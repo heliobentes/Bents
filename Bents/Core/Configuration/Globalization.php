@@ -16,7 +16,7 @@ namespace Bents\Core\Configuration {
          * Set System Language
          * @var string
          */
-        protected $lang;
+        protected $language;
 
         /**
          * Globalization constructor.
@@ -24,15 +24,15 @@ namespace Bents\Core\Configuration {
         public function __construct()
         {
             $obj = Session::GetConfigurationFromSession();
-            $this->lang = $obj->Globalization->lang;
+            $this->language = $obj->Globalization->language;
         }
 
         /**
          * @return string
          */
-        public function GetLang(): string
+        public function GetLanguage(): string
         {
-            return $this->lang;
+            return $this->language;
         }
 
 

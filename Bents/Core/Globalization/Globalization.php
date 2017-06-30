@@ -16,7 +16,7 @@ namespace Bents\Core\Globalization {
     {
         public static function Res()
         {
-            $json = file_get_contents(Application::$resPath . Config::Globalization()->GetLang() . '.json');
+            $json = file_get_contents(Application::$resPath . Config::Globalization()->GetLanguage() . '.json');
             return json_decode($json);
         }
     }

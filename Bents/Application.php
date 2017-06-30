@@ -9,6 +9,7 @@
 namespace Bents {
 
     use Bents\Core\Config;
+    use Bents\Core\Migration\Migration;
     use Bents\Core\StartUp\StartUp;
 
 
@@ -20,7 +21,7 @@ namespace Bents {
          */
         public static $path;
         /**
-         * Caminho base do sistea
+         * Caminho base do sistema
          * @var string
          */
         public static $basePath;
@@ -71,7 +72,7 @@ namespace Bents {
             error_reporting(E_ALL);
 
             self::$path = __DIR__ . '/';
-            self::$basePath = str_replace('Bents', '/', __DIR__);
+            self::$basePath = str_replace('Bents', '', __DIR__);
             self::$appPath = __DIR__ . '/App/';
             self::$viewPath = __DIR__ . '/App/View/';
             self::$modelPath = __DIR__ . '/App/Model/';
@@ -98,10 +99,23 @@ namespace Bents {
 
             $_SESSION['login'] = 'heliobentes@gmail.com';
 
+            if (Config::SystemBehavior()->UseMigration()) {
+                Migration::Run();
+            }
+
             new StartUp();
         }
     }
 
-    session_start();
-    Application::Init();
+    $total = 0;
+    for ($i = 0; $i < 1000; $i++) {
+        session_start();
+        $start = microtime(true);
+        Application::Init();
+        $end = microtime(true);
+        $total += (($end - $start) * 1000);
+
+    }
+    echo '<br>';
+    echo $total / 1000;
 }

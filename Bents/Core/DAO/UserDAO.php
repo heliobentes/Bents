@@ -12,9 +12,45 @@ namespace Bents\Core\DAO {
     use Bents\Core\DAO;
     use Bents\Core\Model\Permission;
     use Bents\Core\Model\Role;
+    use Bents\Core\Utils\PasswordUtils;
 
     class UserDAO extends DAO
     {
+        /**
+         * Check if the password typed by user match with the one added to the DataBase
+         * @param string $password
+         * @return bool
+         */
+        public static function ValidatePassword($password)
+        {
+            $pdo = self::$dbConn;
+            $sql = "SELECT pwSalt FROM User WHERE idUser = :id";
+
+            $stmt1 = $pdo->prepare($sql);
+
+            $idUser = $_SESSION['idUser'];
+            $stmt1->bindValue(':id', $idUser);
+
+            $stmt1->execute();
+            $row = $stmt1->fetch();
+
+            $encodedPassword = PasswordUtils::EncodePassword($password, $row['salt']);
+
+            $sql = "SELECT count(1) passworMatch FROM User WHERE idUser = :id AND pwHash = :pwHash";
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':id', $idUser);
+            $stmt->bindValue(':pwHash', $encodedPassword);
+            $stmt->execute();
+            $row = $stmt->fetch();
+
+            if ($row['passworMatch'] > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         /**
          * @param $login string
          * @return Permission[]
@@ -80,5 +116,6 @@ namespace Bents\Core\DAO {
             }
             return $role;
         }
+
     }
 }

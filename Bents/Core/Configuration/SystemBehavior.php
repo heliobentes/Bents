@@ -23,6 +23,11 @@ namespace Bents\Core\Configuration {
         protected $errorPages;
 
         /**
+         * @var bool
+         */
+        protected $useMigration;
+
+        /**
          * SystemBehavior constructor.
          */
         public function __construct()
@@ -30,6 +35,7 @@ namespace Bents\Core\Configuration {
             $obj = Session::GetConfigurationFromSession();
             $this->sanitizeHTML = $obj->SystemBehavior->sanitizeHTML;
             $this->errorPages = $obj->SystemBehavior->errorPages;
+            $this->useMigration = $obj->SystemBehavior->useMigration;
         }
 
         /**
@@ -44,7 +50,7 @@ namespace Bents\Core\Configuration {
          * @param int $error
          * @return string
          */
-        public function getErrorPage($error): string
+        public function GetErrorPage($error): string
         {
 
             if (isset($this->errorPages->$error)) {
@@ -52,6 +58,14 @@ namespace Bents\Core\Configuration {
             } else {
                 return Application::$publicPath . 'error/default.html';
             }
+        }
+
+        /**
+         * @return bool
+         */
+        public function UseMigration()
+        {
+            return $this->useMigration;
         }
 
     }

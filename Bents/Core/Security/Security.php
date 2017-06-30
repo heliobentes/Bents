@@ -139,12 +139,13 @@ namespace Bents\Core\Security {
                 if (preg_match("/@roles\(.*\'$role\'.*\)/", $methodReflection->getDocComment())) {
                     $hasPermission = true;
                 }
+            } else {
+                $hasPermission = true;
             }
 
             if (!$hasPermission) {
-                header("HTTP/1.1 401 Unauthorized");
-
-                include Config::SystemBehavior()->getErrorPage(401);
+                header($_SERVER['SERVER_PROTOCOL'] . '401 Unauthorized', true, 401);
+                include Config::SystemBehavior()->GetErrorPage(401);
                 exit;
             }
         }

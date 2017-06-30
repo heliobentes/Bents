@@ -16,7 +16,7 @@ namespace Bents\App\Controller {
 
         /**
          *
-         * @roles('admin')
+         *
          */
         public function Index()
         {

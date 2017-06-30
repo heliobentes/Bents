@@ -1,20 +1,45 @@
 <?php
 
-class PasswordUtils
-{
-    public static function CodificarSenha($senha, $salt)
-    {
-        $saltFixo = '$6$f9Sp6p7ikww2$X5pxLlKDxiQhaakRrdIXOeRG09aOzLAlL9doHWGEIsaekoOVp8WAwnudlFhs9IUsTu0Z0zlBpVeHnT9XvXFd20';
-        return sha1($senha . $salt . $saltFixo);
-    }
+namespace Bents\Core\Utils {
 
-    public static function GeraSalt()
-    {
-        return rand(0, 99999999);
-    }
+    use Bents\Core\Config;
 
-    public static function VerificarSenhaAtual($senhaAtual)
+    class PasswordUtils
     {
-        return UsuarioDAO::VerificarSenhaAtual($senhaAtual);
+        /**
+         * Return the password encoded
+         * @param $password string
+         * @param $salt string
+         * @return string
+         */
+        public static function EncodePassword($password, $salt)
+        {
+            $fixedSalt = Config::Security()->GetFixedSalt();
+            return sha1($password . $salt . $fixedSalt);
+        }
+
+        /**
+         * Return a string containing a salt to add to the DataBase
+         * @return string
+         */
+        public static function GenerateSalt()
+        {
+            $codes = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*()_-?:+=';
+            $salt = '';
+            for ($i = 0; $i < 20; $i++) {
+                $salt .= $codes[rand(0, 76)];
+            }
+            return $salt;
+        }
+
+        /**
+         * Check if the password is valid
+         * @param $password
+         * @return bool
+         */
+        public static function ValidatePassword($password)
+        {
+            return UsuarioDAO::VerificarSenhaAtual($password);
+        }
     }
 }

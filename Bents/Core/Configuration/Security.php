@@ -34,7 +34,11 @@ namespace Bents\Core\Configuration {
          * @var string
          */
         protected $loginAction;
-
+        /**
+         * Fixed salt fos security
+         * @var
+         */
+        protected $fixedSalt;
         /**
          * SystemBehavior constructor.
          */
@@ -45,6 +49,7 @@ namespace Bents\Core\Configuration {
             $this->useIndividualPermissions = $obj->Security->useIndividualPermissions;
             $this->loginController = $obj->Security->loginController;
             $this->loginAction = $obj->Security->loginAction;
+            $this->fixedSalt = $obj->Security->fixedSalt;
         }
 
         /**
@@ -79,6 +84,13 @@ namespace Bents\Core\Configuration {
             return $this->useIndividualPermissions;
         }
 
+        /**
+         * @return string
+         */
+        public function GetFixedSalt(): string
+        {
+            return $this->fixedSalt;
+        }
 
     }
 }
