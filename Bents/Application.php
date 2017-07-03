@@ -107,15 +107,8 @@ namespace Bents {
         }
     }
 
-    $total = 0;
-    for ($i = 0; $i < 1000; $i++) {
         session_start();
-        $start = microtime(true);
         Application::Init();
-        $end = microtime(true);
-        $total += (($end - $start) * 1000);
 
-    }
-    echo '<br>';
-    echo $total / 1000;
+
 }

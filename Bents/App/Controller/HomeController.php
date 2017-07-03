@@ -32,7 +32,7 @@ namespace Bents\App\Controller {
                 $reflection = new \ReflectionProperty($user, $property->getName());
                 if (preg_match("/@key/", $reflection->getDocComment())) {
                     ;
-                    echo 'A chave é ' . $property->getName();
+                    //echo 'A chave é ' . $property->getName();
                     break;
                 }
 
@@ -48,9 +48,13 @@ namespace Bents\App\Controller {
 //
 //            $user = $user->FindByFilter($filter);
 
-            var_dump($user);
             $this->RenderView();
 
+        }
+
+        public function ChangeLanguage()
+        {
+            Controller::RedirectToRequest();
         }
 
     }

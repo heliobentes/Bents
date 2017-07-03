@@ -14,6 +14,8 @@ namespace Bents\Core\StartUp {
         {
             $style = array();
 
+            $style[] = 'css/bootstrap.min.css';
+            $style[] = 'css/font-awesome.min.css';
             $style[] = 'css/styles.css';
 
             return $style;
@@ -23,7 +25,10 @@ namespace Bents\Core\StartUp {
         {
             $script = array();
 
+            $script[] = 'scripts/jquery-3.2.1.min.js';
+            $script[] = 'scripts/bootstrap.min.js';
             $script[] = 'scripts/scripts.js';
+
 
             return $script;
         }

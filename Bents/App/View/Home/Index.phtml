@@ -8,16 +8,15 @@
 
 
 use Bents\Core\Globalization\Globalization;
+use Bents\Core\View;
 
-/**
- * @uses \Bents\Core\View self
- */
-self::$layout = "Shared/_Layout";
+View::$layout = "Shared/_Layout";
+View::$title = "Home Page"
 
 
 ?>
 
-<?php self::$cssBundle[] = <<<EOT
+<?php View::$cssBundle[] = <<<EOT
 <style type="text/css" media="screen">
     .body {}
 </style>
@@ -25,15 +24,15 @@ self::$layout = "Shared/_Layout";
      .body2 {}
 </style>
 EOT;
-self::$cssBundle[] = <<<EOT
+View::$cssBundle[] = <<<EOT
 <style type="text/css">
      .body3 {}
 </style>
 EOT;
-self::$cssBundle[] = <<<EOT
+View::$cssBundle[] = <<<EOT
 <style> .body4 {}</style>
 EOT;
-self::$cssBundle[] = <<<EOT
+View::$cssBundle[] = <<<EOT
 EOT;
 ?>
 
@@ -45,28 +44,34 @@ EOT;
     <li>5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 </ul>
 
-<?php echo self::$bag['teste']; ?>
-
-<?php echo Globalization::Res()->how_are_you; ?>
-
-<?php self::$jsBundle[] = <<<EOT
+<?php echo View::$bag['teste']; ?>
+<br>
+<?php echo Globalization::Resource('how_are_you'); ?>
+<br>
+<?php echo Globalization::Resource('what_is_your_name'); ?>
+<br>
+<?php echo Globalization::Resource('how_old_are_you'); ?>
+<br>
+We are using <?php echo Globalization::GetLanguage(); ?> as the language.
+<br>
+<?php View::$jsBundle[] = <<<EOT
 <script type="application/javascript" async defer>
 //comment 2
-    let a = 1;                       
+    let b = 1;                       
     //comment 1
 </script>
 <script type="application/javascript" async>
-    let a = 2;
+    let c = 2;
 </script>
 EOT;
-self::$jsBundle[] = <<<EOT
+View::$jsBundle[] = <<<EOT
 <script type="application/javascript">
-    let a = 3;
+    let d = 3;
 </script>
 EOT;
-self::$jsBundle[] = <<<EOT
-<script>let a = 4; //comment</script>
+View::$jsBundle[] = <<<EOT
+<script>let e = 4; //comment</script>
 EOT;
-self::$jsBundle[] = <<<EOT
+View::$jsBundle[] = <<<EOT
 EOT;
 ?>

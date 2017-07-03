@@ -23,6 +23,12 @@ namespace Bents\Core {
         public static $bag = array();
 
         /**
+         * Define page title
+         * @var string
+         */
+        public static $title;
+
+        /**
          * The page page will use
          * @var mixed
          */
@@ -108,21 +114,21 @@ namespace Bents\Core {
         {
             $search = array(
 
-                '/(\s)\/\/.*\n?/',   //remove inline comments
-                '/\>[\s]+/',         //strip whitespaces after tags
-                '/[\s]+\</',         //strip whitespaces before tags
-                '/:[\s]+/',          //shorten whitespaces after :
-                '/;[\s]+/',          //shorten whitespaces after ;
-                '/\{[\s]+/',         //shorten whitespaces after {
-                '/[\s]+\{/',         //shorten whitespaces before {
-                '/[\s]+\}/',         //shorten whitespaces before }
-                '/\}[\s]+/',         //shorten whitespaces after }
-                '/\n\s*\n/',         //remove line breaks
-                '/\n/',              //remove line breaks
-                '/!<\!--.*?\--\>!/', //remove html comments
-                '/\>[\s]+\</',       // remove whitespaces between tags
-                '/(\s|&nbsp;){2,}/', //shorten multiple whitespace sequences
-                '/\/\*.*\*\//'       //remove multi line comments
+                '~(\s)\/\/.*\n?~',   //remove inline comments
+                '~\>[\s]+~',         //strip whitespaces after tags
+                '~[\s]+\<~',         //strip whitespaces before tags
+                '~:[\s]+~',          //shorten whitespaces after :
+                '~;[\s]+~',          //shorten whitespaces after ;
+                '~\{[\s]+~',         //shorten whitespaces after {
+                '~[\s]+\{~',         //shorten whitespaces before {
+                '~[\s]+\}~',         //shorten whitespaces before }
+                '~\}[\s]+~',         //shorten whitespaces after }
+                '~\n\s*\n~',         //remove line breaks
+                '~\n~',              //remove line breaks
+                '~!<\!--.*?\--\>!~', //remove html comments
+                '~\>[\s]+\<~',       // remove whitespaces between tags
+                '~(\s|&nbsp;){2,}~', //shorten multiple whitespace sequences
+                '~\/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*\/~'       //remove multi line comments
             );
             $replace = array(
                 '',
@@ -168,19 +174,54 @@ namespace Bents\Core {
                     }
                 }
 
-                foreach (self::$cssBundle as $js) {
-                    preg_match_all('/(?:<style[^>]*>)([^<]*)(?:<\/style>)/', $js, $matches);
+                foreach (self::$cssBundle as $css) {
+                    preg_match_all('/(?:<style[^>]*>)([^<]*)(?:<\/style>)/', $css, $matches);
 
                     foreach ($matches[1] as $match) {
                         $style .= ' ' . $match;
                     }
                 }
                 $fp = fopen($filename, 'w');
-                fwrite($fp, self::SanitizeOutput($style));
+                $content = self::SanitizeOutput($style);
+                fwrite($fp, $content);
                 fclose($fp);
             }
             echo '<link rel="stylesheet" href="/cache/cssbundle.css">';
         }
+
+        /**
+         * Generate an URL based on the Action and the Controller and render a "a" tag
+         * @param string $content
+         * @param string $action
+         * @param string|null $controller
+         * @param array $htmlOptions
+         * @return string
+         */
+        public static function ActionLink(string $content, string $action, string $controller = null, array $params = array(), array $htmlOptions = array())
+        {
+            if ($controller == null) {
+                $controller = StartUp::$controller;
+            }
+            $html = '';
+            foreach ($htmlOptions as $key => $htmlOption) {
+                $html .= ' ' . $key . '="' . $htmlOption . ' ';
+            }
+            $arrParams = array();
+            foreach ($params as $key => $param) {
+                $arrParams[] = $key . '=' . $param;
+            }
+            $query = join('&', $arrParams);
+
+            echo '<a href="/' . $controller . '/' . $action . (($query != '') ? ('?' . $query) : '') . '" ' . $html . '>' . $content . '</a>';
+        }
+
+        /**
+         * Sanitizing the HTML content to be printed
+         * Remove white spaces, comments, line breaks etc
+         * @param $buffer string
+         * @return string
+         */
+        //TODO: reorganize to be more intelligent
 
         /**
          * Define what view will be render
@@ -202,13 +243,6 @@ namespace Bents\Core {
             }
         }
 
-        /**
-         * Sanitizing the HTML content to be printed
-         * Remove white spaces, comments, line breaks etc
-         * @param $buffer string
-         * @return string
-         */
-        //TODO: reorganize to be more intelligent
         /**
          * Return a string with the content of the view injected into the Layout
          * @return string
@@ -234,6 +268,5 @@ namespace Bents\Core {
             return self::SanitizeOutput($globalContent);
 
         }
-
     }
 }

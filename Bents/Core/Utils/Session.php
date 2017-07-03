@@ -34,7 +34,7 @@ namespace Bents\Core\Utils {
         public static function GetConfigurationFromSession()
         {
             //Uncomment for debugging
-            //$_SESSION['config'] = null;
+            $_SESSION['config'] = null;
 
             if (isset($_SESSION['config'])) {
                 return $_SESSION['config'];

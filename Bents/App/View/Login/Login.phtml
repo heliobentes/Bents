@@ -5,12 +5,11 @@
  * Date: 6/20/17
  * Time: 7:24 PM
  */
+use Bents\Core\View;
 
-self::$layout = "Shared/_Layout";
-
+View::$layout = "Shared/_Layout";
+View::$title = "Login";
 
 echo "login";
 ?><br>
-<?php echo self::$bag['destination']; ?>
 <br>
-<a href="<?php echo self::$bag['destination']; ?>">voltar</a>

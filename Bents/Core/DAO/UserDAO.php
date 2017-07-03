@@ -12,7 +12,7 @@ namespace Bents\Core\DAO {
     use Bents\Core\DAO;
     use Bents\Core\Model\Permission;
     use Bents\Core\Model\Role;
-    use Bents\Core\Utils\PasswordUtils;
+    use Bents\Core\Utils\Password;
 
     class UserDAO extends DAO
     {
@@ -34,7 +34,7 @@ namespace Bents\Core\DAO {
             $stmt1->execute();
             $row = $stmt1->fetch();
 
-            $encodedPassword = PasswordUtils::EncodePassword($password, $row['salt']);
+            $encodedPassword = Password::EncodePassword($password, $row['salt']);
 
             $sql = "SELECT count(1) passworMatch FROM User WHERE idUser = :id AND pwHash = :pwHash";
 

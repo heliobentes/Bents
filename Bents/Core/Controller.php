@@ -6,11 +6,6 @@ namespace Bents\Core {
 
     class Controller
     {
-        /**
-         * List Actions that will bypass login check
-         * @var array
-         */
-        protected $unprotectedActions = array();
 
         public static function RedirectToRequest($controller, $action)
         {
@@ -20,8 +15,6 @@ namespace Bents\Core {
 
         public static function RedirectToAction($controller, $action)
         {
-
-
             StartUp::InitRequest($controller, $action);
         }
 

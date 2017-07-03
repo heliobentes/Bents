@@ -27,6 +27,6 @@
     "dbName": "bents"
   },
   "Globalization": {
-    "language": "en-US"
+    "defaultLanguage": "en-US"
   }
 }

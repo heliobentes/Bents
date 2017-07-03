@@ -4,7 +4,7 @@ namespace Bents\Core\Utils {
 
     use Bents\Core\Config;
 
-    class PasswordUtils
+    class Password
     {
         /**
          * Return the password encoded
@@ -19,7 +19,7 @@ namespace Bents\Core\Utils {
         }
 
         /**
-         * Return a string containing a salt to add to the DataBase
+         * Return a string of 20 characters containing a salt to add to the DataBase
          * @return string
          */
         public static function GenerateSalt()
