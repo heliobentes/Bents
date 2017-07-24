@@ -9,7 +9,7 @@
 
 namespace Bents\Core\StartUp {
 
-    use Bents\Core\Configuration\Config;
+    use Bents\Core\Config;
     use Bents\Core\Security\Security;
 
     class StartUp
@@ -67,21 +67,19 @@ namespace Bents\Core\StartUp {
         {
             StartUp::$controller = $controller;
             StartUp::$action = $action;
-            //Protect the Controller
-            Security::Protect($controller);
-
 
             //Checking if there is the Controller
             $class = 'Bents\\App\\Controller\\' . $controller . 'Controller';
-
             if (class_exists($class)) {
+                //Protect the Controller
+                Security::Protect($controller);
                 /**
                  * @var $o_class Controller
                  */
                 $o_class = new $class;
             } else {
-                header($_SERVER['SERVER_PROTOCOL'] . '404 Not Found', true, 404);
-                include Config::SystemBehavior()->getErrorPage(404);
+                header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found', true, 404);
+                include Config::SystemBehavior()->GetErrorPage(404);
                 exit;
             }
 
@@ -96,7 +94,7 @@ namespace Bents\Core\StartUp {
 
                 $o_class->$action();
             } else {
-                header($_SERVER['SERVER_PROTOCOL'] . '404 Not Found', true, 404);
+                header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found', true, 404);
                 include Config::SystemBehavior()->getErrorPage(404);
                 exit;
             }

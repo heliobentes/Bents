@@ -10,7 +10,7 @@ use Bents\Core\View;
     <?php View::RenderCSSBundle(); ?>
 </head>
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -49,8 +49,8 @@ use Bents\Core\View;
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Language <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><?php View::ActionLink("Português", "ChangeLanguage", "Home", array("lang" => "pt-BR")); ?></li>
-                        <li><?php View::ActionLink("English", "ChangeLanguage", "Home", array("lang" => "pt-BR")); ?></li>
+                        <li><?php View::ActionLink("Português", "ChangeLanguage", "Home", array("language" => "pt-BR")); ?></li>
+                        <li><?php View::ActionLink("English", "ChangeLanguage", "Home", array("language" => "en-US")); ?></li>
                     </ul>
                 </li>
             </ul>

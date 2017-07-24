@@ -36,7 +36,7 @@ namespace Bents\Core {
                     self::$dbConn = new PDO($dsn, Config::DataBase()->GetUserName(), Config::DataBase()->GetPassword(), array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8", PDO::ATTR_ERRMODE => PDO::ERRMODE_SILENT));//ERRMODE_WARNING
                 } catch (\Exception $e) {
                     Log::SaveLog($e);
-                    header($_SERVER['SERVER_PROTOCOL'] . '500 Internal Server Error', true, 500);
+                    header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
                     include Config::SystemBehavior()->GetErrorPage(500);
                     exit;
                 }

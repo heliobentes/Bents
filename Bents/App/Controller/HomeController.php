@@ -3,6 +3,7 @@
 namespace Bents\App\Controller {
 
     use Bents\Core\Controller;
+    use Bents\Core\Globalization\Globalization;
     use Bents\Core\Model\User;
     use Bents\Core\View;
 
@@ -54,7 +55,12 @@ namespace Bents\App\Controller {
 
         public function ChangeLanguage()
         {
-            Controller::RedirectToRequest();
+            if (isset($_GET['language'])) {
+                $language = filter_var($_GET['language'], FILTER_SANITIZE_STRING);
+                Globalization::SetLanguage($language);
+
+            }
+            self::RedirectToRequest("Home", "Index");
         }
 
     }

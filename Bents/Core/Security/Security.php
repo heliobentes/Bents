@@ -111,7 +111,7 @@ namespace Bents\Core\Security {
          */
         public static function CheckUserPermission($controller, $action)
         {
-            $hasPermission = false;
+            $hasPermission = true;
 
             if (Config::Security()->UseIndividualPermissions()) {
 
@@ -120,8 +120,8 @@ namespace Bents\Core\Security {
                 $permissions = $userDAO->GetUserPermissions($_SESSION['login']);
 
                 foreach ($permissions as $permission) {
-                    if ($permission->getController() == $controller and $permission->getAction() == $action) {
-                        $hasPermission = true;
+                    if (!($permission->getController() == $controller and $permission->getAction() == $action)) {
+                        $hasPermission = false;
                         break;
                     }
                 }
@@ -133,18 +133,25 @@ namespace Bents\Core\Security {
 
                 $role = $userDAO->GetUserRole($_SESSION['login']);
 
-                //return !in_array($controller, Config::Security()->GetUnprotectedControllers());
                 $class = 'Bents\\App\\Controller\\' . $controller . 'Controller';
-                $methodReflection = new \ReflectionMethod($class, $action);
-                if (preg_match("/@roles\(.*\'$role\'.*\)/", $methodReflection->getDocComment())) {
-                    $hasPermission = true;
+                $reflection = new \ReflectionClass($class);
+                if (preg_match("/@roles/", $reflection->getDocComment())) {
+                    if (!preg_match("/@roles\(.*\'$role\'.*\)/", $reflection->getDocComment())) {
+                        $hasPermission = false;
+                    }
+                } else {
+
+                    $methodReflection = new \ReflectionMethod($class, $action);
+                    if (preg_match("/@roles/", $methodReflection->getDocComment())) {
+                        if (!preg_match("/@roles\(.*\'$role\'.*\)/", $methodReflection->getDocComment())) {
+                            $hasPermission = false;
+                        }
+                    }
                 }
-            } else {
-                $hasPermission = true;
             }
 
             if (!$hasPermission) {
-                header($_SERVER['SERVER_PROTOCOL'] . '401 Unauthorized', true, 401);
+                header($_SERVER['SERVER_PROTOCOL'] . ' 401 Unauthorized', true, 401);
                 include Config::SystemBehavior()->GetErrorPage(401);
                 exit;
             }

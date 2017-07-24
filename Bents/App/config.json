@@ -15,7 +15,7 @@
   "Security": {
     "loginController": "Login",
     "loginAction": "Login",
-    "useRoles": false,
+    "useRoles": true,
     "useIndividualPermissions": false,
     "fixedSalt": "$3$f9Sp6p7ikw2$X5pxLlKDxiQhaakRrdIXOeG09aO#zLAlL9doHW8GE@Isa1ko*OVp8WAwn3udlFhs9IUs&Tu$0Z@zlB!pVeHnT9XXFd20"
   },
