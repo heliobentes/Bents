@@ -1,0 +1,6 @@
+======== ERROR ========
+10-21-2017 21:33:07
+C:\xamppPHP7.1\htdocs\reaws\Bents\Core\DAO.php at line 36
+SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+========================
+

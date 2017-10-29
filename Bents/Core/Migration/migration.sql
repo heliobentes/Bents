@@ -4,10 +4,10 @@ SET time_zone = "+00:00";
 --
 -- Database: `bents`
 --
-CREATE DATABASE IF NOT EXISTS `bents`
+CREATE DATABASE IF NOT EXISTS `reaws`
   DEFAULT CHARACTER SET utf8
   COLLATE utf8_general_ci;
-USE `bents`;
+USE `reaws`;
 
 -- --------------------------------------------------------
 

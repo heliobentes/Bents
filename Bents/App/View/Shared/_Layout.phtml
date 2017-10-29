@@ -1,4 +1,5 @@
 <?php
+
 use Bents\Core\View;
 
 ?>
@@ -7,59 +8,55 @@ use Bents\Core\View;
 <head>
     <meta charset="UTF-8">
     <title><?php echo View::$title; ?> | Default Application</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
     <?php View::RenderCSSBundle(); ?>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Default Application</a>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="active"><?php View::ActionLink("Home", "Index", "Home"); ?></li>
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><?php View::ActionLink("Home", "Index", "Home"); ?></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
+<nav class="navbar">
+    <div class="logo">
+        <a href="/"><img src="/images/logo.png" height="40" width="136"></a>
+    </div>
+    <ul class="nav">
+        <li class="active"><a href="#"><i class="fa fa-newspaper-o"></i> Mural</a>
+            <ul class="subnav">
+                <li><a href="#"><i class="fa fa-user-plus"></i> New User</a></li>
+                <li class="active"><a href="#"><i class="fa fa-calendar-plus-o"></i> New Appointment</a></li>
+                <li><a href="#"><i class="fa fa-plus"></i> New Property</a></li>
             </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-                <li><?php View::ActionLink("Login", "Login", "Login"); ?></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Language <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><?php View::ActionLink("Português", "ChangeLanguage", "Home", array("language" => "pt-BR")); ?></li>
-                        <li><?php View::ActionLink("English", "ChangeLanguage", "Home", array("language" => "en-US")); ?></li>
-                    </ul>
-                </li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-
-    </div><!-- /.container-fluid -->
+        </li>
+        <li><a href="#"><i class="fa fa-home"></i> Properties</a></li>
+        <li><a href="#"><i class="fa fa-suitcase"></i> CRM</a></li>
+        <li><a href="#"><i class="fa fa-desktop"></i> WebSite</a></li>
+    </ul>
+    <ul class="nav-right">
+        <li></li>
+    </ul>
 </nav>
-<div class="container" id="main-container">
-    <?php View::RenderBody(); ?>
+<div class="content two">
+    <div class="container" id="main-container">
+        <?php View::RenderBody(); ?>
+    </div>
+    <div class="container" id="second-container">
+    </div>
+
+    <div class="container" id="third-container">
+    </div>
 </div>
 <?php View::RenderJavaScriptBundle(); ?>
 </body>

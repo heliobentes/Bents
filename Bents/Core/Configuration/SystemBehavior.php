@@ -52,7 +52,6 @@ namespace Bents\Core\Configuration {
          */
         public function GetErrorPage($error): string
         {
-
             if (isset($this->errorPages->$error) and file_exists(Application::$publicPath . 'error/' . $this->errorPages->$error)) {
                 return Application::$publicPath . 'error/' . $this->errorPages->$error;
             } else {

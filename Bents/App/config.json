@@ -22,9 +22,9 @@
   "DataBase": {
     "dbType": "mysql",
     "userName": "root",
-    "password": "31635071",
+    "password": "",
     "hostName": "127.0.0.1",
-    "dbName": "bents"
+    "dbName": "reaws"
   },
   "Globalization": {
     "defaultLanguage": "en-US"

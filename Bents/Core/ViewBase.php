@@ -168,7 +168,11 @@ namespace Bents\Core {
                 $style = '';
                 for ($x = 0; $x < sizeof($array); $x++) {
                     try {
-                        $style .= ' ' . file_get_contents(Application::$publicPath . $array[$x]);
+                        if(preg_match('/http/',$array[$x])){
+                            $style .= ' ' . file_get_contents( $array[$x]);
+                        } else {
+                            $style .= ' ' . file_get_contents(Application::$publicPath . $array[$x]);
+                        }
                     } catch (\Exception $e) {
                         Log::SaveLog($e);
                     }
