@@ -37,20 +37,22 @@ EOT;
 ?>
 
 <ul>
-    <li>1</li>
-    <li>2</li>
-    <li>3</li>
+    <li onclick="$('.content').removeClass('two').removeClass('three').addClass('one')">1</li>
+    <li onclick="$('.content').removeClass('one').removeClass('three').addClass('two')">2</li>
+    <li onclick="$('.content').removeClass('two').removeClass('one').addClass('three')">3</li>
     <li>4</li>
     <li>5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 </ul>
 
 <?php echo View::$bag['teste']; ?>
 <br>
-<?php echo Globalization::Resource('how_are_you'); ?>
+<?php echo $this->__('Write test like Magento'); ?>
 <br>
-<?php echo Globalization::Resource('what_is_your_name'); ?>
+<?php echo $this->__('how_are_you'); ?>
 <br>
-<?php echo Globalization::Resource('how_old_are_you'); ?>
+<?php echo $this->__('what_is_your_name'); ?>
+<br>
+<?php echo $this->__('how_old_are_you'); ?>
 <br>
 We are using <?php echo Globalization::GetLanguage(); ?> as the language.
 <br>

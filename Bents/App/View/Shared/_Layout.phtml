@@ -38,6 +38,7 @@ use Bents\Core\View;
                 <li><a href="#"><i class="fa fa-user-plus"></i> New User</a></li>
                 <li class="active"><a href="#"><i class="fa fa-calendar-plus-o"></i> New Appointment</a></li>
                 <li><a href="#"><i class="fa fa-plus"></i> New Property</a></li>
+                <li class="nav-extra"><a class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a></li>
             </ul>
         </li>
         <li><a href="#"><i class="fa fa-home"></i> Properties</a></li>
@@ -45,7 +46,10 @@ use Bents\Core\View;
         <li><a href="#"><i class="fa fa-desktop"></i> WebSite</a></li>
     </ul>
     <ul class="nav-right">
-        <li></li>
+        <li><a href="#"><i class="fa fa-cogs"></i></a></li>
+        <li><a href="#"><i class="fa fa-question-circle"></i></a></li>
+        <li class="notifications none"><a href="#"><i class="fa fa-bell-o"></i></a></li>
+        <li ><div class="user-icon" data-jq-dropdown="#dropdown-user">HB</div></li>
     </ul>
 </nav>
 <div class="content two">
@@ -58,6 +62,16 @@ use Bents\Core\View;
     <div class="container" id="third-container">
     </div>
 </div>
+<!-- BEGIN Dropdown User - TopMenu-->
+<div id="dropdown-user" class="jq-dropdown jq-dropdown-tip jq-dropdown-anchor-right">
+    <ul class="jq-dropdown-menu">
+        <li><a href="#1"><i class="fa fa-address-card"></i> My Account</a></li>
+        <li><a href="#2"><i class="fa fa-user-secret"></i>Users & Permissions</a></li>
+        <li class="jq-dropdown-divider"></li>
+        <li><a href="#5"><i class="fa fa-sign-out"></i>Logout</a></li>
+    </ul>
+</div>
+<!-- END Dropdown User - TopMenu-->
 <?php View::RenderJavaScriptBundle(); ?>
 </body>
 </html>

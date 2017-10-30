@@ -15,8 +15,9 @@ namespace Bents\Core\StartUp {
             $style = array();
 
             $style[] = 'css/font-awesome.min.css';
-            $style[] = 'css/styles.css';
+            $style[] = 'css/jquery.dropdown.min.css';
             $style[] = 'https://fonts.googleapis.com/css?family=Roboto:400,700';
+            $style[] = 'css/styles.css';
 
             return $style;
         }
@@ -26,6 +27,7 @@ namespace Bents\Core\StartUp {
             $script = array();
 
             $script[] = 'scripts/jquery-3.2.1.min.js';
+            $script[] = 'scripts/jquery.dropdown.min.js';
             $script[] = 'scripts/scripts.js';
 
 

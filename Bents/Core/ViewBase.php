@@ -10,6 +10,7 @@ namespace Bents\Core {
 
 
     use Bents\Application;
+    use Bents\Core\Globalization\Globalization;
     use Bents\Core\StartUp\Bundle;
     use Bents\Core\StartUp\StartUp;
 
@@ -109,6 +110,13 @@ namespace Bents\Core {
             echo '<script async defer language="javascript" type="text/javascript" src="/cache/jsbundle.js"></script>';
         }
 
+        public function __($string){
+            $return = Globalization::Resource($string);
+            if($return==''){
+                $return = $string;
+            }
+            return $return;
+        }
 
         private static function SanitizeOutput($buffer)
         {
@@ -125,7 +133,7 @@ namespace Bents\Core {
                 '~\}[\s]+~',         //shorten whitespaces after }
                 '~\n\s*\n~',         //remove line breaks
                 '~\n~',              //remove line breaks
-                '~!<\!--.*?\--\>!~', //remove html comments
+                '~<\!--.*?\--\>~', //remove html comments
                 '~\>[\s]+\<~',       // remove whitespaces between tags
                 '~(\s|&nbsp;){2,}~', //shorten multiple whitespace sequences
                 '~\/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*\/~'       //remove multi line comments
