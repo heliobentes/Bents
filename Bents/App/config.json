@@ -22,7 +22,7 @@
   "DataBase": {
     "dbType": "mysql",
     "userName": "root",
-    "password": "",
+    "password": "31635071",
     "hostName": "127.0.0.1",
     "dbName": "reaws"
   },

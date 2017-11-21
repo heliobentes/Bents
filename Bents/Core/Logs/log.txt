@@ -4,3 +4,15 @@ C:\xamppPHP7.1\htdocs\reaws\Bents\Core\DAO.php at line 36
 SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
 ========================
 
+======== ERROR ========
+11-19-2017 23:28:25
+/var/www/Reaws/Bents/Core/DAO.php at line 36
+SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)
+========================
+
+======== ERROR ========
+11-19-2017 23:28:37
+/var/www/Reaws/Bents/Core/DAO.php at line 36
+SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)
+========================
+

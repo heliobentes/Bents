@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../reaws/.idea/Bents.iml" filepath="$PROJECT_DIR$/../reaws/.idea/Bents.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Reaws/.idea/Reaws.iml" filepath="$PROJECT_DIR$/../Reaws/.idea/Reaws.iml" />
     </modules>
   </component>
 </project>

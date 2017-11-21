@@ -1,5 +1,7 @@
 @blue: #208ac9;
 @green: #17a589;
+@red: #c0392b;
+@pink: #F62459;
 @color-primary: #1F4788;
 @color-primary-dark: #003171;
 
@@ -24,7 +26,7 @@ a:not(.btn), a:not(.btn):visited, a:not(.btn):active {
 
 nav.navbar {
   background: #17a589;
-  height: 80px;
+  height: 40px;
   position: fixed;
   top: 0;
   left: 0;
@@ -60,9 +62,16 @@ nav.navbar {
         height: 35px;
         color: #000;
       }
+      ul.subnav.open {
+        //display: block;
+        opacity:1;
+        margin-left: 0px;
+        left: 0;
+        pointer-events: auto;
+      }
       ul.subnav {
         position: fixed;
-        left: 0;
+        left: 30px;
         top: 40px;
         right: 0;
         background: #fff;
@@ -70,6 +79,9 @@ nav.navbar {
         margin: 0;
         padding: 0;
         list-style: none;
+        pointer-events: none;
+        opacity:0;
+        transition: all 200ms ease;
         li {
           a:not(.btn) {
             padding: 3px 15px 0;
@@ -81,6 +93,7 @@ nav.navbar {
               margin-right: 6px;
             }
           }
+
         }
         li:not(.active) {
 
@@ -93,8 +106,9 @@ nav.navbar {
         }
         li.active {
           a:not(.btn) {
-            font-weight: 700;
+            color:@pink;
           }
+
         }
         li.nav-extra {
           float: right;
@@ -111,8 +125,8 @@ nav.navbar {
         color: #000;
         background: #fff;
         height: 35px;
-        font-weight: 700;
       }
+
     }
   }
   .nav-right {
@@ -174,17 +188,19 @@ nav.navbar {
     border: 1px solid #e7e7e7;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
     padding: 15px;
-    min-height: 100px;
+    min-height: 300px;
     transition: all 400ms ease;
-    position: absolute;
-    margin: 0 5px;
+    position: fixed;
+    margin: 0;
+    bottom:20px;
+    top:100px;
   }
 }
 
 .content.one {
   #main-container {
-    left: 0;
-    right: 0;
+    left: 20px;
+    right: 20px;
   }
   #second-container {
     opacity: 0;
@@ -200,12 +216,14 @@ nav.navbar {
 
 .content.two {
   #main-container {
-    left: 0;
+    left: 10px;
     right: 35%;
+    margin-right: 5px;
   }
   #second-container {
     left: 65%;
-    right: 0;
+    right: 10px;
+    margin-left: 5px;
   }
   #third-container {
     left: calc(100% + 10px);
@@ -217,16 +235,19 @@ nav.navbar {
 .content.three {
 
   #main-container {
-    left: 0;
+    left: 10px;
     right: 44%;
+    margin-right: 5px;
   }
   #second-container {
     left: 56%;
     right: 16%;
+    margin:0 5px;
   }
   #third-container {
     left: 84%;
-    right: 0;
+    right: 10px;
+    margin-left: 5px;
   }
 }
 

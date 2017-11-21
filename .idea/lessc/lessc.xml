@@ -10,12 +10,12 @@
               <option name="cssDirectories">
                 <list>
                   <CssDirectory>
-                    <option name="path" value="C:\xamppPHP7.1\htdocs\reaws\public_html\css" />
+                    <option name="path" value="$PROJECT_DIR$/public_html/css" />
                   </CssDirectory>
                 </list>
               </option>
               <option name="id" value="0" />
-              <option name="lessDirPath" value="C:\xamppPHP7.1\htdocs\reaws\public_html\css" />
+              <option name="lessDirPath" value="$PROJECT_DIR$/public_html/css" />
               <option name="name" value="CSS" />
             </LessProfile>
           </value>
