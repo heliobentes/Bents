@@ -72,7 +72,7 @@ namespace Bents {
             error_reporting(E_ALL);
 
             self::$path = __DIR__ . '/';
-            self::$basePath = str_replace('Bents', '', __DIR__);
+            self::$basePath =  str_replace('Bents', '', __DIR__);
             self::$appPath = __DIR__ . '/App/';
             self::$viewPath = __DIR__ . '/App/View/';
             self::$modelPath = __DIR__ . '/App/Model/';
@@ -84,7 +84,7 @@ namespace Bents {
 
             spl_autoload_register(function ($class) {
                 $filename = self::$basePath . str_replace('\\', '/', $class) . ".php";
-
+                
                 if (file_exists($filename)) {
                     require_once $filename;
                 }

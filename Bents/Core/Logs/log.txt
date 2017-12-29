@@ -16,3 +16,9 @@ SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password
 SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)
 ========================
 
+======== ERROR ========
+12-24-2017 07:27:45
+/var/www/Reaws/Bents/Core/DAO.php at line 36
+SQLSTATE[HY000] [1049] Unknown database 'reaws'
+========================
+

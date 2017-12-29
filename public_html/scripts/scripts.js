@@ -15,4 +15,9 @@ $(document).ready(function () {
         $('#main-nav > li > ul > li').removeClass('active');
         $(this).parent().addClass('active');
     });
+
+    //Show Hide Full menu
+    $('#menu-icon').on('click',function(){
+       $('body').toggleClass('menu-open');
+    });
 });

@@ -27,11 +27,12 @@ use Bents\Core\View;
     <meta name="theme-color" content="#ffffff">
     <?php View::RenderCSSBundle(); ?>
 </head>
-<body>
+<body class="menu-open">
 <nav class="navbar">
     <div class="logo">
         <a href="/"><img src="/images/logo.png" height="40" width="136"></a>
     </div>
+    <i class="fa fa-bars" id="menu-icon"></i>
     <ul class="nav" id="main-nav">
         <li class="active"><a href="#"><i class="fa fa-newspaper-o"></i> Mural</a>
             <ul class="subnav open">

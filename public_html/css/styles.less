@@ -4,21 +4,37 @@
 @pink: #F62459;
 @color-primary: #1F4788;
 @color-primary-dark: #003171;
-
-body, html {
-  background: #f7f7f7;
-  margin: 0;
-  padding: 45px 0 0 0;
-  vertical-align: top;
-  overflow-x: hidden;
-  height: 100%;
-}
-
-* {
+*:not(i) {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
 }
+body, html {
+  background: #f7f7f7;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+  overflow-x: hidden;
+  height: 100%;
+}
+body.menu-open {
+  padding: 45px 0 0 0;
+  nav.navbar {
+    #main-nav {
+      margin-top: 0px;
+      opacity: 1;
+    }
+    .nav {
+      li {
+        ul.subnav.open {
+          margin-top: 0px;
+        }
+      }
+    }
+  }
+
+}
+
 
 a:not(.btn), a:not(.btn):visited, a:not(.btn):active {
   text-decoration: none;
@@ -32,13 +48,28 @@ nav.navbar {
   left: 0;
   right: 0;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-
+  #menu-icon {
+    float: left;
+    color: #fff;
+    padding: 11px 12px 10px 12px;
+    font-size: 19px;
+    margin-right: -6px;
+  }
+  #menu-icon:hover {
+    cursor: pointer;
+    color: rgba(0,0,0,0.6);
+  }
   .logo {
     background: #208ac9;
     width: 160px;
     height: 40px;
     text-align: center;
     float: left;
+  }
+  #main-nav {
+    margin-top: -10px;
+    opacity: 0;
+    transition: all 200ms ease;
   }
   .nav {
     float: left;
@@ -68,7 +99,12 @@ nav.navbar {
         margin-left: 0px;
         left: 0;
         pointer-events: auto;
-      }
+        box-shadow: 0 4px 5px rgba(0,0,0,0.1);
+        margin-top: 10px;
+
+
+
+    }
       ul.subnav {
         position: fixed;
         left: 30px;
@@ -138,7 +174,7 @@ nav.navbar {
       display: inline-table;
       a:not(.btn) {
         color: #fff;
-        font-size: 22px;
+        font-size: 22px !important;
         margin-right: 12px;
       }
       a:not(.btn):hover, a:not(.btn):focus {
