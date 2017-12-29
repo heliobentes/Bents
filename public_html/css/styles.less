@@ -19,6 +19,11 @@ body, html {
 }
 body.menu-open {
   padding: 45px 0 0 0;
+  .content {
+    .container {
+      top:100px;
+    }
+  }
   nav.navbar {
     #main-nav {
       margin-top: 0px;
@@ -67,7 +72,7 @@ nav.navbar {
     float: left;
   }
   #main-nav {
-    margin-top: -10px;
+    margin-top: -5px;
     opacity: 0;
     transition: all 200ms ease;
   }
@@ -100,7 +105,7 @@ nav.navbar {
         left: 0;
         pointer-events: auto;
         box-shadow: 0 4px 5px rgba(0,0,0,0.1);
-        margin-top: 10px;
+        margin-top: 5px;
 
 
 
@@ -185,12 +190,13 @@ nav.navbar {
         border-radius: 32px;
         width: 32px;
         height: 32px;
-        font-size: 15px;
-        line-height: 31px;
+        font-size: 16px;
+        line-height: 32px;
         text-align: center;
         color:#fff;
         border:2px solid #fff;
         margin-right:10px;
+        font-weight: 700;
       }
       div.user-icon:hover {
         cursor: pointer;
@@ -211,8 +217,13 @@ nav.navbar {
     }
     label, li > a {
       line-height: 24px;
+      padding: 3px 15px;
+    }
+    .icheckbox_flat-green {
+      margin:3px 10px 3px 0;
     }
   }
+
 }
 .content {
   margin: 0 5px;
@@ -229,7 +240,7 @@ nav.navbar {
     position: fixed;
     margin: 0;
     bottom:20px;
-    top:100px;
+    top:55px;
   }
 }
 

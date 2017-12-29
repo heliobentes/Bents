@@ -3,6 +3,9 @@
  */
 
 $(document).ready(function () {
+
+    StartMenu();
+
     //menu toggle
     $('#main-nav > li > a').on('click', function () {
         $('#main-nav > li').removeClass('active');
@@ -19,5 +22,26 @@ $(document).ready(function () {
     //Show Hide Full menu
     $('#menu-icon').on('click',function(){
        $('body').toggleClass('menu-open');
+       if($('body').hasClass('menu-open')){
+           localStorage.setItem("menu-status",'open');
+       } else {
+           localStorage.setItem("menu-status",'closed');
+       }
     });
+
+    //Starting checkboxes
+    $('input').iCheck({
+        checkboxClass: 'icheckbox_flat-green',
+        radioClass: 'iradio_flat'
+    });
+
 });
+
+function StartMenu(){
+    let menuStatus = localStorage.getItem("menu-status");
+    if(menuStatus=='open' || menuStatus==undefined){
+        $('body').addClass('menu-open');
+    } else {
+        $('body').removeClass('menu-open');
+    }
+}
