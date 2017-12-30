@@ -4,6 +4,7 @@
 @pink: #F62459;
 @color-primary: #1F4788;
 @color-primary-dark: #003171;
+
 *:not(i) {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
@@ -241,6 +242,35 @@ nav.navbar {
     margin: 0;
     bottom:20px;
     top:55px;
+    h1.title {
+      font-size: 18px;
+      color:@pink;
+      border-bottom:1px solid #ddd;
+      margin: 0 0 20px 0;
+      padding: 0 30px 10px 0;
+    }
+    .close-container {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      font-size: 18px;
+      color: #777;
+    }
+    .close-container:hover {
+      color:#000;
+      cursor: pointer;
+    }
+  }
+
+  #second-container {
+    h1.title {
+      font-size: 17px;
+    }
+  }
+  #third-container {
+    h1.title {
+      font-size: 16px;
+    }
   }
 }
 
@@ -283,16 +313,16 @@ nav.navbar {
 
   #main-container {
     left: 10px;
-    right: 44%;
+    right: 50%;
     margin-right: 5px;
   }
   #second-container {
-    left: 56%;
-    right: 16%;
+    left: 50%;
+    right: 20%;
     margin:0 5px;
   }
   #third-container {
-    left: 84%;
+    left: 80%;
     right: 10px;
     margin-left: 5px;
   }
@@ -308,6 +338,7 @@ nav.navbar {
   border-radius: 4px;
   text-decoration: none;
   cursor: pointer;
+  border: none;
   i {
     margin-right: 6px;
   }

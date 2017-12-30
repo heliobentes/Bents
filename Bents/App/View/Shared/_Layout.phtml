@@ -78,14 +78,28 @@ use Bents\Core\View;
         <li ><div class="user-icon" data-jq-dropdown="#dropdown-user">HB</div></li>
     </ul>
 </nav>
-<div class="content two">
+<div class="content three">
     <div class="container" id="main-container">
+        <h1 class="title">Title for column 1 very big overflow of text</h1>
+        <div class="content">
         <?php View::RenderBody(); ?>
+        </div>
     </div>
     <div class="container" id="second-container">
+        <h1 class="title">Title for column 2 very big overflow of text</h1>
+        <i class="far fa-times-circle close-container" id="close-container-2"></i>
+        <div class="content">
+            Content for column 2
+            <button onclick="$('.content').removeClass('two').removeClass('one').addClass('three')" class="btn btn-primary">Open container 3</button>
+        </div>
     </div>
 
     <div class="container" id="third-container">
+        <h1 class="title">Title for column 3 very big overflow of text</h1>
+        <i class="far fa-times-circle  close-container" id="close-container-3"></i>
+        <div class="content">
+            Content for column 3
+        </div>
     </div>
 </div>
 <!-- BEGIN Dropdown User - TopMenu-->
@@ -104,12 +118,11 @@ use Bents\Core\View;
 <!-- BEGIN Dropdown Edit Mural - TopMenu-->
 <div id="dropdown-edit-mural" class="jq-dropdown jq-dropdown-tip jq-dropdown-anchor-right">
     <ul class="jq-dropdown-menu">
-        <li><label><input type="checkbox"> <i class="far fa-newspaper"></i> Mural</label></li>
         <li ><label><input type="checkbox"><i class="fa fa-calendar-plus"></i> New appointment</label></li>
         <li><label><input type="checkbox"><i class="fa fa-user-plus"></i> New customer</label></li>
         <li><label><input type="checkbox"><i class="fa fa-plus"></i> New property</label></li>
         <li><label><input type="checkbox"><i class="fa fa-plus"></i> New deal</label></li>
-        <li><label><input type="checkbox"><i class="fa fa-plus"></i> Properties</label></li>
+        <li><label><input type="checkbox"><i class="fa fa-home"></i> Properties</label></li>
     </ul>
 </div>
 <!-- END Dropdown Edit Mural - TopMenu-->

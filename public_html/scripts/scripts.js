@@ -28,6 +28,14 @@ $(document).ready(function () {
            localStorage.setItem("menu-status",'closed');
        }
     });
+    //closing containers
+    $('#close-container-2').on('click',function(){
+        $('.content').removeClass('two').removeClass('three').addClass('one');
+    });
+    $('#close-container-3').on('click',function(){
+        $('.content').removeClass('one').removeClass('three').addClass('two');
+    });
+
 
     //Starting checkboxes
     $('input').iCheck({

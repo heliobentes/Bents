@@ -35,10 +35,10 @@ EOT;
 View::$cssBundle[] = <<<EOT
 EOT;
 ?>
-
+<button onclick="$('.content').removeClass('one').removeClass('three').addClass('two')" class="btn btn-primary">Open container 2</button>
 <ul>
     <li onclick="$('.content').removeClass('two').removeClass('three').addClass('one')">1</li>
-    <li onclick="$('.content').removeClass('one').removeClass('three').addClass('two')">2</li>
+    <li >2</li>
     <li onclick="$('.content').removeClass('two').removeClass('one').addClass('three')">3</li>
     <li>4</li>
     <li>5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
