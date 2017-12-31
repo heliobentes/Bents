@@ -122,7 +122,7 @@ namespace Bents\Core {
         {
             $search = array(
 
-                '~(\s)\/\/.*\n?~',   //remove inline comments
+                '~(\s)\/\/.*~',   //remove inline comments
                 '~\>[\s]+~',         //strip whitespaces after tags
                 '~[\s]+\<~',         //strip whitespaces before tags
                 '~:[\s]+~',          //shorten whitespaces after :
