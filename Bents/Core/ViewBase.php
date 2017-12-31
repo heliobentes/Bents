@@ -110,7 +110,7 @@ namespace Bents\Core {
             echo '<script async defer language="javascript" type="text/javascript" src="/cache/jsbundle.js"></script>';
         }
 
-        public function __($string){
+        public static function __($string){
             $return = Globalization::Resource($string);
             if($return==''){
                 $return = $string;

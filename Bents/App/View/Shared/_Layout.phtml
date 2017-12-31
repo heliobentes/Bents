@@ -56,8 +56,8 @@ use Bents\Core\View;
                 <li class="active"><a href="#"><i class="fa fa-users"></i> Customers</a></li>
                 <li><a href="#"><i class="fa fa-calendar-plus"></i> New appointment</a></li>
                 <li><a href="#"><i class="far fa-calendar-alt"></i> Appointments</a></li>
-                <li><a href="#"><i class="fa fa-plus"></i> New deal</a></li>
-                <li><a href="#"><i class="far fa-handshake"></i> Deals</a></li>
+                <li><a href="#"><i class="fa fa-plus"></i> New dealing</a></li>
+                <li><a href="#"><i class="far fa-handshake"></i> Dealings</a></li>
             </ul>
         </li>
         <li><a href="#"><i class="fa fa-desktop"></i> WebSite</a>
@@ -74,7 +74,7 @@ use Bents\Core\View;
     <ul class="nav-right">
         <li><a href="#" title="Settings"><i class="fa fa-cogs"></i></a></li>
         <li><a href="#" title="Help"><i class="fa fa-question-circle"></i></a></li>
-        <li class="notifications none"><a href="#"><i class="fa fa-bell"></i></a></li>
+        <li class="notifications" id="notifications-icon"><a href="#"><i class="fa fa-bell"></i><i class="far fa-bell"></i></a></li>
         <li ><div class="user-icon" data-jq-dropdown="#dropdown-user">HB</div></li>
     </ul>
 </nav>
@@ -86,7 +86,7 @@ use Bents\Core\View;
         </div>
     </div>
     <div class="container" id="second-container">
-        <h1 class="title">Title for column 2 very big overflow of text</h1>
+        <h1 class="title">Title for column 2 very big overflow of text<small>Subtitle for column 2</small></h1>
         <i class="far fa-times-circle close-container" id="close-container-2"></i>
         <div class="content">
             Content for column 2
@@ -121,12 +121,154 @@ use Bents\Core\View;
         <li ><label><input type="checkbox"><i class="fa fa-calendar-plus"></i> New appointment</label></li>
         <li><label><input type="checkbox"><i class="fa fa-user-plus"></i> New customer</label></li>
         <li><label><input type="checkbox"><i class="fa fa-plus"></i> New property</label></li>
-        <li><label><input type="checkbox"><i class="fa fa-plus"></i> New deal</label></li>
+        <li><label><input type="checkbox"><i class="fa fa-plus"></i> New dealing</label></li>
         <li><label><input type="checkbox"><i class="fa fa-home"></i> Properties</label></li>
     </ul>
 </div>
 <!-- END Dropdown Edit Mural - TopMenu-->
 
+<!-- BEGIN Notifications -->
+<div id="notifications" class="">
+    <div id="notification-backdrop"></div>
+    <h3><?php echo View::__('Notifications'); ?> <button class="btn btn-link" id="btn-clear-notifications"><?php echo View::__('Clear all'); ?></button> </h3>
+    <div class="notifications-container">
+    <ul id="notifications-list">
+        <li class="success">
+            <div class="notification-icon">
+                <i class="fa fa-check"></i>
+            </div>
+            <div class="notification-content">
+                <h5 class="notification-title">Success notification!</h5>
+                <p>Success notification text goes here. It can be big or small. It depends just on the notification.</p>
+                <a href="#"><i class="fa fa-eye"></i> Link with icon</a><a href="#">Another link</a>
+            </div>
+            <i class="fa fa-times notification-close"></i>
+        </li>
+        <li class="info">
+            <div class="notification-icon">
+                <i class="fa fa-info-circle"></i>
+            </div>
+            <div class="notification-content">
+                <h5 class="notification-title">Success notification!</h5>
+                <p>Success notification text goes here. It can be big or small. It depends just on the notification.</p>
+                <a href="#"><i class="fa fa-eye"></i> Link with icon</a><a href="#">Another link</a>
+            </div>
+            <i class="fa fa-times notification-close"></i>
+        </li>
+        <li class="danger">
+            <div class="notification-icon">
+                <i class="fa fa-exclamation-triangle"></i>
+            </div>
+            <div class="notification-content">
+                <h5 class="notification-title">Success notification!</h5>
+                <p>Success notification text goes here. It can be big or small. It depends just on the notification.</p>
+                <a href="#"><i class="fa fa-eye"></i> Link with icon</a><a href="#">Another link</a>
+            </div>
+            <i class="fa fa-times notification-close"></i>
+        </li>
+        <li class="warning">
+            <div class="notification-icon">
+                <i class="fa fa-exclamation-circle"></i>
+            </div>
+            <div class="notification-content">
+                <h5 class="notification-title">Success notification!</h5>
+                <p>Success notification text goes here. It can be big or small. It depends just on the notification.</p>
+                <a href="#"><i class="fa fa-eye"></i> Link with icon</a><a href="#">Another link</a>
+            </div>
+            <i class="fa fa-times notification-close"></i>
+        </li>
+        <li class="success">
+            <div class="notification-icon">
+                <i class="fa fa-check"></i>
+            </div>
+            <div class="notification-content">
+                <h5 class="notification-title">Success notification!</h5>
+                <p>Success notification text goes here. It can be big or small. It depends just on the notification.</p>
+                <a href="#"><i class="fa fa-eye"></i> Link with icon</a><a href="#">Another link</a>
+            </div>
+            <i class="fa fa-times notification-close"></i>
+        </li>
+        <li class="info">
+            <div class="notification-icon">
+                <i class="fa fa-info-circle"></i>
+            </div>
+            <div class="notification-content">
+                <h5 class="notification-title">Success notification!</h5>
+                <p>Success notification text goes here. It can be big or small. It depends just on the notification.</p>
+                <a href="#"><i class="fa fa-eye"></i> Link with icon</a><a href="#">Another link</a>
+            </div>
+            <i class="fa fa-times notification-close"></i>
+        </li>
+        <li class="danger">
+            <div class="notification-icon">
+                <i class="fa fa-exclamation-triangle"></i>
+            </div>
+            <div class="notification-content">
+                <h5 class="notification-title">Success notification!</h5>
+                <p>Success notification text goes here. It can be big or small. It depends just on the notification.</p>
+                <a href="#"><i class="fa fa-eye"></i> Link with icon</a><a href="#">Another link</a>
+            </div>
+            <i class="fa fa-times notification-close"></i>
+        </li>
+        <li class="warning">
+            <div class="notification-icon">
+                <i class="fa fa-exclamation-circle"></i>
+            </div>
+            <div class="notification-content">
+                <h5 class="notification-title">Success notification!</h5>
+                <p>Success notification text goes here. It can be big or small. It depends just on the notification.</p>
+                <a href="#"><i class="fa fa-eye"></i> Link with icon</a><a href="#">Another link</a>
+            </div>
+            <i class="fa fa-times notification-close"></i>
+        </li>
+        <li class="success">
+            <div class="notification-icon">
+                <i class="fa fa-check"></i>
+            </div>
+            <div class="notification-content">
+                <h5 class="notification-title">Success notification!</h5>
+                <p>Success notification text goes here. It can be big or small. It depends just on the notification.</p>
+                <a href="#"><i class="fa fa-eye"></i> Link with icon</a><a href="#">Another link</a>
+            </div>
+            <i class="fa fa-times notification-close"></i>
+        </li>
+        <li class="info">
+            <div class="notification-icon">
+                <i class="fa fa-info-circle"></i>
+            </div>
+            <div class="notification-content">
+                <h5 class="notification-title">Success notification!</h5>
+                <p>Success notification text goes here. It can be big or small. It depends just on the notification.</p>
+                <a href="#"><i class="fa fa-eye"></i> Link with icon</a><a href="#">Another link</a>
+            </div>
+            <i class="fa fa-times notification-close"></i>
+        </li>
+        <li class="danger">
+            <div class="notification-icon">
+                <i class="fa fa-exclamation-triangle"></i>
+            </div>
+            <div class="notification-content">
+                <h5 class="notification-title">Success notification!</h5>
+                <p>Success notification text goes here. It can be big or small. It depends just on the notification.</p>
+                <a href="#"><i class="fa fa-eye"></i> Link with icon</a><a href="#">Another link</a>
+            </div>
+            <i class="fa fa-times notification-close"></i>
+        </li>
+        <li class="warning">
+            <div class="notification-icon">
+                <i class="fa fa-exclamation-circle"></i>
+            </div>
+            <div class="notification-content">
+                <h5 class="notification-title">Success notification!</h5>
+                <p>Success notification text goes here. It can be big or small. It depends just on the notification.</p>
+                <a href="#"><i class="fa fa-eye"></i> Link with icon</a><a href="#">Another link</a>
+            </div>
+            <i class="fa fa-times notification-close"></i>
+        </li>
+    </ul>
+    </div>
+</div>
+<!-- END Notifications -->
 <?php View::RenderJavaScriptBundle(); ?>
 </body>
 </html>
