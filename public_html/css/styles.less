@@ -361,7 +361,7 @@ nav.navbar {
   .far.fa-bell {
     display: none;
   }
-  .fa.fa-bell:after{
+  .fa.fa-bell:after {
     content: '';
     background: #b00;
     height: 10px;
@@ -423,6 +423,19 @@ nav.navbar {
     left: 0;
     bottom: 0;
     top: 36px;
+
+    #no-notifications {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+      i.no-notifications-icon {
+        font-size: 40px;
+        color: #999;
+      }
+      p {
+        color: #545454;
+      }
+    }
   }
   h3 {
     position: relative;
@@ -466,6 +479,10 @@ nav.navbar {
         position: absolute;
         top: 10px;
         right: 10px;
+        color: #777;
+      }
+      i.notification-close:hover {
+        color: #000;
       }
       .notification-icon {
         display: inline-block;
@@ -498,9 +515,6 @@ nav.navbar {
           }
         }
       }
-      i.notification-close {
-        color: #666 !important;
-      }
     }
     li.success {
       .notification-icon i, h5.notification-title {
@@ -522,16 +536,17 @@ nav.navbar {
         color: @yellow;
       }
     }
-    li.close{
+    li.close {
       transition: all 200ms ease-out;
       transform: translateX(200px);
       opacity: 0;
     }
-    li.closed{
+    li.closed {
       transition: all 200ms ease-out;
       height: 0px !important;
-      margin-top:-10px;
+      margin-top: -10px;
     }
+
   }
 }
 

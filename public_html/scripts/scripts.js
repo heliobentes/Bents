@@ -2,6 +2,8 @@
  * Created by heliobentes on 6/21/17.
  */
 
+var notifications = 12;
+
 $(document).ready(function () {
 
     StartMenu();
@@ -75,8 +77,22 @@ function ClearNotification(obj) {
     setTimeout(function () {
         obj.remove();
     }, 500);
+
+    notifications--;
+
+    CountNotifications();
+
 }
 
+function CountNotifications(){
+    if(notifications<=0){
+        $('#notifications-icon').addClass('none');
+        $('#no-notifications').fadeIn('fast');
+    } else {
+        $('#notifications-icon').removeClass('none');
+        $('#no-notifications').fadeOut('slow');
+    }
+}
 
 function StartMenu() {
     let menuStatus = localStorage.getItem("menu-status");
