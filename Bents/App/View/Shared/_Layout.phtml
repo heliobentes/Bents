@@ -27,8 +27,31 @@ use Bents\Core\Globalization\Globalization;
     <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <?php View::RenderCSSBundle(); ?>
+<!--    <link rel="stylesheet" href="/css/styles.css" type="text/css" media="all"/>-->
+    <style>
+        #full-loader {
+            position: fixed;
+            background: rgba(255,255,255,0.98);
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 99999;
+        }
+        #full-loader img {
+            position: absolute;
+            left:50%;
+            margin-left: -90px;
+            top:50%;
+            margin-top: -90px;
+        }
+    </style>
 </head>
 <body>
+<div id="full-loader">
+<img src="/images/full-loader.svg" height="180" width="180"/>
+</div>
+<div id="body">
 <nav class="navbar">
     <div class="logo">
         <a href="/"><img src="/images/logo.png" height="40" width="136"></a>
@@ -139,7 +162,7 @@ use Bents\Core\Globalization\Globalization;
         <li><a href="/Home/ChangeLanguage?language=en-CA"><span class="flag-icon flag-icon-ca"></span> &nbsp;English CA (en-CA)</a></li>
         <li><a href="/Home/ChangeLanguage?language=en-US"><span class="flag-icon flag-icon-us"></span> &nbsp;English US (en-US)</a></li>
         <li><a href="/Home/ChangeLanguage?language=fr-CA"><span class="flag-icon flag-icon-ca"></span> &nbsp;Français CA (fr-CA)</a></li>
-        <li><a href="/Home/ChangeLanguage?language=pt-BR"><span class="flag-icon flag-icon-br"></span> &nbsp;Portugues BR (pt-BR)</a></li>
+        <li><a href="/Home/ChangeLanguage?language=pt-BR"><span class="flag-icon flag-icon-br"></span> &nbsp;Português BR (pt-BR)</a></li>
     </ul>
 </div>
 <!-- END Dropdown Language - TopMenu-->
@@ -168,7 +191,7 @@ use Bents\Core\Globalization\Globalization;
 </div>
 <!-- END Notifications -->
 
-
+</div>
 <?php View::RenderJavaScriptBundle(); ?>
 </body>
 </html>

@@ -23,15 +23,7 @@ $(document).ready(function () {
         $(this).parent().addClass('active');
     });
 
-    //Show Hide Full menu
-    $('#menu-icon').on('click', function () {
-        $('body').toggleClass('menu-open');
-        if ($('body').hasClass('menu-open')) {
-            localStorage.setItem("menu-status", 'open');
-        } else {
-            localStorage.setItem("menu-status", 'closed');
-        }
-    });
+
 
     //notifications toggle
     $('#notifications-icon,#notification-backdrop').on('click', function () {
@@ -65,7 +57,24 @@ $(document).ready(function () {
         radioClass: 'iradio_flat'
     });
 
+    //Show Hide Full menu
+    $('#menu-icon').on('click', function () {
+        $('body').toggleClass('menu-open');
+        if ($('body').hasClass('menu-open')) {
+            localStorage.setItem("menu-status", 'open');
+        } else {
+            localStorage.setItem("menu-status", 'closed');
+        }
+    });
 
+    setTimeout(function(){
+        $('#full-loader').fadeOut('fast');
+    },100);
+
+});
+
+$(window).on('beforeunload',function(){
+    $('#full-loader').fadeIn('fast');
 });
 
 /*

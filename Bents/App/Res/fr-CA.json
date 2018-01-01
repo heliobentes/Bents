@@ -1,5 +1,21 @@
 {
-  "how_are_you": "Como vai você",
-  "Error": "Erro",
-  "Write test like Magento":"Teste de escrita pelo metodo igual do magento"
+  "Notifications": "Notifications",
+  "Error": "Erreur",
+  "Nice ;)": "Bien ;)",
+  "You have 0 notifications": "Vous avez 0 notifications",
+  "Edit": "Modifier",
+  "Mural": "Mural",
+  "Properties": "Propriétés",
+  "CRM": "CRM",
+  "WebSite": "Site Web",
+  "New property": "Ajouter un propriété",
+  "New appointment": "Ajouter rendez-vous",
+  "New customer": "Ajouter un clients",
+  "Leads": "Leads",
+  "Customers": "Clients",
+  "Appointments": "Rendez-vous",
+  "New dealing": "Ajouter un deal",
+  "Dealings": "Deals",
+  "Using": "Utiliser"
+
 }
