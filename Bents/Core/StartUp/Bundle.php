@@ -18,6 +18,7 @@ namespace Bents\Core\StartUp {
             $style[] = 'css/jquery.dropdown.min.css';
             $style[] = 'https://fonts.googleapis.com/css?family=Roboto:400,700';
             $style[] = 'css/flat/green.css';
+            $style[] = 'css/flag-icon.min.css';
             $style[] = 'css/styles.css';
 
             return $style;

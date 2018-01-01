@@ -2,5 +2,20 @@
   "Notifications": "Notificações",
   "Error": "Erro",
   "Nice ;)":"Legal ;)",
-  "You have 0 notifications":"Você nao tem notificações"
+  "You have 0 notifications":"Você não tem notificações",
+  "Edit":"Editar",
+  "Mural":"Mural",
+  "Properties":"Imóveis",
+  "CRM":"CRM",
+  "WebSite":"Meu site",
+  "New property":"Novo imóvel",
+  "New appointment":"Nova visita",
+  "New customer":"Novo cliente",
+  "Leads":"Leads",
+  "Customers":"Clientes",
+  "Appointments":"Visitas",
+  "New dealing":"Nova negociação",
+  "Dealings":"Negociações",
+  "Using":"Usando"
+  
 }

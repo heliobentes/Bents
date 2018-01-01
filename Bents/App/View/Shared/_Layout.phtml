@@ -35,33 +35,33 @@ use Bents\Core\Globalization\Globalization;
     </div>
     <i class="fa fa-bars" id="menu-icon"></i>
     <ul class="nav" id="main-nav">
-        <li class="active"><a href="#"><i class="far fa-newspaper"></i> Mural</a>
+        <li class="active"><a href="#"><i class="far fa-newspaper"></i> <?php echo View::__('Mural'); ?></a>
             <ul class="subnav open">
-                <li class="active"><a href="#"><i class="far fa-newspaper"></i> Mural</a></li>
-                <li ><a href="#"><i class="fa fa-calendar-plus"></i> New appointment</a></li>
-                <li><a href="#"><i class="fa fa-user-plus"></i> New customer</a></li>
-                <li><a href="#"><i class="fa fa-plus"></i> New property</a></li>
-                <li class="nav-extra"><a class="btn btn-primary" data-jq-dropdown="#dropdown-edit-mural"><i class="fa fa-edit"></i> Edit</a></li>
+                <li class="active"><a href="#"><i class="far fa-newspaper"></i> <?php echo View::__('Mural'); ?></a></li>
+                <li ><a href="#"><i class="fa fa-calendar-plus"></i> <?php echo View::__('New appointment'); ?></a></li>
+                <li><a href="#"><i class="fa fa-user-plus"></i> <?php echo View::__('New customer'); ?></a></li>
+                <li><a href="#"><i class="fa fa-plus"></i> <?php echo View::__('New property'); ?></a></li>
+                <li class="nav-extra"><a class="btn btn-primary" data-jq-dropdown="#dropdown-edit-mural"><i class="fa fa-edit"></i> <?php echo View::__('Edit'); ?></a></li>
             </ul>
         </li>
-        <li><a href="#"><i class="fa fa-home"></i> Properties</a>
+        <li><a href="#"><i class="fa fa-home"></i> <?php echo View::__('Properties'); ?></a>
             <ul class="subnav">
-                <li><a href="#"><i class="fa fa-plus"></i> New property</a></li>
-                <li><a href="#"><i class="fa fa-home"></i> Properties</a></li>
+                <li><a href="#"><i class="fa fa-plus"></i> <?php echo View::__('New property'); ?></a></li>
+                <li><a href="#"><i class="fa fa-home"></i> <?php echo View::__('Properties'); ?></a></li>
             </ul>
         </li>
-        <li><a href="#"><i class="fa fa-suitcase"></i> CRM</a>
+        <li><a href="#"><i class="fa fa-suitcase"></i> <?php echo View::__('CRM'); ?></a>
             <ul class="subnav">
-                <li><a href="#"><i class="fab fa-pagelines"></i> Leads</a></li>
-                <li><a href="#"><i class="fa fa-user-plus"></i> New customer</a></li>
-                <li class="active"><a href="#"><i class="fa fa-users"></i> Customers</a></li>
-                <li><a href="#"><i class="fa fa-calendar-plus"></i> New appointment</a></li>
-                <li><a href="#"><i class="far fa-calendar-alt"></i> Appointments</a></li>
-                <li><a href="#"><i class="fa fa-plus"></i> New dealing</a></li>
-                <li><a href="#"><i class="far fa-handshake"></i> Dealings</a></li>
+                <li><a href="#"><i class="fab fa-pagelines"></i> <?php echo View::__('Leads'); ?></a></li>
+                <li><a href="#"><i class="fa fa-user-plus"></i> <?php echo View::__('New customer'); ?></a></li>
+                <li class="active"><a href="#"><i class="fa fa-users"></i> <?php echo View::__('Customers'); ?></a></li>
+                <li><a href="#"><i class="fa fa-calendar-plus"></i> <?php echo View::__('New appointment'); ?></a></li>
+                <li><a href="#"><i class="far fa-calendar-alt"></i> <?php echo View::__('Appointments'); ?></a></li>
+                <li><a href="#"><i class="fa fa-plus"></i> <?php echo View::__('New dealing'); ?></a></li>
+                <li><a href="#"><i class="far fa-handshake"></i> <?php echo View::__('Dealings'); ?></a></li>
             </ul>
         </li>
-        <li><a href="#"><i class="fa fa-desktop"></i> WebSite</a>
+        <li><a href="#"><i class="fa fa-desktop"></i> <?php echo View::__('WebSite'); ?></a>
             <ul class="subnav">
                 <li><a href="#"><i class="fa fa-paint-brush"></i> Layout & design</a></li>
                 <li class="active"><a href="#"><i class="fa fa-paper-plane"></i> Logo</a></li>
@@ -75,7 +75,7 @@ use Bents\Core\Globalization\Globalization;
     <ul class="nav-right">
         <li><a href="#" title="Settings"><i class="fa fa-cogs"></i></a></li>
         <li><a href="#" title="Help"><i class="fa fa-question-circle"></i></a></li>
-        <li><a href="#" data-jq-dropdown="#dropdown-language"><i class="fa fa-language"></i></a></li>
+        <li><a href="#" data-jq-dropdown="#dropdown-language"><span class="flag-menu flag-icon flag-icon-<?php echo strtolower(preg_split('~-~',Globalization::GetLanguage())[1]); ?>"></span> </a></li>
         <li class="notifications none" id="notifications-icon"><a href="#"><i class="fa fa-bell"></i><i class="far fa-bell"></i></a></li>
         <li ><div class="user-icon" data-jq-dropdown="#dropdown-user">HB</div></li>
     </ul>
@@ -134,12 +134,12 @@ use Bents\Core\Globalization\Globalization;
 <!-- BEGIN Dropdown Language - TopMenu-->
 <div id="dropdown-language" class="jq-dropdown jq-dropdown-tip jq-dropdown-anchor-right">
     <ul class="jq-dropdown-menu">
-        <li>Using <?php echo Globalization::GetLanguage(); ?></li>
+        <li><label><span class="flag-icon flag-icon-<?php echo strtolower(preg_split('~-~',Globalization::GetLanguage())[1]); ?>"></span> &nbsp;<?php echo View::__('Using'); ?> <?php echo Globalization::GetLanguage(); ?> </label></li>
         <li class="jq-dropdown-divider"></li>
-        <li><a href="/Home/ChangeLanguage?language=en-CA"><i class="fa fa-user-plus"></i> en-CA</a></li>
-        <li><a href="/Home/ChangeLanguage?language=en-US"><i class="fa fa-plus"></i> en-US</a></li>
-        <li><a href="/Home/ChangeLanguage?language=fr-CA"><i class="fa fa-plus"></i> fr-CA</a></li>
-        <li><a href="/Home/ChangeLanguage?language=pt-BR"><i class="fa fa-home"></i> pt-BR</a></li>
+        <li><a href="/Home/ChangeLanguage?language=en-CA"><span class="flag-icon flag-icon-ca"></span> &nbsp;English CA (en-CA)</a></li>
+        <li><a href="/Home/ChangeLanguage?language=en-US"><span class="flag-icon flag-icon-us"></span> &nbsp;English US (en-US)</a></li>
+        <li><a href="/Home/ChangeLanguage?language=fr-CA"><span class="flag-icon flag-icon-ca"></span> &nbsp;Français CA (fr-CA)</a></li>
+        <li><a href="/Home/ChangeLanguage?language=pt-BR"><span class="flag-icon flag-icon-br"></span> &nbsp;Portugues BR (pt-BR)</a></li>
     </ul>
 </div>
 <!-- END Dropdown Language - TopMenu-->

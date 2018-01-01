@@ -144,7 +144,7 @@ function AddPop(type, icon, title, content, link1, link2) {
 
     TriggerNotificationClose();
 
-    var audio = new Audio('sounds/pop.mp3');
+    var audio = new Audio('/sounds/pop.mp3');
     audio.play();
 
 
