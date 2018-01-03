@@ -2,6 +2,7 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/Bents/App/Res/pt-BR.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Bents/App/View/Shared/_Layout.phtml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public_html/scripts/scripts.js" charset="UTF-8" />
   </component>
 </project>

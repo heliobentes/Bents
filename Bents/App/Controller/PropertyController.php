@@ -19,7 +19,7 @@ namespace Bents\App\Controller {
         /**
          *
          * @authorize
-         * @roles('admin')
+         *
          */
         public function Add()
         {

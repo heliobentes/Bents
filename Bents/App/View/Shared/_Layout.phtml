@@ -73,10 +73,10 @@ use Bents\Core\Globalization\Globalization;
     <ul class="nav" id="main-nav">
         <li class="active"><a><i class="far fa-newspaper"></i> <?php echo View::__('Mural'); ?></a>
             <ul class="subnav open">
-                <li class="active"><a href="#"><i class="far fa-newspaper"></i> <?php echo View::__('Mural'); ?></a></li>
+                <li class="active"><a href="/"><i class="far fa-newspaper"></i> <?php echo View::__('Mural'); ?></a></li>
                 <li ><a href="#"><i class="fa fa-calendar-plus"></i> <?php echo View::__('New appointment'); ?></a></li>
                 <li><a href="#"><i class="fa fa-user-plus"></i> <?php echo View::__('New customer'); ?></a></li>
-                <li><a href="#"><i class="fa fa-plus"></i> <?php echo View::__('New property'); ?></a></li>
+                <li><a href="/Property/Add"  data-link-ajax="true" data-link-title="New property"><i class="fa fa-plus"></i> <?php echo View::__('New property'); ?></a></li>
                 <li class="nav-extra"><a class="btn btn-primary" data-jq-dropdown="#dropdown-edit-mural"><i class="fa fa-edit"></i> <?php echo View::__('Edit'); ?></a></li>
             </ul>
         </li>
