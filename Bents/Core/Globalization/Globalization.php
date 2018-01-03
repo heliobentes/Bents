@@ -69,5 +69,9 @@ namespace Bents\Core\Globalization {
                 setcookie('language', $language);
             }
         }
+
+        public function GenerateJSResource(){
+            return file_get_contents(Application::$resPath . self::GetLanguage() . '.json');
+        }
     }
 }

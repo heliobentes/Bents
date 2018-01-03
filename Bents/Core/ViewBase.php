@@ -102,11 +102,12 @@ namespace Bents\Core {
                         $script .= ' ' . $match;
                     }
                 }
+                $fp = fopen($filename, 'w');
+                fwrite($fp, self::SanitizeOutput($script));
+                fclose($fp);
             }
 
-            $fp = fopen($filename, 'w');
-            fwrite($fp, self::SanitizeOutput($script));
-            fclose($fp);
+
             echo '<script async defer language="javascript" type="text/javascript" src="/cache/jsbundle.js"></script>';
         }
 
@@ -195,7 +196,7 @@ namespace Bents\Core {
                     }
                 }
                 $fp = fopen($filename, 'w');
-                $content = self::SanitizeOutput($style);
+                $content = utf8_encode(self::SanitizeOutput($style));
                 fwrite($fp, $content);
                 fclose($fp);
             }

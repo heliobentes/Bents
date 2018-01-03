@@ -16,6 +16,10 @@
   "Appointments": "Rendez-vous",
   "New dealing": "Ajouter un deal",
   "Dealings": "Deals",
-  "Using": "Utiliser"
+  "Using": "Utiliser",
+  "Unauthorized!":"Non autorisé!",
+  "You don't have permissions to access this page":"Vous n'êtes pas autorisé à accéder à cette page",
+  "An error occurred while trying to access this function, please try again later or contact us.":"Une erreur est survenue lors de la tentative d'accès à cette fonction, veuillez réessayer plus tard ou contactez-nous."
+
 
 }

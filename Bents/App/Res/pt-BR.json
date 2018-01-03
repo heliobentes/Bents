@@ -1,6 +1,7 @@
 {
   "Notifications": "Notificações",
   "Error": "Erro",
+  "Error!": "Erro!",
   "Nice ;)":"Legal ;)",
   "You have 0 notifications":"Você não tem notificações",
   "Edit":"Editar",
@@ -16,6 +17,9 @@
   "Appointments":"Visitas",
   "New dealing":"Nova negociação",
   "Dealings":"Negociações",
-  "Using":"Usando"
+  "Using":"Usando",
+  "Unauthorized!": "Acesso negado!",
+  "You don't have permissions to access this page": " Você não tem permissão para acessar essa página",
+  "An error occurred while trying to access this function, please try again later or contact us.": "Ocorreu um erro ao tentar acessar essa função, por favor tente novamente mais tarde ou entre em contato conosco"
   
 }

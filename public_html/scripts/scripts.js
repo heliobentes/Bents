@@ -89,6 +89,8 @@ $(window).on('beforeunload', function (e) {
 
 });
 
+//window.onpopstate = function(){ location.reload(); }
+
 
 /*
  * ----------------------------
@@ -247,14 +249,14 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
         dataType: 'html',
         statusCode: {
             401: function () {
-                AddPop('danger', 'Unauthorized!', 'You don\'t have permissions to access this page<br><b>' + title + '</b>');
+                AddPop('danger', __('Unauthorized!'), __("You don't have permissions to access this page")+'<br><b>' + __(title) + '</b>','','','fa fa-lock');
             }
         }
     }).always(function (content) {
         $('#loader').fadeOut(50);
     }).fail(function (response) {
         if (response.status != 401) {
-            AddPop('danger', 'Error!', 'An error occurred while trying to access this function, please try again later or contact us.');
+            AddPop('danger', __('Error!'), __('An error occurred while trying to access this function, please try again later or contact us.'));
         }
     }).done(function (content) {
         if (content == 'userNotLogged') {

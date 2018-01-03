@@ -82,7 +82,7 @@ use Bents\Core\Globalization\Globalization;
         </li>
         <li><a><i class="fa fa-home"></i> <?php echo View::__('Properties'); ?></a>
             <ul class="subnav">
-                <li><a href="/Property/Add" data-link-ajax="true" data-link-title="New Property"><i class="fa fa-plus"></i> <?php echo View::__('New property'); ?></a></li>
+                <li><a href="/Property/Add" data-link-ajax="true" data-link-title="New property"><i class="fa fa-plus"></i> <?php echo View::__('New property'); ?></a></li>
                 <li><a href="#"><i class="fa fa-home"></i> <?php echo View::__('Properties'); ?></a></li>
             </ul>
         </li>
@@ -204,6 +204,28 @@ use Bents\Core\Globalization\Globalization;
 </div>
 <!-- END Notifications -->
 
+    <?php
+
+    $globalization = new Globalization();
+
+    $resource = $globalization->GenerateJSResource();
+
+    View::$jsBundle[] = <<<EOT
+  <script>
+  function __(res){
+      
+      let resource = $resource;
+      
+      if(resource[res]!=undefined){
+          return resource[res];
+      } else {
+          return res;
+      }
+      
+  }
+  </script>  
+EOT;
+?>
 </div>
 <?php View::RenderJavaScriptBundle(); ?>
 </body>
