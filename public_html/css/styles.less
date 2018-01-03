@@ -62,9 +62,15 @@ body.menu-open {
   opacity: 0;
   visibility: hidden;
 }
+
+a {
+  cursor: pointer;
+}
+
 a:not(.btn), a:not(.btn):visited, a:not(.btn):active {
   text-decoration: none;
 }
+
 /*
  * END General Classes
  * ----------------------------
@@ -238,7 +244,7 @@ nav.navbar {
 
 .jq-dropdown {
   .jq-dropdown-menu {
-    i,span {
+    i, span {
       margin-right: 6px;
       width: 20px;
       text-align: center;
@@ -576,11 +582,12 @@ nav.navbar {
 
   }
 }
+
 #pop {
-  position:fixed;
-  top:40px;
+  position: fixed;
+  top: 40px;
   right: 10px;
-  width:380px;
+  width: 380px;
   #pop-list {
     position: relative;
     z-index: 9998;
@@ -589,14 +596,14 @@ nav.navbar {
     padding: 0;
 
     li {
-      opacity:1;
+      opacity: 1;
       transform: scale(1);
       background: #fff;
       position: relative;
       border-bottom: 1px solid #ccc;
       padding-bottom: 10px;
       margin-top: 15px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
       i.notification-close {
         position: absolute;
         top: 6px;
@@ -715,47 +722,66 @@ button {
   padding: 0;
   margin: 0;
 }
+.btn.btn-default {
+  background: #f9f9f9;
+  color: #333;
+  border:1px solid #ccc;
+}
 
+.btn.btn-default:active, .btn.btn-default:hover, .btn.btn-default:focus {
+  background: #999;
+  color: #333;
+}
 .btn.btn-primary {
   background: @color-primary;
   color: #fff;
 }
+
 .btn.btn-primary:active, .btn.btn-primary:hover, .btn.btn-primary:focus {
   background: @color-primary-dark;
   color: #fff;
 }
+
 .btn.btn-success {
   background: @color-success;
   color: #fff;
 }
+
 .btn.btn-success:active, .btn.btn-success:hover, .btn.btn-success:focus {
   background: @color-success-dark;
   color: #fff;
 }
-.btn.btn-info{
+
+.btn.btn-info {
   background: @color-info;
   color: #fff;
 }
+
 .btn.btn-info:active, .btn.btn-info:hover, .btn.btn-info:focus {
   background: @color-info-dark;
   color: #fff;
 }
+
 .btn.btn-danger {
   background: @color-danger;
   color: #fff;
 }
+
 .btn.btn-danger:active, .btn.btn-danger:hover, .btn.btn-danger:focus {
   background: @color-danger-dark;
   color: #fff;
 }
-.btn.btn-warning{
+
+.btn.btn-warning {
   background: @color-warning;
   color: #fff;
 }
+
 .btn.btn-warning:active, .btn.btn-warning:hover, .btn.btn-warning:focus {
   background: @color-warning-dark;
   color: #fff;
 }
+
 /*
  * END buttons
  * --------------------------------
@@ -765,7 +791,52 @@ button {
  * --------------------------------
  * BEGIN inputs and form fields
  */
-input[type=text],select{
+.field {
+  margin: 10px 0 15px;
+  font-weight: 700;
+  color: #333;
+
+  .input-group {
+    display: flex;
+    span {
+      background: #eee;
+      color: #333;
+      text-align: center;
+      padding: 0 10px;
+      line-height: 30px;
+      border: 1px solid #ccc;
+      border-right: none;
+      height: 30px;
+
+    }
+    .btn {
+      height: 30px;
+      border-radius: 4px 0 0 4px;
+      border-right: none;
+    }
+    input[type=text] + .btn {
+      height: 30px;
+      border-radius: 0 4px 4px 0;
+      border-left: none;
+    }
+    input[type=text] + .btn.btn-default {
+      height: 30px;
+      border-radius: 0 4px 4px 0;
+      border-right: 1px solid #ccc;
+    }
+    input[type=text] + span {
+      border-left: none !important;
+      border-right: 1px solid #ccc;
+    }
+  }
+}
+
+.field.inline {
+  display: inline-block;
+  margin: 10px 10px 10px 0;
+}
+
+input[type=text] {
   height: 30px;
   line-height: 30px;
   padding: 0 10px;
@@ -780,97 +851,174 @@ input[type=text],select{
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  display: block;
 }
-.select:after {
-  content: '';
-  position: absolute;
-  background: #f9f9f9;
-}
-select {
-  option {
-outline: none;
-  }
-}
-  input[type=text]:focus,select:focus{
-    border: 1px solid @green;
-  }
-  /*
-   * END inputs and form fields
-   */
-  /*
-   * --------------------------------
-   * BEGIN margins classes
-   */
 
-  .margin-10 {
-    margin:10px;
+input[type=text]:focus {
+  border: 1px solid @green;
+}
+.select2-container {
+  display: block;
+  margin: 0;
+  position: relative;
+  border-radius: 0;
+  outline: none;
+  font-weight: 400;
+}
+.select2-container--default .select2-selection--single {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  height: 30px;
+  line-height: 30px;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: #545454;
+  line-height: 30px;
+}
+.select2-container--default .select2-search--dropdown .select2-search__field {
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  outline:none;
+}
+.select2-container--default .select2-search--dropdown .select2-search__field:focus {
+  border: 1px solid @green;
+}
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: @blue;
+  color: white;
+}
+.select2-container--default .select2-selection--multiple {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  cursor: text;
+  min-height: 34px;
+}
+.select2-container--open .select2-dropdown--below {
+  border: 1px solid #ccc;
+  border-radius: 0;
+  color:#454545;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+.select2-container--open .select2-dropdown--above {
+  border: 1px solid #ccc;
+  border-radius: 0;
+  color:#454545;
+  box-shadow: 0 -5px 10px rgba(0,0,0,0.3);
+}
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+  border: solid @green 1px;
+  outline: 0;
+}
+
+  .input-group[data-trigger=spinner] {
+    input {
+    text-align: center;
+      width: 60px;
   }
-  .margin-top-10 {
-    margin-top:10px;
-  }
-  .margin-bottom-10 {
-    margin-bottom:10px;
-  }
-  .margin-left-10 {
-    margin-left:10px;
-  }
-  .margin-right-10 {
-    margin-right:10px;
-  }
-  .margin-left-right-10 {
-    margin-right:10px;
-    margin-left:10px;
-  }
-  .margin-top-bottom-10 {
-    margin-top:10px;
-    margin-bottom:10px;
-  }
-  .margin-5{
-    margin:5px;
-  }
-  .margin-top-5 {
-    margin-top:5px;
-  }
-  .margin-bottom-5 {
-    margin-bottom:5px;
-  }
-  .margin-left-5 {
-    margin-left:5px;
-  }
-  .margin-right-5 {
-    margin-right:5px;
-  }
-  .margin-left-right-5 {
-    margin-right:5px;
-    margin-left:5px;
-  }
-  .margin-top-bottom-5 {
-    margin-top:5px;
-    margin-bottom:5px;
-  }
-  .margin-15{
-    margin:15px;
-  }
-  .margin-top-15 {
-    margin-top:15px;
-  }
-  .margin-bottom-15 {
-    margin-bottom:15px;
-  }
-  .margin-left-15 {
-    margin-left:15px;
-  }
-  .margin-right-15 {
-    margin-right:15px;
-  }
-  .margin-left-right-15 {
-    margin-right:15px;
-    margin-left:15px;
-  }
-  .margin-top-bottom-15 {
-    margin-top:15px;
-    margin-bottom:15px;
-  }
+
+    i {
+      margin-right: 0;
+    }
+}
+/*
+ * END inputs and form fields
+ */
+/*
+ * --------------------------------
+ * BEGIN margins classes
+ */
+
+.margin-10 {
+  margin: 10px;
+}
+
+.margin-top-10 {
+  margin-top: 10px;
+}
+
+.margin-bottom-10 {
+  margin-bottom: 10px;
+}
+
+.margin-left-10 {
+  margin-left: 10px;
+}
+
+.margin-right-10 {
+  margin-right: 10px;
+}
+
+.margin-left-right-10 {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.margin-top-bottom-10 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.margin-5 {
+  margin: 5px;
+}
+
+.margin-top-5 {
+  margin-top: 5px;
+}
+
+.margin-bottom-5 {
+  margin-bottom: 5px;
+}
+
+.margin-left-5 {
+  margin-left: 5px;
+}
+
+.margin-right-5 {
+  margin-right: 5px;
+}
+
+.margin-left-right-5 {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.margin-top-bottom-5 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.margin-15 {
+  margin: 15px;
+}
+
+.margin-top-15 {
+  margin-top: 15px;
+}
+
+.margin-bottom-15 {
+  margin-bottom: 15px;
+}
+
+.margin-left-15 {
+  margin-left: 15px;
+}
+
+.margin-right-15 {
+  margin-right: 15px;
+}
+
+.margin-left-right-15 {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.margin-top-bottom-15 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
 
 /*
  * END margin Classes

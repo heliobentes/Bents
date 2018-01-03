@@ -5,10 +5,10 @@ use Bents\Core\Globalization\Globalization;
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo Globalization::GetLanguage(); ?>">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo View::$title; ?> | Default Application</title>
+    <title><?php echo View::$title; ?> | Reaws</title>
     <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
@@ -73,16 +73,16 @@ use Bents\Core\Globalization\Globalization;
     <ul class="nav" id="main-nav">
         <li class="active"><a><i class="far fa-newspaper"></i> <?php echo View::__('Mural'); ?></a>
             <ul class="subnav open">
-                <li class="active"><a href="/"><i class="far fa-newspaper"></i> <?php echo View::__('Mural'); ?></a></li>
+                <li class="active"><?php View::ActionLink('<i class="far fa-newspaper"></i>'.View::__('Mural'),'Index','Home',true,'Mural'); ?></li>
                 <li ><a href="#"><i class="fa fa-calendar-plus"></i> <?php echo View::__('New appointment'); ?></a></li>
                 <li><a href="#"><i class="fa fa-user-plus"></i> <?php echo View::__('New customer'); ?></a></li>
-                <li><a href="/Property/Add"  data-link-ajax="true" data-link-title="New property"><i class="fa fa-plus"></i> <?php echo View::__('New property'); ?></a></li>
+                <li><?php View::ActionLink('<i class="fa fa-plus"></i>'.View::__('New property'),'Add','Property',true,View::__('Add a new property')); ?></li>
                 <li class="nav-extra"><a class="btn btn-primary" data-jq-dropdown="#dropdown-edit-mural"><i class="fa fa-edit"></i> <?php echo View::__('Edit'); ?></a></li>
             </ul>
         </li>
         <li><a><i class="fa fa-home"></i> <?php echo View::__('Properties'); ?></a>
             <ul class="subnav">
-                <li><a href="/Property/Add" data-link-ajax="true" data-link-title="New property"><i class="fa fa-plus"></i> <?php echo View::__('New property'); ?></a></li>
+                <li><?php View::ActionLink('<i class="fa fa-plus"></i>'.View::__('New property'),'Add','Property',true,View::__('Add a new property')); ?></li>
                 <li><a href="#"><i class="fa fa-home"></i> <?php echo View::__('Properties'); ?></a></li>
             </ul>
         </li>
@@ -119,7 +119,7 @@ use Bents\Core\Globalization\Globalization;
 <!--BEGIN Content-->
 <div class="content one">
     <div class="container" id="main-container">
-        <h1 class="title">Title for column 1 very big overflow of text</h1>
+        <h1 class="title"><?php echo View::$title; ?></h1>
         <div class="content">
         <?php View::RenderBody(); ?>
         </div>

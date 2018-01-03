@@ -213,10 +213,15 @@ namespace Bents\Core {
          * @param string $content
          * @param string $action
          * @param string|null $controller
+         * @param bool $isAjax
+         * @param string $title
+         * @param string $subtitle
+         * @param array $params
+         * @param int $container
          * @param array $htmlOptions
          * @return string
          */
-        public static function ActionLink(string $content, string $action, string $controller = null, array $params = array(), array $htmlOptions = array())
+        public static function ActionLink($content, $action, $controller = null, $isAjax = true, $title = null, $subtitle=null,  $container = 1, array $params = array(), array $htmlOptions = array())
         {
             if ($controller == null) {
                 $controller = StartUp::$controller;
@@ -231,7 +236,13 @@ namespace Bents\Core {
             }
             $query = join('&', $arrParams);
 
-            echo '<a href="/' . $controller . '/' . $action . (($query != '') ? ('?' . $query) : '') . '" ' . $html . '>' . $content . '</a>';
+            $dataAjax = ($isAjax)?' data-link-ajax="true" ':'';
+            $dataTitle= ($title!=null)?' data-link-title="'.$title.'" ':'';
+            $dataSubtitle= ($subtitle!=null)?' data-link-subtitle="'.$subtitle.'" ':'';
+            $dataContainer= ' data-link-container="'.$container.'" ';
+
+
+            echo '<a href="/' . $controller . '/' . $action . (($query != '') ? ('?' . $query) : '') . '" ' . $html . $dataAjax.$dataTitle.$dataSubtitle.$dataContainer.'>' . $content . '</a>';
         }
 
         /**

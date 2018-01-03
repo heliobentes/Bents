@@ -9,15 +9,7 @@ $(document).ready(function () {
     TriggerNotificationClose();
     CountNotifications();
 
-    //converting links to ajax
-    $('a').on('click', function (e) {
-        if ($(this).data('link-ajax') == true) {
-            e.preventDefault();
-            let url = $(this).attr('href');
-            history.pushState(null, null, url);
-            OpenLink(url, $(this).data('link-title'), $(this).data('link-subtitle'), $(this).data('link-data'), $(this).data('link-container'));
-        }
-    });
+
 
     //menu toggle
     $('#main-nav > li > a').on('click', function () {
@@ -60,12 +52,6 @@ $(document).ready(function () {
         $('.content').removeClass('one').removeClass('three').addClass('two');
     });
 
-    //Starting checkboxes
-    $('input').iCheck({
-        checkboxClass: 'icheckbox_flat-green',
-        radioClass: 'iradio_flat'
-    });
-
     //Show Hide Full menu
     $('#menu-icon').on('click', function () {
         $('body').toggleClass('menu-open');
@@ -80,9 +66,8 @@ $(document).ready(function () {
         $('#full-loader').fadeOut('fast');
     }, 100);
 
-    $('select').select2({
-        language:language
-    });
+    ReloadFunctions();
+
 
 });
 
@@ -107,6 +92,31 @@ $(window).on('beforeunload', function (e) {
  * END intervals
  * -----------------------------
  */
+
+//functions to be loaded after a page is loaded
+function ReloadFunctions(){
+
+    //converting links to ajax
+    $('a').on('click', function (e) {
+        if ($(this).data('link-ajax') == true) {
+            e.preventDefault();
+            let url = $(this).attr('href');
+            history.pushState(null, null, url);
+            OpenLink(url, $(this).data('link-title'), $(this).data('link-subtitle'), $(this).data('link-data'), $(this).data('link-container'));
+        }
+    });
+
+    //Starting checkboxes
+    $('input').iCheck({
+        checkboxClass: 'icheckbox_flat-green',
+        radioClass: 'iradio_flat'
+    });
+
+    //loading select2 on default configuration
+    $('.select2').select2({
+        language:language
+    });
+}
 
 //removing all notifications delayed
 function ClearNotification(obj) {
@@ -235,7 +245,7 @@ function StartMenu() {
 
 //open links
 function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
-    $('#loader').fadeIn(50);
+    $('#loader').show();
     let containerId = '#main-container';
     switch (container) {
         case 2:
@@ -257,7 +267,7 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
             }
         }
     }).always(function (content) {
-        $('#loader').fadeOut(50);
+        $('#loader').hide();
     }).fail(function (response) {
         if (response.status != 401) {
             AddPop('danger', __('Error!'), __('An error occurred while trying to access this function, please try again later or contact us.'));
@@ -266,7 +276,10 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
         if (content == 'userNotLogged') {
             window.location = '/Login/Login';
         } else {
-            $(containerId).html(content);
+            $(containerId+' .content').html(content);
+
+            document.title = title + ' | Reaws';
+
             if (subtitle != '') {
                 title += '<small>' + subtitle + '</small>';
             }
@@ -276,6 +289,7 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
             } else {
                 $(containerId + ' .title').hide();
             }
+            ReloadFunctions();
         }
     });
 

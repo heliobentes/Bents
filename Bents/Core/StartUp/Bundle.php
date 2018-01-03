@@ -38,6 +38,7 @@ namespace Bents\Core\StartUp {
             $script[] = 'scripts/icheck.min.js';
             $script[] = 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js';
             $script[] = 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/i18n/'.$language.'.js';
+            $script[] = 'scripts/jquery.spinner.min.js';
             $script[] = 'scripts/scripts.js';
 
 
