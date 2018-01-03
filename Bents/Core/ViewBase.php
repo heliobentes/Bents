@@ -89,7 +89,7 @@ namespace Bents\Core {
                 $script = '';
                 for ($x = 0; $x < sizeof($array); $x++) {
                     try {
-                        $script .= ' ' . file_get_contents(Application::$publicPath . $array[$x]);
+                        $script .= ' ' . file_get_contents(Application::$publicPath . $array[$x]) . "\n";
                     } catch (\Exception $e) {
                         Log::SaveLog($e);
                     }
@@ -110,9 +110,10 @@ namespace Bents\Core {
             echo '<script async defer language="javascript" type="text/javascript" src="/cache/jsbundle.js"></script>';
         }
 
-        public static function __($string){
+        public static function __($string)
+        {
             $return = Globalization::Resource($string);
-            if($return==''){
+            if ($return == '') {
                 $return = $string;
             }
             return $return;
@@ -131,8 +132,8 @@ namespace Bents\Core {
                 '~[\s]+\{~',         //shorten whitespaces before {
                 '~[\s]+\}~',         //shorten whitespaces before }
                 '~\}[\s]+~',         //shorten whitespaces after }
-                '~\n\s*\n~',         //remove line breaks
-                '~\n~',              //remove line breaks
+                //'~\n\s*\n~',         //remove line breaks
+                //'~\n~',              //remove line breaks
                 '~<\!--.*?\--\>~', //remove html comments
                 '~\>[\s]+\<~',       // remove whitespaces between tags
                 '~(\s|&nbsp;){2,}~', //shorten multiple whitespace sequences
@@ -148,8 +149,8 @@ namespace Bents\Core {
                 '{',
                 '}',
                 '}',
-                ' ',
-                ' ',
+                //' ',
+                //' ',
                 '',
                 '',
                 ' ',
@@ -176,8 +177,8 @@ namespace Bents\Core {
                 $style = '';
                 for ($x = 0; $x < sizeof($array); $x++) {
                     try {
-                        if(preg_match('/http/',$array[$x])){
-                            $style .= ' ' . file_get_contents( $array[$x]);
+                        if (preg_match('/http/', $array[$x])) {
+                            $style .= ' ' . file_get_contents($array[$x]);
                         } else {
                             $style .= ' ' . file_get_contents(Application::$publicPath . $array[$x]);
                         }
@@ -244,9 +245,11 @@ namespace Bents\Core {
             //If $view is null or empty use $view as "current controller + index"
             if ($view == null || $view == '') {
                 $view = StartUp::$controller . '/' . StartUp::$action;
+
             }
 
             $view = Application::$viewPath . $view . '.phtml';
+
 
             if (file_exists($view)) {
                 $this->view = $view;
@@ -272,10 +275,20 @@ namespace Bents\Core {
             self::$contents = ob_get_contents();
             ob_end_clean();
 
-            ob_start();
-            require_once Application::$viewPath . self::$layout . '.phtml';
-            $globalContent = ob_get_contents();
-            ob_end_clean();
+            if (self::$layout != null) {
+                //Came from Ajax
+                if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+
+                    $globalContent = self::$contents;
+                } else {
+                    ob_start();
+                    require_once Application::$viewPath . self::$layout . '.phtml';
+                    $globalContent = ob_get_contents();
+                    ob_end_clean();
+                }
+            } else {
+                $globalContent = self::$contents;
+            }
 
             return self::SanitizeOutput($globalContent);
 

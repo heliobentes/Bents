@@ -38,7 +38,17 @@ use Bents\Core\Globalization\Globalization;
             right: 0;
             z-index: 99999;
         }
-        #full-loader img {
+        #loader {
+            position: fixed;
+            background: rgba(255,255,255,0.3);
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 99999;
+            display: none;
+        }
+        #full-loader img,#loader img {
             position: absolute;
             left:50%;
             margin-left: -90px;
@@ -51,6 +61,9 @@ use Bents\Core\Globalization\Globalization;
 <div id="full-loader">
 <img src="/images/full-loader.svg" height="180" width="180"/>
 </div>
+<div id="loader">
+    <img src="/images/full-loader.svg" height="180" width="180"/>
+</div>
 <div id="body">
 <nav class="navbar">
     <div class="logo">
@@ -58,7 +71,7 @@ use Bents\Core\Globalization\Globalization;
     </div>
     <i class="fa fa-bars" id="menu-icon"></i>
     <ul class="nav" id="main-nav">
-        <li class="active"><a href="#"><i class="far fa-newspaper"></i> <?php echo View::__('Mural'); ?></a>
+        <li class="active"><a><i class="far fa-newspaper"></i> <?php echo View::__('Mural'); ?></a>
             <ul class="subnav open">
                 <li class="active"><a href="#"><i class="far fa-newspaper"></i> <?php echo View::__('Mural'); ?></a></li>
                 <li ><a href="#"><i class="fa fa-calendar-plus"></i> <?php echo View::__('New appointment'); ?></a></li>
@@ -67,13 +80,13 @@ use Bents\Core\Globalization\Globalization;
                 <li class="nav-extra"><a class="btn btn-primary" data-jq-dropdown="#dropdown-edit-mural"><i class="fa fa-edit"></i> <?php echo View::__('Edit'); ?></a></li>
             </ul>
         </li>
-        <li><a href="#"><i class="fa fa-home"></i> <?php echo View::__('Properties'); ?></a>
+        <li><a><i class="fa fa-home"></i> <?php echo View::__('Properties'); ?></a>
             <ul class="subnav">
-                <li><a href="#"><i class="fa fa-plus"></i> <?php echo View::__('New property'); ?></a></li>
+                <li><a href="/Property/Add" data-link-ajax="true" data-link-title="New Property"><i class="fa fa-plus"></i> <?php echo View::__('New property'); ?></a></li>
                 <li><a href="#"><i class="fa fa-home"></i> <?php echo View::__('Properties'); ?></a></li>
             </ul>
         </li>
-        <li><a href="#"><i class="fa fa-suitcase"></i> <?php echo View::__('CRM'); ?></a>
+        <li><a><i class="fa fa-suitcase"></i> <?php echo View::__('CRM'); ?></a>
             <ul class="subnav">
                 <li><a href="#"><i class="fab fa-pagelines"></i> <?php echo View::__('Leads'); ?></a></li>
                 <li><a href="#"><i class="fa fa-user-plus"></i> <?php echo View::__('New customer'); ?></a></li>
@@ -84,7 +97,7 @@ use Bents\Core\Globalization\Globalization;
                 <li><a href="#"><i class="far fa-handshake"></i> <?php echo View::__('Dealings'); ?></a></li>
             </ul>
         </li>
-        <li><a href="#"><i class="fa fa-desktop"></i> <?php echo View::__('WebSite'); ?></a>
+        <li><a><i class="fa fa-desktop"></i> <?php echo View::__('WebSite'); ?></a>
             <ul class="subnav">
                 <li><a href="#"><i class="fa fa-paint-brush"></i> Layout & design</a></li>
                 <li class="active"><a href="#"><i class="fa fa-paper-plane"></i> Logo</a></li>

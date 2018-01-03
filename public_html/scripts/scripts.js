@@ -9,6 +9,16 @@ $(document).ready(function () {
     TriggerNotificationClose();
     CountNotifications();
 
+    //converting links to ajax
+    $('a').on('click', function (e) {
+        if ($(this).data('link-ajax') == true) {
+            e.preventDefault();
+            let url = $(this).attr('href');
+            history.pushState(null, null, url);
+            OpenLink(url, $(this).data('link-title'), $(this).data('link-subtitle'), $(this).data('link-data'), $(this).data('link-container'));
+        }
+    });
+
     //menu toggle
     $('#main-nav > li > a').on('click', function () {
         $('#main-nav > li').removeClass('active');
@@ -22,7 +32,6 @@ $(document).ready(function () {
         $('#main-nav > li > ul > li').removeClass('active');
         $(this).parent().addClass('active');
     });
-
 
 
     //notifications toggle
@@ -67,28 +76,31 @@ $(document).ready(function () {
         }
     });
 
-    setTimeout(function(){
+    setTimeout(function () {
         $('#full-loader').fadeOut('fast');
-    },100);
+    }, 100);
 
 });
 
-$(window).on('beforeunload',function(){
+
+$(window).on('beforeunload', function (e) {
+
     $('#full-loader').fadeIn('fast');
+
 });
+
 
 /*
  * ----------------------------
  * BEGIN intervals
  */
-var oneSecInterval = window.setInterval(function () {
-    //CountNotifications();
-}, 1000);
+//var oneSecInterval = window.setInterval(function () {
+//CountNotifications();
+//}, 1000);
 /*
  * END intervals
  * -----------------------------
  */
-
 
 //removing all notifications delayed
 function ClearNotification(obj) {
@@ -124,8 +136,27 @@ function ClearPops() {
 }
 
 //Adding a new pop
-function AddPop(type, icon, title, content, link1, link2) {
+function AddPop(type, title, content, link1, link2, icon = null) {
 
+    if (icon == null) {
+
+        switch (type) {
+            case 'success':
+                icon = 'fa fa-check';
+                break;
+            case 'info':
+                icon = 'fa fa-info-circle';
+                break;
+            case 'danger':
+                icon = 'fa fa-exclamation-triangle';
+                break;
+            case 'warning':
+                icon = 'fa fa-exclamation-circle';
+                break;
+            default:
+                icon = 'fa fa-info-circle';
+        }
+    }
 
     let pop = '<li class="' + type + '">' +
         '            <div class="notification-icon">' +
@@ -193,4 +224,53 @@ function StartMenu() {
     } else {
         $('body').removeClass('menu-open');
     }
+}
+
+
+//open links
+function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
+    $('#loader').fadeIn(50);
+    let containerId = '#main-container';
+    switch (container) {
+        case 2:
+            containerId = '#second-container';
+            break;
+        case 3 :
+            containerId = '#thrid-container';
+            break;
+        default:
+            containerId = '#main-container';
+    }
+    $.ajax({
+        url: url,
+        data: data,
+        dataType: 'html',
+        statusCode: {
+            401: function () {
+                AddPop('danger', 'Unauthorized!', 'You don\'t have permissions to access this page<br><b>' + title + '</b>');
+            }
+        }
+    }).always(function (content) {
+        $('#loader').fadeOut(50);
+    }).fail(function (response) {
+        if (response.status != 401) {
+            AddPop('danger', 'Error!', 'An error occurred while trying to access this function, please try again later or contact us.');
+        }
+    }).done(function (content) {
+        if (content == 'userNotLogged') {
+            window.location = '/Login/Login';
+        } else {
+            $(containerId).html(content);
+            if (subtitle != '') {
+                title += '<small>' + subtitle + '</small>';
+            }
+            if (title != '') {
+                $(containerId + ' .title').show();
+                $(containerId + ' .title').html(title);
+            } else {
+                $(containerId + ' .title').hide();
+            }
+        }
+    });
+
 }

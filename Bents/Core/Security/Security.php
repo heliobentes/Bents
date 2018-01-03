@@ -98,6 +98,7 @@ namespace Bents\Core\Security {
         public static function GoToLogin($fromAjax = false)
         {
             if ($fromAjax) {
+                //header($_SERVER['SERVER_PROTOCOL'] . ' 401 Unauthorized', true, 401);
                 die("userNotLogged");
             } else {
                 Controller::RedirectToRequest(Config::Security()->GetLoginController(), Config::Security()->GetLoginAction());

@@ -10,7 +10,7 @@ namespace Bents\App\Controller {
         public function Login()
         {
             //View::$bag['destination'] = filter_var($_GET['destination'], FILTER_VALIDATE_URL);
-
+            $_SESSION['token'] = 'awjdnkajsdn';
             $this->RenderView();
 
         }
