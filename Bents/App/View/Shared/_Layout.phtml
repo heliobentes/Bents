@@ -210,8 +210,10 @@ use Bents\Core\Globalization\Globalization;
 
     $resource = $globalization->GenerateJSResource();
 
+    $language = preg_split('~-~',Globalization::GetLanguage())[0];
     View::$jsBundle[] = <<<EOT
   <script>
+  var language = '$language';
   function __(res){
       
       let resource = $resource;

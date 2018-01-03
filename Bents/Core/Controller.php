@@ -10,6 +10,8 @@ namespace Bents\Core {
         public static function RedirectToRequest($controller, $action)
         {
             $current_url = urlencode((isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+
+            header($_SERVER['SERVER_PROTOCOL'] . ' 301  Moved Permanently', true, 301);
             header('Location:/' . $controller . '/' . $action . '?destination=' . $current_url);
         }
 

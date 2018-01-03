@@ -776,87 +776,102 @@ input[type=text],select{
   width: auto;
   background: #f9f9f9;
   vertical-align: top;
+  position: relative;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
-input[type=text]:focus,select:focus{
-  border: 1px solid @green;
+.select:after {
+  content: '';
+  position: absolute;
+  background: #f9f9f9;
 }
-/*
- * END inputs and form fields
- */
-/*
- * --------------------------------
- * BEGIN margins classes
- */
+select {
+  option {
+outline: none;
+  }
+}
+  input[type=text]:focus,select:focus{
+    border: 1px solid @green;
+  }
+  /*
+   * END inputs and form fields
+   */
+  /*
+   * --------------------------------
+   * BEGIN margins classes
+   */
 
-.margin-10 {
-  margin:10px;
-}
-.margin-top-10 {
-  margin-top:10px;
-}
-.margin-bottom-10 {
-  margin-bottom:10px;
-}
-.margin-left-10 {
-  margin-left:10px;
-}
-.margin-right-10 {
-  margin-right:10px;
-}
-.margin-left-right-10 {
-  margin-right:10px;
-  margin-left:10px;
-}
-.margin-top-bottom-10 {
-  margin-top:10px;
-  margin-bottom:10px;
-}
-.margin-5{
-  margin:5px;
-}
-.margin-top-5 {
-  margin-top:5px;
-}
-.margin-bottom-5 {
-  margin-bottom:5px;
-}
-.margin-left-5 {
-  margin-left:5px;
-}
-.margin-right-5 {
-  margin-right:5px;
-}
-.margin-left-right-5 {
-  margin-right:5px;
-  margin-left:5px;
-}
-.margin-top-bottom-5 {
-  margin-top:5px;
-  margin-bottom:5px;
-}
-.margin-15{
-  margin:15px;
-}
-.margin-top-15 {
-  margin-top:15px;
-}
-.margin-bottom-15 {
-  margin-bottom:15px;
-}
-.margin-left-15 {
-  margin-left:15px;
-}
-.margin-right-15 {
-  margin-right:15px;
-}
-.margin-left-right-15 {
-  margin-right:15px;
-  margin-left:15px;
-}
-.margin-top-bottom-15 {
-  margin-top:15px;
-  margin-bottom:15px;
-}
+  .margin-10 {
+    margin:10px;
+  }
+  .margin-top-10 {
+    margin-top:10px;
+  }
+  .margin-bottom-10 {
+    margin-bottom:10px;
+  }
+  .margin-left-10 {
+    margin-left:10px;
+  }
+  .margin-right-10 {
+    margin-right:10px;
+  }
+  .margin-left-right-10 {
+    margin-right:10px;
+    margin-left:10px;
+  }
+  .margin-top-bottom-10 {
+    margin-top:10px;
+    margin-bottom:10px;
+  }
+  .margin-5{
+    margin:5px;
+  }
+  .margin-top-5 {
+    margin-top:5px;
+  }
+  .margin-bottom-5 {
+    margin-bottom:5px;
+  }
+  .margin-left-5 {
+    margin-left:5px;
+  }
+  .margin-right-5 {
+    margin-right:5px;
+  }
+  .margin-left-right-5 {
+    margin-right:5px;
+    margin-left:5px;
+  }
+  .margin-top-bottom-5 {
+    margin-top:5px;
+    margin-bottom:5px;
+  }
+  .margin-15{
+    margin:15px;
+  }
+  .margin-top-15 {
+    margin-top:15px;
+  }
+  .margin-bottom-15 {
+    margin-bottom:15px;
+  }
+  .margin-left-15 {
+    margin-left:15px;
+  }
+  .margin-right-15 {
+    margin-right:15px;
+  }
+  .margin-left-right-15 {
+    margin-right:15px;
+    margin-left:15px;
+  }
+  .margin-top-bottom-15 {
+    margin-top:15px;
+    margin-bottom:15px;
+  }
+
 /*
  * END margin Classes
  * -------------------------------

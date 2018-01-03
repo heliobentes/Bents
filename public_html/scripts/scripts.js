@@ -80,6 +80,10 @@ $(document).ready(function () {
         $('#full-loader').fadeOut('fast');
     }, 100);
 
+    $('select').select2({
+        language:language
+    });
+
 });
 
 

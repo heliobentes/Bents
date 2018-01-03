@@ -66,7 +66,7 @@ namespace Bents\Core\Globalization {
         public static function SetLanguage(string $language = '')
         {
             if ($language != '') {
-                setcookie('language', $language);
+                setcookie('language', $language,0,'/');
             }
         }
 

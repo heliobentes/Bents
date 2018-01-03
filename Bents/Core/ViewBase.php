@@ -89,12 +89,17 @@ namespace Bents\Core {
                 $script = '';
                 for ($x = 0; $x < sizeof($array); $x++) {
                     try {
-                        $script .= ' ' . file_get_contents(Application::$publicPath . $array[$x]) . "\n";
+                        if (preg_match('/http/', $array[$x])) {
+                            $script .= ' ' . file_get_contents($array[$x]);
+                        } else {
+                            $script .= ' ' . file_get_contents(Application::$publicPath . $array[$x]);
+                        }
                     } catch (\Exception $e) {
                         Log::SaveLog($e);
                     }
                 }
                 foreach (self::$jsBundle as $js) {
+
                     preg_match_all('/(?:<script[^>]*>)([^<]*)(?:<\/script>)/', $js, $matches);
 
                     foreach ($matches[1] as $match) {
