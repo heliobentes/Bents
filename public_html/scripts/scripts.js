@@ -116,6 +116,20 @@ function ReloadFunctions(){
     $('.select2').select2({
         language:language
     });
+
+    //tabs
+    $('.tabs .tabs-navigation li:not(.actions)').on('click',function(){
+        let parent = $(this).parent();
+        let index = parent.find('li').index($(this)) + 1;
+        parent.find("li").removeClass('active');
+        $(this).addClass('active');
+        parent.parent().find('.tabs-contents li').removeClass('active');
+        parent.parent().find('.tabs-contents li:nth-child('+index+')').addClass('active');
+        setTimeout(function(){
+            parent.parent().find('.tabs-contents li:nth-child('+index+')').addClass('open');
+        },50);
+    });
+
 }
 
 //removing all notifications delayed
