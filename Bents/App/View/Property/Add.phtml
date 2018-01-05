@@ -22,102 +22,113 @@ View::$title = View::__("Add a new property");
         <li><i class="fa fa-dollar-sign"></i></li>
         <li><i class="fa fa-file-alt"></i></li>
         <li><i class="far fa-images"></i></li>
-        <li class="actions"> <button class="btn btn-success"><i class="fa fa-save"></i> Save this property</button></li>
+        <li class="actions">
+            <button class="btn btn-primary previous"><i class="fa fa-backward"></i><?php echo View::__('Previous'); ?> </button>
+            <button class="btn btn-primary next"><?php echo View::__('Next'); ?>&nbsp;<i class="fa fa-forward"></i> </button>
+            <button class="btn btn-success"><i class="fa fa-save"></i>
+                <?php echo View::__('Save this property'); ?></button>
+        </li>
     </ul>
     <ul class="tabs-contents">
-        <li class="active open" >
+        <li class="active open">
 
             <div class="row">
 
                 <div class="side-col">
-                    <h2><i class="fa fa-map-marker-alt"></i> Property address</h2>
-                    <p>Start by adding the address to this property.</p>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83327.3577582379!2d-123.19394341241967!3d49.25782631999733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548673f143a94fb3%3A0xbb9196ea9b81f38b!2zVmFuY8O0dmVyLCBCQw!5e0!3m2!1spt-BR!2sca!4v1515026670031" width="100%" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    <h2><i class="fa fa-map-marker-alt"></i>
+                        <?php echo View::__('Property address'); ?></h2>
+                    <p>
+                        <?php echo View::__('Start adding the address to this property'); ?></p>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83327.3577582379!2d-123.19394341241967!3d49.25782631999733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548673f143a94fb3%3A0xbb9196ea9b81f38b!2zVmFuY8O0dmVyLCBCQw!5e0!3m2!1spt-BR!2sca!4v1515026670031"
+                            width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
                     <hr class="divisor"/>
+
+                    <p><b class="text-info"><?php echo View::__('Hint:'); ?></b><br>
+                        <?php echo View::__('Do not try to change the field that was auto filled. It will make the search easier for you and your customers.'); ?></p>
+                    <div class="field">
+                        <?php echo  View::__('Would you like to show this map on your website?'); ?>
+                        <label><input type="radio" name="show_map_on_website"> <?php echo View::__('Yes'); ?></label>
+                        <label><input type="radio" name="show_map_on_website"> <?php echo View::__('No'); ?></label>
+                    </div>
                 </div>
                 <div class="main-col">
                     <div class="field">
-                        Postal Code
-                        <input type="text" size="5">
-                        <small>Type the postal code and the system will fill the other fields</small>
+                        <?php echo View::__('Find an address'); ?>
+                        <input type="text" size="50" id="google_address_autocomplete" autocomplete="false"
+                               onFocus="geolocate()">
+                        <small> <?php echo View::__('Start typing the address and the system will fill up the fields'); ?></small>
                     </div>
-                    <div class="field inline">
+                    <div class="hidden" id="address-filled">
+                        <div class="field inline">
 
-                        Country
-                        <select class="select2">
-                            <option value="BR">Brazil</option>
-                            <option value="CA">Canada</option>
-                            <option value="US">United States</option>
-                        </select>
 
+                            <?php echo View::__('Country'); ?>
+                            <input type="text" size="10" id="country">
+
+                        </div>
+                        <div class="field inline">
+
+                            <?php echo View::__('Province'); ?>
+                            <input type="text" size="20" id="administrative_area_level_1">
+
+                        </div>
+                        <div class="field inline">
+
+                            <?php echo View::__('City'); ?>
+                            <input type="text" size="30" id="locality">
+
+                        </div>
+
+                        <div class="clear"></div>
+
+                        <div class="field inline">
+
+                            <?php echo View::__('Region'); ?>
+                            <input type="text" size="20" id="sublocality_level_1">
+
+                        </div>
+                        <div class="field inline">
+
+                            <?php echo View::__('Area'); ?>
+                            <input type="text" size="20" id="administrative_area_level_2">
+
+                        </div>
+                        <div class="clear"></div>
+                        <div class="field inline">
+                            <?php echo View::__('Unit #'); ?>
+                            <input type="text" size="3" id="unit_number">
+
+                        </div>
+                        <div class="field inline">
+                            <?php echo View::__('Street #'); ?>
+                            <input type="text" size="3" id="street_number">
+
+                        </div>
+                        <div class="field inline">
+                            <?php echo View::__('Address'); ?>
+                            <input type="text" size="40" id="route">
+
+                        </div>
+                        <div class="field">
+                            <?php echo View::__('Postal code'); ?>
+                            <input type="text" size="5" id="postal_code">
+                        </div>
                     </div>
-                    <div class="field inline">
-
-                        Province
-                        <select class="select2">
-                            <option value="AB">Alberta</option>
-                            <option value="BC">British Columbia</option>
-                            <option value="MB">Manitoba</option>
-                            <option value="NB">New Brunswick</option>
-                            <option value="NL">Newfoundland and Labrador</option>
-                            <option value="NS">Nova Scotia</option>
-                            <option value="ON">Ontario</option>
-                            <option value="PE">Prince Edward Island</option>
-                            <option value="QC">Quebec</option>
-                            <option value="SK">Saskatchewan</option>
-                            <option value="NT">Northwest Territories</option>
-                            <option value="NU">Nunavut</option>
-                            <option value="YT">Yukon</option>
-                        </select>
-
-                    </div>
-                    <div class="field inline">
-
-                        City
-                        <select class="select2">
-                            <option value="AB">Alberta</option>
-                            <option value="BC">British Columbia</option>
-                            <option value="MB">Manitoba</option>
-                            <option value="NB">New Brunswick</option>
-                            <option value="NL">Newfoundland and Labrador</option>
-                            <option value="NS">Nova Scotia</option>
-                            <option value="ON">Ontario</option>
-                            <option value="PE">Prince Edward Island</option>
-                            <option value="QC">Quebec</option>
-                            <option value="SK">Saskatchewan</option>
-                            <option value="NT">Northwest Territories</option>
-                            <option value="NU">Nunavut</option>
-                            <option value="YT">Yukon</option>
-                        </select>
-
-                    </div>
-                    <div class="clear"></div>
-                    <div class="field inline">
-                        Unit #
-                        <input type="text" size="3">
-
-                    </div>
-                    <div class="field inline">
-
-                        Address
-                        <input type="text" size="50">
-
-                    </div>
-
-
                 </div>
 
             </div>
         </li>
-        <li >
+        <li>
 
 
             <div class="row">
 
                 <div class="side-col">
-                    <h2><i class="fa fa-ticket-alt"></i> Basic information</h2>
+                    <h2><i class="fa fa-ticket-alt"></i>
+                        <?php View::__('Basic information'); ?></h2>
                     <p>Start by adding the address to this property.</p>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83327.3577582379!2d-123.19394341241967!3d49.25782631999733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548673f143a94fb3%3A0xbb9196ea9b81f38b!2zVmFuY8O0dmVyLCBCQw!5e0!3m2!1spt-BR!2sca!4v1515026670031" width="100%" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83327.3577582379!2d-123.19394341241967!3d49.25782631999733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548673f143a94fb3%3A0xbb9196ea9b81f38b!2zVmFuY8O0dmVyLCBCQw!5e0!3m2!1spt-BR!2sca!4v1515026670031"
+                            width="100%" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
                     <hr class="divisor"/>
                 </div>
                 <div class="main-col">
@@ -284,6 +295,99 @@ View::$title = View::__("Add a new property");
             </div>
         </li>
     </ul>
-    <div class="actions-bottom"><button class="btn btn-success"><i class="fa fa-save"></i> Save this property</button></div>
+    <div class="actions-bottom">
+
+        <button class="btn btn-primary previous"><i class="fa fa-backward"></i><?php echo View::__('Previous'); ?> </button>
+        <button class="btn btn-primary next"><?php echo View::__('Next'); ?>&nbsp;<i class="fa fa-forward"></i> </button>
+        <button class="btn btn-success"><i class="fa fa-save"></i> <?php echo View::__('Save this property'); ?></button>
+    </div>
 </div>
+
+<script>
+    // This example displays an address form, using the autocomplete feature
+    // of the Google Places API to help users fill in the information.
+
+    // This example requires the Places library. Include the libraries=places
+    // parameter when you first load the API. For example:
+    // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+    var placeSearch, autocomplete;
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        sublocality_level_1: 'long_name',
+        administrative_area_level_1: 'long_name',
+        administrative_area_level_2: 'long_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+    };
+
+    function initAutocomplete() {
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */(document.getElementById('google_address_autocomplete')),
+            {types: ['geocode']});
+
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress);
+    }
+
+    function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+
+        for (var component in componentForm) {
+            document.getElementById(component).value = '';
+            document.getElementById(component).disabled = false;
+        }
+
+        // Get each component of the address from the place details
+        // and fill the corresponding field on the form.
+        for (var i = 0; i < place.address_components.length; i++) {
+            var addressType = place.address_components[i].types[0];
+            if (componentForm[addressType]) {
+                var val = place.address_components[i][componentForm[addressType]];
+
+
+                document.getElementById(addressType).value = val;
+
+            }
+        }
+        console.log('+++'+$('#administrative_area_level_1').val()+'===');
+        if($('#locality').val()==''){
+            $('#locality').val($('#administrative_area_level_2').val());
+        }
+        setTimeout(function(){
+
+            document.getElementById('unit_number').focus();
+        },100);
+        $('#address-filled').slideDown('fast');
+    }
+
+    // Bias the autocomplete object to the user's geographical location,
+    // as supplied by the browser's 'navigator.geolocation' object.
+    function geolocate() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var geolocation = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                var circle = new google.maps.Circle({
+                    center: geolocation,
+                    radius: position.coords.accuracy
+                });
+                autocomplete.setBounds(circle.getBounds());
+            });
+        }
+    }
+</script>
+<!--API_KEY is on Google Keep-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAebtVrx8yzcCCmOvD3n1Fr_06afhhubU&libraries=places&callback=initAutocomplete"
+        async defer></script>
+
+
 

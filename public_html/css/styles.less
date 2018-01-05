@@ -59,8 +59,6 @@ body.menu-open {
  */
 .hidden {
   display: none;
-  opacity: 0;
-  visibility: hidden;
 }
 .clear {
   clear: both;
@@ -435,6 +433,10 @@ nav.navbar {
       float: right;
       background: none;
       border:none;
+      .btn{
+       display: inline-block;
+        margin-left: 8px;
+      }
     }
   }
   ul.tabs-contents {
@@ -467,6 +469,7 @@ nav.navbar {
     text-align: right;
     .btn {
       display: inline-block;
+      margin-left: 8px;
     }
   }
 }
@@ -967,7 +970,16 @@ input[type=text] {
 input[type=text]:focus {
   border: 1px solid @green;
 }
-
+input[type=text][readonly] {
+  background: none;
+  padding: 0;
+  border: none;
+}
+input[type=text][readonly]:focus {
+  background: none;
+  padding: 0;
+  border: none;
+}
 .select2-container {
   display: block;
   margin: 0;
@@ -1057,6 +1069,9 @@ input[type=text]:focus {
   margin: 0 -15px;
   letter-spacing: 0px;
   white-space: nowrap;
+  div {
+    white-space: normal;
+  }
   .side-col {
     padding: 0 35px 0 15px;
     display: inline-block;
@@ -1081,6 +1096,30 @@ input[type=text]:focus {
 
 /*
  * END layout
+ * --------------------------------
+ */
+
+/*
+ * --------------------------------
+ * BEGIN text colors
+ */
+.text-danger {
+  color:@red;
+}
+.text-warning {
+  color:@yellow;
+}
+.text-success {
+  color:@green;
+}
+.text-info {
+  color:@purple;
+}
+.text-primary {
+  color:@blue;
+}
+/*
+ * END text colors
  * --------------------------------
  */
 
