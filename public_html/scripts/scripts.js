@@ -124,10 +124,11 @@ function ReloadFunctions(){
         parent.find("li").removeClass('active');
         $(this).addClass('active');
         parent.parent().find('.tabs-contents li').removeClass('active');
+        parent.parent().find('.tabs-contents li').removeClass('open');
         parent.parent().find('.tabs-contents li:nth-child('+index+')').addClass('active');
         setTimeout(function(){
             parent.parent().find('.tabs-contents li:nth-child('+index+')').addClass('open');
-        },50);
+        },10);
     });
 
 }

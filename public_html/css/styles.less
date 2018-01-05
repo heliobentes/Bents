@@ -62,7 +62,11 @@ body.menu-open {
   opacity: 0;
   visibility: hidden;
 }
-
+.clear {
+  clear: both;
+  width: 100%;
+  display: block;
+}
 a {
   cursor: pointer;
 }
@@ -421,6 +425,9 @@ nav.navbar {
     li:not(.actions).active{
       background: #fff;
       border-bottom: 1px solid #fff;
+      i {
+        color:@green;
+      }
     }
 
     li.actions {
@@ -434,18 +441,20 @@ nav.navbar {
     margin:0;
     padding:20px 0;
     position: relative;
-    opacity:0;
     li {
       position: relative;
       display:none;
       list-style: none;
+      opacity:0;
+      transform: translateX(30px);
     }
     li.active {
       display:block
     }
     li.open{
       opacity:1;
-      transition:opacity 400ms ease-in;
+      transform: translateX(0px);
+      transition:all 200ms ease-in;
     }
   }
   .actions-bottom {
@@ -892,7 +901,11 @@ button {
   margin: 10px 0 15px;
   font-weight: 700;
   color: #333;
-
+  small {
+    font-weight: 400;
+    font-size: 13px;
+    color:#666;
+  }
   .input-group {
     display: flex;
     span {
