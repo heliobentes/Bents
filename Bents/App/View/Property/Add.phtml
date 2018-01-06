@@ -11,26 +11,146 @@ use Bents\Core\View;
 
 View::$layout = 'Shared/_Layout';
 View::$title = View::__("Add a new property");
+/**
+ * @var $types \Bents\App\Model\Type[]
+ */
+$types = View::$bag['types'];
 
 
 ?>
 <div class="tabs">
     <ul class="tabs-navigation">
-        <li class="active"><i class="fa fa-map-marker-alt"></i></li>
-        <li><i class="fa fa-ticket-alt"></i></li>
+        <li class="active"><i class="fa fa-ticket-alt"></i></li>
+        <li>
+            <i class="fa fa-map-marker-alt"></i></li>
         <li><i class="fa fa-tasks"></i></li>
         <li><i class="fa fa-dollar-sign"></i></li>
         <li><i class="fa fa-file-alt"></i></li>
         <li><i class="far fa-images"></i></li>
         <li class="actions">
-            <button class="btn btn-primary previous"><i class="fa fa-backward"></i><?php echo View::__('Previous'); ?> </button>
-            <button class="btn btn-primary next"><?php echo View::__('Next'); ?>&nbsp;<i class="fa fa-forward"></i> </button>
+            <button class="btn btn-primary previous"><i class="fa fa-backward"></i><?php echo View::__('Previous'); ?>
+            </button>
+            <button class="btn btn-primary next"><?php echo View::__('Next'); ?>&nbsp;<i class="fa fa-forward"></i>
+            </button>
             <button class="btn btn-success"><i class="fa fa-save"></i>
                 <?php echo View::__('Save this property'); ?></button>
         </li>
     </ul>
     <ul class="tabs-contents">
         <li class="active open">
+
+
+            <div class="row">
+
+                <div class="side-col">
+                    <h2><i class="fa fa-ticket-alt"></i>
+                        <?php echo View::__('Basic information'); ?></h2>
+                    <p><?php echo View::__('Tell you customers what it is!'); ?></p>
+                    <p><?php echo View::__('Here you should fill all the basic information about this property.'); ?></p>
+                    <p><?php echo View::__('Fill as many information as you can. It will make your ad or your website being found easier and often.'); ?></p>
+                    <hr class="divisor"/>
+                    <p><b class="text-info"><?php echo View::__('Hint:'); ?></b><br>
+                        <?php echo View::__('Start by typing the MLS® number. If we found this in our database, the system will fill all the rest for you. You will only need to add your images.'); ?>
+                    </p>
+                </div>
+                <div class="main-col">
+
+                    <div class="field">
+                        <?php echo View::__('MLS® Number'); ?>
+                        <input type="text" size="10">
+                        <small>Type the MLS number and the system will try to fill all the rest for you.</small>
+                    </div>
+                    <div class="field">
+                        <?php echo View::__('Kind of negotiation'); ?>
+                        <select class="select2" style="width: 200px">
+                            <option value=""><?php echo View::__('-- Select an option --'); ?></option>
+                            <option value="1"><?php echo View::__('Residential'); ?></option>
+                            <option value="2"><?php echo View::__('Commercial'); ?></option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <?php echo View::__('Property type'); ?>
+                        <select class="select2" style="width: 180px">
+                            <option value=""><?php echo View::__('-- Select an option --'); ?></option>
+                            <?php
+                            foreach ($types as $type) {
+                                echo "<option value='$type->idType'>$type->type</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="field inline">
+                        <i class="fa fa-bed"></i> <?php echo View::__('Bedrooms'); ?>
+                        <div class="input-group" data-trigger="spinner">
+                            <button class="btn btn-default" data-spin="down"><i class="fa fa-minus"></i></button>
+                            <input type="text" value="1">
+                            <button class="btn btn-default" data-spin="up"><i class="fa fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="field inline">
+                        <i class="fa fa-bath"></i> <?php echo View::__('Bathrooms'); ?>
+                        <div class="input-group" data-trigger="spinner">
+                            <button class="btn btn-default" data-spin="down"><i class="fa fa-minus"></i></button>
+                            <input type="text" value="1">
+                            <button class="btn btn-default" data-spin="up"><i class="fa fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <?php echo View::__('Area'); ?>
+                        <div class="input-group">
+                            <input type="text" value="0" size="5">
+                            <span>
+                                <select>
+                                    <option>m²</option>
+                                    <option>ft²</option>
+                                </select></span>
+                        </div>
+                    </div>
+                    <hr class="divisor"/>
+
+                    <div class="field inline">
+                        <i class="fa fa-car"></i> <?php echo View::__('Parking'); ?>
+                        <select class="select2" style="width: 180px">
+                            <option value=""><?php echo View::__('-- Select an option --'); ?></option>
+                            <?php
+                            foreach ($types as $type) {
+                                echo "<option value='$type->idType'>$type->type</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+
+                    <div class="field inline">
+                        <i class="fa fa-utensils"></i> <?php echo View::__('Laundry'); ?>
+                        <select class="select2" style="width: 180px">
+                            <option value=""><?php echo View::__('-- Select an option --'); ?></option>
+                            <?php
+                            foreach ($types as $type) {
+                                echo "<option value='$type->idType'>$type->type</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+
+                    <hr class="divisor"/>
+                    <div class="field inline">
+                        <?php echo View::__('Availability'); ?>
+                        <div class="input-group">
+                        <input type="text" size="10" readonly value="<?php echo strftime("%d-%m-%Y"); ?>">
+                            <button class="btn btn-default" ><i class="fa fa-calendar-alt"></i></button>
+                        </div>
+                        <small>Date format: dd-mm-yyyy</small>
+                    </div>
+
+                    <div class="field inline">
+                        <label><input type="checkbox"> <?php echo View::__('Open House'); ?>  </label>
+                    </div>
+
+                </div>
+
+            </div>
+        </li>
+        <li>
 
             <div class="row">
 
@@ -42,14 +162,19 @@ View::$title = View::__("Add a new property");
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83327.3577582379!2d-123.19394341241967!3d49.25782631999733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548673f143a94fb3%3A0xbb9196ea9b81f38b!2zVmFuY8O0dmVyLCBCQw!5e0!3m2!1spt-BR!2sca!4v1515026670031"
                             width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
                     <hr class="divisor"/>
-
-                    <p><b class="text-info"><?php echo View::__('Hint:'); ?></b><br>
-                        <?php echo View::__('Do not try to change the field that was auto filled. It will make the search easier for you and your customers.'); ?></p>
                     <div class="field">
-                        <?php echo  View::__('Would you like to show this map on your website?'); ?>
-                        <label><input type="radio" name="show_map_on_website"> <?php echo View::__('Yes'); ?></label>
-                        <label><input type="radio" name="show_map_on_website"> <?php echo View::__('No'); ?></label>
+                        <?php echo View::__('Would you like to show this map on your website?'); ?>
+                        <div class="radio-group">
+                            <label><input type="radio" name="show_map_on_website" checked
+                                          value="1"> <?php echo View::__('Yes'); ?></label>
+                            <label><input type="radio" name="show_map_on_website"
+                                          value="1"> <?php echo View::__('No'); ?></label>
+                        </div>
                     </div>
+                    <p><b class="text-info"><?php echo View::__('Hint:'); ?></b><br>
+                        <?php echo View::__('Do not try to change the field that was auto filled. It will make the search easier for you and your customers.'); ?>
+                    </p>
+
                 </div>
                 <div class="main-col">
                     <div class="field">
@@ -119,134 +244,6 @@ View::$title = View::__("Add a new property");
             </div>
         </li>
         <li>
-
-
-            <div class="row">
-
-                <div class="side-col">
-                    <h2><i class="fa fa-ticket-alt"></i>
-                        <?php View::__('Basic information'); ?></h2>
-                    <p>Start by adding the address to this property.</p>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83327.3577582379!2d-123.19394341241967!3d49.25782631999733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548673f143a94fb3%3A0xbb9196ea9b81f38b!2zVmFuY8O0dmVyLCBCQw!5e0!3m2!1spt-BR!2sca!4v1515026670031"
-                            width="100%" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
-                    <hr class="divisor"/>
-                </div>
-                <div class="main-col">
-
-                    <div class="field">
-                        Field label
-                        <input type="text">
-
-                    </div>
-                    <div class="field inline">
-
-                        Field label
-                        <input type="text">
-
-                    </div>
-                    <div class="field inline">
-
-                        Field label
-                        <input type="text">
-
-                    </div>
-                    <div class="field">
-                        Field label
-                        <div class="input-group">
-                            <span>$</span>
-                            <input type="text">
-                            <button class="btn btn-success"><i class="fa fa-eye"></i> Go</button>
-                        </div>
-                    </div>
-
-
-                    <div class="field">
-
-                        Field label
-                        <div class="input-group">
-                            <span>$</span>
-                            <input type="text">
-                        </div>
-
-                    </div>
-
-                    <div class="field">
-                        Field label
-                        <div class="input-group">
-                            <input type="text">
-                            <span>$</span>
-                        </div>
-                    </div>
-                    <div class="field">
-                        Field label
-                        <div class="input-group">
-                            <button class="btn btn-danger"><i class="fa fa-eye"></i> Go</button>
-                            <input type="text">
-                        </div>
-
-                    </div>
-
-                    <div class="field">
-
-                        Field label
-                        <div class="input-group">
-                            <button class="btn btn-success"><i class="fa fa-eye"></i> Go</button>
-                            <input type="text">
-                            <span>$</span>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        Field label
-                        <div class="input-group">
-                            <input type="text">
-                            <button class="btn btn-danger"><i class="fa fa-eye"></i> Go</button>
-                        </div>
-                    </div>
-                    <div class="field">
-                        Select
-                        <select class="select2">
-                            <option>Select option 1</option>
-                            <option>Select option 2 a bit bigger</option>
-                            <option>Select option 3 too much bigger than the other options</option>
-                            <option>Select option 4</option>
-                            <option>Small</option>
-                            <option>Select option 5</option>
-                        </select>
-                    </div>
-
-                    <div class="field">
-                        Select
-                        <select class="select2" multiple>
-                            <option>Select option 1</option>
-                            <option>Select option 2 a bit bigger</option>
-                            <option>Select option 3 too much bigger than the other options</option>
-                            <option>Select option 4</option>
-                            <option>Small</option>
-                            <option>Select option 5</option>
-                        </select>
-                    </div>
-
-                    <div class="field">
-                        Field label
-                        <div class="input-group" data-trigger="spinner">
-                            <button class="btn btn-default" data-spin="down"><i class="fa fa-minus"></i></button>
-                            <input type="text">
-                            <button class="btn btn-default" data-spin="up"><i class="fa fa-plus"></i></button>
-                        </div>
-                    </div>
-
-
-                    <div class="field">
-                        Field label
-                        <textarea>Teste</textarea>
-                    </div>
-
-                </div>
-
-            </div>
-        </li>
-        <li>
             <div class="row">
 
                 <div class="side-col">
@@ -297,9 +294,11 @@ View::$title = View::__("Add a new property");
     </ul>
     <div class="actions-bottom">
 
-        <button class="btn btn-primary previous"><i class="fa fa-backward"></i><?php echo View::__('Previous'); ?> </button>
-        <button class="btn btn-primary next"><?php echo View::__('Next'); ?>&nbsp;<i class="fa fa-forward"></i> </button>
-        <button class="btn btn-success"><i class="fa fa-save"></i> <?php echo View::__('Save this property'); ?></button>
+        <button class="btn btn-primary previous"><i class="fa fa-backward"></i><?php echo View::__('Previous'); ?>
+        </button>
+        <button class="btn btn-primary next"><?php echo View::__('Next'); ?>&nbsp;<i class="fa fa-forward"></i></button>
+        <button class="btn btn-success"><i class="fa fa-save"></i> <?php echo View::__('Save this property'); ?>
+        </button>
     </div>
 </div>
 
@@ -356,14 +355,13 @@ View::$title = View::__("Add a new property");
 
             }
         }
-        console.log('+++'+$('#administrative_area_level_1').val()+'===');
-        if($('#locality').val()==''){
+        if ($('#locality').val() == '') {
             $('#locality').val($('#administrative_area_level_2').val());
         }
-        setTimeout(function(){
+        setTimeout(function () {
 
             document.getElementById('unit_number').focus();
-        },100);
+        }, 100);
         $('#address-filled').slideDown('fast');
     }
 
@@ -384,10 +382,13 @@ View::$title = View::__("Add a new property");
             });
         }
     }
+
+    document.getElementById('google_address_autocomplete').onclick = function () {
+        initAutocomplete();
+
+    };
 </script>
-<!--API_KEY is on Google Keep-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAebtVrx8yzcCCmOvD3n1Fr_06afhhubU&libraries=places&callback=initAutocomplete"
-        async defer></script>
+
 
 
 

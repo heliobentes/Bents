@@ -70,6 +70,10 @@ namespace Bents\Core\Globalization {
             }
         }
 
+        public static function GetDefaultLanguage(){
+            return Config::Globalization()->GetDefaultLanguage();
+        }
+
         public function GenerateJSResource(){
             return file_get_contents(Application::$resPath . self::GetLanguage() . '.json');
         }

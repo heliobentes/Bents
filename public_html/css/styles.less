@@ -409,8 +409,7 @@ nav.navbar {
       line-height: 40px;
       display: inline-block;
       background: #eee;
-      margin-bottom: -1px;
-      margin-right: 5px;
+      margin:0 0 -1px 8px;
       i {
         font-size: 20px;
         color: @blue;
@@ -904,6 +903,10 @@ button {
   margin: 10px 0 15px;
   font-weight: 700;
   color: #333;
+  > i {
+    color:#666;
+    margin-right: 6px;
+  }
   small {
     font-weight: 400;
     font-size: 13px;
@@ -921,6 +924,11 @@ button {
       border-right: none;
       height: 30px;
 
+    }
+    select {
+      background: none;
+      border:none;
+      outline:none;
     }
     .btn {
       height: 30px;
@@ -947,8 +955,18 @@ button {
 .field.inline {
   display: inline-block;
   margin: 10px 10px 10px 0;
+  vertical-align: middle;
 }
+.radio-group {
+  label{
+    margin: 5px 20px 0 0;
+    display: inline-block;
 
+  }
+}
+.iradio_flat-green,.icheckbox_flat-green {
+  margin-right: 6px;
+}
 input[type=text] {
   height: 30px;
   line-height: 30px;
@@ -970,15 +988,9 @@ input[type=text] {
 input[type=text]:focus {
   border: 1px solid @green;
 }
-input[type=text][readonly] {
-  background: none;
-  padding: 0;
-  border: none;
-}
-input[type=text][readonly]:focus {
-  background: none;
-  padding: 0;
-  border: none;
+input[type=text][disabled] {
+  background: #eee;
+  color:#666;
 }
 .select2-container {
   display: block;

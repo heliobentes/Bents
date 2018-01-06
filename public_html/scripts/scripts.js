@@ -109,7 +109,7 @@ function ReloadFunctions(){
     //Starting checkboxes
     $('input').iCheck({
         checkboxClass: 'icheckbox_flat-green',
-        radioClass: 'iradio_flat'
+        radioClass: 'iradio_flat-green'
     });
 
     //loading select2 on default configuration
@@ -121,16 +121,55 @@ function ReloadFunctions(){
     $('.tabs .tabs-navigation li:not(.actions)').on('click',function(){
         let parent = $(this).parent();
         let index = parent.find('li').index($(this)) + 1;
-        parent.find("li").removeClass('active');
-        $(this).addClass('active');
-        parent.parent().find('.tabs-contents li').removeClass('active');
-        parent.parent().find('.tabs-contents li').removeClass('open');
-        parent.parent().find('.tabs-contents li:nth-child('+index+')').addClass('active');
-        setTimeout(function(){
-            parent.parent().find('.tabs-contents li:nth-child('+index+')').addClass('open');
-        },10);
+
+        ChangeTab($(this),parent,index);
+
+
+    });
+    $(".tabs .next").on('click',function(){
+        let parent =( $(this).parent().parent().find('.tabs-navigation').length >0)? $(this).parent().parent().find('.tabs-navigation'): $(this).closest('.tabs-navigation');
+
+        let next = parent.find('li').index(parent.find('li.active'))+2;
+
+
+        if(next>(parent.find('li').length-1) || next<=0){
+            next = 1;
+        }
+        let obj = parent.find('li:nth-child('+next+')');
+
+
+        ChangeTab(obj,parent,next);
     });
 
+    $(".tabs .previous").on('click',function(){
+        let parent =( $(this).parent().parent().find('.tabs-navigation').length >0)? $(this).parent().parent().find('.tabs-navigation'): $(this).closest('.tabs-navigation');
+
+        let prev = parent.find('li').index(parent.find('li.active'));
+
+
+        if(prev<=0 || prev>(parent.find('li').length-1)){
+            prev = (parent.find('li').length-1);
+        }
+        let obj = parent.find('li:nth-child('+prev+')');
+
+
+        ChangeTab(obj,parent,prev);
+    });
+
+
+}
+
+//changing tab
+function ChangeTab(obj,parent,index){
+    parent.find("li").removeClass('active');
+    obj.addClass('active');
+
+    parent.parent().find('.tabs-contents li').removeClass('active');
+    parent.parent().find('.tabs-contents li').removeClass('open');
+    parent.parent().find('.tabs-contents li:nth-child('+index+')').addClass('active');
+    setTimeout(function(){
+        parent.parent().find('.tabs-contents li:nth-child('+index+')').addClass('open');
+    },10);
 }
 
 //removing all notifications delayed
