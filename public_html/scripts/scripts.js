@@ -157,6 +157,26 @@ function ReloadFunctions(){
     });
 
 
+    $('#property-description').trumbowyg({
+        svgPath: '/plugins/trumbowyg/ui/icons.svg',
+        autogrow: true,
+        resetCss: true,
+        imageWidthModalEdit: true,
+        btns: [
+            ['viewHTML'],
+            ['undo', 'redo'], // Only supported in Blink browsers
+            ['formatting'],
+            ['strong', 'em', 'del'],
+            ['foreColor', 'backColor'],
+            ['superscript', 'subscript'],
+            ['link'],
+            ['insertImage'],
+            ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+            ['unorderedList', 'orderedList'],
+            ['horizontalRule'],
+            ['removeformat']
+        ]
+    });
 }
 
 //changing tab

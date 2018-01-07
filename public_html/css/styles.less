@@ -17,8 +17,6 @@
 
 *:not(i) {
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
 }
 
 body, html {
@@ -28,6 +26,8 @@ body, html {
   vertical-align: top;
   overflow-x: hidden;
   height: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
 }
 
 body.menu-open {
@@ -395,11 +395,11 @@ nav.navbar {
 .tabs {
   margin: 0;
   padding: 0;
-  ul.tabs-navigation {
+  >ul.tabs-navigation {
     margin: 0;
     padding: 0;
     border-bottom: 1px solid #eee;
-    li:not(.actions) {
+    >li:not(.actions) {
       list-style: none;
       border: 1px solid #eee;
       height: 40px;
@@ -415,11 +415,11 @@ nav.navbar {
         color: @blue;
       }
     }
-    li:not(.actions):hover {
+    >li:not(.actions):hover {
       background: #f7f7f7;
       cursor: pointer;
     }
-    li:not(.actions).active{
+    >li:not(.actions).active{
       background: #fff;
       border-bottom: 1px solid #fff;
       i {
@@ -427,7 +427,7 @@ nav.navbar {
       }
     }
 
-    li.actions {
+    >li.actions {
       list-style: none;
       float: right;
       background: none;
@@ -438,21 +438,21 @@ nav.navbar {
       }
     }
   }
-  ul.tabs-contents {
+  >ul.tabs-contents {
     margin:0;
     padding:20px 0;
     position: relative;
-    li {
+    >li {
       position: relative;
       display:none;
       list-style: none;
       opacity:0;
       transform: translateX(30px);
     }
-    li.active {
+    >li.active {
       display:block
     }
-    li.open{
+    >li.open{
       opacity:1;
       transform: translateX(0px);
       transition:all 200ms ease-in;
@@ -1104,6 +1104,16 @@ input[type=text][disabled] {
     border-left: 1px solid #eee;
     padding-left: 35px;
   }
+  .col-xl-4 {
+    width: 25%;
+    padding: 0 15px;
+    display: inline-block;
+  }
+  .col-xl-3 {
+    width: 33.3%;
+    padding: 0 15px;
+    display: inline-block;
+  }
 }
 
 /*
@@ -1132,6 +1142,24 @@ input[type=text][disabled] {
 }
 /*
  * END text colors
+ * --------------------------------
+ */
+
+/**
+ * --------------------------------
+ * BEGIN plugins overrides
+ */
+.trumbowyg-box, .trumbowyg-editor {
+  display: block;
+  position: relative;
+  border: 1px solid #DDD;
+  width: 100%;
+  min-height: 100px;
+  margin: 0 auto;
+  font-weight: normal;
+}
+/**
+ * END plugins overrides
  * --------------------------------
  */
 

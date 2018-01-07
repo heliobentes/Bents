@@ -107,6 +107,16 @@ $types = View::$bag['types'];
                         </div>
                     </div>
                     <hr class="divisor"/>
+                    <div class="field">
+                        <?php echo View::__('Property title'); ?>
+                        <input type="text" size="50">
+                    </div>
+                    <div class="field">
+                        <?php echo View::__('Property descrition'); ?>
+                        <textarea id="property-description"></textarea>
+                    </div>
+
+                    <hr class="divisor"/>
 
                     <div class="field inline">
                         <i class="fa fa-car"></i> <?php echo View::__('Parking'); ?>
@@ -136,8 +146,8 @@ $types = View::$bag['types'];
                     <div class="field inline">
                         <?php echo View::__('Availability'); ?>
                         <div class="input-group">
-                        <input type="text" size="10" readonly value="<?php echo strftime("%d-%m-%Y"); ?>">
-                            <button class="btn btn-default" ><i class="fa fa-calendar-alt"></i></button>
+                            <input type="text" size="10" readonly value="<?php echo strftime("%d-%m-%Y"); ?>">
+                            <button class="btn btn-default"><i class="fa fa-calendar-alt"></i></button>
                         </div>
                         <small>Date format: dd-mm-yyyy</small>
                     </div>
@@ -248,10 +258,117 @@ $types = View::$bag['types'];
 
                 <div class="side-col">
                     <h2><i class="fa fa-tasks"></i> Features</h2>
-                    <p>Start by adding the address to this property.</p>
+                    <p><?php echo View::__('Check everything that this property has.'); ?></p>
                     <hr class="divisor"/>
+                    <p><?php echo View::__('We recommend you to score this property on all options.'); ?></p>
                 </div>
                 <div class="main-col">
+                    <div class="row">
+
+                        <div class="col-xl-4">
+                            <div class="field inline">
+                                <label><input type="checkbox"> <?php echo View::__('Furnished'); ?>  </label>
+                            </div>
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="field inline">
+                                <label><input type="checkbox"> <?php echo View::__('Pet friendly'); ?>  </label>
+                            </div>
+
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="field inline">
+                                <label><input type="checkbox"> <?php echo View::__('Smoking OK'); ?>  </label>
+                            </div>
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="field inline">
+                                <label><input type="checkbox"> <?php echo View::__('Fireplace'); ?>  </label>
+                            </div>
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="field inline">
+                                <label><input type="checkbox"> <?php echo View::__('Pool'); ?>  </label>
+                            </div>
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="field inline">
+                                <label><input type="checkbox"> <?php echo View::__('Garage'); ?>  </label>
+                            </div>
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="field inline">
+                                <label><input type="checkbox"> <?php echo View::__('Waterfront'); ?>  </label>
+                            </div>
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="field inline">
+                                <label><input type="checkbox"> <?php echo View::__('Luxury'); ?>  </label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr class="divisor"/>
+<div class="row">
+    <div class="col-xl-3">
+        <div id="walk_score"></div>
+    </div>
+    <div class="col-xl-3">
+        <div id="transit_score"></div>
+    </div>
+    <div class="col-xl-3">
+        <div id="bike_score"></div>
+    </div>
+</div>
+<!--                    <script src="https://www.gstatic.com/charts/loader.js"></script>-->
+                    <script type="text/javascript">
+
+                        window.onload = function() {
+                            // Load the Visualization API and the corechart package.
+                            google.charts.load('current', {'packages': ['corechart']});
+
+                            // Set a callback to run when the Google Visualization API is loaded.
+                            google.charts.setOnLoadCallback(drawChart);
+                        };
+
+                        // Callback that creates and populates a data table,
+                        // instantiates the pie chart, passes in the data and
+                        // draws it.
+                        function drawChart() {
+
+                            // Create the data table.
+                            var data = new google.visualization.DataTable();
+                            data.addColumn('string', 'Score');
+                            data.addColumn('number', 'number');
+                            data.addRows([
+                                ['Score',66],
+                                ['empty',34]
+                            ]);
+
+                            // Set chart options
+                            var options = {
+                                legend:'none',
+                                pieSliceText: 'none',
+
+                                animation:{
+                                    duration: 200,
+                                    easing: 'out',
+                                    startup:true
+                                },
+
+                                pieHole: 0.8,
+                                slices: {
+                                    0: { color: 'blue' },
+                                    1: { color: 'transparent' }
+                                },
+                                'width':400,
+                                'height':300};
+
+                            // Instantiate and draw our chart, passing in some options.
+                            var chart = new google.visualization.PieChart(document.getElementById('walk_score'));
+                            chart.draw(data, options);
+                        }
+                    </script>
                 </div>
             </div>
         </li>

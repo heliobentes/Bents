@@ -22,6 +22,8 @@ namespace Bents\Core\StartUp {
             $style[] = 'css/flat/green.css';
             $style[] = 'css/flag-icon.min.css';
             $style[] = 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css';
+            $style[] = 'plugins/trumbowyg/ui/trumbowyg.min.css';
+            $style[] = 'plugins/trumbowyg/plugins/colors/ui/trumbowyg.colors.min.css';
             $style[] = 'css/styles.css';
 
             return $style;
@@ -39,6 +41,9 @@ namespace Bents\Core\StartUp {
             $script[] = 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js';
             $script[] = 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/i18n/'.$language.'.js';
             $script[] = 'scripts/jquery.spinner.min.js';
+            $script[] = 'plugins/trumbowyg/trumbowyg.min.js';
+            $script[] = 'plugins/trumbowyg/plugins/colors/trumbowyg.colors.min.js';
+            $script[] = 'https://www.gstatic.com/charts/loader.js';
             $script[] = 'scripts/scripts.js';
 
 
