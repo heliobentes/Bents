@@ -22,6 +22,7 @@ $features = View::$bag['features'];
 
 
 ?>
+<form method="post" enctype="multipart/form-data" action="/Property/Save" id="add-property">
 <div class="tabs">
     <ul class="tabs-navigation">
         <li class="active"><i class="fa fa-file-alt"></i></li>
@@ -30,9 +31,9 @@ $features = View::$bag['features'];
         <li><i class="fa fa-dollar-sign"></i></li>
         <li><i class="far fa-images"></i></li>
         <li class="actions">
-            <button class="btn btn-primary previous"><i class="fa fa-backward"></i><?php echo View::__('Previous'); ?>
+            <button type="button" class="btn btn-primary previous"><i class="fa fa-backward"></i><?php echo View::__('Previous'); ?>
             </button>
-            <button class="btn btn-primary next"><?php echo View::__('Next'); ?>&nbsp;<i class="fa fa-forward"></i>
+            <button type="button"  class="btn btn-primary next"><?php echo View::__('Next'); ?>&nbsp;<i class="fa fa-forward"></i>
             </button>
             <button class="btn btn-success"><i class="fa fa-save"></i>
                 <?php echo View::__('Save this property'); ?></button>
@@ -156,6 +157,15 @@ $features = View::$bag['features'];
 
                     <div class="field inline">
                         <label><input type="checkbox"> <?php echo View::__('Open House'); ?>  </label>
+                    </div>
+
+
+                    <hr class="divisor"/>
+                    <div class="field">
+                        <?php echo View::__('Internal observations'); ?>
+                        <textarea id="internal-observations">
+
+                        </textarea>
                     </div>
 
                 </div>
@@ -435,10 +445,10 @@ window.onload = function() {
                     <div class="field">
                         <?php echo View::__('Select a currency'); ?>
 
-                        <select class="select2" style="width: 120px">
+                        <select class="select2" style="width: 120px" id="currency-indicator">
                             <option>AUD (A$)</option>
                             <option>BRL (R$)</option>
-                            <option>CAD (C$)</option>
+                            <option selected>CAD (C$)</option>
                             <option>CHF (Fr)</option>
                             <option>CNY (元)</option>
                             <option>EUR (€)</option>
@@ -462,7 +472,7 @@ window.onload = function() {
                     <div class="field">
                         <?php echo View::__('Selling price'); ?>
                         <div class="input-group ">
-                            <span>
+                            <span class="currency-indicator">
                                CAD $
                             </span>
                             <input type="text" max="10" class="money" value="0">
@@ -471,7 +481,7 @@ window.onload = function() {
                     <div class="field">
                         <?php echo View::__('Rental price'); ?>
                         <div class="input-group ">
-                            <span>CAD $
+                            <span class="currency-indicator">CAD $
                             </span>
                             <input type="text" max="10" class="money" value="0">
                         </div>
@@ -480,7 +490,7 @@ window.onload = function() {
                     <div class="field">
                         <?php echo View::__('Condo expenses'); ?>
                         <div class="input-group ">
-                            <span>CAD $
+                            <span class="currency-indicator">CAD $
                             </span>
                             <input type="text" max="10" class="money" value="0">
                         </div>
@@ -494,25 +504,33 @@ window.onload = function() {
             <div class="row">
 
                 <div class="side-col">
-                    <h2><i class="fa fa-images"></i> Images</h2>
+                    <h2><i class="fa fa-images"></i> Pictures</h2>
                     <p>Start by adding the address to this property.</p>
                     <hr class="divisor"/>
                 </div>
                 <div class="main-col">
+
+                    <div class="field">
+                        <label class="btn btn-primary">
+                            <i class="fa fa-image"></i> <span>Add pictures</span>
+                            <input type="file" multiple accept="image/jpeg,image/png,image/gif" id="images-filed">
+                        </label>
+                    </div>
+                    <ul id="images-preview"></ul>
                 </div>
             </div>
         </li>
     </ul>
     <div class="actions-bottom">
 
-        <button class="btn btn-primary previous"><i class="fa fa-backward"></i><?php echo View::__('Previous'); ?>
+        <button  type="button" class="btn btn-primary previous"><i class="fa fa-backward"></i><?php echo View::__('Previous'); ?>
         </button>
-        <button class="btn btn-primary next"><?php echo View::__('Next'); ?>&nbsp;<i class="fa fa-forward"></i></button>
+        <button type="button"  class="btn btn-primary next"><?php echo View::__('Next'); ?>&nbsp;<i class="fa fa-forward"></i></button>
         <button class="btn btn-success"><i class="fa fa-save"></i> <?php echo View::__('Save this property'); ?>
         </button>
     </div>
 </div>
-
+</form>
 <script>
     // This example displays an address form, using the autocomplete feature
     // of the Google Places API to help users fill in the information.

@@ -800,6 +800,46 @@ nav.navbar {
  * --------------------------------
  */
 
+/**
+ * --------------------------------
+ * BEGIN image upload
+ */
+#images-preview {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li {
+    vertical-align: middle;
+    border: 1px solid #ccc;
+    display: inline-block;
+    margin: 0 10px 10px 0;
+    text-align: center;
+    background: #eee;
+    padding: 10px;
+    border-radius: 4px;
+    width: min-content;
+    min-width: 200px;
+    label{
+      width: 100%;
+      text-align: left;
+      display: block;
+      margin-bottom: 10px;
+    }
+    input[type=text]{
+      width: 100%;
+      margin-top: 8px;
+    }
+    img {
+      max-height: 140px;
+      max-width: 230px;
+    }
+  }
+}
+/**
+ * END image upload
+ * --------------------------------
+ */
+
 /*
  * --------------------------------
  * BEGIN buttons
@@ -810,7 +850,7 @@ button {
 }
 
 .btn {
-  display: block;
+  display: inline-block;
   padding: 5px 10px;
   border-radius: 4px;
   text-decoration: none;
@@ -820,8 +860,13 @@ button {
   i {
     margin-right: 6px;
   }
+  input {
+    display: none;
+  }
 }
-
+label.btn {
+  font-weight: 400;
+}
 .btn.btn-link {
   color: @blue;
   baackground: none;
@@ -1157,6 +1202,9 @@ input[type=text][disabled] {
   min-height: 100px;
   margin: 0 auto;
   font-weight: normal;
+}
+.trumbowyg-editor {
+  border:none !important;
 }
 .score {
   position: relative;

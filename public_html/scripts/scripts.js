@@ -178,6 +178,21 @@ function ReloadFunctions(){
         ]
     });
 
+    //Property Description
+    $('#internal-observations').trumbowyg({
+        svgPath: '/plugins/trumbowyg/ui/icons.svg',
+        autogrow: true,
+        resetCss: true,
+        imageWidthModalEdit: true,
+        btns: [
+            ['strong', 'em', 'del'],
+            ['foreColor', 'backColor'],
+            ['unorderedList', 'orderedList'],
+            ['horizontalRule'],
+            ['removeformat']
+        ]
+    });
+
     //spinner score
     $(".spinner-score").spinner('delay', 0).spinner('changed', function(e, newVal, oldVal) {
         drawChart();
@@ -185,6 +200,66 @@ function ReloadFunctions(){
 
     //mask fields
     MaskAllFields();
+
+    //changing currency
+    $('#currency-indicator').on('select2:select',function(){
+        $(".currency-indicator").html($(this).val());
+    });
+
+    //image upload
+    $("#images-filed").change(function(){
+        let input = $(this)[0];
+
+        //let total = 0;
+        if (input.files) {
+            //$("#images-preview").html('');
+
+            for(var i=0;i<input.files.length;i++) {
+                let reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#images-preview').prepend('<li><input type="hidden" name="image[]" value="'+e.target.result+'"/> <label><input type="radio" name="main-picture"> '+__('Main picture')+'</label><img src="'+e.target.result+'"/><input type="text" name="imageLabel[]" placeholder="'+__('Picture label')+'"></li>');
+                    $('input[name=main-picture]').iCheck({
+                        checkboxClass: 'icheckbox_flat-green',
+                        radioClass: 'iradio_flat-green'
+                    });
+                };
+
+                reader.readAsDataURL(input.files[i]);
+            }
+            total = input.files.length;
+
+        }
+       // $(input).parent().find('span').html(total+__(' images selected'));
+    });
+
+    //Program a custom submit function for the form
+    $("form#add-property").submit(function(event){
+
+        //disable the default form submission
+        event.preventDefault();
+
+        $('#loader').show();
+
+        //grab all form data
+        var formData = new FormData($(this)[0]);
+
+        $.ajax({
+            url: $(this).attr('action'),
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (returndata) {
+                alert(returndata);
+                $('#loader').hide();
+            }
+        });
+
+        return false;
+    });
 }
 
 //masking all fields based on type and
