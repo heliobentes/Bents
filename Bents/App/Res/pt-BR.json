@@ -1,4 +1,6 @@
 {
+  "decimalSeparator":",",
+  "thousandSeparator":".",
   "Notifications": "Notificações",
   "Error": "Erro",
   "Error!": "Erro!",

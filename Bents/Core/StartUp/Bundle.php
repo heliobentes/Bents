@@ -44,6 +44,8 @@ namespace Bents\Core\StartUp {
             $script[] = 'plugins/trumbowyg/trumbowyg.min.js';
             $script[] = 'plugins/trumbowyg/plugins/colors/trumbowyg.colors.min.js';
             $script[] = 'https://www.gstatic.com/charts/loader.js';
+            $script[] = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCAebtVrx8yzcCCmOvD3n1Fr_06afhhubU&libraries=places';
+            $script[] = 'scripts/jquery.mask.min.js';
             $script[] = 'scripts/scripts.js';
 
 

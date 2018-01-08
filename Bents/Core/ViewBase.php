@@ -129,38 +129,38 @@ namespace Bents\Core {
         {
             $search = array(
 
-                '~(\s)\/\/.*~',   //remove inline comments
-                '~\>[\s]+~',         //strip whitespaces after tags
-                '~[\s]+\<~',         //strip whitespaces before tags
-                '~:[\s]+~',          //shorten whitespaces after :
-                '~;[\s]+~',          //shorten whitespaces after ;
-                '~\{[\s]+~',         //shorten whitespaces after {
-                '~[\s]+\{~',         //shorten whitespaces before {
-                '~[\s]+\}~',         //shorten whitespaces before }
-                '~\}[\s]+~',         //shorten whitespaces after }
-                //'~\n\s*\n~',         //remove line breaks
-                //'~\n~',              //remove line breaks
-                '~<\!--.*?\--\>~', //remove html comments
-                '~\>[\s]+\<~',       // remove whitespaces between tags
-                '~(\s|&nbsp;){2,}~', //shorten multiple whitespace sequences
-                '~\/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*\/~'       //remove multi line comments
+                '~(\s)\/\/.*~',                                         //remove inline comments
+               // '~\>[\s]+~',                                            //strip whitespaces after tags
+                //'~[\s]+\<~',                                            //strip whitespaces before tags
+                '~:[\s]+~',                                             //shorten whitespaces after :
+                '~;[\s]+~',                                             //shorten whitespaces after ;
+                '~\{[\s]+~',                                            //shorten whitespaces after {
+                '~[\s]+\{~',                                            //shorten whitespaces before {
+                '~[\s]+\}~',                                            //shorten whitespaces before }
+                '~\}[\s]+~',                                            //shorten whitespaces after }
+                '~\n\s*\n~',                                            //remove line breaks
+                '~\n~',                                                 //remove line breaks
+                '~\>([\s]+)\<~',                                        //remove whitespaces between tags
+                '~<\!--.*?\--\>~',                                      //remove html comments
+                '~(\s|&nbsp;){2,}~',                                    //shorten multiple whitespace sequences
+                '~\/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*\/~'          //remove multi line comments
             );
             $replace = array(
                 '',
-                '>',
-                '<',
+                //'> ',
+                //' <',
                 ':',
                 ';',
                 '{',
                 '{',
                 '}',
                 '}',
-                //' ',
-                //' ',
-                '',
-                '',
                 ' ',
-                '',
+                ' ',
+                '><',
+                ' ',
+                ' ',
+                ' ',
             );
             if (Config::SystemBehavior()->IsHTMLSanitizable()) {
                 $buffer = preg_replace($search, $replace, $buffer);

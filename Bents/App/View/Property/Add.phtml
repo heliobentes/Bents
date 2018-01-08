@@ -20,12 +20,10 @@ $types = View::$bag['types'];
 ?>
 <div class="tabs">
     <ul class="tabs-navigation">
-        <li class="active"><i class="fa fa-ticket-alt"></i></li>
-        <li>
-            <i class="fa fa-map-marker-alt"></i></li>
+        <li class="active"><i class="fa fa-file-alt"></i></li>
+        <li><i class="fa fa-map-marker-alt"></i></li>
         <li><i class="fa fa-tasks"></i></li>
         <li><i class="fa fa-dollar-sign"></i></li>
-        <li><i class="fa fa-file-alt"></i></li>
         <li><i class="far fa-images"></i></li>
         <li class="actions">
             <button class="btn btn-primary previous"><i class="fa fa-backward"></i><?php echo View::__('Previous'); ?>
@@ -50,15 +48,15 @@ $types = View::$bag['types'];
                     <p><?php echo View::__('Fill as many information as you can. It will make your ad or your website being found easier and often.'); ?></p>
                     <hr class="divisor"/>
                     <p><b class="text-info"><?php echo View::__('Hint:'); ?></b><br>
-                        <?php echo View::__('Start by typing the MLS® number. If we found this in our database, the system will fill all the rest for you. You will only need to add your images.'); ?>
+                        <?php echo View::__('Start by typing the MLS<sup>®</sup> number. If we found this in our database, the system will fill all the rest for you. You will only need to add your images.'); ?>
                     </p>
                 </div>
                 <div class="main-col">
 
                     <div class="field">
-                        <?php echo View::__('MLS® Number'); ?>
+                        <?php echo View::__('MLS<sup>®</sup> Number'); ?>
                         <input type="text" size="10">
-                        <small>Type the MLS number and the system will try to fill all the rest for you.</small>
+                        <small><?php echo View::__('Type the MLS<sup>®</sup> number and the system will try to fill all the rest for you.');?></small>
                     </div>
                     <div class="field">
                         <?php echo View::__('Kind of negotiation'); ?>
@@ -260,7 +258,7 @@ $types = View::$bag['types'];
                     <h2><i class="fa fa-tasks"></i> Features</h2>
                     <p><?php echo View::__('Check everything that this property has.'); ?></p>
                     <hr class="divisor"/>
-                    <p><?php echo View::__('We recommend you to score this property on all options.'); ?></p>
+                    <p><?php echo View::__('We recommend you to show the scores for property on your website'); ?></p>
                 </div>
                 <div class="main-col">
                     <div class="row">
@@ -309,66 +307,144 @@ $types = View::$bag['types'];
 
                     </div>
                     <hr class="divisor"/>
-<div class="row">
-    <div class="col-xl-3">
-        <div id="walk_score"></div>
-    </div>
-    <div class="col-xl-3">
-        <div id="transit_score"></div>
-    </div>
-    <div class="col-xl-3">
-        <div id="bike_score"></div>
-    </div>
-</div>
-<!--                    <script src="https://www.gstatic.com/charts/loader.js"></script>-->
+                    <h2><?php echo View::__('Based on the address you typed, we found the following scores:'); ?></h2>
+                    <div class="row">
+                        <div class="col-xl-3">
+                            <div class="score">
+                                <div id="walk_score"></div>
+                                <div class="score-title">Walk Score:</div>
+                                <div class="score-number">
+                                    <div class="field inline">
+                                        <div class="input-group spinner-score" data-trigger="spinner">
+                                            <button class="btn btn-default" data-spin="down"><i class="fa fa-minus"></i></button>
+                                            <input type="text" value="100" maxsize="3"  data-min="0" data-max="100" id="walk-score-val" onkeyup="drawChart()">
+                                            <button class="btn btn-default" data-spin="up"><i class="fa fa-plus"></i></button>
+                                        </div>
+                                    </div></div>
+                                <div class="score-max">of 100</div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3">
+                            <div class="score">
+                                <div id="transit_score"></div>
+                                <div class="score-title">Transit Score:</div>
+                                <div class="score-number">
+                                    <div class="field inline">
+                                        <div class="input-group spinner-score" data-trigger="spinner">
+                                            <button class="btn btn-default" data-spin="down"><i class="fa fa-minus"></i></button>
+                                            <input type="text" value="100" maxsize="3"  data-min="0" data-max="100" id="transit-score-val" onkeyup="drawChart()">
+                                            <button class="btn btn-default" data-spin="up"><i class="fa fa-plus"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="score-max">of 100</div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3">
+                            <div class="score">
+                                <div id="bike_score"></div>
+                                <div class="score-title">Bike Score:</div>
+                                <div class="score-number">
+                                    <div class="field inline">
+                                        <div class="input-group spinner-score" data-trigger="spinner">
+                                            <button class="btn btn-default" data-spin="down"><i class="fa fa-minus"></i></button>
+                                            <input type="text" value="100" maxsize="3"  data-min="0" data-max="100" id="bike-score-val" onkeyup="drawChart()">
+                                            <button class="btn btn-default" data-spin="up"><i class="fa fa-plus"></i></button>
+                                        </div>
+                                    </div></div>
+                                <div class="score-max">of 100</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <?php echo View::__('Would you like to show these scores on your website?'); ?>
+                        <div class="radio-group">
+                            <label><input type="radio" name="show_score_on_website" checked
+                                          value="1"> <?php echo View::__('Yes'); ?></label>
+                            <label><input type="radio" name="show_score_on_website"
+                                          value="1"> <?php echo View::__('No'); ?></label>
+                        </div>
+                    </div>
+
                     <script type="text/javascript">
 
-                        window.onload = function() {
-                            // Load the Visualization API and the corechart package.
-                            google.charts.load('current', {'packages': ['corechart']});
+window.onload = function() {
+    // Load the Visualization API and the corechart package.
+    google.charts.load('current', {'packages': ['corechart']});
 
-                            // Set a callback to run when the Google Visualization API is loaded.
-                            google.charts.setOnLoadCallback(drawChart);
-                        };
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawChart);
+};
+
+
 
                         // Callback that creates and populates a data table,
                         // instantiates the pie chart, passes in the data and
                         // draws it.
                         function drawChart() {
 
+
+
+                            // Set chart options
+                            var options = {
+                                legend: 'none',
+                                pieSliceText: 'none',
+
+                                animation: {
+                                    duration: 200,
+                                    easing: 'out',
+                                    startup: true
+                                },
+
+                                pieHole: 0.87,
+                                slices: {
+                                    0: {color: '#4B77BE'},
+                                    1: {color: 'transparent'}
+                                },
+                                'width': 250,
+                                'height': 250
+                            };
+
+
+                            // Instantiate and draw our chart, passing in some options.
+                            var chart = new google.visualization.PieChart(document.getElementById('walk_score'));
                             // Create the data table.
                             var data = new google.visualization.DataTable();
                             data.addColumn('string', 'Score');
                             data.addColumn('number', 'number');
                             data.addRows([
-                                ['Score',66],
-                                ['empty',34]
+                                ['Score', parseInt($("#walk-score-val").val(),10)],
+                                ['empty', (100-parseInt($("#walk-score-val").val(),10))]
                             ]);
-
-                            // Set chart options
-                            var options = {
-                                legend:'none',
-                                pieSliceText: 'none',
-
-                                animation:{
-                                    duration: 200,
-                                    easing: 'out',
-                                    startup:true
-                                },
-
-                                pieHole: 0.8,
-                                slices: {
-                                    0: { color: 'blue' },
-                                    1: { color: 'transparent' }
-                                },
-                                'width':400,
-                                'height':300};
+                            chart.draw(data, options);
 
                             // Instantiate and draw our chart, passing in some options.
-                            var chart = new google.visualization.PieChart(document.getElementById('walk_score'));
-                            chart.draw(data, options);
+                            var chart2 = new google.visualization.PieChart(document.getElementById('transit_score'));
+                            // Create the data table.
+                            var data2 = new google.visualization.DataTable();
+                            data2.addColumn('string', 'Score');
+                            data2.addColumn('number', 'number');
+                            data2.addRows([
+                                ['Score', parseInt($("#transit-score-val").val(),10)],
+                                ['empty', (100-parseInt($("#transit-score-val").val(),10))]
+                            ]);
+                            chart2.draw(data2, options);
+
+                            // Instantiate and draw our chart, passing in some options.
+                            var chart3 = new google.visualization.PieChart(document.getElementById('bike_score'));
+                            // Create the data table.
+                            var data3 = new google.visualization.DataTable();
+                            data3.addColumn('string', 'Score');
+                            data3.addColumn('number', 'number');
+                            data3.addRows([
+                                ['Score', parseInt($("#bike-score-val").val(),10)],
+                                ['empty', (100-parseInt($("#bike-score-val").val(),10))]
+                            ]);
+                            chart3.draw(data3, options);
                         }
                     </script>
+
+
                 </div>
             </div>
         </li>
@@ -377,25 +453,55 @@ $types = View::$bag['types'];
 
                 <div class="side-col">
                     <h2><i class="fa fa-dollar-sign"></i> Values & prices</h2>
-                    <p>Start by adding the address to this property.</p>
+                    <p><?php echo View::__('You can specify here if this property is for rent, sell or both. Specify each value separately.'); ?></p>
                     <hr class="divisor"/>
+                    <p><?php echo View::__('You may say how much is the expenses with condo too.'); ?></p>
                 </div>
                 <div class="main-col">
+                    <div class="field">
+                        <?php echo View::__('Selling price'); ?>
+                        <div class="input-group ">
+                            <span>
+                                <select>
+                                    <option>CAD $</option>
+                                    <option>USD $</option>
+                                    <option>BRL R$</option>
+                                </select>
+                            </span>
+                            <input type="text" max="10" class="money" value="0">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <?php echo View::__('Rental price'); ?>
+                        <div class="input-group ">
+                            <span>
+                                <select>
+                                    <option>CAD $</option>
+                                    <option>USD $</option>
+                                    <option>BRL R$</option>
+                                </select>
+                            </span>
+                            <input type="text" max="10" class="money" value="0">
+                        </div>
+                    </div>
+                    <hr class="divisor"/>
+                    <div class="field">
+                        <?php echo View::__('Condo expenses'); ?>
+                        <div class="input-group ">
+                            <span>
+                                <select>
+                                    <option>CAD $</option>
+                                    <option>USD $</option>
+                                    <option>BRL R$</option>
+                                </select>
+                            </span>
+                            <input type="text" max="10" class="money" value="0">
+                        </div>
+                    </div>
                 </div>
             </div>
         </li>
-        <li>
-            <div class="row">
 
-                <div class="side-col">
-                    <h2><i class="fa fa-file-alt"></i> Title & description</h2>
-                    <p>Start by adding the address to this property.</p>
-                    <hr class="divisor"/>
-                </div>
-                <div class="main-col">
-                </div>
-            </div>
-        </li>
         <li>
             <div class="row">
 

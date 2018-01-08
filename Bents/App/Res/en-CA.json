@@ -1,4 +1,6 @@
 {
+  "decimalSeparator":".",
+  "thousandSeparator":",",
   "how_are_you": "Como vai você",
   "Error": "Erro",
   "Write test like Magento":"Teste de escrita pelo metodo igual do magento"

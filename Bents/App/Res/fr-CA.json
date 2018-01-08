@@ -1,4 +1,7 @@
 {
+
+  "decimalSeparator":".",
+  "thousandSeparator":",",
   "Notifications": "Notifications",
   "Error": "Erreur",
   "Nice ;)": "Bien ;)",

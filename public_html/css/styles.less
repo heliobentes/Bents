@@ -1087,13 +1087,13 @@ input[type=text][disabled] {
   .side-col {
     padding: 0 35px 0 15px;
     display: inline-block;
-    width: 35%;
+    width: 30%;
     vertical-align: top;
   }
   .main-col {
     padding: 0 35px 0 15px;
     display: inline-block;
-    width: 65%;
+    width: 70%;
     vertical-align: top;
   }
   .side-col + .main-col {
@@ -1157,6 +1157,54 @@ input[type=text][disabled] {
   min-height: 100px;
   margin: 0 auto;
   font-weight: normal;
+}
+.score {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  text-align: center;
+  .score-title {
+    position: absolute;
+    top:84px;
+    width: 220px;
+    left:50%;
+    margin-left: -110px;
+color:@pink;
+  }
+  .score-number {
+    position: absolute;
+    top:110px;
+    width: 150px;
+    left:50%;
+    margin-left: -75px;
+    .input-group[data-trigger=spinner] input {
+      text-align: center;
+      width: 55px;
+      font-size: 24px;
+      font-weight: 700;
+      padding:0 3px;
+      height:35px;
+      line-height: 35px;
+    }
+    .field.inline {
+      margin: 0 auto;
+    }
+    .field .input-group .btn {
+      height: 35px;
+    }
+    .field .input-group input[type=text]+.btn.btn-default {
+      height: 35px;
+    }
+  }
+
+  .score-max {
+    position: absolute;
+    top:150px;
+    width: 220px;
+    left:50%;
+    margin-left: -110px;
+    color: #666;
+  }
 }
 /**
  * END plugins overrides

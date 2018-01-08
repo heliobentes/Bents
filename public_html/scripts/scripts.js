@@ -140,7 +140,6 @@ function ReloadFunctions(){
 
         ChangeTab(obj,parent,next);
     });
-
     $(".tabs .previous").on('click',function(){
         let parent =( $(this).parent().parent().find('.tabs-navigation').length >0)? $(this).parent().parent().find('.tabs-navigation'): $(this).closest('.tabs-navigation');
 
@@ -157,6 +156,7 @@ function ReloadFunctions(){
     });
 
 
+    //Property Description
     $('#property-description').trumbowyg({
         svgPath: '/plugins/trumbowyg/ui/icons.svg',
         autogrow: true,
@@ -177,6 +177,19 @@ function ReloadFunctions(){
             ['removeformat']
         ]
     });
+
+    //spinner score
+    $(".spinner-score").spinner('delay', 0).spinner('changed', function(e, newVal, oldVal) {
+        drawChart();
+    });
+
+    //mask fields
+    MaskAllFields();
+}
+
+//masking all fields based on type and
+function MaskAllFields(){
+    $('.money').mask("#"+__('thousandSeparator')+"##0"+__('decimalSeparator')+"00", {reverse: true});
 }
 
 //changing tab
