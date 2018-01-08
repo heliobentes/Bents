@@ -2,6 +2,7 @@
 
 namespace Bents\App\Controller {
 
+    use Bents\App\DAO\FeatureDAO;
     use Bents\App\DAO\TypeDAO;
     use Bents\Core\Controller;
     use Bents\Core\Globalization\Globalization;
@@ -31,6 +32,10 @@ namespace Bents\App\Controller {
             //getting the types
             $TypeDAO = new TypeDAO();
             View::$bag['types'] = $TypeDAO->GetAllTypesByLanguage($language);
+
+            //getting all features
+            $FeaturesDAO = new FeatureDAO();
+            View::$bag['features'] = $FeaturesDAO->GetAllFeatures();
 
 
             $this->RenderView();

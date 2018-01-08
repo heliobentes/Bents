@@ -15,6 +15,10 @@ View::$title = View::__("Add a new property");
  * @var $types \Bents\App\Model\Type[]
  */
 $types = View::$bag['types'];
+/**
+ * @var $features \Bents\App\Model\Feature[]
+ */
+$features = View::$bag['features'];
 
 
 ?>
@@ -41,7 +45,7 @@ $types = View::$bag['types'];
             <div class="row">
 
                 <div class="side-col">
-                    <h2><i class="fa fa-ticket-alt"></i>
+                    <h2><i class="fa fa-file-alt"></i>
                         <?php echo View::__('Basic information'); ?></h2>
                     <p><?php echo View::__('Tell you customers what it is!'); ?></p>
                     <p><?php echo View::__('Here you should fill all the basic information about this property.'); ?></p>
@@ -263,47 +267,17 @@ $types = View::$bag['types'];
                 <div class="main-col">
                     <div class="row">
 
-                        <div class="col-xl-4">
-                            <div class="field inline">
-                                <label><input type="checkbox"> <?php echo View::__('Furnished'); ?>  </label>
+                        <?php foreach ($features as $feature) {
+                        ?>
+                            <div class="col-xl-4">
+                                <div class="field inline">
+                                    <label><input type="checkbox" value="<?php echo $feature->idFeature; ?>"> <?php echo View::__($feature->feature); ?>  </label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-xl-4">
-                            <div class="field inline">
-                                <label><input type="checkbox"> <?php echo View::__('Pet friendly'); ?>  </label>
-                            </div>
+                        <?php
+                        }
+                        ?>
 
-                        </div>
-                        <div class="col-xl-4">
-                            <div class="field inline">
-                                <label><input type="checkbox"> <?php echo View::__('Smoking OK'); ?>  </label>
-                            </div>
-                        </div>
-                        <div class="col-xl-4">
-                            <div class="field inline">
-                                <label><input type="checkbox"> <?php echo View::__('Fireplace'); ?>  </label>
-                            </div>
-                        </div>
-                        <div class="col-xl-4">
-                            <div class="field inline">
-                                <label><input type="checkbox"> <?php echo View::__('Pool'); ?>  </label>
-                            </div>
-                        </div>
-                        <div class="col-xl-4">
-                            <div class="field inline">
-                                <label><input type="checkbox"> <?php echo View::__('Garage'); ?>  </label>
-                            </div>
-                        </div>
-                        <div class="col-xl-4">
-                            <div class="field inline">
-                                <label><input type="checkbox"> <?php echo View::__('Waterfront'); ?>  </label>
-                            </div>
-                        </div>
-                        <div class="col-xl-4">
-                            <div class="field inline">
-                                <label><input type="checkbox"> <?php echo View::__('Luxury'); ?>  </label>
-                            </div>
-                        </div>
 
                     </div>
                     <hr class="divisor"/>
@@ -459,14 +433,37 @@ window.onload = function() {
                 </div>
                 <div class="main-col">
                     <div class="field">
+                        <?php echo View::__('Select a currency'); ?>
+
+                        <select class="select2" style="width: 120px">
+                            <option>AUD (A$)</option>
+                            <option>BRL (R$)</option>
+                            <option>CAD (C$)</option>
+                            <option>CHF (Fr)</option>
+                            <option>CNY (元)</option>
+                            <option>EUR (€)</option>
+                            <option>GBP (£)</option>
+                            <option>HKD (HK$)</option>
+                            <option>INR (₹)</option>
+                            <option>JPY (¥)</option>
+                            <option>KRW (₩)</option>
+                            <option>MXN ($)</option>
+                            <option>NOK (kr)</option>
+                            <option>NZD (NZ$)</option>
+                            <option>RUB (₽)</option>
+                            <option>SEK (kr)</option>
+                            <option>SGD (S$)</option>
+                            <option>TRY (₺)</option>
+                            <option>USD ($)</option>
+                            <option>ZAR (R)</option>
+                        </select>
+                    </div>
+                    <hr class="divisor"/>
+                    <div class="field">
                         <?php echo View::__('Selling price'); ?>
                         <div class="input-group ">
                             <span>
-                                <select>
-                                    <option>CAD $</option>
-                                    <option>USD $</option>
-                                    <option>BRL R$</option>
-                                </select>
+                               CAD $
                             </span>
                             <input type="text" max="10" class="money" value="0">
                         </div>
@@ -474,12 +471,7 @@ window.onload = function() {
                     <div class="field">
                         <?php echo View::__('Rental price'); ?>
                         <div class="input-group ">
-                            <span>
-                                <select>
-                                    <option>CAD $</option>
-                                    <option>USD $</option>
-                                    <option>BRL R$</option>
-                                </select>
+                            <span>CAD $
                             </span>
                             <input type="text" max="10" class="money" value="0">
                         </div>
@@ -488,17 +480,13 @@ window.onload = function() {
                     <div class="field">
                         <?php echo View::__('Condo expenses'); ?>
                         <div class="input-group ">
-                            <span>
-                                <select>
-                                    <option>CAD $</option>
-                                    <option>USD $</option>
-                                    <option>BRL R$</option>
-                                </select>
+                            <span>CAD $
                             </span>
                             <input type="text" max="10" class="money" value="0">
                         </div>
                     </div>
                 </div>
+
             </div>
         </li>
 

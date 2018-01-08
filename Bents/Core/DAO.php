@@ -25,7 +25,7 @@ namespace Bents\Core {
             $this->getInstance();
         }
 
-        function getInstance()
+        protected function getInstance()
         {
 
             if (self::$dbConn == null) {

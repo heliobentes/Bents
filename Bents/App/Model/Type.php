@@ -8,10 +8,6 @@
 
 namespace Bents\App\Model {
 
-
-    use Bents\App\DAO\TypeDAO;
-    use Bents\Core\DAO\UserDAO;
-    use Bents\Core\Globalization\Globalization;
     use Bents\Core\Model;
 
     /**
@@ -37,7 +33,7 @@ namespace Bents\App\Model {
 
         /**
          * User constructor.
-         * @param $user array
+         * @param $type array
          */
         public function __construct($type = null)
         {
