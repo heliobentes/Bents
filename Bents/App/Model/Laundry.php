@@ -13,28 +13,28 @@ namespace Bents\App\Model {
     /**
      * Class User
      * @package Bents\App\Model
-     * @table Type
+     * @table Laundry
      */
-    class Type extends Model
+    class Laundry extends Model
     {
         /**
          * @var int
          * @key
          */
-        public $idType;
+        public $idLaundry;
         /**
          * @var string
          */
-        public $type;
+        public $laundry;
 
         /**
          * User constructor.
-         * @param $type array
+         * @param $Laundry array
          */
-        public function __construct($type = null)
+        public function __construct($Laundry = null)
         {
-            if (isset($type['idType'])) $this->idType = $type['idType'];
-            if (isset($type['type'])) $this->type = $type['type'];
+            if (isset($Laundry['idLaundry'])) $this->idLaundry = $Laundry['idLaundry'];
+            if (isset($Laundry['laundry'])) $this->laundry = $Laundry['laundry'];
         }
 
 

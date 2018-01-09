@@ -8,29 +8,29 @@
 
 namespace Bents\App\DAO {
 
-    use Bents\App\Model\Type;
+    use Bents\App\Model\Laundry;
     use Bents\Core\DAO;
 
-    class TypeDAO extends DAO
+    class LaundryDAO extends DAO
     {
-        public function GetAllTypes()
+        public function GetAllLaundryTypes()
         {
             $pdo = self::$dbConn;
-            $sql = "SELECT * FROM Type";
+            $sql = "SELECT * FROM Laundry";
 
             $stmt1 = $pdo->prepare($sql);
 
             $stmt1->execute();
             $rows = $stmt1->fetchAll();
 
-            $Types = array();
+            $LaundryTypes = array();
 
             foreach ($rows as $row){
-                $Types[] = new Type($row);
+                $LaundryTypes[] = new Laundry($row);
             }
 
 
-            return $Types;
+            return $LaundryTypes;
         }
     }
 }

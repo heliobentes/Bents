@@ -818,21 +818,47 @@ nav.navbar {
     padding: 10px;
     border-radius: 4px;
     width: min-content;
-    min-width: 200px;
+    min-width: 180px;
+    position: relative;;
     label{
-      width: 100%;
       text-align: left;
       display: block;
       margin-bottom: 10px;
+      margin-right: 40px;
+      position:relative
     }
     input[type=text]{
       width: 100%;
       margin-top: 8px;
     }
     img {
-      max-height: 140px;
-      max-width: 230px;
+      height: 140px;
     }
+    i {
+      position: absolute;
+      top:10px;
+      right:10px;
+      color:#777;
+      font-size: 20px;
+      &:hover {
+      color:#000;
+        cursor: pointer;
+    }
+    }
+
+  }
+}
+#drop{    border: 2px dashed #ddd;
+  background: #f7f7f7;
+  padding: 30px 0;
+  text-align: center;
+  color: @pink;
+  margin-bottom: 40px;
+  input{
+    display: none;
+  }
+  &:drop {
+    padding: 60px 0;
   }
 }
 /**
@@ -861,7 +887,7 @@ button {
     margin-right: 6px;
   }
   input {
-    display: none;
+    //display: none;
   }
 }
 label.btn {

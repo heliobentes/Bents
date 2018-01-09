@@ -46,6 +46,9 @@ namespace Bents\Core\StartUp {
             $script[] = 'https://www.gstatic.com/charts/loader.js';
             $script[] = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCAebtVrx8yzcCCmOvD3n1Fr_06afhhubU&libraries=places';
             $script[] = 'scripts/jquery.mask.min.js';
+            $script[] = 'plugins/fileupload/js/vendor/jquery.ui.widget.js';
+            $script[] = 'plugins/fileupload/js/jquery.iframe-transport.js';
+            $script[] = 'plugins/fileupload/js/jquery.fileupload.js';
             $script[] = 'scripts/scripts.js';
 
 

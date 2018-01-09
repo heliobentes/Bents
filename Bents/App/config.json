@@ -5,7 +5,7 @@
     "showError": true
   },
   "SystemBehavior": {
-    "sanitizeHTML": true,
+    "sanitizeHTML": false,
     "errorPages": {
       "401": "401.html",
       "404": "404.html"

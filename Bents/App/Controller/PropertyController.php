@@ -3,7 +3,10 @@
 namespace Bents\App\Controller {
 
     use Bents\App\DAO\FeatureDAO;
+    use Bents\App\DAO\LaundryDAO;
+    use Bents\App\DAO\ParkingDAO;
     use Bents\App\DAO\TypeDAO;
+    use Bents\App\Model\Laundry;
     use Bents\Application;
     use Bents\Core\Controller;
     use Bents\Core\Globalization\Globalization;
@@ -32,11 +35,19 @@ namespace Bents\App\Controller {
 
             //getting the types
             $TypeDAO = new TypeDAO();
-            View::$bag['types'] = $TypeDAO->GetAllTypesByLanguage($language);
+            View::$bag['types'] = $TypeDAO->GetAllTypes();
 
             //getting all features
             $FeaturesDAO = new FeatureDAO();
             View::$bag['features'] = $FeaturesDAO->GetAllFeatures();
+
+            //getting all parking types
+            $ParkingDAO = new ParkingDAO();
+            View::$bag['parkingTypes'] = $ParkingDAO->GetAllParkingTypes();
+
+            //getting all laundry types
+            $LaundryDAO = new LaundryDAO();
+            View::$bag['laundryTypes'] = $LaundryDAO->GetAllLaundryTypes();
 
 
             $this->RenderView();

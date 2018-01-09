@@ -206,60 +206,107 @@ function ReloadFunctions(){
         $(".currency-indicator").html($(this).val());
     });
 
-    //image upload
-    $("#images-filed").change(function(){
-        let input = $(this)[0];
+//fileupload
+    var ul = $('#images-preview');
 
-        //let total = 0;
-        if (input.files) {
-            //$("#images-preview").html('');
+    $('#drop a').click(function(){
+        // Simulate a click on the file input button
+        // to show the file browser dialog
+        $(this).parent().find('input').click();
+    });
 
-            for(var i=0;i<input.files.length;i++) {
-                let reader = new FileReader();
+    // Initialize the jQuery File Upload plugin
+    $('#add-property').fileupload({
+        autoUpload:false,
+        // This element will accept file drag/drop uploading
+        dropZone: $('#drop'),
 
-                reader.onload = function (e) {
-                    $('#images-preview').prepend('<li><input type="hidden" name="image[]" value="'+e.target.result+'"/> <label><input type="radio" name="main-picture"> '+__('Main picture')+'</label><img src="'+e.target.result+'"/><input type="text" name="imageLabel[]" placeholder="'+__('Picture label')+'"></li>');
-                    $('input[name=main-picture]').iCheck({
-                        checkboxClass: 'icheckbox_flat-green',
-                        radioClass: 'iradio_flat-green'
-                    });
-                };
+        // This function is called when a file is added to the queue;
+        // either via the browse button, or via drag/drop:
+        add: function (e, data) {
 
-                reader.readAsDataURL(input.files[i]);
+            var tpl = $('<li><label><input type="radio" name="mainPicture">'+__('Main picture')+'</label><i class="far fa-trash-alt"></i><img/><input type="text" placeholder="'+__('Picture label')+'"/></li>');
+
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                tpl.find('img').attr('src', e.target.result);
             }
-            total = input.files.length;
 
+            reader.readAsDataURL(data.files[0]);
+
+            //Starting checkboxes
+            tpl.find('input[name=mainPicture]').iCheck({
+                checkboxClass: 'icheckbox_flat-green',
+                radioClass: 'iradio_flat-green'
+            });
+
+            // Add the HTML to the UL element
+            data.context = tpl.prependTo(ul);
+
+            // Listen for clicks on the cancel icon
+            tpl.find('i').click(function(){
+
+                if(tpl.hasClass('working')){
+                    jqXHR.abort();
+                }
+
+                tpl.fadeOut(function(){
+                    tpl.remove();
+                });
+
+            });
+
+            // Automatically upload the file once it is added to the queue
+            //var jqXHR = data.submit();
+            $("#up_btn").off('click').on('click', function () {
+                data.submit();
+            });
+        },
+
+        progress: function(e, data){
+
+            // Calculate the completion percentage of the upload
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+
+            // Update the hidden input field and trigger a change
+            // so that the jQuery knob plugin knows to update the dial
+            data.context.find('input').val(progress).change();
+
+            if(progress == 100){
+                data.context.removeClass('working');
+            }
+        },
+
+        fail:function(e, data){
+            // Something has gone wrong!
+            data.context.addClass('error');
         }
-       // $(input).parent().find('span').html(total+__(' images selected'));
+
     });
 
-    //Program a custom submit function for the form
-    $("form#add-property").submit(function(event){
-
-        //disable the default form submission
-        event.preventDefault();
-
-        $('#loader').show();
-
-        //grab all form data
-        var formData = new FormData($(this)[0]);
-
-        $.ajax({
-            url: $(this).attr('action'),
-            type: 'POST',
-            data: formData,
-            async: false,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function (returndata) {
-                alert(returndata);
-                $('#loader').hide();
-            }
-        });
-
-        return false;
+    // Prevent the default action when a file is dropped on the window
+    $(document).on('drop dragover', function (e) {
+        e.preventDefault();
     });
+
+    // Helper function that formats the file sizes
+    function formatFileSize(bytes) {
+        if (typeof bytes !== 'number') {
+            return '';
+        }
+
+        if (bytes >= 1000000000) {
+            return (bytes / 1000000000).toFixed(2) + ' GB';
+        }
+
+        if (bytes >= 1000000) {
+            return (bytes / 1000000).toFixed(2) + ' MB';
+        }
+
+        return (bytes / 1000).toFixed(2) + ' KB';
+    }
+
 }
 
 //masking all fields based on type and

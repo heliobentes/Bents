@@ -19,6 +19,14 @@ $types = View::$bag['types'];
  * @var $features \Bents\App\Model\Feature[]
  */
 $features = View::$bag['features'];
+/**
+ * @var $parkingTypes \Bents\App\Model\Parking[]
+ */
+$parkingTypes = View::$bag['parkingTypes'];
+/**
+ * @var $laundryTypes \Bents\App\Model\Laundry[]
+ */
+$laundryTypes = View::$bag['laundryTypes'];
 
 
 ?>
@@ -48,7 +56,7 @@ $features = View::$bag['features'];
                 <div class="side-col">
                     <h2><i class="fa fa-file-alt"></i>
                         <?php echo View::__('Basic information'); ?></h2>
-                    <p><?php echo View::__('Tell you customers what it is!'); ?></p>
+                    <p><?php echo View::__('Tell your customers what it is!'); ?></p>
                     <p><?php echo View::__('Here you should fill all the basic information about this property.'); ?></p>
                     <p><?php echo View::__('Fill as many information as you can. It will make your ad or your website being found easier and often.'); ?></p>
                     <hr class="divisor"/>
@@ -60,12 +68,12 @@ $features = View::$bag['features'];
 
                     <div class="field">
                         <?php echo View::__('MLS<sup>®</sup> Number'); ?>
-                        <input type="text" size="10">
+                        <input type="text" size="10" name="Property[mlsNumber]">
                         <small><?php echo View::__('Type the MLS<sup>®</sup> number and the system will try to fill all the rest for you.');?></small>
                     </div>
                     <div class="field">
                         <?php echo View::__('Kind of negotiation'); ?>
-                        <select class="select2" style="width: 200px">
+                        <select class="select2" style="width: 200px" name="Property[negotiation]">
                             <option value=""><?php echo View::__('-- Select an option --'); ?></option>
                             <option value="1"><?php echo View::__('Residential'); ?></option>
                             <option value="2"><?php echo View::__('Commercial'); ?></option>
@@ -73,11 +81,11 @@ $features = View::$bag['features'];
                     </div>
                     <div class="field">
                         <?php echo View::__('Property type'); ?>
-                        <select class="select2" style="width: 180px">
+                        <select class="select2" style="width: 180px" name="Property[idType]">
                             <option value=""><?php echo View::__('-- Select an option --'); ?></option>
                             <?php
                             foreach ($types as $type) {
-                                echo "<option value='$type->idType'>$type->type</option>";
+                                echo "<option value='$type->idType'>".View::__($type->type)."</option>";
                             }
                             ?>
                         </select>
@@ -86,7 +94,7 @@ $features = View::$bag['features'];
                         <i class="fa fa-bed"></i> <?php echo View::__('Bedrooms'); ?>
                         <div class="input-group" data-trigger="spinner">
                             <button class="btn btn-default" data-spin="down"><i class="fa fa-minus"></i></button>
-                            <input type="text" value="1">
+                            <input type="text" value="1" name="Property[bedrooms]">
                             <button class="btn btn-default" data-spin="up"><i class="fa fa-plus"></i></button>
                         </div>
                     </div>
@@ -94,16 +102,16 @@ $features = View::$bag['features'];
                         <i class="fa fa-bath"></i> <?php echo View::__('Bathrooms'); ?>
                         <div class="input-group" data-trigger="spinner">
                             <button class="btn btn-default" data-spin="down"><i class="fa fa-minus"></i></button>
-                            <input type="text" value="1">
+                            <input type="text" value="1" name="Property[bathrooms]">
                             <button class="btn btn-default" data-spin="up"><i class="fa fa-plus"></i></button>
                         </div>
                     </div>
                     <div class="field">
                         <?php echo View::__('Area'); ?>
-                        <div class="input-group">
+                        <div class="input-group" name="Property[area]">
                             <input type="text" value="0" size="5">
                             <span>
-                                <select>
+                                <select  name="Property[areaUnit]">
                                     <option>m²</option>
                                     <option>ft²</option>
                                 </select></span>
@@ -112,22 +120,22 @@ $features = View::$bag['features'];
                     <hr class="divisor"/>
                     <div class="field">
                         <?php echo View::__('Property title'); ?>
-                        <input type="text" size="50">
+                        <input type="text" size="50" name="Property[title]">
                     </div>
                     <div class="field">
                         <?php echo View::__('Property descrition'); ?>
-                        <textarea id="property-description"></textarea>
+                        <textarea id="property-description" name="Property[description]"></textarea>
                     </div>
 
                     <hr class="divisor"/>
 
                     <div class="field inline">
                         <i class="fa fa-car"></i> <?php echo View::__('Parking'); ?>
-                        <select class="select2" style="width: 180px">
+                        <select class="select2" style="width: 180px" name="Property[idParking]">
                             <option value=""><?php echo View::__('-- Select an option --'); ?></option>
                             <?php
-                            foreach ($types as $type) {
-                                echo "<option value='$type->idType'>$type->type</option>";
+                            foreach ($parkingTypes as $parkingType) {
+                                echo "<option value='$parkingType->idParking'>".View::__($parkingType->parking)."</option>";
                             }
                             ?>
                         </select>
@@ -135,11 +143,11 @@ $features = View::$bag['features'];
 
                     <div class="field inline">
                         <i class="fa fa-utensils"></i> <?php echo View::__('Laundry'); ?>
-                        <select class="select2" style="width: 180px">
+                        <select class="select2" style="width: 180px" name="Property[idLaundry]">
                             <option value=""><?php echo View::__('-- Select an option --'); ?></option>
                             <?php
-                            foreach ($types as $type) {
-                                echo "<option value='$type->idType'>$type->type</option>";
+                            foreach ($laundryTypes as $laundryType) {
+                                echo "<option value='$laundryType->idLaundry'>".View::__($laundryType->laundry)."</option>";
                             }
                             ?>
                         </select>
@@ -149,21 +157,21 @@ $features = View::$bag['features'];
                     <div class="field inline">
                         <?php echo View::__('Availability'); ?>
                         <div class="input-group">
-                            <input type="text" size="10" readonly value="<?php echo strftime("%d-%m-%Y"); ?>">
+                            <input type="text" size="10" readonly value="<?php echo strftime("%d-%m-%Y"); ?>" name="Property[availability]">
                             <button class="btn btn-default"><i class="fa fa-calendar-alt"></i></button>
                         </div>
                         <small>Date format: dd-mm-yyyy</small>
                     </div>
 
                     <div class="field inline">
-                        <label><input type="checkbox"> <?php echo View::__('Open House'); ?>  </label>
+                        <label><input type="checkbox" name="Property[openhouse]" value="1"> <?php echo View::__('Open House'); ?>  </label>
                     </div>
 
 
                     <hr class="divisor"/>
                     <div class="field">
                         <?php echo View::__('Internal observations'); ?>
-                        <textarea id="internal-observations">
+                        <textarea id="internal-observations"  name="Property[observations]">
 
                         </textarea>
                     </div>
@@ -343,10 +351,10 @@ $features = View::$bag['features'];
                     <div class="field">
                         <?php echo View::__('Would you like to show these scores on your website?'); ?>
                         <div class="radio-group">
-                            <label><input type="radio" name="show_score_on_website" checked
+                            <label><input type="radio" name=" name="Property[showScore]"" checked
                                           value="1"> <?php echo View::__('Yes'); ?></label>
-                            <label><input type="radio" name="show_score_on_website"
-                                          value="1"> <?php echo View::__('No'); ?></label>
+                            <label><input type="radio" name=" name="Property[showScore]""
+                                          value="0"> <?php echo View::__('No'); ?></label>
                         </div>
                     </div>
 
@@ -445,7 +453,7 @@ window.onload = function() {
                     <div class="field">
                         <?php echo View::__('Select a currency'); ?>
 
-                        <select class="select2" style="width: 120px" id="currency-indicator">
+                        <select class="select2" style="width: 120px" id="currency-indicator" name="Property[currency]">
                             <option>AUD (A$)</option>
                             <option>BRL (R$)</option>
                             <option selected>CAD (C$)</option>
@@ -475,7 +483,7 @@ window.onload = function() {
                             <span class="currency-indicator">
                                CAD $
                             </span>
-                            <input type="text" max="10" class="money" value="0">
+                            <input type="text" max="10" class="money" value="0" name="Property[sellingPrice]">
                         </div>
                     </div>
                     <div class="field">
@@ -483,7 +491,7 @@ window.onload = function() {
                         <div class="input-group ">
                             <span class="currency-indicator">CAD $
                             </span>
-                            <input type="text" max="10" class="money" value="0">
+                            <input type="text" max="10" class="money" value="0" name="Property[rentalPrice]">
                         </div>
                     </div>
                     <hr class="divisor"/>
@@ -492,7 +500,7 @@ window.onload = function() {
                         <div class="input-group ">
                             <span class="currency-indicator">CAD $
                             </span>
-                            <input type="text" max="10" class="money" value="0">
+                            <input type="text" max="10" class="money" value="0" name="Property[condoExpenses]">
                         </div>
                     </div>
                 </div>
@@ -505,18 +513,24 @@ window.onload = function() {
 
                 <div class="side-col">
                     <h2><i class="fa fa-images"></i> Pictures</h2>
-                    <p>Start by adding the address to this property.</p>
+                    <p><?php echo View::__('Add your pictures to this property.'); ?></p>
+                    <p><?php echo View::__('Adding a relevant image of this property can be one of the most powerful factors in determining the success of your leads.');?></p>
                     <hr class="divisor"/>
+                    <p><b class="text-info"><?php echo View::__('Hint:'); ?></b><br>
+                        <?php echo View::__('An ad with photos is seen up to 7 times more than an ad without photo.'); ?>
+                    </p>
                 </div>
                 <div class="main-col">
 
-                    <div class="field">
-                        <label class="btn btn-primary">
-                            <i class="fa fa-image"></i> <span>Add pictures</span>
-                            <input type="file" multiple accept="image/jpeg,image/png,image/gif" id="images-filed">
-                        </label>
+                    <div id="drop">
+                        <?php echo View::__('Drop your pictures here or'); ?>
+
+                        <a class="btn btn-primary"><i class="far fa-image"></i> <?php echo View::__('Browse them'); ?></a>
+                        <input type="file" name="upl" multiple />
                     </div>
+
                     <ul id="images-preview"></ul>
+                    <button type="button" class="btn btn-success" id="up_btn">Go</button>
                 </div>
             </div>
         </li>

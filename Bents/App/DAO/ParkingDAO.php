@@ -8,29 +8,29 @@
 
 namespace Bents\App\DAO {
 
-    use Bents\App\Model\Type;
+    use Bents\App\Model\Parking;
     use Bents\Core\DAO;
 
-    class TypeDAO extends DAO
+    class ParkingDAO extends DAO
     {
-        public function GetAllTypes()
+        public function GetAllParkingTypes()
         {
             $pdo = self::$dbConn;
-            $sql = "SELECT * FROM Type";
+            $sql = "SELECT * FROM Parking";
 
             $stmt1 = $pdo->prepare($sql);
 
             $stmt1->execute();
             $rows = $stmt1->fetchAll();
 
-            $Types = array();
+            $ParkingTypes = array();
 
             foreach ($rows as $row){
-                $Types[] = new Type($row);
+                $ParkingTypes[] = new Parking($row);
             }
 
 
-            return $Types;
+            return $ParkingTypes;
         }
     }
 }
