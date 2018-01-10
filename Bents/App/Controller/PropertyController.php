@@ -5,8 +5,10 @@ namespace Bents\App\Controller {
     use Bents\App\DAO\FeatureDAO;
     use Bents\App\DAO\LaundryDAO;
     use Bents\App\DAO\ParkingDAO;
+    use Bents\App\DAO\PropertyDAO;
     use Bents\App\DAO\TypeDAO;
     use Bents\App\Model\Laundry;
+    use Bents\App\Model\Property;
     use Bents\Application;
     use Bents\Core\Controller;
     use Bents\Core\Globalization\Globalization;
@@ -56,21 +58,19 @@ namespace Bents\App\Controller {
 
         public function Save(){
 
-//            foreach ($_POST['image'] as $image){
-//                $outputfile = Application::$publicPath.rand(0,9287391827398).'.jpg';
-//                    /* read data (binary) */
-//                    /* encode & write data (binary) */
-//                    $ifp = fopen( $outputfile, "wb" );
-//                    fwrite( $ifp, base64_decode(explode('base64,',$image)[1]) );
-//                    fclose( $ifp );
-//                    /* return output filename */
-//                    //return( $outputfile );
-//
-//            }
+            $Property = new Property($_POST['Property']);
 
+            $Property->idAddress = 1;
+            $Property->idRealEstate = 1;
+            $Property->idProfile = 1;
+
+
+            $PropertyDAO = new PropertyDAO();
             echo '<pre>';
-            print_r($_POST);
+            print_r($Property);
             echo '</pre>';
+            print_r($PropertyDAO->SaveProperty($Property));
+
 
         }
 

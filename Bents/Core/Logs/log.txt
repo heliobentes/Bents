@@ -22,3 +22,196 @@ SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password
 SQLSTATE[HY000] [1049] Unknown database 'reaws'
 ========================
 
+======== ERROR ========
+01-10-2018 00:58:01
+/var/www/Reaws/Bents/App/DAO/PropertyDAO.php at line 113
+HY000
+========================
+
+======== ERROR ========
+01-10-2018 00:58:09
+/var/www/Reaws/Bents/App/DAO/PropertyDAO.php at line 114
+HY000
+========================
+
+======== ERROR ========
+01-10-2018 00:59:06
+/var/www/Reaws/Bents/App/DAO/PropertyDAO.php at line 114
+Incorrect integer value: ':idAddress' for column 'idAddress' at row 1
+========================
+
+======== ERROR ========
+01-10-2018 01:00:47
+/var/www/Reaws/Bents/App/DAO/PropertyDAO.php at line 114
+Incorrect integer value: ':idAddress' for column 'idAddress' at row 1
+========================
+
+======== ERROR ========
+01-10-2018 02:04:31
+/var/www/Reaws/Bents/App/DAO/PropertyDAO.php at line 114
+Incorrect integer value: ':idAddress' for column 'idAddress' at row 1
+========================
+
+======== ERROR ========
+01-10-2018 02:05:24
+/var/www/Reaws/Bents/App/DAO/PropertyDAO.php at line 114
+Incorrect integer value: ':idAddress' for column 'idAddress' at row 1
+The query was: INSERT INTO Property
+                                (`idAddress`, 
+                                `createdAt`, 
+                                `updatedAt`, 
+                                `sellingPrice`, 
+                                `rentalPrice`, 
+                                `condoExpenses`, 
+                                `currency`, 
+                                `bedrooms`, 
+                                `bathrooms`, 
+                                `area`, 
+                                `areaUnit`, 
+                                `description`, 
+                                `idType`, 
+                                `idParking`, 
+                                `idLaundry`, 
+                                `mlsNumber`, 
+                                `availability`, 
+                                `observations`, 
+                                `buildingName`, 
+                                `openHouse`, 
+                                `negotiation`, 
+                                `title`, 
+                                `showScore`, 
+                                `showMap`, 
+                                `idRealEstate`, 
+                                `idProfile`) 
+                            VALUES 
+                                (':idAddress', 
+                                ':createdAt', 
+                                ':updatedAt', 
+                                ':sellingPrice', 
+                                ':rentalPrice', 
+                                ':condoExpenses', 
+                                ':currency', 
+                                ':bedrooms', 
+                                ':bathrooms', 
+                                ':area', 
+                                ':areaUnit', 
+                                ':description', 
+                                ':idType', 
+                                ':idParking', 
+                                ':idLaundry', 
+                                ':mlsNumber', 
+                                ':availability', 
+                                ':observations', 
+                                ':buildingName', 
+                                ':openHouse', 
+                                ':negotiation', 
+                                ':title', 
+                                ':showScore', 
+                                ':showMap', 
+                                ':idRealEstate', 
+                                ':idProfile');
+========================
+
+======== ERROR ========
+01-10-2018 02:07:22
+/var/www/Reaws/Bents/App/DAO/PropertyDAO.php at line 114
+Incorrect integer value: ':idAddress' for column 'idAddress' at row 1
+The query was: 
+========================
+
+======== ERROR ========
+01-10-2018 02:10:53
+/var/www/Reaws/Bents/App/DAO/PropertyDAO.php at line 117
+Incorrect integer value: ':idAddress' for column 'idAddress' at row 1
+========================
+
+======== ERROR ========
+01-10-2018 02:11:36
+/var/www/Reaws/Bents/App/DAO/PropertyDAO.php at line 117
+Incorrect integer value: ':idAddress' for column 'idAddress' at row 1
+========================
+
+======== ERROR ========
+01-10-2018 02:12:36
+/var/www/Reaws/Bents/App/DAO/PropertyDAO.php at line 114
+Incorrect integer value: ':idAddress' for column 'idAddress' at row 1
+========================
+
+======== ERROR ========
+01-10-2018 02:54:51
+/var/www/Reaws/Bents/App/DAO/PropertyDAO.php at line 114
+Incorrect integer value: ':idAddress' for column 'idAddress' at row 1
+========================
+
+======== ERROR ========
+01-10-2018 02:55:26
+/var/www/Reaws/Bents/App/DAO/PropertyDAO.php at line 114
+Incorrect integer value: ':idAddress' for column 'idAddress' at row 1
+========================
+
+======== ERROR ========
+01-10-2018 02:55:57
+/var/www/Reaws/Bents/App/DAO/PropertyDAO.php at line 114
+
+========================
+
+======== ERROR ========
+01-10-2018 02:56:41
+/var/www/Reaws/Bents/App/DAO/PropertyDAO.php at line 114
+Incorrect integer value: '' for column 'idParking' at row 1
+========================
+
+======== ERROR ========
+01-10-2018 02:57:39
+/var/www/Reaws/Bents/App/DAO/PropertyDAO.php at line 114
+Incorrect integer value: '' for column 'idParking' at row 1
+========================
+
+======== ERROR ========
+01-10-2018 02:58:24
+/var/www/Reaws/Bents/App/DAO/PropertyDAO.php at line 114
+Incorrect integer value: '' for column 'idLaundry' at row 1
+========================
+
+======== ERROR ========
+01-10-2018 02:58:44
+/var/www/Reaws/Bents/App/DAO/PropertyDAO.php at line 114
+Incorrect datetime value: '10-01-2018' for column 'availability' at row 1
+========================
+
+======== ERROR ========
+01-10-2018 03:54:50
+/var/www/Reaws/Bents/App/DAO/PropertyDAO.php at line 114
+Incorrect datetime value: '10-01-2018' for column 'availability' at row 1
+========================
+
+======== ERROR ========
+01-10-2018 03:54:53
+/var/www/Reaws/Bents/App/DAO/PropertyDAO.php at line 114
+Incorrect datetime value: '10-01-2018' for column 'availability' at row 1
+========================
+
+======== ERROR ========
+01-10-2018 03:55:28
+/var/www/Reaws/Bents/App/DAO/PropertyDAO.php at line 114
+Incorrect datetime value: '10-01-2018' for column 'availability' at row 1
+========================
+
+======== ERROR ========
+01-10-2018 03:55:52
+/var/www/Reaws/Bents/App/DAO/PropertyDAO.php at line 114
+Incorrect integer value: '' for column 'negotiation' at row 1
+========================
+
+======== ERROR ========
+01-10-2018 03:56:34
+/var/www/Reaws/Bents/App/DAO/PropertyDAO.php at line 114
+Column 'idRealEstate' cannot be null
+========================
+
+======== ERROR ========
+01-10-2018 03:57:38
+/var/www/Reaws/Bents/App/DAO/PropertyDAO.php at line 114
+Column 'idProfile' cannot be null
+========================
+

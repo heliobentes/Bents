@@ -82,7 +82,6 @@ $laundryTypes = View::$bag['laundryTypes'];
                     <div class="field">
                         <?php echo View::__('Property type'); ?>
                         <select class="select2" style="width: 180px" name="Property[idType]">
-                            <option value=""><?php echo View::__('-- Select an option --'); ?></option>
                             <?php
                             foreach ($types as $type) {
                                 echo "<option value='$type->idType'>".View::__($type->type)."</option>";
@@ -157,7 +156,7 @@ $laundryTypes = View::$bag['laundryTypes'];
                     <div class="field inline">
                         <?php echo View::__('Availability'); ?>
                         <div class="input-group">
-                            <input type="text" size="10" readonly value="<?php echo strftime("%d-%m-%Y"); ?>" name="Property[availability]">
+                            <input type="text" size="10" readonly value="<?php echo strftime("%Y-%m-%d"); ?>" name="Property[availability]">
                             <button class="btn btn-default"><i class="fa fa-calendar-alt"></i></button>
                         </div>
                         <small>Date format: dd-mm-yyyy</small>
@@ -195,10 +194,10 @@ $laundryTypes = View::$bag['laundryTypes'];
                     <div class="field">
                         <?php echo View::__('Would you like to show this map on your website?'); ?>
                         <div class="radio-group">
-                            <label><input type="radio" name="show_map_on_website" checked
+                            <label><input type="radio"  name="Property[showMap]" checked
                                           value="1"> <?php echo View::__('Yes'); ?></label>
-                            <label><input type="radio" name="show_map_on_website"
-                                          value="1"> <?php echo View::__('No'); ?></label>
+                            <label><input type="radio"  name="Property[showMap]"
+                                          value="0"> <?php echo View::__('No'); ?></label>
                         </div>
                     </div>
                     <p><b class="text-info"><?php echo View::__('Hint:'); ?></b><br>
@@ -218,19 +217,19 @@ $laundryTypes = View::$bag['laundryTypes'];
 
 
                             <?php echo View::__('Country'); ?>
-                            <input type="text" size="10" id="country">
+                            <input type="text" size="10" id="country" name="Address[country]">
 
                         </div>
                         <div class="field inline">
 
                             <?php echo View::__('Province'); ?>
-                            <input type="text" size="20" id="administrative_area_level_1">
+                            <input type="text" size="20" id="administrative_area_level_1" name="Address[province]">
 
                         </div>
                         <div class="field inline">
 
                             <?php echo View::__('City'); ?>
-                            <input type="text" size="30" id="locality">
+                            <input type="text" size="30" id="locality" name="Address[city]">
 
                         </div>
 
@@ -239,34 +238,34 @@ $laundryTypes = View::$bag['laundryTypes'];
                         <div class="field inline">
 
                             <?php echo View::__('Region'); ?>
-                            <input type="text" size="20" id="sublocality_level_1">
+                            <input type="text" size="20" id="sublocality_level_1" name="Address[region]">
 
                         </div>
                         <div class="field inline">
 
                             <?php echo View::__('Area'); ?>
-                            <input type="text" size="20" id="administrative_area_level_2">
+                            <input type="text" size="20" id="administrative_area_level_2" name="Address[area]">
 
                         </div>
                         <div class="clear"></div>
                         <div class="field inline">
                             <?php echo View::__('Unit #'); ?>
-                            <input type="text" size="3" id="unit_number">
+                            <input type="text" size="3" id="unit_number" name="Address[unitNumber]">
 
                         </div>
                         <div class="field inline">
                             <?php echo View::__('Street #'); ?>
-                            <input type="text" size="3" id="street_number">
+                            <input type="text" size="3" id="street_number" name="Address[streetNumber]">
 
                         </div>
                         <div class="field inline">
                             <?php echo View::__('Address'); ?>
-                            <input type="text" size="40" id="route">
+                            <input type="text" size="40" id="route" name="Address[address]">
 
                         </div>
                         <div class="field">
                             <?php echo View::__('Postal code'); ?>
-                            <input type="text" size="5" id="postal_code">
+                            <input type="text" size="5" id="postal_code" name="Address[postalCode]">
                         </div>
                     </div>
                 </div>
@@ -289,7 +288,7 @@ $laundryTypes = View::$bag['laundryTypes'];
                         ?>
                             <div class="col-xl-4">
                                 <div class="field inline">
-                                    <label><input type="checkbox" value="<?php echo $feature->idFeature; ?>"> <?php echo View::__($feature->feature); ?>  </label>
+                                    <label><input type="checkbox" value="<?php echo $feature->idFeature; ?>" name="Feature[]"> <?php echo View::__($feature->feature); ?>  </label>
                                 </div>
                             </div>
                         <?php
@@ -351,9 +350,9 @@ $laundryTypes = View::$bag['laundryTypes'];
                     <div class="field">
                         <?php echo View::__('Would you like to show these scores on your website?'); ?>
                         <div class="radio-group">
-                            <label><input type="radio" name=" name="Property[showScore]"" checked
+                            <label><input type="radio" name="Property[showScore]" checked
                                           value="1"> <?php echo View::__('Yes'); ?></label>
-                            <label><input type="radio" name=" name="Property[showScore]""
+                            <label><input type="radio" name="Property[showScore]"
                                           value="0"> <?php echo View::__('No'); ?></label>
                         </div>
                     </div>
