@@ -45,5 +45,20 @@ namespace Bents\Core\Utils {
                 return $obj;
             }
         }
+
+        /**
+         * @return int
+         */
+        public static function GetRealEstateId(){
+            return $_SESSION['realEstateId']||0;
+        }
+
+
+        /**
+         * @return int
+         */
+        public static function GetUserId(){
+            return $_SESSION['userId']||0;
+        }
     }
 }

@@ -31,520 +31,572 @@ $laundryTypes = View::$bag['laundryTypes'];
 
 ?>
 <form method="post" enctype="multipart/form-data" action="/Property/Save" id="add-property">
-<div class="tabs">
-    <ul class="tabs-navigation">
-        <li class="active"><i class="fa fa-file-alt"></i></li>
-        <li><i class="fa fa-map-marker-alt"></i></li>
-        <li><i class="fa fa-tasks"></i></li>
-        <li><i class="fa fa-dollar-sign"></i></li>
-        <li><i class="far fa-images"></i></li>
-        <li class="actions">
-            <button type="button" class="btn btn-primary previous"><i class="fa fa-backward"></i><?php echo View::__('Previous'); ?>
-            </button>
-            <button type="button"  class="btn btn-primary next"><?php echo View::__('Next'); ?>&nbsp;<i class="fa fa-forward"></i>
-            </button>
-            <button class="btn btn-success"><i class="fa fa-save"></i>
-                <?php echo View::__('Save this property'); ?></button>
-        </li>
-    </ul>
-    <ul class="tabs-contents">
-        <li class="active open">
+    <div class="tabs">
+        <ul class="tabs-navigation">
+            <li class="active"><i class="fa fa-file-alt"></i></li>
+            <li><i class="fa fa-map-marker-alt"></i></li>
+            <li><i class="fa fa-tasks"></i></li>
+            <li><i class="fa fa-dollar-sign"></i></li>
+            <li><i class="far fa-images"></i></li>
+            <li class="actions">
+                <button type="button" class="btn btn-primary previous"><i
+                            class="fa fa-backward"></i><?php echo View::__('Previous'); ?>
+                </button>
+                <button type="button" class="btn btn-primary next"><?php echo View::__('Next'); ?>&nbsp;<i
+                            class="fa fa-forward"></i>
+                </button>
+                <button type="button" class="btn btn-success submit"><i class="fa fa-save"></i>
+                    <?php echo View::__('Save this property'); ?></button>
+            </li>
+        </ul>
+        <ul class="tabs-contents">
+            <li class="active open">
 
 
-            <div class="row">
+                <div class="row">
 
-                <div class="side-col">
-                    <h2><i class="fa fa-file-alt"></i>
-                        <?php echo View::__('Basic information'); ?></h2>
-                    <p><?php echo View::__('Tell your customers what it is!'); ?></p>
-                    <p><?php echo View::__('Here you should fill all the basic information about this property.'); ?></p>
-                    <p><?php echo View::__('Fill as many information as you can. It will make your ad or your website being found easier and often.'); ?></p>
-                    <hr class="divisor"/>
-                    <p><b class="text-info"><?php echo View::__('Hint:'); ?></b><br>
-                        <?php echo View::__('Start by typing the MLS<sup>®</sup> number. If we found this in our database, the system will fill all the rest for you. You will only need to add your images.'); ?>
-                    </p>
-                </div>
-                <div class="main-col">
-
-                    <div class="field">
-                        <?php echo View::__('MLS<sup>®</sup> Number'); ?>
-                        <input type="text" size="10" name="Property[mlsNumber]">
-                        <small><?php echo View::__('Type the MLS<sup>®</sup> number and the system will try to fill all the rest for you.');?></small>
+                    <div class="side-col">
+                        <h2><i class="fa fa-file-alt"></i>
+                            <?php echo View::__('Basic information'); ?></h2>
+                        <p><?php echo View::__('Tell your customers what it is!'); ?></p>
+                        <p><?php echo View::__('Here you should fill all the basic information about this property.'); ?></p>
+                        <p><?php echo View::__('Fill as many information as you can. It will make your ad or your website being found easier and often.'); ?></p>
+                        <hr class="divisor"/>
+                        <p><b class="text-info"><?php echo View::__('Hint:'); ?></b><br>
+                            <?php echo View::__('Start by typing the MLS<sup>®</sup> number. If we found this in our database, the system will fill all the rest for you. You will only need to add your images.'); ?>
+                        </p>
                     </div>
-                    <div class="field">
-                        <?php echo View::__('Kind of negotiation'); ?>
-                        <select class="select2" style="width: 200px" name="Property[negotiation]">
-                            <option value=""><?php echo View::__('-- Select an option --'); ?></option>
-                            <option value="1"><?php echo View::__('Residential'); ?></option>
-                            <option value="2"><?php echo View::__('Commercial'); ?></option>
-                        </select>
-                    </div>
-                    <div class="field">
-                        <?php echo View::__('Property type'); ?>
-                        <select class="select2" style="width: 180px" name="Property[idType]">
-                            <?php
-                            foreach ($types as $type) {
-                                echo "<option value='$type->idType'>".View::__($type->type)."</option>";
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="field inline">
-                        <i class="fa fa-bed"></i> <?php echo View::__('Bedrooms'); ?>
-                        <div class="input-group" data-trigger="spinner">
-                            <button class="btn btn-default" data-spin="down"><i class="fa fa-minus"></i></button>
-                            <input type="text" value="1" name="Property[bedrooms]">
-                            <button class="btn btn-default" data-spin="up"><i class="fa fa-plus"></i></button>
+                    <div class="main-col">
+
+                        <div class="field">
+                            <?php echo View::__('MLS<sup>®</sup> Number'); ?>
+                            <input type="text" size="10" name="Property[mlsNumber]">
+                            <small><?php echo View::__('Type the MLS<sup>®</sup> number and the system will try to fill all the rest for you.'); ?></small>
                         </div>
-                    </div>
-                    <div class="field inline">
-                        <i class="fa fa-bath"></i> <?php echo View::__('Bathrooms'); ?>
-                        <div class="input-group" data-trigger="spinner">
-                            <button class="btn btn-default" data-spin="down"><i class="fa fa-minus"></i></button>
-                            <input type="text" value="1" name="Property[bathrooms]">
-                            <button class="btn btn-default" data-spin="up"><i class="fa fa-plus"></i></button>
+                        <div class="field">
+                            <?php echo View::__('Kind of negotiation'); ?>
+                            <select class="select2" style="width: 200px" name="Property[negotiation]">
+                                <option value=""><?php echo View::__('-- Select an option --'); ?></option>
+                                <option value="1"><?php echo View::__('Residential'); ?></option>
+                                <option value="2"><?php echo View::__('Commercial'); ?></option>
+                            </select>
                         </div>
-                    </div>
-                    <div class="field">
-                        <?php echo View::__('Area'); ?>
-                        <div class="input-group" name="Property[area]">
-                            <input type="text" value="0" size="5">
-                            <span>
-                                <select  name="Property[areaUnit]">
+                        <div class="field">
+                            <?php echo View::__('Property type'); ?>
+                            <select class="select2" style="width: 180px" name="Property[idType]">
+                                <?php
+                                foreach ($types as $type) {
+                                    echo "<option value='$type->idType'>" . View::__($type->type) . "</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="field inline">
+                            <i class="fa fa-bed"></i> <?php echo View::__('Bedrooms'); ?>
+                            <div class="input-group" data-trigger="spinner">
+                                <button type="button" class="btn btn-default" data-spin="down"><i
+                                            class="fa fa-minus"></i></button>
+                                <input type="text" value="1" name="Property[bedrooms]">
+                                <button type="button" class="btn btn-default" data-spin="up"><i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="field inline">
+                            <i class="fa fa-bath"></i> <?php echo View::__('Bathrooms'); ?>
+                            <div class="input-group" data-trigger="spinner">
+                                <button type="button" class="btn btn-default" data-spin="down"><i
+                                            class="fa fa-minus"></i></button>
+                                <input type="text" value="1" name="Property[bathrooms]">
+                                <button type="button" class="btn btn-default" data-spin="up"><i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <?php echo View::__('Area'); ?>
+                            <div class="input-group" name="Property[area]">
+                                <input type="text" value="0" size="5">
+                                <span>
+                                <select name="Property[areaUnit]">
                                     <option>m²</option>
                                     <option>ft²</option>
                                 </select></span>
+                            </div>
                         </div>
-                    </div>
-                    <hr class="divisor"/>
-                    <div class="field">
-                        <?php echo View::__('Property title'); ?>
-                        <input type="text" size="50" name="Property[title]">
-                    </div>
-                    <div class="field">
-                        <?php echo View::__('Property descrition'); ?>
-                        <textarea id="property-description" name="Property[description]"></textarea>
-                    </div>
-
-                    <hr class="divisor"/>
-
-                    <div class="field inline">
-                        <i class="fa fa-car"></i> <?php echo View::__('Parking'); ?>
-                        <select class="select2" style="width: 180px" name="Property[idParking]">
-                            <option value=""><?php echo View::__('-- Select an option --'); ?></option>
-                            <?php
-                            foreach ($parkingTypes as $parkingType) {
-                                echo "<option value='$parkingType->idParking'>".View::__($parkingType->parking)."</option>";
-                            }
-                            ?>
-                        </select>
-                    </div>
-
-                    <div class="field inline">
-                        <i class="fa fa-utensils"></i> <?php echo View::__('Laundry'); ?>
-                        <select class="select2" style="width: 180px" name="Property[idLaundry]">
-                            <option value=""><?php echo View::__('-- Select an option --'); ?></option>
-                            <?php
-                            foreach ($laundryTypes as $laundryType) {
-                                echo "<option value='$laundryType->idLaundry'>".View::__($laundryType->laundry)."</option>";
-                            }
-                            ?>
-                        </select>
-                    </div>
-
-                    <hr class="divisor"/>
-                    <div class="field inline">
-                        <?php echo View::__('Availability'); ?>
-                        <div class="input-group">
-                            <input type="text" size="10" readonly value="<?php echo strftime("%Y-%m-%d"); ?>" name="Property[availability]">
-                            <button class="btn btn-default"><i class="fa fa-calendar-alt"></i></button>
-                        </div>
-                        <small>Date format: dd-mm-yyyy</small>
-                    </div>
-
-                    <div class="field inline">
-                        <label><input type="checkbox" name="Property[openhouse]" value="1"> <?php echo View::__('Open House'); ?>  </label>
-                    </div>
-
-
-                    <hr class="divisor"/>
-                    <div class="field">
-                        <?php echo View::__('Internal observations'); ?>
-                        <textarea id="internal-observations"  name="Property[observations]">
-
-                        </textarea>
-                    </div>
-
-                </div>
-
-            </div>
-        </li>
-        <li>
-
-            <div class="row">
-
-                <div class="side-col">
-                    <h2><i class="fa fa-map-marker-alt"></i>
-                        <?php echo View::__('Property address'); ?></h2>
-                    <p>
-                        <?php echo View::__('Start adding the address to this property'); ?></p>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83327.3577582379!2d-123.19394341241967!3d49.25782631999733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548673f143a94fb3%3A0xbb9196ea9b81f38b!2zVmFuY8O0dmVyLCBCQw!5e0!3m2!1spt-BR!2sca!4v1515026670031"
-                            width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
-                    <hr class="divisor"/>
-                    <div class="field">
-                        <?php echo View::__('Would you like to show this map on your website?'); ?>
-                        <div class="radio-group">
-                            <label><input type="radio"  name="Property[showMap]" checked
-                                          value="1"> <?php echo View::__('Yes'); ?></label>
-                            <label><input type="radio"  name="Property[showMap]"
-                                          value="0"> <?php echo View::__('No'); ?></label>
-                        </div>
-                    </div>
-                    <p><b class="text-info"><?php echo View::__('Hint:'); ?></b><br>
-                        <?php echo View::__('Do not try to change the field that was auto filled. It will make the search easier for you and your customers.'); ?>
-                    </p>
-
-                </div>
-                <div class="main-col">
-                    <div class="field">
-                        <?php echo View::__('Find an address'); ?>
-                        <input type="text" size="50" id="google_address_autocomplete" autocomplete="false"
-                               onFocus="geolocate()">
-                        <small> <?php echo View::__('Start typing the address and the system will fill up the fields'); ?></small>
-                    </div>
-                    <div class="hidden" id="address-filled">
-                        <div class="field inline">
-
-
-                            <?php echo View::__('Country'); ?>
-                            <input type="text" size="10" id="country" name="Address[country]">
-
-                        </div>
-                        <div class="field inline">
-
-                            <?php echo View::__('Province'); ?>
-                            <input type="text" size="20" id="administrative_area_level_1" name="Address[province]">
-
-                        </div>
-                        <div class="field inline">
-
-                            <?php echo View::__('City'); ?>
-                            <input type="text" size="30" id="locality" name="Address[city]">
-
-                        </div>
-
-                        <div class="clear"></div>
-
-                        <div class="field inline">
-
-                            <?php echo View::__('Region'); ?>
-                            <input type="text" size="20" id="sublocality_level_1" name="Address[region]">
-
-                        </div>
-                        <div class="field inline">
-
-                            <?php echo View::__('Area'); ?>
-                            <input type="text" size="20" id="administrative_area_level_2" name="Address[area]">
-
-                        </div>
-                        <div class="clear"></div>
-                        <div class="field inline">
-                            <?php echo View::__('Unit #'); ?>
-                            <input type="text" size="3" id="unit_number" name="Address[unitNumber]">
-
-                        </div>
-                        <div class="field inline">
-                            <?php echo View::__('Street #'); ?>
-                            <input type="text" size="3" id="street_number" name="Address[streetNumber]">
-
-                        </div>
-                        <div class="field inline">
-                            <?php echo View::__('Address'); ?>
-                            <input type="text" size="40" id="route" name="Address[address]">
-
+                        <hr class="divisor"/>
+                        <div class="field">
+                            <?php echo View::__('Property title'); ?>
+                            <input type="text" size="50" name="Property[title]">
                         </div>
                         <div class="field">
-                            <?php echo View::__('Postal code'); ?>
-                            <input type="text" size="5" id="postal_code" name="Address[postalCode]">
+                            <?php echo View::__('Property descrition'); ?>
+                            <textarea id="property-description" name="Property[description]"></textarea>
+                        </div>
+
+                        <hr class="divisor"/>
+
+                        <div class="field inline">
+                            <i class="fa fa-car"></i> <?php echo View::__('Parking'); ?>
+                            <select class="select2" style="width: 180px" name="Property[idParking]">
+                                <option value=""><?php echo View::__('-- Select an option --'); ?></option>
+                                <?php
+                                foreach ($parkingTypes as $parkingType) {
+                                    echo "<option value='$parkingType->idParking'>" . View::__($parkingType->parking) . "</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+
+                        <div class="field inline">
+                            <i class="fa fa-utensils"></i> <?php echo View::__('Laundry'); ?>
+                            <select class="select2" style="width: 180px" name="Property[idLaundry]">
+                                <option value=""><?php echo View::__('-- Select an option --'); ?></option>
+                                <?php
+                                foreach ($laundryTypes as $laundryType) {
+                                    echo "<option value='$laundryType->idLaundry'>" . View::__($laundryType->laundry) . "</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+
+                        <hr class="divisor"/>
+                        <div class="field inline">
+                            <?php echo View::__('Availability'); ?>
+                            <div class="input-group">
+                                <input type="text" size="10" readonly value="<?php echo strftime("%Y-%m-%d"); ?>"
+                                       name="Property[availability]">
+                                <button class="btn btn-default"><i class="fa fa-calendar-alt"></i></button>
+                            </div>
+                            <small>Date format: dd-mm-yyyy</small>
+                        </div>
+
+                        <div class="field inline">
+                            <label><input type="checkbox" name="Property[openhouse]"
+                                          value="1"> <?php echo View::__('Open House'); ?>  </label>
+                        </div>
+
+
+                        <hr class="divisor"/>
+                        <div class="field">
+                            <?php echo View::__('Internal observations'); ?>
+                            <textarea id="internal-observations" name="Property[observations]">
+
+                        </textarea>
+                        </div>
+
+                    </div>
+
+                </div>
+            </li>
+            <li>
+
+                <div class="row">
+
+                    <div class="side-col">
+                        <h2><i class="fa fa-map-marker-alt"></i>
+                            <?php echo View::__('Property address'); ?></h2>
+                        <p>
+                            <?php echo View::__('Start adding the address to this property'); ?></p>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83327.3577582379!2d-123.19394341241967!3d49.25782631999733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548673f143a94fb3%3A0xbb9196ea9b81f38b!2zVmFuY8O0dmVyLCBCQw!5e0!3m2!1spt-BR!2sca!4v1515026670031"
+                                width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        <hr class="divisor"/>
+                        <div class="field">
+                            <?php echo View::__('Would you like to show this map on your website?'); ?>
+                            <div class="radio-group">
+                                <label><input type="radio" name="Property[showMap]" checked
+                                              value="1"> <?php echo View::__('Yes'); ?></label>
+                                <label><input type="radio" name="Property[showMap]"
+                                              value="0"> <?php echo View::__('No'); ?></label>
+                            </div>
+                        </div>
+                        <p><b class="text-info"><?php echo View::__('Hint:'); ?></b><br>
+                            <?php echo View::__('Do not try to change the field that was auto filled. It will make the search easier for you and your customers.'); ?>
+                        </p>
+
+                    </div>
+                    <div class="main-col">
+                        <div class="field">
+                            <?php echo View::__('Find an address'); ?>
+                            <input type="text" size="50" id="google_address_autocomplete" autocomplete="false"
+                                   onFocus="geolocate()">
+                            <small> <?php echo View::__('Start typing the address and the system will fill up the fields'); ?></small>
+                        </div>
+                        <div class="hidden" id="address-filled">
+                            <div class="field inline">
+
+
+                                <?php echo View::__('Country'); ?>
+                                <input type="text" size="10" id="country" name="Address[country]">
+
+                            </div>
+                            <div class="field inline">
+
+                                <?php echo View::__('Province'); ?>
+                                <input type="text" size="20" id="administrative_area_level_1" name="Address[province]">
+
+                            </div>
+                            <div class="field inline">
+
+                                <?php echo View::__('City'); ?>
+                                <input type="text" size="30" id="locality" name="Address[city]">
+
+                            </div>
+
+                            <div class="clear"></div>
+
+                            <div class="field inline">
+
+                                <?php echo View::__('Region'); ?>
+                                <input type="text" size="20" id="sublocality_level_1" name="Address[region]">
+
+                            </div>
+                            <div class="field inline">
+
+                                <?php echo View::__('Area'); ?>
+                                <input type="text" size="20" id="administrative_area_level_2" name="Address[area]">
+
+                            </div>
+                            <div class="clear"></div>
+                            <div class="field inline">
+                                <?php echo View::__('Unit #'); ?>
+                                <input type="text" size="3" id="unit_number" name="Address[unitNumber]">
+
+                            </div>
+                            <div class="field inline">
+                                <?php echo View::__('Street #'); ?>
+                                <input type="text" size="3" id="street_number" name="Address[streetNumber]">
+
+                            </div>
+                            <div class="field inline">
+                                <?php echo View::__('Address'); ?>
+                                <input type="text" size="40" id="route" name="Address[address]">
+
+                            </div>
+                            <div class="field">
+                                <?php echo View::__('Postal code'); ?>
+                                <input type="text" size="5" id="postal_code" name="Address[postalCode]">
+                            </div>
                         </div>
                     </div>
+
                 </div>
+            </li>
+            <li>
+                <div class="row">
 
-            </div>
-        </li>
-        <li>
-            <div class="row">
-
-                <div class="side-col">
-                    <h2><i class="fa fa-tasks"></i> Features</h2>
-                    <p><?php echo View::__('Check everything that this property has.'); ?></p>
-                    <hr class="divisor"/>
-                    <p><?php echo View::__('We recommend you to show the scores for property on your website'); ?></p>
-                </div>
-                <div class="main-col">
-                    <div class="row">
-
-                        <?php foreach ($features as $feature) {
-                        ?>
-                            <div class="col-xl-4">
-                                <div class="field inline">
-                                    <label><input type="checkbox" value="<?php echo $feature->idFeature; ?>" name="Feature[]"> <?php echo View::__($feature->feature); ?>  </label>
-                                </div>
-                            </div>
-                        <?php
-                        }
-                        ?>
-
-
+                    <div class="side-col">
+                        <h2><i class="fa fa-tasks"></i> Features</h2>
+                        <p><?php echo View::__('Check everything that this property has.'); ?></p>
+                        <hr class="divisor"/>
+                        <p><?php echo View::__('We recommend you to show the scores for property on your website'); ?></p>
                     </div>
-                    <hr class="divisor"/>
-                    <h2><?php echo View::__('Based on the address you typed, we found the following scores:'); ?></h2>
-                    <div class="row">
-                        <div class="col-xl-3">
-                            <div class="score">
-                                <div id="walk_score"></div>
-                                <div class="score-title">Walk Score:</div>
-                                <div class="score-number">
+                    <div class="main-col">
+                        <div class="row">
+
+                            <?php foreach ($features as $feature) {
+                                ?>
+                                <div class="col-xl-4">
                                     <div class="field inline">
-                                        <div class="input-group spinner-score" data-trigger="spinner">
-                                            <button class="btn btn-default" data-spin="down"><i class="fa fa-minus"></i></button>
-                                            <input type="text" value="100" maxsize="3"  data-min="0" data-max="100" id="walk-score-val" onkeyup="drawChart()">
-                                            <button class="btn btn-default" data-spin="up"><i class="fa fa-plus"></i></button>
-                                        </div>
-                                    </div></div>
-                                <div class="score-max">of 100</div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3">
-                            <div class="score">
-                                <div id="transit_score"></div>
-                                <div class="score-title">Transit Score:</div>
-                                <div class="score-number">
-                                    <div class="field inline">
-                                        <div class="input-group spinner-score" data-trigger="spinner">
-                                            <button class="btn btn-default" data-spin="down"><i class="fa fa-minus"></i></button>
-                                            <input type="text" value="100" maxsize="3"  data-min="0" data-max="100" id="transit-score-val" onkeyup="drawChart()">
-                                            <button class="btn btn-default" data-spin="up"><i class="fa fa-plus"></i></button>
-                                        </div>
+                                        <label><input type="checkbox" value="<?php echo $feature->idFeature; ?>"
+                                                      name="FeaturesIds[]"> <?php echo View::__($feature->feature); ?>
+                                        </label>
                                     </div>
                                 </div>
-                                <div class="score-max">of 100</div>
-                            </div>
+                                <?php
+                            }
+                            ?>
+
+
                         </div>
-                        <div class="col-xl-3">
-                            <div class="score">
-                                <div id="bike_score"></div>
-                                <div class="score-title">Bike Score:</div>
-                                <div class="score-number">
-                                    <div class="field inline">
-                                        <div class="input-group spinner-score" data-trigger="spinner">
-                                            <button class="btn btn-default" data-spin="down"><i class="fa fa-minus"></i></button>
-                                            <input type="text" value="100" maxsize="3"  data-min="0" data-max="100" id="bike-score-val" onkeyup="drawChart()">
-                                            <button class="btn btn-default" data-spin="up"><i class="fa fa-plus"></i></button>
+                        <hr class="divisor"/>
+                        <h2><?php echo View::__('Based on the address you typed, we found the following scores:'); ?></h2>
+                        <div class="row">
+                            <div class="col-xl-3">
+                                <div class="score">
+                                    <div id="walk_score"></div>
+                                    <div class="score-title">Walk Score:</div>
+                                    <div class="score-number">
+                                        <div class="field inline">
+                                            <div class="input-group spinner-score" data-trigger="spinner">
+                                                <button type="button" class="btn btn-default" data-spin="down"><i
+                                                            class="fa fa-minus"></i></button>
+                                                <input type="text" value="100" maxsize="3" data-min="0" data-max="100"
+                                                       id="walk-score-val" onkeyup="drawChart()">
+                                                <button type="button" class="btn btn-default" data-spin="up"><i
+                                                            class="fa fa-plus"></i></button>
+                                            </div>
                                         </div>
-                                    </div></div>
-                                <div class="score-max">of 100</div>
+                                    </div>
+                                    <div class="score-max">of 100</div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3">
+                                <div class="score">
+                                    <div id="transit_score"></div>
+                                    <div class="score-title">Transit Score:</div>
+                                    <div class="score-number">
+                                        <div class="field inline">
+                                            <div class="input-group spinner-score" data-trigger="spinner">
+                                                <button type="button" class="btn btn-default" data-spin="down"><i
+                                                            class="fa fa-minus"></i></button>
+                                                <input type="text" value="100" maxsize="3" data-min="0" data-max="100"
+                                                       id="transit-score-val" onkeyup="drawChart()">
+                                                <button type="button" class="btn btn-default" data-spin="up"><i
+                                                            class="fa fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="score-max">of 100</div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3">
+                                <div class="score">
+                                    <div id="bike_score"></div>
+                                    <div class="score-title">Bike Score:</div>
+                                    <div class="score-number">
+                                        <div class="field inline">
+                                            <div class="input-group spinner-score" data-trigger="spinner">
+                                                <button type="button" class="btn btn-default" data-spin="down"><i
+                                                            class="fa fa-minus"></i></button>
+                                                <input type="text" value="100" maxsize="3" data-min="0" data-max="100"
+                                                       id="bike-score-val" onkeyup="drawChart()">
+                                                <button type="button" class="btn btn-default" data-spin="up"><i
+                                                            class="fa fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="score-max">of 100</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="field">
-                        <?php echo View::__('Would you like to show these scores on your website?'); ?>
-                        <div class="radio-group">
-                            <label><input type="radio" name="Property[showScore]" checked
-                                          value="1"> <?php echo View::__('Yes'); ?></label>
-                            <label><input type="radio" name="Property[showScore]"
-                                          value="0"> <?php echo View::__('No'); ?></label>
+                        <div class="field">
+                            <?php echo View::__('Would you like to show these scores on your website?'); ?>
+                            <div class="radio-group">
+                                <label><input type="radio" name="Property[showScore]" checked
+                                              value="1"> <?php echo View::__('Yes'); ?></label>
+                                <label><input type="radio" name="Property[showScore]"
+                                              value="0"> <?php echo View::__('No'); ?></label>
+                            </div>
                         </div>
+
                     </div>
-
-                    <script type="text/javascript">
-
-window.onload = function() {
-    // Load the Visualization API and the corechart package.
-    google.charts.load('current', {'packages': ['corechart']});
-
-    // Set a callback to run when the Google Visualization API is loaded.
-    google.charts.setOnLoadCallback(drawChart);
-};
-
-
-
-                        // Callback that creates and populates a data table,
-                        // instantiates the pie chart, passes in the data and
-                        // draws it.
-                        function drawChart() {
-
-
-
-                            // Set chart options
-                            var options = {
-                                legend: 'none',
-                                pieSliceText: 'none',
-
-                                animation: {
-                                    duration: 200,
-                                    easing: 'out',
-                                    startup: true
-                                },
-
-                                pieHole: 0.87,
-                                slices: {
-                                    0: {color: '#4B77BE'},
-                                    1: {color: 'transparent'}
-                                },
-                                'width': 250,
-                                'height': 250
-                            };
-
-
-                            // Instantiate and draw our chart, passing in some options.
-                            var chart = new google.visualization.PieChart(document.getElementById('walk_score'));
-                            // Create the data table.
-                            var data = new google.visualization.DataTable();
-                            data.addColumn('string', 'Score');
-                            data.addColumn('number', 'number');
-                            data.addRows([
-                                ['Score', parseInt($("#walk-score-val").val(),10)],
-                                ['empty', (100-parseInt($("#walk-score-val").val(),10))]
-                            ]);
-                            chart.draw(data, options);
-
-                            // Instantiate and draw our chart, passing in some options.
-                            var chart2 = new google.visualization.PieChart(document.getElementById('transit_score'));
-                            // Create the data table.
-                            var data2 = new google.visualization.DataTable();
-                            data2.addColumn('string', 'Score');
-                            data2.addColumn('number', 'number');
-                            data2.addRows([
-                                ['Score', parseInt($("#transit-score-val").val(),10)],
-                                ['empty', (100-parseInt($("#transit-score-val").val(),10))]
-                            ]);
-                            chart2.draw(data2, options);
-
-                            // Instantiate and draw our chart, passing in some options.
-                            var chart3 = new google.visualization.PieChart(document.getElementById('bike_score'));
-                            // Create the data table.
-                            var data3 = new google.visualization.DataTable();
-                            data3.addColumn('string', 'Score');
-                            data3.addColumn('number', 'number');
-                            data3.addRows([
-                                ['Score', parseInt($("#bike-score-val").val(),10)],
-                                ['empty', (100-parseInt($("#bike-score-val").val(),10))]
-                            ]);
-                            chart3.draw(data3, options);
-                        }
-                    </script>
-
-
                 </div>
-            </div>
-        </li>
-        <li>
-            <div class="row">
+            </li>
+            <li>
+                <div class="row">
 
-                <div class="side-col">
-                    <h2><i class="fa fa-dollar-sign"></i> Values & prices</h2>
-                    <p><?php echo View::__('You can specify here if this property is for rent, sell or both. Specify each value separately.'); ?></p>
-                    <hr class="divisor"/>
-                    <p><?php echo View::__('You may say how much is the expenses with condo too.'); ?></p>
-                </div>
-                <div class="main-col">
-                    <div class="field">
-                        <?php echo View::__('Select a currency'); ?>
-
-                        <select class="select2" style="width: 120px" id="currency-indicator" name="Property[currency]">
-                            <option>AUD (A$)</option>
-                            <option>BRL (R$)</option>
-                            <option selected>CAD (C$)</option>
-                            <option>CHF (Fr)</option>
-                            <option>CNY (元)</option>
-                            <option>EUR (€)</option>
-                            <option>GBP (£)</option>
-                            <option>HKD (HK$)</option>
-                            <option>INR (₹)</option>
-                            <option>JPY (¥)</option>
-                            <option>KRW (₩)</option>
-                            <option>MXN ($)</option>
-                            <option>NOK (kr)</option>
-                            <option>NZD (NZ$)</option>
-                            <option>RUB (₽)</option>
-                            <option>SEK (kr)</option>
-                            <option>SGD (S$)</option>
-                            <option>TRY (₺)</option>
-                            <option>USD ($)</option>
-                            <option>ZAR (R)</option>
-                        </select>
+                    <div class="side-col">
+                        <h2><i class="fa fa-dollar-sign"></i> Values & prices</h2>
+                        <p><?php echo View::__('You can specify here if this property is for rent, sell or both. Specify each value separately.'); ?></p>
+                        <hr class="divisor"/>
+                        <p><?php echo View::__('You may say how much is the expenses with condo too.'); ?></p>
                     </div>
-                    <hr class="divisor"/>
-                    <div class="field">
-                        <?php echo View::__('Selling price'); ?>
-                        <div class="input-group ">
+                    <div class="main-col">
+                        <div class="field">
+                            <?php echo View::__('Select a currency'); ?>
+
+                            <select class="select2" style="width: 120px" id="currency-indicator"
+                                    name="Property[currency]">
+                                <option>AUD (A$)</option>
+                                <option>BRL (R$)</option>
+                                <option selected>CAD (C$)</option>
+                                <option>CHF (Fr)</option>
+                                <option>CNY (元)</option>
+                                <option>EUR (€)</option>
+                                <option>GBP (£)</option>
+                                <option>HKD (HK$)</option>
+                                <option>INR (₹)</option>
+                                <option>JPY (¥)</option>
+                                <option>KRW (₩)</option>
+                                <option>MXN ($)</option>
+                                <option>NOK (kr)</option>
+                                <option>NZD (NZ$)</option>
+                                <option>RUB (₽)</option>
+                                <option>SEK (kr)</option>
+                                <option>SGD (S$)</option>
+                                <option>TRY (₺)</option>
+                                <option>USD ($)</option>
+                                <option>ZAR (R)</option>
+                            </select>
+                        </div>
+                        <hr class="divisor"/>
+                        <div class="field">
+                            <?php echo View::__('Selling price'); ?>
+                            <div class="input-group ">
                             <span class="currency-indicator">
                                CAD $
                             </span>
-                            <input type="text" max="10" class="money" value="0" name="Property[sellingPrice]">
+                                <input type="text" max="10" class="money" value="0" name="Property[sellingPrice]">
+                            </div>
                         </div>
-                    </div>
-                    <div class="field">
-                        <?php echo View::__('Rental price'); ?>
-                        <div class="input-group ">
+                        <div class="field">
+                            <?php echo View::__('Rental price'); ?>
+                            <div class="input-group ">
                             <span class="currency-indicator">CAD $
                             </span>
-                            <input type="text" max="10" class="money" value="0" name="Property[rentalPrice]">
+                                <input type="text" max="10" class="money" value="0" name="Property[rentalPrice]">
+                            </div>
                         </div>
-                    </div>
-                    <hr class="divisor"/>
-                    <div class="field">
-                        <?php echo View::__('Condo expenses'); ?>
-                        <div class="input-group ">
+                        <hr class="divisor"/>
+                        <div class="field">
+                            <?php echo View::__('Condo expenses'); ?>
+                            <div class="input-group ">
                             <span class="currency-indicator">CAD $
                             </span>
-                            <input type="text" max="10" class="money" value="0" name="Property[condoExpenses]">
+                                <input type="text" max="10" class="money" value="0" name="Property[condoExpenses]">
+                            </div>
                         </div>
                     </div>
+
                 </div>
+            </li>
 
-            </div>
-        </li>
+            <li>
+                <div class="row">
 
-        <li>
-            <div class="row">
-
-                <div class="side-col">
-                    <h2><i class="fa fa-images"></i> Pictures</h2>
-                    <p><?php echo View::__('Add your pictures to this property.'); ?></p>
-                    <p><?php echo View::__('Adding a relevant image of this property can be one of the most powerful factors in determining the success of your leads.');?></p>
-                    <hr class="divisor"/>
-                    <p><b class="text-info"><?php echo View::__('Hint:'); ?></b><br>
-                        <?php echo View::__('An ad with photos is seen up to 7 times more than an ad without photo.'); ?>
-                    </p>
-                </div>
-                <div class="main-col">
-
-                    <div id="drop">
-                        <?php echo View::__('Drop your pictures here or'); ?>
-
-                        <a class="btn btn-primary"><i class="far fa-image"></i> <?php echo View::__('Browse them'); ?></a>
-                        <input type="file" name="upl" multiple />
+                    <div class="side-col">
+                        <h2><i class="fa fa-images"></i> Pictures</h2>
+                        <p><?php echo View::__('Add your pictures to this property.'); ?></p>
+                        <p><?php echo View::__('Adding a relevant image of this property can be one of the most powerful factors in determining the success of your leads.'); ?></p>
+                        <hr class="divisor"/>
+                        <p><b class="text-info"><?php echo View::__('Hint:'); ?></b><br>
+                            <?php echo View::__('An ad with photos is seen up to 7 times more than an ad without photo.'); ?>
+                        </p>
                     </div>
+                    <div class="main-col">
 
-                    <ul id="images-preview"></ul>
-                    <button type="button" class="btn btn-success" id="up_btn">Go</button>
+                        <div id="drop">
+                            <?php echo View::__('Drop your pictures here or'); ?>
+
+                            <a class="btn btn-primary"><i
+                                        class="far fa-image"></i> <?php echo View::__('Browse them'); ?></a>
+                            <input type="file" name="upl" multiple/>
+                        </div>
+
+                        <ul id="images-preview"></ul>
+                        <button type="button" class="btn btn-success" id="up_btn">Go</button>
+                    </div>
                 </div>
-            </div>
-        </li>
-    </ul>
-    <div class="actions-bottom">
+            </li>
+        </ul>
+        <div class="actions-bottom">
 
-        <button  type="button" class="btn btn-primary previous"><i class="fa fa-backward"></i><?php echo View::__('Previous'); ?>
-        </button>
-        <button type="button"  class="btn btn-primary next"><?php echo View::__('Next'); ?>&nbsp;<i class="fa fa-forward"></i></button>
-        <button class="btn btn-success"><i class="fa fa-save"></i> <?php echo View::__('Save this property'); ?>
-        </button>
+            <button type="button" class="btn btn-primary previous"><i
+                        class="fa fa-backward"></i><?php echo View::__('Previous'); ?>
+            </button>
+            <button type="button" class="btn btn-primary next"><?php echo View::__('Next'); ?>&nbsp;<i
+                        class="fa fa-forward"></i></button>
+            <button type="button" class="btn btn-success submit"><i
+                        class="fa fa-save"></i> <?php echo View::__('Save this property'); ?>
+            </button>
+        </div>
     </div>
-</div>
 </form>
-<script>
+
+<?php View::$jsBundle[] = <<<EOT
+                        <script type="text/javascript">
+
+                            $(function () {
+                                // Load the Visualization API and the corechart package.
+                                google.charts.load('current', {'packages': ['corechart']});
+
+                                // Set a callback to run when the Google Visualization API is loaded.
+                                google.charts.setOnLoadCallback(drawChart);
+                                
+                                $('#add-property .submit').on('click',function(){
+                                   $("#add-property").submit(); 
+                                });
+                                
+                                $("#add-property").submit(function(event){
+ 
+                                  //disable the default form submission
+                                  event.preventDefault();
+                                 
+                                  //grab all form data  
+                                  var formData = new FormData($(this)[0]);
+                                 
+                                  $.ajax({
+                                    url: $(this).attr('action'),
+                                    type: 'POST',
+                                    data: formData,
+                                    async: false,
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    success: function (returndata) {
+                                      alert(returndata);
+                                    }
+                                  });
+                                 
+                                  return false;
+                                });
+                            });
+
+
+                            // Callback that creates and populates a data table,
+                            // instantiates the pie chart, passes in the data and
+                            // draws it.
+                            function drawChart() {
+
+
+
+                                // Set chart options
+                                var options = {
+                                    legend: 'none',
+                                    pieSliceText: 'none',
+
+                                    animation: {
+                                        duration: 200,
+                                        easing: 'out',
+                                        startup: true
+                                    },
+
+                                    pieHole: 0.87,
+                                    slices: {
+                                        0: {color: '#4B77BE'},
+                                        1: {color: 'transparent'}
+                                    },
+                                    'width': 250,
+                                    'height': 250
+                                };
+
+
+                                // Instantiate and draw our chart, passing in some options.
+                                var chart = new google.visualization.PieChart(document.getElementById('walk_score'));
+                                // Create the data table.
+                                var data = new google.visualization.DataTable();
+                                data.addColumn('string', 'Score');
+                                data.addColumn('number', 'number');
+                                data.addRows([
+                                    ['Score', parseInt($("#walk-score-val").val(), 10)],
+                                    ['empty', (100 - parseInt($("#walk-score-val").val(), 10))]
+                                ]);
+                                chart.draw(data, options);
+
+                                // Instantiate and draw our chart, passing in some options.
+                                var chart2 = new google.visualization.PieChart(document.getElementById('transit_score'));
+                                // Create the data table.
+                                var data2 = new google.visualization.DataTable();
+                                data2.addColumn('string', 'Score');
+                                data2.addColumn('number', 'number');
+                                data2.addRows([
+                                    ['Score', parseInt($("#transit-score-val").val(), 10)],
+                                    ['empty', (100 - parseInt($("#transit-score-val").val(), 10))]
+                                ]);
+                                chart2.draw(data2, options);
+
+                                // Instantiate and draw our chart, passing in some options.
+                                var chart3 = new google.visualization.PieChart(document.getElementById('bike_score'));
+                                // Create the data table.
+                                var data3 = new google.visualization.DataTable();
+                                data3.addColumn('string', 'Score');
+                                data3.addColumn('number', 'number');
+                                data3.addRows([
+                                    ['Score', parseInt($("#bike-score-val").val(), 10)],
+                                    ['empty', (100 - parseInt($("#bike-score-val").val(), 10))]
+                                ]);
+                                chart3.draw(data3, options);
+                            }
+
     // This example displays an address form, using the autocomplete feature
     // of the Google Places API to help users fill in the information.
 
@@ -629,8 +681,14 @@ window.onload = function() {
         initAutocomplete();
 
     };
-</script>
+    $(function () {
+        $("#add-property .submit").on('click', function () {
 
+        });
+    });
+</script>
+EOT;
+?>
 
 
 

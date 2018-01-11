@@ -2,16 +2,18 @@
 
 namespace Bents\App\Controller {
 
+    use Bents\App\DAO\AddressDAO;
     use Bents\App\DAO\FeatureDAO;
     use Bents\App\DAO\LaundryDAO;
     use Bents\App\DAO\ParkingDAO;
+    use Bents\App\DAO\ProfileDAO;
     use Bents\App\DAO\PropertyDAO;
     use Bents\App\DAO\TypeDAO;
-    use Bents\App\Model\Laundry;
+    use Bents\App\Model\Address;
     use Bents\App\Model\Property;
-    use Bents\Application;
     use Bents\Core\Controller;
     use Bents\Core\Globalization\Globalization;
+    use Bents\Core\Utils\Session;
     use Bents\Core\View;
 
     /**
@@ -23,7 +25,6 @@ namespace Bents\App\Controller {
     {
 
         /**
-         *
          * @authorize
          *
          */
@@ -55,22 +56,47 @@ namespace Bents\App\Controller {
             $this->RenderView();
 
         }
-
+        /**
+         * @authorize
+         *
+         */
         public function Save(){
 
-            $Property = new Property($_POST['Property']);
+            if(isset($_POST['Property'])) {
+                $Property = new Property($_POST['Property']);
 
-            $Property->idAddress = 1;
-            $Property->idRealEstate = 1;
-            $Property->idProfile = 1;
+                //Address
+                if(isset($_POST['Address'])) {
+                    $Address = new Address($_POST['Address']);
+                    $AddressDAO = new AddressDAO();
+                    $idAddress = $AddressDAO->SaveAddress($Address);
+                    $Property->idAddress = $idAddress;
+
+                    //Real Estate
+                    $Property->idRealEstate = Session::GetRealEstateId();
+
+                    //Profile
+                    $ProfileDAO = new ProfileDAO();
+                    $Property->idProfile = $ProfileDAO->GetIdProfileByUserId(Session::GetUserId());
 
 
-            $PropertyDAO = new PropertyDAO();
-            echo '<pre>';
-            print_r($Property);
-            echo '</pre>';
-            print_r($PropertyDAO->SaveProperty($Property));
+                    //Saving the property
+                    $PropertyDAO = new PropertyDAO();
+                    $propertyId = $PropertyDAO->SaveProperty($Property);
 
+                    //Adding the features
+                    if (isset($_POST['FeaturesIds'])) {
+                        $FeatureDAO = new FeatureDAO();
+                        $FeatureDAO->AddFeaturesToProperty($propertyId, $_POST['FeaturesIds']);
+                    }
+
+                    die('{status:true,lastId=' . $propertyId . ',error:""}');
+                } else {
+                    die('{status:false,lastId=0,error:"Address was empty"}');
+                }
+            } else {
+                die('{status:false,lastId=0,error:"Invalid property object"}');
+            }
 
         }
 

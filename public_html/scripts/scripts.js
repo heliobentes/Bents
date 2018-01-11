@@ -231,7 +231,7 @@ function ReloadFunctions(){
 
             reader.onload = function (e) {
                 tpl.find('img').attr('src', e.target.result);
-            }
+            };
 
             reader.readAsDataURL(data.files[0]);
 

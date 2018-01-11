@@ -100,12 +100,12 @@ namespace Bents\Core {
                 }
                 foreach (self::$jsBundle as $js) {
 
-                    preg_match_all('/(?:<script[^>]*>)([^<]*)(?:<\/script>)/', $js, $matches);
+                    $js = preg_replace('/(<script[^>]*>)/', '',$js);
+                    $js = preg_replace('/(<\/script>)/', '',$js);
 
-                    foreach ($matches[1] as $match) {
 
-                        $script .= ' ' . $match;
-                    }
+                    $script .= ' ' . $js;
+
                 }
                 $fp = fopen($filename, 'w');
                 fwrite($fp, self::SanitizeOutput($script));

@@ -35,7 +35,7 @@ namespace Bents\Core\StartUp {
 
             $language = preg_split('~-~',Globalization::GetLanguage())[0];
 
-            $script[] = 'scripts/jquery-3.2.1.min.js';
+//            $script[] = 'scripts/jquery-3.2.1.min.js';
             $script[] = 'scripts/jquery.dropdown.min.js';
             $script[] = 'scripts/icheck.min.js';
             $script[] = 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js';

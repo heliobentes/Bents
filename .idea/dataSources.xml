@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="bents@localhost" uuid="fb825031-c83c-4283-bacc-a8f3be6530a1">
+    <data-source source="LOCAL" name="reaws@localhost" uuid="a430a084-9e1a-46bd-be1d-a86e8e33a839">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/bents</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/reaws</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />

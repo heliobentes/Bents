@@ -136,7 +136,7 @@ namespace Bents\App\Model {
             if (isset($Property['idProperty'])) $this->idProperty = filter_var($Property['idProperty'],FILTER_SANITIZE_NUMBER_INT);
             if (isset($Property['idAddress']) && $Property['idAddress']!='')$this->idAddress = filter_var($Property['idAddress'],FILTER_SANITIZE_NUMBER_INT);
             if (isset($Property['createdAt']))$this->createdAt = filter_var($Property['createdAt'],FILTER_SANITIZE_STRING);
-            if (isset($Property['updatedAt']))$this->updatedAt = strftime("%Y-%m-%d %H:%M:%S");
+            if (isset($Property['updatedAt']))$this->updatedAt = filter_var($Property['updatedAt'],FILTER_SANITIZE_STRING);
             if (isset($Property['sellingPrice']))$this->sellingPrice = filter_var($Property['sellingPrice'],FILTER_SANITIZE_NUMBER_FLOAT);
             if (isset($Property['rentalPrice']))$this->rentalPrice = filter_var($Property['rentalPrice'],FILTER_SANITIZE_NUMBER_FLOAT);
             if (isset($Property['condoExpenses'])) $this->condoExpenses = filter_var($Property['condoExpenses'],FILTER_SANITIZE_NUMBER_FLOAT);

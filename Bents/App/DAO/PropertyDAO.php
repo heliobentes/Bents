@@ -13,6 +13,7 @@ namespace Bents\App\DAO {
     use Bents\Core\Config;
     use Bents\Core\DAO;
     use Bents\Core\Log;
+    use Bents\Core\Utils\Error;
 
     class PropertyDAO extends DAO
     {
@@ -81,8 +82,8 @@ namespace Bents\App\DAO {
 
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(':idAddress', $Property->idAddress);
-            $stmt->bindValue(':createdAt', $Property->createdAt);
-            $stmt->bindValue(':updatedAt', $Property->updatedAt);
+            $stmt->bindValue(':createdAt', strftime("%Y-%m-%d %H:%M:%S"));
+            $stmt->bindValue(':updatedAt', strftime("%Y-%m-%d %H:%M:%S"));
             $stmt->bindValue(':sellingPrice', $Property->sellingPrice);
             $stmt->bindValue(':rentalPrice', $Property->rentalPrice);
             $stmt->bindValue(':condoExpenses', $Property->condoExpenses);
@@ -114,10 +115,7 @@ namespace Bents\App\DAO {
                    throw new \Exception($stmt->errorInfo()[2]);
                 }
             } Catch(\Exception $e){
-                Log::SaveLog($e);
-                header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
-                include Config::SystemBehavior()->GetErrorPage(500);
-                exit;
+                Error::Deal(500,$e);
             }
 
 
