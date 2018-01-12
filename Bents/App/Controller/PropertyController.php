@@ -12,7 +12,6 @@ namespace Bents\App\Controller {
     use Bents\App\Model\Address;
     use Bents\App\Model\Property;
     use Bents\Core\Controller;
-    use Bents\Core\Globalization\Globalization;
     use Bents\Core\Utils\Session;
     use Bents\Core\View;
 
@@ -28,10 +27,23 @@ namespace Bents\App\Controller {
          * @authorize
          *
          */
+        public function Details($id)
+        {
+
+            $PropertyDAO = new PropertyDAO();
+
+
+            $this->RenderView($PropertyDAO->GetPropertyById($id));
+
+        }
+
+        /**
+         * @authorize
+         *
+         */
         public function Add()
         {
 
-            $language = Globalization::GetLanguage();
 
             //getting the types
             $TypeDAO = new TypeDAO();

@@ -18,6 +18,21 @@ namespace Bents\App\DAO {
     class PropertyDAO extends DAO
     {
 
+        public function GetPropertyById($id){
+            $pdo = self::$dbConn;
+
+            $sql = "SELECT * FROM Property WHERE idProperty=:idProperty";
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':idProperty',$id);
+            $stmt->execute();
+            $row = $stmt->fetch();
+
+            $Property =  new Property($row);
+
+            return $Property;
+        }
+
         /**
          * @param $Property Property
          * @return int

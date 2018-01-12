@@ -10,6 +10,7 @@
 namespace Bents\Core\StartUp {
 
     use Bents\Core\Config;
+    use Bents\Core\Controller;
     use Bents\Core\Security\Security;
 
     class StartUp
@@ -46,13 +47,13 @@ namespace Bents\Core\StartUp {
         private static function LoadRoute()
         {
             if (isset($_REQUEST['controller']) and $_REQUEST['controller'] != '') {
-                self::$controller = filter_var($_REQUEST['controller']);
+                self::$controller = filter_var($_REQUEST['controller'],FILTER_SANITIZE_STRING);
             } else {
                 self::$controller = 'Home';
             }
 
             if (isset($_REQUEST['action']) and $_REQUEST['action'] != '') {
-                self::$action = filter_var($_REQUEST['action']);
+                self::$action = filter_var($_REQUEST['action'],FILTER_SANITIZE_STRING);
             } else {
                 self::$action = "Index";
             }
@@ -92,7 +93,13 @@ namespace Bents\Core\StartUp {
                 //check permissions
                 Security::CheckUserPermission($controller, $action);
 
-                $o_class->$action();
+                //check if there is an id passed
+                if (isset($_REQUEST['id']) and $_REQUEST['id'] != '') {
+                    $id = filter_var($_REQUEST['id'],FILTER_SANITIZE_STRING);
+                    $o_class->$action($id);
+                } else {
+                    $o_class->$action();
+                }
             } else {
                 header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found', true, 404);
                 include Config::SystemBehavior()->getErrorPage(404);

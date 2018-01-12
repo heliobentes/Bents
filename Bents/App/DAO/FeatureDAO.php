@@ -36,7 +36,35 @@ namespace Bents\App\DAO {
 
             return $features;
         }
+        /**
+         * @return Feature[]
+         */
+        public function GetAllFeaturesByPropertyId($id)
+        {
+            $pdo = self::$dbConn;
 
+            $sql = "SELECT F.idFeature,
+                           F.feature 
+                    FROM Feature F  
+                    JOIN PropertyFeature PF ON F.idFeature = PF.idFeature
+                    WHERE PF.idProperty = :id
+                    ORDER BY F.feature";
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':id',$id);
+
+            $stmt->execute();
+            $rows = $stmt->fetchAll();
+
+            $Features = array();
+
+            foreach ($rows as $row){
+                $Features[] = new Feature($row);
+            }
+
+
+            return $Features;
+        }
         /**
          * @param $propertyId int
          * @param $features array

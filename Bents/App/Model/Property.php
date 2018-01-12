@@ -8,6 +8,7 @@
 
 namespace Bents\App\Model {
 
+    use Bents\App\DAO\FeatureDAO;
     use Bents\Core\Model;
 
     /**
@@ -128,6 +129,11 @@ namespace Bents\App\Model {
         public $idProfile;
 
         /**
+         * @var Feature[]
+         */
+        public $Features;
+
+        /**
          * User constructor.
          * @param $Property array
          */
@@ -160,6 +166,10 @@ namespace Bents\App\Model {
             if (isset($Property['showMap']))$this->showMap = filter_var($Property['showMap'],FILTER_VALIDATE_BOOLEAN);
             if (isset($Property['idRealEstate']) && $Property['idRealEstate']!='')$this->idRealEstate = filter_var($Property['idRealEstate'],FILTER_SANITIZE_NUMBER_INT);
             if (isset($Property['idProfile']) && $Property['idProfile']!='')$this->idProfile = filter_var($Property['idProfile'],FILTER_SANITIZE_NUMBER_INT);
+            if (isset($Property['idProperty'])) {
+                $FeatureDAO = new FeatureDAO();
+                $this->Features = $FeatureDAO->GetAllFeaturesByPropertyId(filter_var($Property['idProperty'],FILTER_SANITIZE_NUMBER_INT));
+                }
         }
 
 

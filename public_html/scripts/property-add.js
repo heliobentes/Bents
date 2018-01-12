@@ -25,22 +25,35 @@ $("#add-property").submit(function (event) {
             type: 'POST',
             data: $(this).serialize(),
             dataType: 'json',
-        }).always(function (json) {
-            if (json.status == true) {
-                let content = __("This property was successfully saved!");
-
-                if (pendingList.length > 0) {
-                    content += '<br>' + __('We are now uploading your pictures, please wait.');
-                    $('#add-property .tabs .tabs-navigation li:not(:nth-child(5))').hide();
-                    $('#add-property .tabs .tabs-navigation li:nth-child(5):not(.active)').click();
-                    $('#add-property .tabs .actions-bottom').hide();
-                    idProperty = json.lastId;
-                    sendAllImages();
+            statusCode: {
+                401: function () {
+                    AddPop('danger', __('Unauthorized!'), __("You don't have permissions to access this page")+'<br><b>' + __(title) + '</b>','','','fa fa-lock');
                 }
-                AddPop('success', __('Property was saved!'), content, ['#', '<i class="fa fa-eye"></i> ' + __('See it')]);
-
+            }
+        }).always(function (json) {
+            if (json == 'userNotLogged') {
+                window.location = '/Login/Login';
             } else {
-                AddPop('danger', __('An error occurred while trying to save this property'), json.error);
+                if (json.status == true) {
+                    let content = __("This property was successfully saved!");
+
+                    if (pendingList.length > 0) {
+                        content += '<br>' + __('We are now uploading your pictures, please wait.');
+                        $('#add-property .tabs .tabs-navigation li:not(:nth-child(5))').hide();
+                        $('#add-property .tabs .tabs-navigation li:nth-child(5):not(.active)').click();
+                        $('#add-property .tabs .actions-bottom').hide();
+                        idProperty = json.lastId;
+                        sendAllImages();
+                    } else {
+                        $('#add-property .tabs .tabs-navigation li:last-child()').hide();
+                        $('#add-property .tabs .actions-bottom').hide();
+                        OpenLink('/Property/Details/'+json.lastId,__('Property details'),'');
+                    }
+                    AddPop('success', __('Property was saved!'), content, ['/Property/Details/'+json.lastId, '<i class="fa fa-eye"></i> ' + __('See it'),__('Property details'),'']);
+
+                } else {
+                    AddPop('danger', __('An error occurred while trying to save this property'), json.error);
+                }
             }
 
             $('#loader').hide();

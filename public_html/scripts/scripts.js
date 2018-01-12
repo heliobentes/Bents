@@ -10,8 +10,6 @@ $(document).ready(function () {
     CountNotifications();
 
 
-
-
     //menu toggle
     $('#main-nav > li > a').on('click', function () {
         $('#main-nav > li').removeClass('active');
@@ -95,10 +93,10 @@ $(window).on('beforeunload', function (e) {
  */
 
 //functions to be loaded after a page is loaded
-function ReloadFunctions(){
+function ReloadFunctions() {
 
     //converting links to ajax
-    $('a').on('click', function (e) {
+    $(document).on('click', 'a', function (e) {
         if ($(this).data('link-ajax') == true) {
             e.preventDefault();
             let url = $(this).attr('href');
@@ -115,69 +113,69 @@ function ReloadFunctions(){
 
     //loading select2 on default configuration
     $('.select2').select2({
-        language:language
+        language: language
     });
 
     //tabs
-    $('.tabs .tabs-navigation li:not(.actions)').on('click',function(){
+    $('.tabs .tabs-navigation li:not(.actions)').on('click', function () {
         let parent = $(this).parent();
         let index = parent.find('li').index($(this)) + 1;
 
-        ChangeTab($(this),parent,index);
+        ChangeTab($(this), parent, index);
 
 
     });
-    $(".tabs .next").on('click',function(){
-        let parent =( $(this).parent().parent().find('.tabs-navigation').length >0)? $(this).parent().parent().find('.tabs-navigation'): $(this).closest('.tabs-navigation');
+    $(".tabs .next").on('click', function () {
+        let parent = ($(this).parent().parent().find('.tabs-navigation').length > 0) ? $(this).parent().parent().find('.tabs-navigation') : $(this).closest('.tabs-navigation');
 
-        let next = parent.find('li').index(parent.find('li.active'))+2;
+        let next = parent.find('li').index(parent.find('li.active')) + 2;
 
 
-        if(next>(parent.find('li').length-1) || next<=0){
+        if (next > (parent.find('li').length - 1) || next <= 0) {
             next = 1;
         }
-        let obj = parent.find('li:nth-child('+next+')');
+        let obj = parent.find('li:nth-child(' + next + ')');
 
 
-        ChangeTab(obj,parent,next);
+        ChangeTab(obj, parent, next);
     });
-    $(".tabs .previous").on('click',function(){
-        let parent =( $(this).parent().parent().find('.tabs-navigation').length >0)? $(this).parent().parent().find('.tabs-navigation'): $(this).closest('.tabs-navigation');
+    $(".tabs .previous").on('click', function () {
+        let parent = ($(this).parent().parent().find('.tabs-navigation').length > 0) ? $(this).parent().parent().find('.tabs-navigation') : $(this).closest('.tabs-navigation');
 
         let prev = parent.find('li').index(parent.find('li.active'));
 
 
-        if(prev<=0 || prev>(parent.find('li').length-1)){
-            prev = (parent.find('li').length-1);
+        if (prev <= 0 || prev > (parent.find('li').length - 1)) {
+            prev = (parent.find('li').length - 1);
         }
-        let obj = parent.find('li:nth-child('+prev+')');
+        let obj = parent.find('li:nth-child(' + prev + ')');
 
 
-        ChangeTab(obj,parent,prev);
+        ChangeTab(obj, parent, prev);
     });
-
 
 
     //mask fields
     MaskAllFields();
 
 }
+
 //masking all fields based on type and
-function MaskAllFields(){
-    $('.money').mask("#"+__('thousandSeparator')+"##0"+__('decimalSeparator')+"00", {reverse: true});
+function MaskAllFields() {
+    $('.money').mask("#" + __('thousandSeparator') + "##0" + __('decimalSeparator') + "00", {reverse: true});
 }
 
 //changing tab
-function ChangeTab(obj,parent,index){
+function ChangeTab(obj, parent, index) {
     parent.find("li").removeClass('active');
     obj.addClass('active');
 
     parent.parent().find('.tabs-contents li').removeClass('active');
     parent.parent().find('.tabs-contents li').removeClass('open');
-    parent.parent().find('.tabs-contents li:nth-child('+index+')').addClass('active');
-    setTimeout(function(){
-        parent.parent().find('.tabs-contents li:nth-child('+index+')').addClass('open');
-    },10);
+    parent.parent().find('.tabs-contents li:nth-child(' + index + ')').addClass('active');
+    setTimeout(function () {
+        parent.parent().find('.tabs-contents li:nth-child(' + index + ')').addClass('open');
+    }, 10);
 }
 
 //removing all notifications delayed
@@ -244,10 +242,10 @@ function AddPop(type, title, content, link1, link2, icon = null) {
         '                <h5 class="notification-title">' + title + '</h5>' +
         '                <p>' + content + '</p>';
     if (Array.isArray(link1)) {
-        pop += '<a href="' + link1[0] + '">' + link1[1] + '</a>';
+        pop += '<a href="' + link1[0] + '" data-link-ajax="true" data-link-title="' + link1[2] || '' + '" data-link-subtitle="' + link1[3] || '' + '" data-link-data="' + link1[4] || '' + '" data-link-container="' + link1[5] || 1 + '">' + link1[1] + '</a>';
     }
     if (Array.isArray(link2)) {
-        pop += '<a href="' + link1[0] + '">' + link2[1] + '</a>';
+        pop += '<a href="' + link1[0] + '" data-link-ajax="true" data-link-title="' + link2[2] || '' + '" data-link-subtitle="' + link2[3] || '' + '" data-link-data="' + link2[4] || '' + '" data-link-container="' + link2[5] || 1 + '">' + link2[1] + '</a>';
 
     }
 
@@ -325,20 +323,25 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
         dataType: 'html',
         statusCode: {
             401: function () {
-                AddPop('danger', __('Unauthorized!'), __("You don't have permissions to access this page")+'<br><b>' + __(title) + '</b>','','','fa fa-lock');
+                AddPop('danger', __('Unauthorized!'), __("You don't have permissions to access this page:") + '<br><b>' + title + '</b>', '', '', 'fa fa-lock');
+            },
+
+            404: function () {
+                AddPop('warning', __('Not found!'), __("The page you are trying to access does not exist:") + '<br><b>- ' + title + '</b>', '', '', 'fa fa-window-close');
+                OpenLink('/Error/Code/404','Not Found');
             }
         }
     }).always(function (content) {
         $('#loader').hide();
     }).fail(function (response) {
-        if (response.status != 401) {
+        if (response.status != 401 && response.status!=404) {
             AddPop('danger', __('Error!'), __('An error occurred while trying to access this function, please try again later or contact us.'));
         }
     }).done(function (content) {
         if (content == 'userNotLogged') {
             window.location = '/Login/Login';
         } else {
-            $(containerId+' .content').html(content);
+            $(containerId + ' .content').html(content);
 
             document.title = title + ' | Reaws';
 
