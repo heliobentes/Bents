@@ -3,6 +3,7 @@
 namespace Bents\Core\Utils {
 
     use Bents\Core\Config;
+    use Bents\Core\Log;
     use Bents\Core\StartUp\StartUp;
 
     class Error
@@ -30,7 +31,7 @@ namespace Bents\Core\Utils {
             header($_SERVER['SERVER_PROTOCOL'] . ' '.$codeText, true, $code);
             //Came from Ajax
             if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-                die('{status:false,lastId=0,error:"'.$error.'"}');
+                die('{"status":false,"lastId":0,"error":"'.$error.'"}');
             } else {
                 include Config::SystemBehavior()->GetErrorPage($code);
                 exit;

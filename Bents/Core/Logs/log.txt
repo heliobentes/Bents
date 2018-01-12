@@ -215,3 +215,105 @@ Column 'idRealEstate' cannot be null
 Column 'idProfile' cannot be null
 ========================
 
+======== ERROR ========
+01-11-2018 23:20:27
+/var/www/Reaws/Bents/App/DAO/ImageDAO.php at line 51
+Incorrect integer value: 'false' for column 'isPrincipal' at row 1
+========================
+
+======== ERROR ========
+01-11-2018 23:20:27
+/var/www/Reaws/Bents/App/DAO/ImageDAO.php at line 51
+Incorrect integer value: 'true' for column 'isPrincipal' at row 1
+========================
+
+======== ERROR ========
+01-11-2018 23:20:27
+/var/www/Reaws/Bents/App/DAO/ImageDAO.php at line 51
+Incorrect integer value: 'false' for column 'isPrincipal' at row 1
+========================
+
+======== ERROR ========
+01-11-2018 23:21:18
+/var/www/Reaws/Bents/App/DAO/ImageDAO.php at line 51
+Incorrect integer value: 'false' for column 'isPrincipal' at row 1
+========================
+
+======== ERROR ========
+01-11-2018 23:21:18
+/var/www/Reaws/Bents/App/DAO/ImageDAO.php at line 51
+Incorrect integer value: 'false' for column 'isPrincipal' at row 1
+========================
+
+======== ERROR ========
+01-11-2018 23:21:18
+/var/www/Reaws/Bents/App/DAO/ImageDAO.php at line 51
+Incorrect integer value: 'false' for column 'isPrincipal' at row 1
+========================
+
+======== ERROR ========
+01-11-2018 23:21:18
+/var/www/Reaws/Bents/App/DAO/ImageDAO.php at line 51
+Incorrect integer value: 'false' for column 'isPrincipal' at row 1
+========================
+
+======== ERROR ========
+01-11-2018 23:24:43
+/var/www/Reaws/Bents/App/DAO/ImageDAO.php at line 51
+Incorrect integer value: 'false' for column 'isPrincipal' at row 1
+========================
+
+======== ERROR ========
+01-11-2018 23:24:43
+/var/www/Reaws/Bents/App/DAO/ImageDAO.php at line 51
+Incorrect integer value: 'false' for column 'isPrincipal' at row 1
+========================
+
+======== ERROR ========
+01-11-2018 23:24:43
+/var/www/Reaws/Bents/App/DAO/ImageDAO.php at line 51
+Incorrect integer value: 'false' for column 'isPrincipal' at row 1
+========================
+
+======== ERROR ========
+01-11-2018 23:24:43
+/var/www/Reaws/Bents/App/DAO/ImageDAO.php at line 51
+Incorrect integer value: 'false' for column 'isPrincipal' at row 1
+========================
+
+======== ERROR ========
+01-11-2018 23:24:43
+/var/www/Reaws/Bents/App/DAO/ImageDAO.php at line 51
+Incorrect integer value: 'false' for column 'isPrincipal' at row 1
+========================
+
+======== ERROR ========
+01-11-2018 23:26:17
+/var/www/Reaws/Bents/App/DAO/ImageDAO.php at line 51
+Cannot add or update a child row: a foreign key constraint fails (`reaws`.`Image`, CONSTRAINT `fk_Images_Property1` FOREIGN KEY (`idProperty`) REFERENCES `Property` (`idProperty`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+========================
+
+======== ERROR ========
+01-11-2018 23:26:17
+/var/www/Reaws/Bents/App/DAO/ImageDAO.php at line 51
+Cannot add or update a child row: a foreign key constraint fails (`reaws`.`Image`, CONSTRAINT `fk_Images_Property1` FOREIGN KEY (`idProperty`) REFERENCES `Property` (`idProperty`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+========================
+
+======== ERROR ========
+01-11-2018 23:26:17
+/var/www/Reaws/Bents/App/DAO/ImageDAO.php at line 51
+Cannot add or update a child row: a foreign key constraint fails (`reaws`.`Image`, CONSTRAINT `fk_Images_Property1` FOREIGN KEY (`idProperty`) REFERENCES `Property` (`idProperty`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+========================
+
+======== ERROR ========
+01-11-2018 23:26:17
+/var/www/Reaws/Bents/App/DAO/ImageDAO.php at line 51
+Cannot add or update a child row: a foreign key constraint fails (`reaws`.`Image`, CONSTRAINT `fk_Images_Property1` FOREIGN KEY (`idProperty`) REFERENCES `Property` (`idProperty`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+========================
+
+======== ERROR ========
+01-11-2018 23:26:17
+/var/www/Reaws/Bents/App/DAO/ImageDAO.php at line 51
+Cannot add or update a child row: a foreign key constraint fails (`reaws`.`Image`, CONSTRAINT `fk_Images_Property1` FOREIGN KEY (`idProperty`) REFERENCES `Property` (`idProperty`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+========================
+

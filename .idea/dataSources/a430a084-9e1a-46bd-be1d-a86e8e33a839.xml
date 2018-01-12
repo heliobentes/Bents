@@ -936,7 +936,7 @@
     <table id="237" parent="5" name="Header">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="238" parent="5" name="Images">
+    <table id="238" parent="5" name="Image">
       <Engine>InnoDB</Engine>
     </table>
     <table id="239" parent="5" name="Laundry">
@@ -1415,7 +1415,7 @@
       <ColNames>idHeader</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="336" parent="238" name="idImages">
+    <column id="336" parent="238" name="idImage">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
@@ -1460,7 +1460,7 @@
     </index>
     <key id="344" parent="238" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>idImages</ColNames>
+      <ColNames>idImage</ColNames>
       <Primary>1</Primary>
     </key>
     <foreign-key id="345" parent="238" name="fk_Images_Property1">

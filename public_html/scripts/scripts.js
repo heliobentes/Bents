@@ -11,6 +11,7 @@ $(document).ready(function () {
 
 
 
+
     //menu toggle
     $('#main-nav > li > a').on('click', function () {
         $('#main-nav > li').removeClass('active');
@@ -156,159 +157,11 @@ function ReloadFunctions(){
     });
 
 
-    //Property Description
-    $('#property-description').trumbowyg({
-        svgPath: '/plugins/trumbowyg/ui/icons.svg',
-        autogrow: true,
-        resetCss: true,
-        imageWidthModalEdit: true,
-        btns: [
-            ['viewHTML'],
-            ['undo', 'redo'], // Only supported in Blink browsers
-            ['formatting'],
-            ['strong', 'em', 'del'],
-            ['foreColor', 'backColor'],
-            ['superscript', 'subscript'],
-            ['link'],
-            ['insertImage'],
-            ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
-            ['unorderedList', 'orderedList'],
-            ['horizontalRule'],
-            ['removeformat']
-        ]
-    });
-
-    //Property Description
-    $('#internal-observations').trumbowyg({
-        svgPath: '/plugins/trumbowyg/ui/icons.svg',
-        autogrow: true,
-        resetCss: true,
-        imageWidthModalEdit: true,
-        btns: [
-            ['strong', 'em', 'del'],
-            ['foreColor', 'backColor'],
-            ['unorderedList', 'orderedList'],
-            ['horizontalRule'],
-            ['removeformat']
-        ]
-    });
-
-    //spinner score
-    $(".spinner-score").spinner('delay', 0).spinner('changed', function(e, newVal, oldVal) {
-        drawChart();
-    });
 
     //mask fields
     MaskAllFields();
 
-    //changing currency
-    $('#currency-indicator').on('select2:select',function(){
-        $(".currency-indicator").html($(this).val());
-    });
-
-//fileupload
-    var ul = $('#images-preview');
-
-    $('#drop a').click(function(){
-        // Simulate a click on the file input button
-        // to show the file browser dialog
-        $(this).parent().find('input').click();
-    });
-
-    // Initialize the jQuery File Upload plugin
-    $('#add-property').fileupload({
-        autoUpload:false,
-        // This element will accept file drag/drop uploading
-        dropZone: $('#drop'),
-
-        // This function is called when a file is added to the queue;
-        // either via the browse button, or via drag/drop:
-        add: function (e, data) {
-
-            var tpl = $('<li><label><input type="radio" name="mainPicture">'+__('Main picture')+'</label><i class="far fa-trash-alt"></i><img/><input type="text" placeholder="'+__('Picture label')+'"/></li>');
-
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                tpl.find('img').attr('src', e.target.result);
-            };
-
-            reader.readAsDataURL(data.files[0]);
-
-            //Starting checkboxes
-            tpl.find('input[name=mainPicture]').iCheck({
-                checkboxClass: 'icheckbox_flat-green',
-                radioClass: 'iradio_flat-green'
-            });
-
-            // Add the HTML to the UL element
-            data.context = tpl.prependTo(ul);
-
-            // Listen for clicks on the cancel icon
-            tpl.find('i').click(function(){
-
-                if(tpl.hasClass('working')){
-                    jqXHR.abort();
-                }
-
-                tpl.fadeOut(function(){
-                    tpl.remove();
-                });
-
-            });
-
-            // Automatically upload the file once it is added to the queue
-            //var jqXHR = data.submit();
-            $("#up_btn").off('click').on('click', function () {
-                data.submit();
-            });
-        },
-
-        progress: function(e, data){
-
-            // Calculate the completion percentage of the upload
-            var progress = parseInt(data.loaded / data.total * 100, 10);
-
-            // Update the hidden input field and trigger a change
-            // so that the jQuery knob plugin knows to update the dial
-            data.context.find('input').val(progress).change();
-
-            if(progress == 100){
-                data.context.removeClass('working');
-            }
-        },
-
-        fail:function(e, data){
-            // Something has gone wrong!
-            data.context.addClass('error');
-        }
-
-    });
-
-    // Prevent the default action when a file is dropped on the window
-    $(document).on('drop dragover', function (e) {
-        e.preventDefault();
-    });
-
-    // Helper function that formats the file sizes
-    function formatFileSize(bytes) {
-        if (typeof bytes !== 'number') {
-            return '';
-        }
-
-        if (bytes >= 1000000000) {
-            return (bytes / 1000000000).toFixed(2) + ' GB';
-        }
-
-        if (bytes >= 1000000) {
-            return (bytes / 1000000).toFixed(2) + ' MB';
-        }
-
-        return (bytes / 1000).toFixed(2) + ' KB';
-    }
-
 }
-
 //masking all fields based on type and
 function MaskAllFields(){
     $('.money').mask("#"+__('thousandSeparator')+"##0"+__('decimalSeparator')+"00", {reverse: true});
@@ -415,13 +268,13 @@ function AddPop(type, title, content, link1, link2, icon = null) {
 
     setTimeout(function () {
         obj.addClass('close');
-    }, 5000);
+    }, 6000);
     setTimeout(function () {
         obj.addClass('closed');
-    }, 5250);
+    }, 6250);
     setTimeout(function () {
         obj.remove();
-    }, 5500);
+    }, 6500);
 
     CountNotifications();
 }

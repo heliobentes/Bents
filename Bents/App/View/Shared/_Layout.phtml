@@ -27,20 +27,21 @@ use Bents\Core\Globalization\Globalization;
     <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <?php View::RenderCSSBundle(); ?>
-<!--    <link rel="stylesheet" href="/css/styles.css" type="text/css" media="all"/>-->
+    <!--    <link rel="stylesheet" href="/css/styles.css" type="text/css" media="all"/>-->
     <style>
         #full-loader {
             position: fixed;
-            background: rgba(255,255,255,0.98);
+            background: rgba(255, 255, 255, 0.98);
             top: 0;
             bottom: 0;
             left: 0;
             right: 0;
             z-index: 99999;
         }
+
         #loader {
             position: fixed;
-            background: rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.3);
             top: 0;
             bottom: 0;
             left: 0;
@@ -48,162 +49,185 @@ use Bents\Core\Globalization\Globalization;
             z-index: 99999;
             display: none;
         }
-        #full-loader img,#loader img {
+
+        #full-loader img, #loader img {
             position: absolute;
-            left:50%;
+            left: 50%;
             margin-left: -90px;
-            top:50%;
+            top: 50%;
             margin-top: -90px;
         }
     </style>
-    <script src="/scripts/jquery-3.2.1.min.js"></script>
+
+    <?php View::RenderJavaScriptBundle(); ?>
 </head>
 <body>
 <div id="full-loader">
-<img src="/images/full-loader.svg" height="180" width="180"/>
+    <img src="/images/full-loader.svg" height="180" width="180"/>
 </div>
 <div id="loader">
     <img src="/images/full-loader.svg" height="180" width="180"/>
 </div>
 <div id="body">
-<nav class="navbar">
-    <div class="logo">
-        <a href="/"><img src="/images/logo.png" height="40" width="136"></a>
-    </div>
-    <i class="fa fa-bars" id="menu-icon"></i>
-    <ul class="nav" id="main-nav">
-        <li class="active"><a><i class="far fa-newspaper"></i> <?php echo View::__('Mural'); ?></a>
-            <ul class="subnav open">
-                <li class="active"><?php View::ActionLink('<i class="far fa-newspaper"></i>'.View::__('Mural'),'Index','Home',true,'Mural'); ?></li>
-                <li ><a href="#"><i class="fa fa-calendar-plus"></i> <?php echo View::__('New appointment'); ?></a></li>
-                <li><a href="#"><i class="fa fa-user-plus"></i> <?php echo View::__('New customer'); ?></a></li>
-                <li><?php View::ActionLink('<i class="fa fa-plus"></i>'.View::__('New property'),'Add','Property',true,View::__('Add a new property')); ?></li>
-                <li class="nav-extra"><a class="btn btn-primary" data-jq-dropdown="#dropdown-edit-mural"><i class="fa fa-edit"></i> <?php echo View::__('Edit'); ?></a></li>
-            </ul>
-        </li>
-        <li><a><i class="fa fa-home"></i> <?php echo View::__('Properties'); ?></a>
-            <ul class="subnav">
-                <li><?php View::ActionLink('<i class="fa fa-plus"></i>'.View::__('New property'),'Add','Property',true,View::__('Add a new property')); ?></li>
-                <li><a href="#"><i class="fa fa-home"></i> <?php echo View::__('Properties'); ?></a></li>
-            </ul>
-        </li>
-        <li><a><i class="fa fa-suitcase"></i> <?php echo View::__('CRM'); ?></a>
-            <ul class="subnav">
-                <li><a href="#"><i class="fab fa-pagelines"></i> <?php echo View::__('Leads'); ?></a></li>
-                <li><a href="#"><i class="fa fa-user-plus"></i> <?php echo View::__('New customer'); ?></a></li>
-                <li class="active"><a href="#"><i class="fa fa-users"></i> <?php echo View::__('Customers'); ?></a></li>
-                <li><a href="#"><i class="fa fa-calendar-plus"></i> <?php echo View::__('New appointment'); ?></a></li>
-                <li><a href="#"><i class="far fa-calendar-alt"></i> <?php echo View::__('Appointments'); ?></a></li>
-                <li><a href="#"><i class="fa fa-plus"></i> <?php echo View::__('New dealing'); ?></a></li>
-                <li><a href="#"><i class="far fa-handshake"></i> <?php echo View::__('Dealings'); ?></a></li>
-            </ul>
-        </li>
-        <li><a><i class="fa fa-desktop"></i> <?php echo View::__('WebSite'); ?></a>
-            <ul class="subnav">
-                <li><a href="#"><i class="fa fa-paint-brush"></i> Layout & design</a></li>
-                <li class="active"><a href="#"><i class="fa fa-paper-plane"></i> Logo</a></li>
-                <li><a href="#"><i class="fa fa-columns"></i> Extra pages</a></li>
-                <li><a href="#"><i class="fab fa-google"></i> SEO & meta tags</a></li>
-                <li><a href="#"><i class="fa fa-link"></i> My domain name (URL)</a></li>
-                <li><a href="#"><i class="fa fa-phone-square"></i> Contact information</a></li>
-            </ul>
-        </li>
-    </ul>
-    <ul class="nav-right">
-        <li><a href="#" title="Settings"><i class="fa fa-cogs"></i></a></li>
-        <li><a href="#" title="Help"><i class="fa fa-question-circle"></i></a></li>
-        <li><a href="#" data-jq-dropdown="#dropdown-language"><span class="flag-menu flag-icon flag-icon-<?php echo strtolower(preg_split('~-~',Globalization::GetLanguage())[1]); ?>"></span> </a></li>
-        <li class="notifications none" id="notifications-icon"><a href="#"><i class="fa fa-bell"></i><i class="far fa-bell"></i></a></li>
-        <li ><div class="user-icon" data-jq-dropdown="#dropdown-user">HB</div></li>
-    </ul>
-</nav>
-<!--BEGIN Content-->
-<div class="content one">
-    <div class="container" id="main-container">
-        <h1 class="title"><?php echo View::$title; ?></h1>
-        <div class="content">
-        <?php View::RenderBody(); ?>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/"><img src="/images/logo.png" height="40" width="136"></a>
+        </div>
+        <i class="fa fa-bars" id="menu-icon"></i>
+        <ul class="nav" id="main-nav">
+            <li class="active"><a><i class="far fa-newspaper"></i> <?php echo View::__('Mural'); ?></a>
+                <ul class="subnav open">
+                    <li class="active"><?php View::ActionLink('<i class="far fa-newspaper"></i>' . View::__('Mural'), 'Index', 'Home', true, 'Mural'); ?></li>
+                    <li><a href="#"><i class="fa fa-calendar-plus"></i> <?php echo View::__('New appointment'); ?></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-user-plus"></i> <?php echo View::__('New customer'); ?></a></li>
+                    <li><?php View::ActionLink('<i class="fa fa-plus"></i>' . View::__('New property'), 'Add', 'Property', true, View::__('Add a new property')); ?></li>
+                    <li class="nav-extra"><a class="btn btn-primary" data-jq-dropdown="#dropdown-edit-mural"><i
+                                    class="fa fa-edit"></i> <?php echo View::__('Edit'); ?></a></li>
+                </ul>
+            </li>
+            <li><a><i class="fa fa-home"></i> <?php echo View::__('Properties'); ?></a>
+                <ul class="subnav">
+                    <li><?php View::ActionLink('<i class="fa fa-plus"></i>' . View::__('New property'), 'Add', 'Property', true, View::__('Add a new property')); ?></li>
+                    <li><a href="#"><i class="fa fa-home"></i> <?php echo View::__('Properties'); ?></a></li>
+                </ul>
+            </li>
+            <li><a><i class="fa fa-suitcase"></i> <?php echo View::__('CRM'); ?></a>
+                <ul class="subnav">
+                    <li><a href="#"><i class="fab fa-pagelines"></i> <?php echo View::__('Leads'); ?></a></li>
+                    <li><a href="#"><i class="fa fa-user-plus"></i> <?php echo View::__('New customer'); ?></a></li>
+                    <li class="active"><a href="#"><i class="fa fa-users"></i> <?php echo View::__('Customers'); ?></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-calendar-plus"></i> <?php echo View::__('New appointment'); ?></a>
+                    </li>
+                    <li><a href="#"><i class="far fa-calendar-alt"></i> <?php echo View::__('Appointments'); ?></a></li>
+                    <li><a href="#"><i class="fa fa-plus"></i> <?php echo View::__('New dealing'); ?></a></li>
+                    <li><a href="#"><i class="far fa-handshake"></i> <?php echo View::__('Dealings'); ?></a></li>
+                </ul>
+            </li>
+            <li><a><i class="fa fa-desktop"></i> <?php echo View::__('WebSite'); ?></a>
+                <ul class="subnav">
+                    <li><a href="#"><i class="fa fa-paint-brush"></i> Layout & design</a></li>
+                    <li class="active"><a href="#"><i class="fa fa-paper-plane"></i> Logo</a></li>
+                    <li><a href="#"><i class="fa fa-columns"></i> Extra pages</a></li>
+                    <li><a href="#"><i class="fab fa-google"></i> SEO & meta tags</a></li>
+                    <li><a href="#"><i class="fa fa-link"></i> My domain name (URL)</a></li>
+                    <li><a href="#"><i class="fa fa-phone-square"></i> Contact information</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav-right">
+            <li><a href="#" title="Settings"><i class="fa fa-cogs"></i></a></li>
+            <li><a href="#" title="Help"><i class="fa fa-question-circle"></i></a></li>
+            <li><a href="#" data-jq-dropdown="#dropdown-language"><span
+                            class="flag-menu flag-icon flag-icon-<?php echo strtolower(preg_split('~-~', Globalization::GetLanguage())[1]); ?>"></span>
+                </a></li>
+            <li class="notifications none" id="notifications-icon"><a href="#"><i class="fa fa-bell"></i><i
+                            class="far fa-bell"></i></a></li>
+            <li>
+                <div class="user-icon" data-jq-dropdown="#dropdown-user">HB</div>
+            </li>
+        </ul>
+    </nav>
+    <!--BEGIN Content-->
+    <div class="content one">
+        <div class="container" id="main-container">
+            <h1 class="title"><?php echo View::$title; ?></h1>
+            <div class="content">
+                <?php View::RenderBody(); ?>
+            </div>
+        </div>
+        <div class="container" id="second-container">
+            <h1 class="title">Title for column 2 very big overflow of text
+                <small>Subtitle for column 2</small>
+            </h1>
+            <i class="far fa-times-circle close-container" id="close-container-2"></i>
+            <div class="content">
+                Content for column 2
+                <button onclick="$('.content').removeClass('two').removeClass('one').addClass('three')"
+                        class="btn btn-primary">Open container 3
+                </button>
+            </div>
+        </div>
+
+        <div class="container" id="third-container">
+            <h1 class="title">Title for column 3 very big overflow of text</h1>
+            <i class="far fa-times-circle  close-container" id="close-container-3"></i>
+            <div class="content">
+                Content for column 3
+            </div>
         </div>
     </div>
-    <div class="container" id="second-container">
-        <h1 class="title">Title for column 2 very big overflow of text<small>Subtitle for column 2</small></h1>
-        <i class="far fa-times-circle close-container" id="close-container-2"></i>
-        <div class="content">
-            Content for column 2
-            <button onclick="$('.content').removeClass('two').removeClass('one').addClass('three')" class="btn btn-primary">Open container 3</button>
+    <!--END Content -->
+    <!-- BEGIN Dropdown User - TopMenu-->
+    <div id="dropdown-user" class="jq-dropdown jq-dropdown-tip jq-dropdown-anchor-right">
+        <ul class="jq-dropdown-menu">
+            <li><a href="#1"><i class="fa fa-user-circle"></i> My profile</a></li>
+            <li class="jq-dropdown-divider"></li>
+            <li><a href="#1"><i class="fa fa-address-card"></i> My account</a></li>
+            <li><a href="#2"><i class="fa fa-user-secret"></i>Users & permissions</a></li>
+            <li class="jq-dropdown-divider"></li>
+            <li><a href="#5"><i class="fa fa-sign-out-alt"></i>Logout</a></li>
+        </ul>
+    </div>
+    <!-- END Dropdown User - TopMenu-->
+
+    <!-- BEGIN Dropdown Edit Mural - TopMenu-->
+    <div id="dropdown-edit-mural" class="jq-dropdown jq-dropdown-tip jq-dropdown-anchor-right">
+        <ul class="jq-dropdown-menu">
+            <li><label><input type="checkbox"><i class="fa fa-calendar-plus"></i> New appointment</label></li>
+            <li><label><input type="checkbox"><i class="fa fa-user-plus"></i> New customer</label></li>
+            <li><label><input type="checkbox"><i class="fa fa-plus"></i> New property</label></li>
+            <li><label><input type="checkbox"><i class="fa fa-plus"></i> New dealing</label></li>
+            <li><label><input type="checkbox"><i class="fa fa-home"></i> Properties</label></li>
+        </ul>
+    </div>
+    <!-- END Dropdown Edit Mural - TopMenu-->
+
+    <!-- BEGIN Dropdown Language - TopMenu-->
+    <div id="dropdown-language" class="jq-dropdown jq-dropdown-tip jq-dropdown-anchor-right">
+        <ul class="jq-dropdown-menu">
+            <li><label><span
+                            class="flag-icon flag-icon-<?php echo strtolower(preg_split('~-~', Globalization::GetLanguage())[1]); ?>"></span>
+                    &nbsp;<?php echo View::__('Using'); ?> <?php echo Globalization::GetLanguage(); ?> </label></li>
+            <li class="jq-dropdown-divider"></li>
+            <li><a href="/Home/ChangeLanguage?language=en-CA"><span class="flag-icon flag-icon-ca"></span> &nbsp;English
+                    CA (en-CA)</a></li>
+            <li><a href="/Home/ChangeLanguage?language=en-US"><span class="flag-icon flag-icon-us"></span> &nbsp;English
+                    US (en-US)</a></li>
+            <li><a href="/Home/ChangeLanguage?language=fr-CA"><span class="flag-icon flag-icon-ca"></span> &nbsp;Français
+                    CA (fr-CA)</a></li>
+            <li><a href="/Home/ChangeLanguage?language=pt-BR"><span class="flag-icon flag-icon-br"></span> &nbsp;Português
+                    BR (pt-BR)</a></li>
+        </ul>
+    </div>
+    <!-- END Dropdown Language - TopMenu-->
+
+    <!--BEGIN pop-->
+    <div id="pop">
+        <ul id="pop-list">
+
+        </ul>
+    </div>
+    <!--END pop-->
+    <!-- BEGIN Notifications -->
+    <div id="notifications" class="">
+        <div id="notification-backdrop"></div>
+        <h3><?php echo View::__('Notifications'); ?>
+            <button class="btn btn-link" id="btn-clear-notifications"><?php echo View::__('Clear all'); ?></button>
+        </h3>
+        <div class="notifications-container">
+            <ul id="notifications-list">
+
+            </ul>
+            <div id="no-notifications">
+                <i class="fa fa-fighter-jet no-notifications-icon"></i>
+                <p><?php echo View::__('Nice ;)'); ?></p>
+                <p><?php echo View::__('You have 0 notifications'); ?></p>
+            </div>
         </div>
     </div>
-
-    <div class="container" id="third-container">
-        <h1 class="title">Title for column 3 very big overflow of text</h1>
-        <i class="far fa-times-circle  close-container" id="close-container-3"></i>
-        <div class="content">
-            Content for column 3
-        </div>
-    </div>
-</div>
-<!--END Content -->
-<!-- BEGIN Dropdown User - TopMenu-->
-<div id="dropdown-user" class="jq-dropdown jq-dropdown-tip jq-dropdown-anchor-right">
-    <ul class="jq-dropdown-menu">
-        <li><a href="#1"><i class="fa fa-user-circle"></i> My profile</a></li>
-        <li class="jq-dropdown-divider"></li>
-        <li><a href="#1"><i class="fa fa-address-card"></i> My account</a></li>
-        <li><a href="#2"><i class="fa fa-user-secret"></i>Users & permissions</a></li>
-        <li class="jq-dropdown-divider"></li>
-        <li><a href="#5"><i class="fa fa-sign-out-alt"></i>Logout</a></li>
-    </ul>
-</div>
-<!-- END Dropdown User - TopMenu-->
-
-<!-- BEGIN Dropdown Edit Mural - TopMenu-->
-<div id="dropdown-edit-mural" class="jq-dropdown jq-dropdown-tip jq-dropdown-anchor-right">
-    <ul class="jq-dropdown-menu">
-        <li ><label><input type="checkbox"><i class="fa fa-calendar-plus"></i> New appointment</label></li>
-        <li><label><input type="checkbox"><i class="fa fa-user-plus"></i> New customer</label></li>
-        <li><label><input type="checkbox"><i class="fa fa-plus"></i> New property</label></li>
-        <li><label><input type="checkbox"><i class="fa fa-plus"></i> New dealing</label></li>
-        <li><label><input type="checkbox"><i class="fa fa-home"></i> Properties</label></li>
-    </ul>
-</div>
-<!-- END Dropdown Edit Mural - TopMenu-->
-
-<!-- BEGIN Dropdown Language - TopMenu-->
-<div id="dropdown-language" class="jq-dropdown jq-dropdown-tip jq-dropdown-anchor-right">
-    <ul class="jq-dropdown-menu">
-        <li><label><span class="flag-icon flag-icon-<?php echo strtolower(preg_split('~-~',Globalization::GetLanguage())[1]); ?>"></span> &nbsp;<?php echo View::__('Using'); ?> <?php echo Globalization::GetLanguage(); ?> </label></li>
-        <li class="jq-dropdown-divider"></li>
-        <li><a href="/Home/ChangeLanguage?language=en-CA"><span class="flag-icon flag-icon-ca"></span> &nbsp;English CA (en-CA)</a></li>
-        <li><a href="/Home/ChangeLanguage?language=en-US"><span class="flag-icon flag-icon-us"></span> &nbsp;English US (en-US)</a></li>
-        <li><a href="/Home/ChangeLanguage?language=fr-CA"><span class="flag-icon flag-icon-ca"></span> &nbsp;Français CA (fr-CA)</a></li>
-        <li><a href="/Home/ChangeLanguage?language=pt-BR"><span class="flag-icon flag-icon-br"></span> &nbsp;Português BR (pt-BR)</a></li>
-    </ul>
-</div>
-<!-- END Dropdown Language - TopMenu-->
-
-<!--BEGIN pop-->
-<div id="pop">
-    <ul id="pop-list">
-
-    </ul>
-</div>
-<!--END pop-->
-<!-- BEGIN Notifications -->
-<div id="notifications" class="">
-    <div id="notification-backdrop"></div>
-    <h3><?php echo View::__('Notifications'); ?> <button class="btn btn-link" id="btn-clear-notifications"><?php echo View::__('Clear all'); ?></button> </h3>
-    <div class="notifications-container">
-    <ul id="notifications-list">
-
-    </ul>
-        <div id="no-notifications">
-            <i class="fa fa-fighter-jet no-notifications-icon"></i>
-            <p><?php echo View::__('Nice ;)'); ?></p>
-            <p><?php echo View::__('You have 0 notifications'); ?></p>
-        </div>
-    </div>
-</div>
-<!-- END Notifications -->
+    <!-- END Notifications -->
 
     <?php
 
@@ -211,9 +235,9 @@ use Bents\Core\Globalization\Globalization;
 
     $resource = $globalization->GenerateJSResource();
 
-    $language = preg_split('~-~',Globalization::GetLanguage())[0];
-    View::$jsBundle[] = <<<EOT
-  <script>
+    $language = preg_split('~-~', Globalization::GetLanguage())[0];
+    echo <<<EOT
+<script>
   var language = '$language';
   function __(res){
       
@@ -226,13 +250,11 @@ use Bents\Core\Globalization\Globalization;
       }
       
   }
-  </script>  
+ </script>  
 EOT;
-?>
+    ?>
 </div>
 
-
-<?php View::RenderJavaScriptBundle(); ?>
 
 </body>
 </html>

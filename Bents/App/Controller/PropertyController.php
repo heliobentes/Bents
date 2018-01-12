@@ -30,9 +30,6 @@ namespace Bents\App\Controller {
          */
         public function Add()
         {
-            //sleep(2);
-
-
 
             $language = Globalization::GetLanguage();
 
@@ -90,12 +87,12 @@ namespace Bents\App\Controller {
                         $FeatureDAO->AddFeaturesToProperty($propertyId, $_POST['FeaturesIds']);
                     }
 
-                    die('{status:true,lastId=' . $propertyId . ',error:""}');
+                    die('{"status":true,"lastId":' . $propertyId . ',"error":""}');
                 } else {
-                    die('{status:false,lastId=0,error:"Address was empty"}');
+                    die('{"status":false,"lastId":0,"error":"Address was empty"}');
                 }
             } else {
-                die('{status:false,lastId=0,error:"Invalid property object"}');
+                die('{"status":false,"lastId":0,"error":"Invalid property object"}');
             }
 
         }
