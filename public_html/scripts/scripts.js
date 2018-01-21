@@ -100,7 +100,6 @@ function ReloadFunctions() {
         if ($(this).data('link-ajax') == true) {
             e.preventDefault();
             let url = $(this).attr('href');
-            history.pushState(null, null, url);
             OpenLink(url, $(this).data('link-title'), $(this).data('link-subtitle'), $(this).data('link-data'), $(this).data('link-container'));
         }
     });
@@ -321,6 +320,7 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
         url: url,
         data: data,
         dataType: 'html',
+        async:true,
         statusCode: {
             401: function () {
                 AddPop('danger', __('Unauthorized!'), __("You don't have permissions to access this page:") + '<br><b>' + title + '</b>', '', '', 'fa fa-lock');
@@ -344,6 +344,8 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
             $(containerId + ' .content').html(content);
 
             document.title = title + ' | Reaws';
+
+            history.pushState(null, null, url);
 
             if (subtitle != '') {
                 title += '<small>' + subtitle + '</small>';

@@ -6,7 +6,6 @@
  * Time: 1:34 PM
  */
 
-use Bents\Core\Globalization\Globalization;
 use Bents\Core\View;
 
 View::$layout = 'Shared/_Layout';
@@ -491,7 +490,9 @@ $laundryTypes = View::$bag['laundryTypes'];
     </div>
 </form>
 
-<script type="text/javascript" src="/scripts/property-add.js" defer></script>
+<script type="text/javascript">
+    PropertyAdd;
+</script>
 
 
 

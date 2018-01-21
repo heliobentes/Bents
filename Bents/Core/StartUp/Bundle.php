@@ -50,6 +50,7 @@ namespace Bents\Core\StartUp {
             $script[] = 'plugins/fileupload/js/jquery.iframe-transport.js';
             $script[] = 'plugins/fileupload/js/jquery.fileupload.js';
             $script[] = 'scripts/scripts.js';
+            $script[] = 'scripts/property-add.js';
 
 
             return $script;
