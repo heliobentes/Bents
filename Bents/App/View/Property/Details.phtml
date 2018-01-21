@@ -9,8 +9,37 @@ use Bents\Core\View;
 
 View::$layout = "Shared/_Layout";
 View::$title = View::__("Property details");
-echo '<pre>';
-print_r(View::$model);
+//echo '<pre>';
+//print_r(View::$model);
+/**
+ * @var \Bents\App\Model\Property
+ */
+$property = View::$model;
 ?>
-</pre>
+<!--</pre>-->
+
+<div class="row">
+    <div class="main-col">
+        <h2>Property title goes here</h2>
+        <ul class="pictures">
+            <li style="background-image: url(/images/property/07FF24A7-7A19-8619-6D75-7A71BA6177F0.jpeg)"></li>
+            <li style="background-image: url(/images/property/4F0DAC7E-DE6F-44A2-5114-6855EE2A95B9.jpeg)"></li>
+            <li style="background-image: url(/images/property/3BDA1188-B427-2775-876C-98A7D44E0BCE.jpeg)"></li>
+            <li style="background-image: url(/images/property/2CC7755A-6444-A97A-05E1-A195EFE664FC.jpeg)"></li>
+            <li style="background-image: url(/images/property/2A19D0DE-D1FF-A8E9-E2AA-D427C673BD51.jpeg)"></li>
+
+            <li style="background-image: url(/images/property/1DE5E369-3E8E-FA51-9E9D-2BD64379BF1C.jpeg)"></li>
+            <li style="background-image: url(/images/property/4F0DAC7E-DE6F-44A2-5114-6855EE2A95B9.jpeg)"></li>
+            <li style="background-image: url(/images/property/3BDA1188-B427-2775-876C-98A7D44E0BCE.jpeg)"></li>
+            <li style="background-image: url(/images/property/2CC7755A-6444-A97A-05E1-A195EFE664FC.jpeg)"></li>
+        </ul>
+        <hr class="divisor">
+        <pre>
+<?php echo $property->description; ?>
+        </pre>
+</div>
+    <div class="side-col">
+        <h2><?php echo View::__('Statistics'); ?></h2>
+    </div>
+</div>
 

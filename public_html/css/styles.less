@@ -1401,3 +1401,87 @@ color:@pink;
  * END margin Classes
  * -------------------------------
  */
+
+/**
+ * -------------------------------
+ * BEGIN Property Detais
+ */
+.pictures {
+  margin: 0 -5px;
+  padding: 0;
+
+  &:before{
+    display: table;
+    content: ' ';
+    clear:both;
+  }
+  &:after{
+    display: table;
+    content: ' ';
+    clear:both;
+  }
+  li {
+    border:1px solid #ddd;
+    border-radius:4px;
+    padding:10px;
+    list-style: none;
+    float: left;
+    margin:5px;
+    background: no-repeat center;
+    background-size: cover;
+    width:100%;
+    max-width: 200px;
+    height: 145px;
+    &:nth-child(1){
+      max-width: 410px;
+      height: 300px;
+    }
+  }
+}
+/**
+ * END Property Details
+ * -------------------------------
+ */
+/**
+ * -------------------------------
+ * BEGIN Responsiveness
+ */
+
+//XXL
+@media screen and (min-width: 1971px) {
+
+}
+
+//XL
+@media screen and (min-width: 1667px) and (max-width: 1970px) {
+
+}
+
+//LG
+@media screen and (min-width: 1363px) and (max-width: 1666px) {
+
+}
+
+//MD
+@media screen and (min-width: 1059px) and (max-width: 1362px) {
+
+}
+
+//SM
+@media screen and (min-width: 755px) and (max-width: 1058px) {
+
+}
+
+//XS
+@media screen and (min-width: 451px) and (max-width: 754px) {
+
+}
+
+//XXS
+@media screen and (max-width: 450px) {
+
+}
+/**
+ * END Responsiveness
+ * -------------------------------
+ */
