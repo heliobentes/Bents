@@ -216,7 +216,7 @@ $laundryTypes = View::$bag['laundryTypes'];
                         <div class="field">
                             <?php echo View::__('Find an address'); ?>
                             <input type="text" size="50" id="google_address_autocomplete" autocomplete="false"
-                                   onFocus="geolocate()">
+                                   onFocus="PropertyAdd.geolocate()">
                             <small> <?php echo View::__('Start typing the address and the system will fill up the fields'); ?></small>
                         </div>
                         <div class="hidden" id="address-filled">
@@ -466,8 +466,8 @@ $laundryTypes = View::$bag['laundryTypes'];
                         <div id="drop">
                             <?php echo View::__('Drop your pictures here or'); ?>
 
-                            <a class="btn btn-primary"><i
-                                        class="far fa-image"></i> <?php echo View::__('Browse them'); ?></a>
+                            <button type="button" class="btn btn-primary"><i
+                                        class="far fa-image"></i> <?php echo View::__('Browse them'); ?></button>
                             <input type="file" name="image" multiple accept="image/jpeg,image/png,image/gif"/>
                         </div>
 
@@ -489,10 +489,5 @@ $laundryTypes = View::$bag['laundryTypes'];
         </div>
     </div>
 </form>
-
-<script type="text/javascript">
-    PropertyAdd;
-</script>
-
 
 

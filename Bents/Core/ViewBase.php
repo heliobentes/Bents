@@ -113,7 +113,7 @@ namespace Bents\Core {
             }
 
 
-            echo '<script defer language="javascript" type="text/javascript" src="/cache/jsbundle.js"></script>';
+            echo '<script language="javascript" type="text/javascript" src="/cache/jsbundle.js" defer></script>';
         }
 
         public static function __($string)

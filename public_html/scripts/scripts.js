@@ -67,6 +67,22 @@ $(document).ready(function () {
 
     ReloadFunctions();
 
+    let url = window.location.pathname;
+    if (url[0] == '/') {
+        url = url.substring(1, url.length);
+    }
+    let currentObject = url.split('/');
+    let objectName = '';
+    if (currentObject[1] == undefined) {
+        objectName = currentObject[0] + "Index";
+    } else {
+        objectName = currentObject[0] + currentObject[1];
+    }
+    if (window[objectName] != undefined) {
+
+        window[objectName].StartUp();
+    }
+
 
 });
 
@@ -95,8 +111,9 @@ $(window).on('beforeunload', function (e) {
 //functions to be loaded after a page is loaded
 function ReloadFunctions() {
 
+
     //converting links to ajax
-    $(document).on('click', 'a', function (e) {
+    $('a').unbind('click').on('click', function (e) {
         if ($(this).data('link-ajax') == true) {
             e.preventDefault();
             let url = $(this).attr('href');
@@ -116,7 +133,7 @@ function ReloadFunctions() {
     });
 
     //tabs
-    $('.tabs .tabs-navigation li:not(.actions)').on('click', function () {
+    $('.tabs .tabs-navigation li:not(.actions)').unbind('click').on('click', function () {
         let parent = $(this).parent();
         let index = parent.find('li').index($(this)) + 1;
 
@@ -124,7 +141,7 @@ function ReloadFunctions() {
 
 
     });
-    $(".tabs .next").on('click', function () {
+    $(".tabs .next").unbind('click').on('click', function () {
         let parent = ($(this).parent().parent().find('.tabs-navigation').length > 0) ? $(this).parent().parent().find('.tabs-navigation') : $(this).closest('.tabs-navigation');
 
         let next = parent.find('li').index(parent.find('li.active')) + 2;
@@ -138,7 +155,7 @@ function ReloadFunctions() {
 
         ChangeTab(obj, parent, next);
     });
-    $(".tabs .previous").on('click', function () {
+    $(".tabs .previous").unbind('click').on('click', function () {
         let parent = ($(this).parent().parent().find('.tabs-navigation').length > 0) ? $(this).parent().parent().find('.tabs-navigation') : $(this).closest('.tabs-navigation');
 
         let prev = parent.find('li').index(parent.find('li.active'));
@@ -241,10 +258,10 @@ function AddPop(type, title, content, link1, link2, icon = null) {
         '                <h5 class="notification-title">' + title + '</h5>' +
         '                <p>' + content + '</p>';
     if (Array.isArray(link1)) {
-        pop += '<a href="' + link1[0] + '" data-link-ajax="true" data-link-title="' + link1[2] || '' + '" data-link-subtitle="' + link1[3] || '' + '" data-link-data="' + link1[4] || '' + '" data-link-container="' + link1[5] || 1 + '">' + link1[1] + '</a>';
+        pop += '<a href="' + link1[0] + '" data-link-ajax="true" data-link-title="' + link1[2] +'" data-link-subtitle="' + link1[3] + '" data-link-data="' + link1[4]  + '" data-link-container="' + link1[5]  + '">' + link1[1] + '</a>';
     }
     if (Array.isArray(link2)) {
-        pop += '<a href="' + link1[0] + '" data-link-ajax="true" data-link-title="' + link2[2] || '' + '" data-link-subtitle="' + link2[3] || '' + '" data-link-data="' + link2[4] || '' + '" data-link-container="' + link2[5] || 1 + '">' + link2[1] + '</a>';
+        pop += '<a href="' + link1[0] + '" data-link-ajax="true" data-link-title="' + link2[2] + '" data-link-subtitle="' + link2[3] + '" data-link-data="' + link2[4]  + '" data-link-container="' + link2[5] + '">' + link2[1] + '</a>';
 
     }
 
@@ -320,7 +337,7 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
         url: url,
         data: data,
         dataType: 'html',
-        async:true,
+        async: true,
         statusCode: {
             401: function () {
                 AddPop('danger', __('Unauthorized!'), __("You don't have permissions to access this page:") + '<br><b>' + title + '</b>', '', '', 'fa fa-lock');
@@ -328,24 +345,42 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
 
             404: function () {
                 AddPop('warning', __('Not found!'), __("The page you are trying to access does not exist:") + '<br><b>- ' + title + '</b>', '', '', 'fa fa-window-close');
-                OpenLink('/Error/Code/404','Not Found');
+                OpenLink('/Error/Code/404', 'Not Found');
             }
         }
     }).always(function (content) {
         $('#loader').hide();
     }).fail(function (response) {
-        if (response.status != 401 && response.status!=404) {
+        if (response.status != 401 && response.status != 404) {
             AddPop('danger', __('Error!'), __('An error occurred while trying to access this function, please try again later or contact us.'));
         }
     }).done(function (content) {
         if (content == 'userNotLogged') {
             window.location = '/Login/Login';
         } else {
+
+            history.pushState(null, null, url);
+
+
             $(containerId + ' .content').html(content);
+
+
+            if (url[0] == '/') {
+                url = url.substring(1, url.length);
+            }
+            let currentObject = url.split('/');
+            let objectName = '';
+            if (currentObject[1] == undefined) {
+                objectName = currentObject[0] + "Index";
+            } else {
+                objectName = currentObject[0] + currentObject[1];
+            }
+            if (window[objectName] != undefined) {
+                window[objectName].StartUp();
+            }
 
             document.title = title + ' | Reaws';
 
-            history.pushState(null, null, url);
 
             if (subtitle != '') {
                 title += '<small>' + subtitle + '</small>';

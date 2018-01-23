@@ -273,7 +273,7 @@ google.maps = google.maps || {};
   
   google.maps.Load = function(apiLoad) {
     delete google.maps.Load;
-    apiLoad([0.009999999776482582,[null,[["https://khms0.googleapis.com/kh?v=748\u0026hl=en-US\u0026","https://khms1.googleapis.com/kh?v=748\u0026hl=en-US\u0026"],null,null,null,1,"748",["https://khms0.google.com/kh?v=748\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=748\u0026hl=en-US\u0026"]],null,null,null,null,[["https://cbks0.googleapis.com/cbk?","https://cbks1.googleapis.com/cbk?"]],[["https://khms0.googleapis.com/kh?v=112\u0026hl=en-US\u0026","https://khms1.googleapis.com/kh?v=112\u0026hl=en-US\u0026"],null,null,null,null,"112",["https://khms0.google.com/kh?v=112\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=112\u0026hl=en-US\u0026"]],[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]],null,null,null,[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]]],["en-US","US",null,0,null,null,"https://maps.gstatic.com/mapfiles/","https://csi.gstatic.com","https://maps.googleapis.com","https://maps.googleapis.com",null,"https://maps.google.com","https://gg.google.com","https://maps.gstatic.com/maps-api-v3/api/images/","https://www.google.com/maps",0,"https://www.google.com"],["https://maps.googleapis.com/maps-api-v3/api/js/31/6","3.31.6"],[1773708616],1,null,null,null,null,null,"",["places"],null,1,"https://khms.googleapis.com/mz?v=748\u0026","AIzaSyCAebtVrx8yzcCCmOvD3n1Fr_06afhhubU","https://earthbuilder.googleapis.com","https://earthbuilder.googleapis.com",null,"https://mts.googleapis.com/maps/vt/icon",[["https://maps.googleapis.com/maps/vt"],["https://maps.googleapis.com/maps/vt"],null,null,null,null,null,null,null,null,null,null,["https://www.google.com/maps/vt"],"/maps/vt",408000000,408],2,500,[null,null,null,null,"https://www.google.com/maps/preview/log204","","https://static.panoramio.com.storage.googleapis.com/photos/",["https://geo0.ggpht.com/cbk","https://geo1.ggpht.com/cbk","https://geo2.ggpht.com/cbk","https://geo3.ggpht.com/cbk"],"https://maps.googleapis.com/maps/api/js/GeoPhotoService.GetMetadata","https://maps.googleapis.com/maps/api/js/GeoPhotoService.SingleImageSearch",["https://lh3.ggpht.com/","https://lh4.ggpht.com/","https://lh5.ggpht.com/","https://lh6.ggpht.com/"]],null,null,null,null,"/maps/api/js/ApplicationService.GetEntityDetails",0,null,null,[null,null,null,null,null,null,null,null,null,[0,0]],null,[],["31.6"]], loadScriptTime);
+    apiLoad([0.009999999776482582,[null,[["https://khms0.googleapis.com/kh?v=748\u0026hl=en-US\u0026","https://khms1.googleapis.com/kh?v=748\u0026hl=en-US\u0026"],null,null,null,1,"748",["https://khms0.google.com/kh?v=748\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=748\u0026hl=en-US\u0026"]],null,null,null,null,[["https://cbks0.googleapis.com/cbk?","https://cbks1.googleapis.com/cbk?"]],[["https://khms0.googleapis.com/kh?v=112\u0026hl=en-US\u0026","https://khms1.googleapis.com/kh?v=112\u0026hl=en-US\u0026"],null,null,null,null,"112",["https://khms0.google.com/kh?v=112\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=112\u0026hl=en-US\u0026"]],[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]],null,null,null,[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]]],["en-US","US",null,0,null,null,"https://maps.gstatic.com/mapfiles/","https://csi.gstatic.com","https://maps.googleapis.com","https://maps.googleapis.com",null,"https://maps.google.com","https://gg.google.com","https://maps.gstatic.com/maps-api-v3/api/images/","https://www.google.com/maps",0,"https://www.google.com"],["https://maps.googleapis.com/maps-api-v3/api/js/31/6","3.31.6"],[2433406455],1,null,null,null,null,null,"",["places"],null,1,"https://khms.googleapis.com/mz?v=748\u0026","AIzaSyCAebtVrx8yzcCCmOvD3n1Fr_06afhhubU","https://earthbuilder.googleapis.com","https://earthbuilder.googleapis.com",null,"https://mts.googleapis.com/maps/vt/icon",[["https://maps.googleapis.com/maps/vt"],["https://maps.googleapis.com/maps/vt"],null,null,null,null,null,null,null,null,null,null,["https://www.google.com/maps/vt"],"/maps/vt",408000000,408],2,500,[null,null,null,null,"https://www.google.com/maps/preview/log204","","https://static.panoramio.com.storage.googleapis.com/photos/",["https://geo0.ggpht.com/cbk","https://geo1.ggpht.com/cbk","https://geo2.ggpht.com/cbk","https://geo3.ggpht.com/cbk"],"https://maps.googleapis.com/maps/api/js/GeoPhotoService.GetMetadata","https://maps.googleapis.com/maps/api/js/GeoPhotoService.SingleImageSearch",["https://lh3.ggpht.com/","https://lh4.ggpht.com/","https://lh5.ggpht.com/","https://lh6.ggpht.com/"]],null,null,null,null,"/maps/api/js/ApplicationService.GetEntityDetails",0,null,null,[null,null,null,null,null,null,null,null,null,[0,0]],null,[],["31.6"]], loadScriptTime);
   };
   var loadScriptTime = (new Date).getTime();
 })();
@@ -2777,6 +2777,22 @@ $(document).ready(function () {
 
     ReloadFunctions();
 
+    let url = window.location.pathname;
+    if (url[0] == '/') {
+        url = url.substring(1, url.length);
+    }
+    let currentObject = url.split('/');
+    let objectName = '';
+    if (currentObject[1] == undefined) {
+        objectName = currentObject[0] + "Index";
+    } else {
+        objectName = currentObject[0] + currentObject[1];
+    }
+    if (window[objectName] != undefined) {
+
+        window[objectName].StartUp();
+    }
+
 
 });
 
@@ -2805,8 +2821,9 @@ $(window).on('beforeunload', function (e) {
 //functions to be loaded after a page is loaded
 function ReloadFunctions() {
 
+
     //converting links to ajax
-    $(document).on('click', 'a', function (e) {
+    $('a').unbind('click').on('click', function (e) {
         if ($(this).data('link-ajax') == true) {
             e.preventDefault();
             let url = $(this).attr('href');
@@ -2826,7 +2843,7 @@ function ReloadFunctions() {
     });
 
     //tabs
-    $('.tabs .tabs-navigation li:not(.actions)').on('click', function () {
+    $('.tabs .tabs-navigation li:not(.actions)').unbind('click').on('click', function () {
         let parent = $(this).parent();
         let index = parent.find('li').index($(this)) + 1;
 
@@ -2834,7 +2851,7 @@ function ReloadFunctions() {
 
 
     });
-    $(".tabs .next").on('click', function () {
+    $(".tabs .next").unbind('click').on('click', function () {
         let parent = ($(this).parent().parent().find('.tabs-navigation').length > 0) ? $(this).parent().parent().find('.tabs-navigation') : $(this).closest('.tabs-navigation');
 
         let next = parent.find('li').index(parent.find('li.active')) + 2;
@@ -2848,7 +2865,7 @@ function ReloadFunctions() {
 
         ChangeTab(obj, parent, next);
     });
-    $(".tabs .previous").on('click', function () {
+    $(".tabs .previous").unbind('click').on('click', function () {
         let parent = ($(this).parent().parent().find('.tabs-navigation').length > 0) ? $(this).parent().parent().find('.tabs-navigation') : $(this).closest('.tabs-navigation');
 
         let prev = parent.find('li').index(parent.find('li.active'));
@@ -2951,10 +2968,10 @@ function AddPop(type, title, content, link1, link2, icon = null) {
         '                <h5 class="notification-title">' + title + '</h5>' +
         '                <p>' + content + '</p>';
     if (Array.isArray(link1)) {
-        pop += '<a href="' + link1[0] + '" data-link-ajax="true" data-link-title="' + link1[2] || '' + '" data-link-subtitle="' + link1[3] || '' + '" data-link-data="' + link1[4] || '' + '" data-link-container="' + link1[5] || 1 + '">' + link1[1] + '</a>';
+        pop += '<a href="' + link1[0] + '" data-link-ajax="true" data-link-title="' + link1[2] +'" data-link-subtitle="' + link1[3] + '" data-link-data="' + link1[4]  + '" data-link-container="' + link1[5]  + '">' + link1[1] + '</a>';
     }
     if (Array.isArray(link2)) {
-        pop += '<a href="' + link1[0] + '" data-link-ajax="true" data-link-title="' + link2[2] || '' + '" data-link-subtitle="' + link2[3] || '' + '" data-link-data="' + link2[4] || '' + '" data-link-container="' + link2[5] || 1 + '">' + link2[1] + '</a>';
+        pop += '<a href="' + link1[0] + '" data-link-ajax="true" data-link-title="' + link2[2] + '" data-link-subtitle="' + link2[3] + '" data-link-data="' + link2[4]  + '" data-link-container="' + link2[5] + '">' + link2[1] + '</a>';
 
     }
 
@@ -3030,7 +3047,7 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
         url: url,
         data: data,
         dataType: 'html',
-        async:true,
+        async: true,
         statusCode: {
             401: function () {
                 AddPop('danger', __('Unauthorized!'), __("You don't have permissions to access this page:") + '<br><b>' + title + '</b>', '', '', 'fa fa-lock');
@@ -3038,24 +3055,42 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
 
             404: function () {
                 AddPop('warning', __('Not found!'), __("The page you are trying to access does not exist:") + '<br><b>- ' + title + '</b>', '', '', 'fa fa-window-close');
-                OpenLink('/Error/Code/404','Not Found');
+                OpenLink('/Error/Code/404', 'Not Found');
             }
         }
     }).always(function (content) {
         $('#loader').hide();
     }).fail(function (response) {
-        if (response.status != 401 && response.status!=404) {
+        if (response.status != 401 && response.status != 404) {
             AddPop('danger', __('Error!'), __('An error occurred while trying to access this function, please try again later or contact us.'));
         }
     }).done(function (content) {
         if (content == 'userNotLogged') {
             window.location = '/Login/Login';
         } else {
+
+            history.pushState(null, null, url);
+
+
             $(containerId + ' .content').html(content);
+
+
+            if (url[0] == '/') {
+                url = url.substring(1, url.length);
+            }
+            let currentObject = url.split('/');
+            let objectName = '';
+            if (currentObject[1] == undefined) {
+                objectName = currentObject[0] + "Index";
+            } else {
+                objectName = currentObject[0] + currentObject[1];
+            }
+            if (window[objectName] != undefined) {
+                window[objectName].StartUp();
+            }
 
             document.title = title + ' | Reaws';
 
-            history.pushState(null, null, url);
 
             if (subtitle != '') {
                 title += '<small>' + subtitle + '</small>';
@@ -3070,245 +3105,257 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
         }
     });
 
-} var pendingList = Array();
-var idProperty = 0;
-var ignoreImages = false;
+} 'use strict';
 
-var PropertyAdd = function() {
-// Load the Visualization API and the corechart package.
-    google.charts.load('current', {'packages': ['corechart']});
-    google.charts.setOnLoadCallback(function () {
-        drawScoreCharts();
-    });
+var PropertyAdd = {
+    pendingList: Array(),
+    idProperty: 0,
+    ignoreImages: false,
+    placeSearch: '',
+    autocomplete: '',
+    StartUp: function () {
 
-    $('#add-property .submit').on('click', function () {
-        $("#add-property").submit();
-    });
+        PropertyAdd.ignoreImages = false;
+
+        // Load the Visualization API and the corechart package.
+        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.setOnLoadCallback(function () {
+            PropertyAdd.drawScoreCharts();
+        });
+
+        $('#add-property .submit').on('click', function () {
+            $("#add-property").submit();
+        });
 
 
-    $("#add-property").submit(function (event) {
+        $("#add-property").submit(function (event) {
 
-        //disable the default form submission
-        event.preventDefault();
-        if (pendingList.length > 0 || ignoreImages) {
-            $('#loader').show();
+            //disable the default form submission
+            event.preventDefault();
+            if (PropertyAdd.pendingList.length > 0 || PropertyAdd.ignoreImages) {
+                $('#loader').show();
 
-            $.ajax({
-                url: $(this).attr('action'),
-                type: 'POST',
-                data: $(this).serialize(),
-                dataType: 'json',
-                statusCode: {
-                    401: function () {
-                        AddPop('danger', __('Unauthorized!'), __("You don't have permissions to access this page") + '<br><b>' + __(title) + '</b>', '', '', 'fa fa-lock');
-                    }
-                }
-            }).always(function (json) {
-                if (json == 'userNotLogged') {
-                    window.location = '/Login/Login';
-                } else {
-                    if (json.status == true) {
-                        let content = __("This property was successfully saved!");
-
-                        if (pendingList.length > 0) {
-                            content += '<br>' + __('We are now uploading your pictures, please wait.');
-                            $('#add-property .tabs .tabs-navigation li:not(:nth-child(5))').hide();
-                            $('#add-property .tabs .tabs-navigation li:nth-child(5):not(.active)').click();
-                            $('#add-property .tabs .actions-bottom').hide();
-                            idProperty = json.lastId;
-                            sendAllImages();
-                        } else {
-                            $('#add-property .tabs .tabs-navigation li:last-child()').hide();
-                            $('#add-property .tabs .actions-bottom').hide();
-                            OpenLink('/Property/Details/' + json.lastId, __('Property details'), '');
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    dataType: 'json',
+                    statusCode: {
+                        401: function () {
+                            AddPop('danger', __('Unauthorized!'), __("You don't have permissions to access this page") + '<br><b>' + __(title) + '</b>', '', '', 'fa fa-lock');
                         }
-                        AddPop('success', __('Property was saved!'), content, ['/Property/Details/' + json.lastId, '<i class="fa fa-eye"></i> ' + __('See it'), __('Property details'), '']);
-
-                    } else {
-                        AddPop('danger', __('An error occurred while trying to save this property'), json.error);
                     }
-                }
+                }).always(function (json) {
+                    if (json == 'userNotLogged') {
+                        window.location = '/Login/Login';
+                    } else {
+                        if (json.status == true) {
+                            let content = __("This property was successfully saved!");
 
-                $('#loader').hide();
-            });
-        } else {
-            ignoreImages = true;
-            AddPop('info', __('Images'), __('Did you forget to add images?'));
-            $('#add-property .tabs .tabs-navigation li:nth-child(5):not(.active)').click();
-            $('#add-property .submit').html('<i class="fa fa-save"></i>' + __('Save this property without images'));
-        }
+                            if (PropertyAdd.pendingList.length > 0) {
+                                content += '<br>' + __('We are now uploading your pictures, please wait.');
+                                $('#add-property .tabs .tabs-navigation li:not(:nth-child(5))').hide();
+                                $('#add-property .tabs .tabs-navigation li:nth-child(5):not(.active)').click();
+                                $('#add-property .tabs .actions-bottom').hide();
+                                PropertyAdd.idProperty = json.lastId;
+                                PropertyAdd.sendAllImages();
+                            } else {
+                                $('#add-property .tabs .tabs-navigation li:last-child()').hide();
+                                $('#add-property .tabs .actions-bottom').hide();
+                                OpenLink('/Property/Details/' + json.lastId, __('Property details'), '');
+                            }
+                            AddPop('success', __('Property was saved!'), content);
+                            PropertyAdd.ignoreImages = false;
+                        } else {
+                            AddPop('danger', __('An error occurred while trying to save this property'), json.error);
+                        }
+                    }
 
-
-        return false;
-    });
-
-
-//changing currency
-    $('#currency-indicator').on('select2:select', function () {
-        $(".currency-indicator").html($(this).val());
-    });
-
-//fileupload
-    var ul = $('#images-preview');
-
-    $('#drop a').click(function () {
-        // Simulate a click on the file input button
-        // to show the file browser dialog
-        $(this).parent().find('input').click();
-    });
-// Initialize the jQuery File Upload plugin
-    $('#add-property').fileupload({
-        url: '/Image/UploadPropertyPicture',
-        autoUpload: false,
-        limitMultiFileUploads: 3,
-        limitConcurrentUploads: 2,
-        // This element will accept file drag/drop uploading
-        dropZone: $('#drop'),
-
-        // This function is called when a file is added to the queue;
-        // either via the browse button, or via drag/drop:
-        add: function (e, data) {
-
-
-            ignoreImages = false;
-            $('#add-property .submit').html('<i class="fa fa-save"></i>' + __('Save this property'));
-
-            var tpl = $('<li><label><input type="radio" name="mainPicture">' + __('Main picture') + '</label><i class="far fa-trash-alt"></i><img/><input type="text" placeholder="' + __('Picture label') + '"/><progress></progress></li>');
-
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                tpl.find('img').attr('src', e.target.result);
-            };
-
-            reader.readAsDataURL(data.files[0]);
-
-            //Starting checkboxes
-            tpl.find('input[name=mainPicture]').iCheck({
-                checkboxClass: 'icheckbox_flat-green',
-                radioClass: 'iradio_flat-green'
-            });
-
-            // Add the HTML to the UL element
-            data.context = tpl.prependTo(ul);
-
-            // Listen for clicks on the cancel icon
-            tpl.find('i').click(function () {
-
-                if (tpl.hasClass('working')) {
-                    jqXHR.abort();
-                }
-
-                tpl.fadeOut(function () {
-                    tpl.remove();
+                    $('#loader').hide();
                 });
-                ignoreImages = true;
-
-            });
-            pendingList.push(data);
-        },
-
-        progress: function (e, data) {
-
-            // Calculate the completion percentage of the upload
-            var progress = parseInt(data.loaded / data.total * 100, 10);
-
-            // Update the hidden input field and trigger a change
-            // so that the jQuery knob plugin knows to update the dial
-            data.context.find('progress').val(progress).change();
-
-            if (progress == 100) {
-                data.context.removeClass('working');
+            } else {
+                PropertyAdd.ignoreImages = true;
+                AddPop('info', __('Images'), __('Did you forget to add images?'));
+                $('#add-property .tabs .tabs-navigation li:nth-child(5):not(.active)').click();
+                $('#add-property .submit').html('<i class="fa fa-save"></i>' + __('Save this property without images'));
             }
-        },
 
-        fail: function (e, data) {
-            // Something has gone wrong!
-            data.context.addClass('error');
-        }
 
-    });
-
-    $('#add-property').bind('fileuploadsubmit', function (e, data) {
-        let label = data.context.find('input[type=text]').val();
-        let isPrincipal = data.context.find('input[type=radio]').is(':checked');
-        data.formData = {label: label, isPrincipal: isPrincipal, idProperty: idProperty};
-    });
-    $('#add-property').bind('fileuploaddone', function (e, data) {
-        data.context.append('<span>' + data.context.find('input[type=text]').val() + '</span>');
-        data.context.find('input[type=text]').fadeOut(function () {
-            $(this).remove();
-        });
-        data.context.find('label').fadeOut(function () {
-            $(this).remove();
-        });
-        data.context.find('i').fadeOut(function () {
-            $(this).remove();
+            return false;
         });
 
-    });
+
+        //changing currency
+        $('#currency-indicator').on('select2:select', function () {
+            $(".currency-indicator").html($(this).val());
+        });
+
+        //fileupload
+        var ul = $('#images-preview');
+
+        $('#drop button').unbind('click').on('click',function () {
+            // Simulate a click on the file input button
+            // to show the file browser dialog
+            $(this).parent().find('input').click();
+        });
+        // Initialize the jQuery File Upload plugin
+        $('#add-property').fileupload({
+            url: '/Image/UploadPropertyPicture',
+            autoUpload: false,
+            limitMultiFileUploads: 3,
+            limitConcurrentUploads: 2,
+            // This element will accept file drag/drop uploading
+            dropZone: $('#drop'),
+
+            // This function is called when a file is added to the queue;
+            // either via the browse button, or via drag/drop:
+            add: function (e, data) {
+
+
+                PropertyAdd.ignoreImages = false;
+                $('#add-property .submit').html('<i class="fa fa-save"></i>' + __('Save this property'));
+
+                var tpl = $('<li><label><input type="radio" name="mainPicture">' + __('Main picture') + '</label><i class="far fa-trash-alt"></i><img/><input type="text" placeholder="' + __('Picture label') + '"/><progress></progress></li>');
+
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    tpl.find('img').attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(data.files[0]);
+
+                //Starting checkboxes
+                tpl.find('input[name=mainPicture]').iCheck({
+                    checkboxClass: 'icheckbox_flat-green',
+                    radioClass: 'iradio_flat-green'
+                });
+
+                // Add the HTML to the UL element
+                data.context = tpl.prependTo(ul);
+
+                // Listen for clicks on the cancel icon
+                tpl.find('i').click(function () {
+
+                    if (tpl.hasClass('working')) {
+                        jqXHR.abort();
+                    }
+
+                    tpl.fadeOut(function () {
+                        tpl.remove();
+                    });
+                    PropertyAdd.ignoreImages = true;
+
+                });
+                PropertyAdd.pendingList.push(data);
+            },
+
+            progress: function (e, data) {
+
+                // Calculate the completion percentage of the upload
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+
+                // Update the hidden input field and trigger a change
+                // so that the jQuery knob plugin knows to update the dial
+                data.context.find('progress').val(progress).change();
+
+                if (progress == 100) {
+                    data.context.removeClass('working');
+                }
+            },
+
+            fail: function (e, data) {
+                // Something has gone wrong!
+                data.context.addClass('error');
+            }
+
+        });
+
+        $('#add-property').bind('fileuploadsubmit', function (e, data) {
+            let label = data.context.find('input[type=text]').val();
+            let isPrincipal = data.context.find('input[type=radio]').is(':checked');
+            data.formData = {label: label, isPrincipal: isPrincipal, idProperty: PropertyAdd.idProperty};
+        });
+        $('#add-property').bind('fileuploaddone', function (e, data) {
+            data.context.append('<span>' + data.context.find('input[type=text]').val() + '</span>');
+            data.context.find('input[type=text]').fadeOut(function () {
+                $(this).remove();
+            });
+            data.context.find('label').fadeOut(function () {
+                $(this).remove();
+            });
+            data.context.find('i').fadeOut(function () {
+                $(this).remove();
+            });
+            PropertyAdd.pendingList.pop(data);
+            if(PropertyAdd.pendingList.length<=0){
+                OpenLink('/Property/Details/' + PropertyAdd.idProperty, __('Property details'), '');
+                AddPop('success', __('Images saved!'), __('This property is fully saved'), ['/Property/Details/' + PropertyAdd.idProperty, '<i class="fa fa-eye"></i> ' + __('See it'), __('Property details'), '']);
+
+            }
+        });
 
 // Prevent the default action when a file is dropped on the window
-    $(document).on('drop dragover', function (e) {
-        e.preventDefault();
-    });
+        $(document).on('drop dragover', function (e) {
+            e.preventDefault();
+        });
 
 
 //Property Description
-    $('#property-description').trumbowyg({
-        svgPath: '/plugins/trumbowyg/ui/icons.svg',
-        autogrow: true,
-        resetCss: true,
-        imageWidthModalEdit: true,
-        btns: [
-            ['viewHTML'],
-            ['undo', 'redo'], // Only supported in Blink browsers
-            ['formatting'],
-            ['strong', 'em', 'del'],
-            ['foreColor', 'backColor'],
-            ['superscript', 'subscript'],
-            ['link'],
-            ['insertImage'],
-            ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
-            ['unorderedList', 'orderedList'],
-            ['horizontalRule'],
-            ['removeformat']
-        ]
-    });
+        $('#property-description').trumbowyg({
+            svgPath: '/plugins/trumbowyg/ui/icons.svg',
+            autogrow: true,
+            resetCss: true,
+            imageWidthModalEdit: true,
+            btns: [
+                ['viewHTML'],
+                ['undo', 'redo'], // Only supported in Blink browsers
+                ['formatting'],
+                ['strong', 'em', 'del'],
+                ['foreColor', 'backColor'],
+                ['superscript', 'subscript'],
+                ['link'],
+                ['insertImage'],
+                ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+                ['unorderedList', 'orderedList'],
+                ['horizontalRule'],
+                ['removeformat']
+            ]
+        });
 
 //Property Description
-    $('#internal-observations').trumbowyg({
-        svgPath: '/plugins/trumbowyg/ui/icons.svg',
-        autogrow: true,
-        resetCss: true,
-        imageWidthModalEdit: true,
-        btns: [
-            ['strong', 'em', 'del'],
-            ['foreColor', 'backColor'],
-            ['unorderedList', 'orderedList'],
-            ['horizontalRule'],
-            ['removeformat']
-        ]
-    });
+        $('#internal-observations').trumbowyg({
+            svgPath: '/plugins/trumbowyg/ui/icons.svg',
+            autogrow: true,
+            resetCss: true,
+            imageWidthModalEdit: true,
+            btns: [
+                ['strong', 'em', 'del'],
+                ['foreColor', 'backColor'],
+                ['unorderedList', 'orderedList'],
+                ['horizontalRule'],
+                ['removeformat']
+            ]
+        });
 
 //spinner score
-    $(".spinner-score").spinner('delay', 0).spinner('changed', function (e, newVal, oldVal) {
-        drawScoreCharts();
-    });
+        $(".spinner-score").spinner('delay', 0).spinner('changed', function (e, newVal, oldVal) {
+            PropertyAdd.drawScoreCharts();
+        });
 
-
-    function sendAllImages() {
+    },
+    sendAllImages: function () {
         $('#drop').slideUp('fast');
-        pendingList.forEach(function (data) {
+        PropertyAdd.pendingList.forEach(function (data) {
             data.submit();
         });
-        pendingList = [];
-    }
+        //PropertyAdd.pendingList = [];
+    },
 
 // Callback that creates and populates a data table,
 // instantiates the pie chart, passes in the data and
 // draws it.
-    function drawScoreCharts() {
+    drawScoreCharts: function () {
 
 
 
@@ -3368,7 +3415,7 @@ var PropertyAdd = function() {
             ['empty', (100 - parseInt($("#bike-score-val").val(), 10))]
         ]);
         chart3.draw(data3, options);
-    }
+    },
 
 // This example displays an address form, using the autocomplete feature
 // of the Google Places API to help users fill in the information.
@@ -3377,8 +3424,7 @@ var PropertyAdd = function() {
 // parameter when you first load the API. For example:
 // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
-    var placeSearch, autocomplete;
-    var componentForm = {
+    componentForm: {
         street_number: 'short_name',
         route: 'long_name',
         locality: 'long_name',
@@ -3387,25 +3433,25 @@ var PropertyAdd = function() {
         administrative_area_level_2: 'long_name',
         country: 'long_name',
         postal_code: 'short_name'
-    };
+    },
 
-    function initAutocomplete() {
+    initAutocomplete: function () {
         // Create the autocomplete object, restricting the search to geographical
         // location types.
-        autocomplete = new google.maps.places.Autocomplete(
+        PropertyAdd.autocomplete = new google.maps.places.Autocomplete(
             /** @type {!HTMLInputElement} */(document.getElementById('google_address_autocomplete')),
             {types: ['geocode']});
 
         // When the user selects an address from the dropdown, populate the address
         // fields in the form.
-        autocomplete.addListener('place_changed', fillInAddress);
-    }
+        PropertyAdd.autocomplete.addListener('place_changed', PropertyAdd.fillInAddress);
+    },
 
-    function fillInAddress() {
+    fillInAddress: function () {
         // Get the place details from the autocomplete object.
-        var place = autocomplete.getPlace();
+        var place = PropertyAdd.autocomplete.getPlace();
 
-        for (var component in componentForm) {
+        for (var component in PropertyAdd.componentForm) {
             document.getElementById(component).value = '';
             document.getElementById(component).disabled = false;
         }
@@ -3414,8 +3460,8 @@ var PropertyAdd = function() {
         // and fill the corresponding field on the form.
         for (var i = 0; i < place.address_components.length; i++) {
             var addressType = place.address_components[i].types[0];
-            if (componentForm[addressType]) {
-                var val = place.address_components[i][componentForm[addressType]];
+            if (PropertyAdd.componentForm[addressType]) {
+                var val = place.address_components[i][PropertyAdd.componentForm[addressType]];
 
 
                 document.getElementById(addressType).value = val;
@@ -3430,11 +3476,12 @@ var PropertyAdd = function() {
             document.getElementById('unit_number').focus();
         }, 100);
         $('#address-filled').slideDown('fast');
-    }
+    },
 
 // Bias the autocomplete object to the user's geographical location,
 // as supplied by the browser's 'navigator.geolocation' object.
-    function geolocate() {
+    geolocate: function () {
+        PropertyAdd.initAutocomplete();
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
                 var geolocation = {
@@ -3445,18 +3492,8 @@ var PropertyAdd = function() {
                     center: geolocation,
                     radius: position.coords.accuracy
                 });
-                autocomplete.setBounds(circle.getBounds());
+                PropertyAdd.autocomplete.setBounds(circle.getBounds());
             });
         }
     }
-
-    document.getElementById('google_address_autocomplete').onclick = function () {
-        initAutocomplete();
-
-    };
-    $(function () {
-        $("#add-property .submit").on('click', function () {
-
-        });
-    });
 };
