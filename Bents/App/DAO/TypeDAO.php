@@ -32,5 +32,22 @@ namespace Bents\App\DAO {
 
             return $Types;
         }
+
+        public function GetPropertyTypeById($id){
+            $pdo = self::$dbConn;
+            $sql = "SELECT * FROM Type WHERE idType = :id";
+
+            $stmt1 = $pdo->prepare($sql);
+            $stmt1->bindValue(':id',$id);
+
+            $stmt1->execute();
+            $row = $stmt1->fetch();
+
+            $Type =  new Type($row);
+
+
+
+            return $Type;
+        }
     }
 }

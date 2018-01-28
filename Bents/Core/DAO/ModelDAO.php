@@ -33,7 +33,7 @@ namespace Bents\Core\DAO {
                     FROM $table
                     WHERE id$table = :id
                     LIMIT 0,1";
-
+echo $sql;
             $stmt = $pdo->prepare($sql);
 
             $stmt->bindValue(':id', $id);

@@ -9,6 +9,9 @@
 namespace Bents\App\Model {
 
     use Bents\App\DAO\FeatureDAO;
+    use Bents\App\DAO\ImageDAO;
+    use Bents\App\DAO\LaundryDAO;
+    use Bents\App\DAO\TypeDAO;
     use Bents\Core\Model;
 
     /**
@@ -27,6 +30,10 @@ namespace Bents\App\Model {
          * @var int
          */
         public $idAddress;
+        /**
+         * @var Address
+         */
+        public $Address;
         /**
          * @var \DateTime
          */
@@ -76,13 +83,25 @@ namespace Bents\App\Model {
          */
         public $idType;
         /**
+         * @var Type
+         */
+        public $Type;
+        /**
          * @var int
          */
         public $idParking;
         /**
+         * @var Parking
+         */
+        public $Parking;
+        /**
          * @var int
          */
         public $idLaundry;
+        /**
+         * @var Laundry
+         */
+        public $Laundry;
         /**
          * @var string
          */
@@ -134,6 +153,11 @@ namespace Bents\App\Model {
         public $Features;
 
         /**
+         * @var Image[]
+         */
+        public $Images;
+
+        /**
          * User constructor.
          * @param $Property array
          */
@@ -143,21 +167,21 @@ namespace Bents\App\Model {
             if (isset($Property['idAddress']) && $Property['idAddress']!='')$this->idAddress = filter_var($Property['idAddress'],FILTER_SANITIZE_NUMBER_INT);
             if (isset($Property['createdAt']))$this->createdAt = filter_var($Property['createdAt'],FILTER_SANITIZE_STRING);
             if (isset($Property['updatedAt']))$this->updatedAt = filter_var($Property['updatedAt'],FILTER_SANITIZE_STRING);
-            if (isset($Property['sellingPrice']))$this->sellingPrice = filter_var($Property['sellingPrice'],FILTER_SANITIZE_NUMBER_FLOAT);
-            if (isset($Property['rentalPrice']))$this->rentalPrice = filter_var($Property['rentalPrice'],FILTER_SANITIZE_NUMBER_FLOAT);
-            if (isset($Property['condoExpenses'])) $this->condoExpenses = filter_var($Property['condoExpenses'],FILTER_SANITIZE_NUMBER_FLOAT);
+            if (isset($Property['sellingPrice']))$this->sellingPrice = filter_var($Property['sellingPrice'],FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
+            if (isset($Property['rentalPrice']))$this->rentalPrice = filter_var($Property['rentalPrice'],FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
+            if (isset($Property['condoExpenses'])) $this->condoExpenses = filter_var($Property['condoExpenses'],FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
             if (isset($Property['currency']))$this->currency = filter_var($Property['currency'],FILTER_SANITIZE_STRING);
             if (isset($Property['bedrooms']))$this->bedrooms = filter_var($Property['bedrooms'],FILTER_SANITIZE_NUMBER_INT);
             if (isset($Property['bathrooms']))$this->bathrooms = filter_var($Property['bathrooms'],FILTER_SANITIZE_NUMBER_INT);
-            if (isset($Property['area']))$this->area = filter_var($Property['area'],FILTER_SANITIZE_NUMBER_FLOAT);
+            if (isset($Property['area']))$this->area = filter_var($Property['area'],FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
             if (isset($Property['areaUnit']))$this->areaUnit = filter_var($Property['areaUnit'],FILTER_SANITIZE_STRING);
-            if (isset($Property['description']))$this->description = addslashes($Property['description']);
+            if (isset($Property['description']))$this->description = $Property['description'];
             if (isset($Property['idType']) && $Property['idType']!='') $this->idType = filter_var($Property['idType'],FILTER_SANITIZE_NUMBER_INT);
             if (isset($Property['idParking']) && $Property['idParking']!='') $this->idParking = filter_var($Property['idParking'],FILTER_SANITIZE_NUMBER_INT);
             if (isset($Property['idLaundry']) && $Property['idLaundry']!='')$this->idLaundry = filter_var($Property['idLaundry'],FILTER_SANITIZE_NUMBER_INT);
             if (isset($Property['mlsNumber']))$this->mlsNumber = filter_var($Property['mlsNumber'],FILTER_SANITIZE_STRING);
             if (isset($Property['availability']))$this->availability = filter_var($Property['availability'],FILTER_SANITIZE_STRING);
-            if (isset($Property['observations']))$this->observations = addslashes($Property['observations']);
+            if (isset($Property['observations']))$this->observations = $Property['observations'];
             if (isset($Property['buildingName']))$this->buildingName = filter_var($Property['buildingName'],FILTER_SANITIZE_STRING);
             if (isset($Property['openHouse']))$this->openHouse = filter_var($Property['openHouse'],FILTER_VALIDATE_BOOLEAN);
             if (isset($Property['negotiation']))$this->negotiation = filter_var($Property['negotiation'],FILTER_SANITIZE_STRING);
@@ -167,8 +191,25 @@ namespace Bents\App\Model {
             if (isset($Property['idRealEstate']) && $Property['idRealEstate']!='')$this->idRealEstate = filter_var($Property['idRealEstate'],FILTER_SANITIZE_NUMBER_INT);
             if (isset($Property['idProfile']) && $Property['idProfile']!='')$this->idProfile = filter_var($Property['idProfile'],FILTER_SANITIZE_NUMBER_INT);
             if (isset($Property['idProperty'])) {
+                $idProperty = filter_var($Property['idProperty'],FILTER_SANITIZE_NUMBER_INT);
                 $FeatureDAO = new FeatureDAO();
-                $this->Features = $FeatureDAO->GetAllFeaturesByPropertyId(filter_var($Property['idProperty'],FILTER_SANITIZE_NUMBER_INT));
+                $this->Features = $FeatureDAO->GetAllFeaturesByPropertyId($idProperty);
+
+                $imageDao = new ImageDAO();
+                $this->Images = $imageDao->GetAllImagesByPropertyId($idProperty);
+
+                $Type = new Type();
+                $this->Type = $Type->FindById($this->idType);
+
+                $Laundry = new Laundry();
+                $this->Laundry = $Laundry->FindById($this->idLaundry);
+
+                $Parking = new Parking();
+                $this->Parking = $Parking->FindById($this->idParking);
+
+                $Address = new Address();
+                $this->Address = $Address->FindById(166);
+
                 }
         }
 

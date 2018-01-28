@@ -54,5 +54,35 @@ namespace Bents\App\DAO {
                 Error::Deal(500,$e);
             }
         }
+
+        /**
+         * @return Image[]
+         */
+        public function GetAllImagesByPropertyId($id)
+        {
+            $pdo = self::$dbConn;
+
+            $sql = "SELECT idImage,
+                           label,
+                           url 
+                    FROM Image    
+                    WHERE idProperty = :id
+                    ORDER BY isPrincipal";
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':id',$id);
+
+            $stmt->execute();
+            $rows = $stmt->fetchAll();
+
+            $Images = array();
+
+            foreach ($rows as $row){
+                $Images[] = new Image($row);
+            }
+
+
+            return $Images;
+        }
     }
 }

@@ -38,7 +38,7 @@ namespace Bents\App\Controller {
                         //Compressing and saving image to the disc
                         $this->CompressAndSaveImage($temp,$destination,80);
                         //saving to the database
-                        $Image = new Image(['idProperty'=>$_POST['idProperty'],'label'=>$_POST['label'],'isPrincipal'=>$_POST['isPrincipal']]);
+                        $Image = new Image(['url'=>$newFileName,'idProperty'=>$_POST['idProperty'],'label'=>$_POST['label'],'isPrincipal'=>$_POST['isPrincipal']]);
                         $ImageDao = new ImageDAO();
                         $id = $ImageDao->SaveImageToProperty($Image);
                         die('{"status":true,"lastId":'.$id.',"error":""}');
