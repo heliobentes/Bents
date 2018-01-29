@@ -228,7 +228,7 @@ namespace Bents\Core {
             }
             $html = '';
             foreach ($htmlOptions as $key => $htmlOption) {
-                $html .= ' ' . $key . '="' . $htmlOption . ' ';
+                $html .= ' ' . $key . '="' . $htmlOption . '" ';
             }
             $arrParams = array();
             foreach ($params as $key => $param) {

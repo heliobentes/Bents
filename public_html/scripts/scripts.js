@@ -11,7 +11,7 @@ $(document).ready(function () {
 
 
     //menu toggle
-    $('#main-nav > li > a').on('click', function () {
+    $('#main-nav > li > a').unbind('click').on('click', function () {
         $('#main-nav > li').removeClass('active');
         $('#main-nav > li > ul').removeClass('open');
         $(this).parent().addClass('active');
@@ -19,7 +19,7 @@ $(document).ready(function () {
     });
 
     //active link
-    $('#main-nav > li > ul > li > a').on('click', function () {
+    $('#main-nav > li > ul > li > a').unbind('click').on('click', function () {
         $('#main-nav > li > ul > li').removeClass('active');
         $(this).parent().addClass('active');
     });
@@ -113,7 +113,7 @@ function ReloadFunctions() {
 
 
     //converting links to ajax
-    $('a').unbind('click').on('click', function (e) {
+    $('a:not(.main-menu)').unbind('click').on('click', function (e) {
         if ($(this).data('link-ajax') == true) {
             e.preventDefault();
             let url = $(this).attr('href');
@@ -359,7 +359,6 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
             window.location = '/Login/Login';
         } else {
 
-            history.pushState(null, null, url);
 
 
             $(containerId + ' .content').html(content);
@@ -379,8 +378,11 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
                 window[objectName].StartUp();
             }
 
-            document.title = title + ' | Reaws';
+            if(container==1) {
+                document.title = title + ' | Reaws';
+                history.pushState(null, null, url);
 
+            }
 
             if (subtitle != '') {
                 title += '<small>' + subtitle + '</small>';
@@ -390,6 +392,20 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
                 $(containerId + ' .title').html(title);
             } else {
                 $(containerId + ' .title').hide();
+            }
+            switch (container){
+                case 1:
+                    $('.content').addClass('one').removeClass('three').removeClass('two');
+                    break;
+                case 2:
+                    $('.content').removeClass('one').removeClass('three').addClass('two');
+                    break;
+                case 3:
+                    $('.content').removeClass('one').addClass('three').removeClass('two');
+                    break;
+                default:
+                    $('.content').addClass('one').removeClass('three').removeClass('two');
+
             }
             ReloadFunctions();
         }

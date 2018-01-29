@@ -273,7 +273,7 @@ google.maps = google.maps || {};
   
   google.maps.Load = function(apiLoad) {
     delete google.maps.Load;
-    apiLoad([0.009999999776482582,[null,[["https://khms0.googleapis.com/kh?v=762\u0026hl=en-US\u0026","https://khms1.googleapis.com/kh?v=762\u0026hl=en-US\u0026"],null,null,null,1,"762",["https://khms0.google.com/kh?v=762\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=762\u0026hl=en-US\u0026"]],null,null,null,null,[["https://cbks0.googleapis.com/cbk?","https://cbks1.googleapis.com/cbk?"]],[["https://khms0.googleapis.com/kh?v=112\u0026hl=en-US\u0026","https://khms1.googleapis.com/kh?v=112\u0026hl=en-US\u0026"],null,null,null,null,"112",["https://khms0.google.com/kh?v=112\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=112\u0026hl=en-US\u0026"]],[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]],null,null,null,[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]]],["en-US","US",null,0,null,null,"https://maps.gstatic.com/mapfiles/","https://csi.gstatic.com","https://maps.googleapis.com","https://maps.googleapis.com",null,"https://maps.google.com","https://gg.google.com","https://maps.gstatic.com/maps-api-v3/api/images/","https://www.google.com/maps",0,"https://www.google.com"],["https://maps.googleapis.com/maps-api-v3/api/js/31/7","3.31.7"],[2761723398],1,null,null,null,null,null,"",["places"],null,1,"https://khms.googleapis.com/mz?v=762\u0026","AIzaSyCAebtVrx8yzcCCmOvD3n1Fr_06afhhubU","https://earthbuilder.googleapis.com","https://earthbuilder.googleapis.com",null,"https://mts.googleapis.com/maps/vt/icon",[["https://maps.googleapis.com/maps/vt"],["https://maps.googleapis.com/maps/vt"],null,null,null,null,null,null,null,null,null,null,["https://www.google.com/maps/vt"],"/maps/vt",409000000,409],2,500,[null,null,null,null,"https://www.google.com/maps/preview/log204","","https://static.panoramio.com.storage.googleapis.com/photos/",["https://geo0.ggpht.com/cbk","https://geo1.ggpht.com/cbk","https://geo2.ggpht.com/cbk","https://geo3.ggpht.com/cbk"],"https://maps.googleapis.com/maps/api/js/GeoPhotoService.GetMetadata","https://maps.googleapis.com/maps/api/js/GeoPhotoService.SingleImageSearch",["https://lh3.ggpht.com/","https://lh4.ggpht.com/","https://lh5.ggpht.com/","https://lh6.ggpht.com/"]],null,null,null,null,"/maps/api/js/ApplicationService.GetEntityDetails",0,null,null,[null,null,null,null,null,null,null,null,null,[0,0]],null,[],["31.7"]], loadScriptTime);
+    apiLoad([0.009999999776482582,[null,[["https://khms0.googleapis.com/kh?v=762\u0026hl=en-US\u0026","https://khms1.googleapis.com/kh?v=762\u0026hl=en-US\u0026"],null,null,null,1,"762",["https://khms0.google.com/kh?v=762\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=762\u0026hl=en-US\u0026"]],null,null,null,null,[["https://cbks0.googleapis.com/cbk?","https://cbks1.googleapis.com/cbk?"]],[["https://khms0.googleapis.com/kh?v=112\u0026hl=en-US\u0026","https://khms1.googleapis.com/kh?v=112\u0026hl=en-US\u0026"],null,null,null,null,"112",["https://khms0.google.com/kh?v=112\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=112\u0026hl=en-US\u0026"]],[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]],null,null,null,[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]]],["en-US","US",null,0,null,null,"https://maps.gstatic.com/mapfiles/","https://csi.gstatic.com","https://maps.googleapis.com","https://maps.googleapis.com",null,"https://maps.google.com","https://gg.google.com","https://maps.gstatic.com/maps-api-v3/api/images/","https://www.google.com/maps",0,"https://www.google.com"],["https://maps.googleapis.com/maps-api-v3/api/js/31/7","3.31.7"],[3357661820],1,null,null,null,null,null,"",["places"],null,1,"https://khms.googleapis.com/mz?v=762\u0026","AIzaSyCAebtVrx8yzcCCmOvD3n1Fr_06afhhubU","https://earthbuilder.googleapis.com","https://earthbuilder.googleapis.com",null,"https://mts.googleapis.com/maps/vt/icon",[["https://maps.googleapis.com/maps/vt"],["https://maps.googleapis.com/maps/vt"],null,null,null,null,null,null,null,null,null,null,["https://www.google.com/maps/vt"],"/maps/vt",409000000,409],2,500,[null,null,null,null,"https://www.google.com/maps/preview/log204","","https://static.panoramio.com.storage.googleapis.com/photos/",["https://geo0.ggpht.com/cbk","https://geo1.ggpht.com/cbk","https://geo2.ggpht.com/cbk","https://geo3.ggpht.com/cbk"],"https://maps.googleapis.com/maps/api/js/GeoPhotoService.GetMetadata","https://maps.googleapis.com/maps/api/js/GeoPhotoService.SingleImageSearch",["https://lh3.ggpht.com/","https://lh4.ggpht.com/","https://lh5.ggpht.com/","https://lh6.ggpht.com/"]],null,null,null,null,"/maps/api/js/ApplicationService.GetEntityDetails",0,null,null,[null,null,null,null,null,null,null,null,null,[0,0]],null,[],["31.7"]], loadScriptTime);
   };
   var loadScriptTime = (new Date).getTime();
 })();
@@ -2722,7 +2722,7 @@ $(document).ready(function () {
 
 
     //menu toggle
-    $('#main-nav > li > a').on('click', function () {
+    $('#main-nav > li > a').unbind('click').on('click', function () {
         $('#main-nav > li').removeClass('active');
         $('#main-nav > li > ul').removeClass('open');
         $(this).parent().addClass('active');
@@ -2730,7 +2730,7 @@ $(document).ready(function () {
     });
 
     //active link
-    $('#main-nav > li > ul > li > a').on('click', function () {
+    $('#main-nav > li > ul > li > a').unbind('click').on('click', function () {
         $('#main-nav > li > ul > li').removeClass('active');
         $(this).parent().addClass('active');
     });
@@ -2824,7 +2824,7 @@ function ReloadFunctions() {
 
 
     //converting links to ajax
-    $('a').unbind('click').on('click', function (e) {
+    $('a:not(.main-menu)').unbind('click').on('click', function (e) {
         if ($(this).data('link-ajax') == true) {
             e.preventDefault();
             let url = $(this).attr('href');
@@ -3070,7 +3070,6 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
             window.location = '/Login/Login';
         } else {
 
-            history.pushState(null, null, url);
 
 
             $(containerId + ' .content').html(content);
@@ -3090,8 +3089,11 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
                 window[objectName].StartUp();
             }
 
-            document.title = title + ' | Reaws';
+            if(container==1) {
+                document.title = title + ' | Reaws';
+                history.pushState(null, null, url);
 
+            }
 
             if (subtitle != '') {
                 title += '<small>' + subtitle + '</small>';
@@ -3101,6 +3103,20 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
                 $(containerId + ' .title').html(title);
             } else {
                 $(containerId + ' .title').hide();
+            }
+            switch (container){
+                case 1:
+                    $('.content').addClass('one').removeClass('three').removeClass('two');
+                    break;
+                case 2:
+                    $('.content').removeClass('one').removeClass('three').addClass('two');
+                    break;
+                case 3:
+                    $('.content').removeClass('one').addClass('three').removeClass('two');
+                    break;
+                default:
+                    $('.content').addClass('one').removeClass('three').removeClass('two');
+
             }
             ReloadFunctions();
         }

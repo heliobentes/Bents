@@ -74,7 +74,7 @@ use Bents\Core\Globalization\Globalization;
         </div>
         <i class="fa fa-bars" id="menu-icon"></i>
         <ul class="nav" id="main-nav">
-            <li class="active"><a><i class="far fa-newspaper"></i> <?php echo View::__('Mural'); ?></a>
+            <li class="active"><a class="main-menu"><i class="far fa-newspaper"></i> <?php echo View::__('Mural'); ?></a>
                 <ul class="subnav open">
                     <li class="active"><?php View::ActionLink('<i class="far fa-newspaper"></i>' . View::__('Mural'), 'Index', 'Home', true, 'Mural'); ?></li>
                     <li><a href="#"><i class="fa fa-calendar-plus"></i> <?php echo View::__('New appointment'); ?></a>
@@ -85,13 +85,13 @@ use Bents\Core\Globalization\Globalization;
                                     class="fa fa-edit"></i> <?php echo View::__('Edit'); ?></a></li>
                 </ul>
             </li>
-            <li><a><i class="fa fa-home"></i> <?php echo View::__('Properties'); ?></a>
+            <li><a class="main-menu"><i class="fa fa-home"></i> <?php echo View::__('Properties'); ?></a>
                 <ul class="subnav">
                     <li><?php View::ActionLink('<i class="fa fa-plus"></i>' . View::__('New property'), 'Add', 'Property', true, View::__('Add a new property')); ?></li>
-                    <li><a href="#"><i class="fa fa-home"></i> <?php echo View::__('Properties'); ?></a></li>
+                    <li><?php View::ActionLink('<i class="fa fa-home"></i>' . View::__('Properties'), 'List', 'Property', true, View::__('Properties')); ?></li>
                 </ul>
             </li>
-            <li><a><i class="fa fa-suitcase"></i> <?php echo View::__('CRM'); ?></a>
+            <li><a class="main-menu"><i class="fa fa-suitcase"></i> <?php echo View::__('CRM'); ?></a>
                 <ul class="subnav">
                     <li><a href="#"><i class="fab fa-pagelines"></i> <?php echo View::__('Leads'); ?></a></li>
                     <li><a href="#"><i class="fa fa-user-plus"></i> <?php echo View::__('New customer'); ?></a></li>
@@ -104,7 +104,7 @@ use Bents\Core\Globalization\Globalization;
                     <li><a href="#"><i class="far fa-handshake"></i> <?php echo View::__('Dealings'); ?></a></li>
                 </ul>
             </li>
-            <li><a><i class="fa fa-desktop"></i> <?php echo View::__('WebSite'); ?></a>
+            <li><a class="main-menu"><i class="fa fa-desktop"></i> <?php echo View::__('WebSite'); ?></a>
                 <ul class="subnav">
                     <li><a href="#"><i class="fa fa-paint-brush"></i> Layout & design</a></li>
                     <li class="active"><a href="#"><i class="fa fa-paper-plane"></i> Logo</a></li>

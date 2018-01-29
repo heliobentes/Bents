@@ -18,6 +18,9 @@ namespace Bents\App\DAO {
     class PropertyDAO extends DAO
     {
 
+        public function GetPropertiesByFilter($PropertyFilter){
+            return new Property();
+        }
         public function GetPropertyById($id){
             $pdo = self::$dbConn;
 

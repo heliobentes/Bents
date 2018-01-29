@@ -11,6 +11,7 @@ namespace Bents\App\Controller {
     use Bents\App\DAO\TypeDAO;
     use Bents\App\Model\Address;
     use Bents\App\Model\Property;
+    use Bents\App\Model\PropertyFilter;
     use Bents\Core\Controller;
     use Bents\Core\Utils\Session;
     use Bents\Core\View;
@@ -36,6 +37,24 @@ namespace Bents\App\Controller {
             $this->RenderView($PropertyDAO->GetPropertyById($id));
 
         }
+
+        public function Filter(){
+            $this->RenderView("","Property/_Filter");
+        }
+
+        /**
+         * @authorize
+         *
+         */
+public function List(){
+
+    $PropertyFilter = new PropertyFilter($_POST['PropertyFilter']);
+    $PropertyDAO = new PropertyDAO();
+    $Properties = $PropertyDAO->GetPropertiesByFilter($PropertyFilter);
+
+        $this->RenderView($Properties);
+}
+
 
         /**
          * @authorize
