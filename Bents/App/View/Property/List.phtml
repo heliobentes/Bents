@@ -1,0 +1,66 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: heliobentes
+ * Date: 6/20/17
+ * Time: 7:24 PM
+ */
+
+use Bents\Core\View;
+
+View::$layout = "Shared/_Layout";
+View::$title = View::__("Properties");
+/**
+ * @var $properties \Bents\App\Model\Property[]
+ */
+$properties = View::$model;
+?>
+<div class="row">
+    <div class="col">
+        <?php View::ActionLink('<i class="fa fa-filter"></i> Filter', 'Filter', 'Property', true, 'Filter', null, 2, array(), array('class' => 'btn btn-primary pull-right')); ?>
+
+        <ul class="property-list">
+            <?php
+            $img[0] = '/images/property/07FF24A7-7A19-8619-6D75-7A71BA6177F0.jpeg';
+            $img[1] = '/images/property/1DE5E369-3E8E-FA51-9E9D-2BD64379BF1C.jpeg';
+            $img[2] = '/images/property/4F480FBF-062B-238B-D406-EC0B557C0520.jpeg';
+            $img[3] = '/images/property/25FE9431-7662-F7C8-B2AD-769752327317.jpeg';
+            $img[4] = '/images/property/2E533699-64B1-51F1-B28B-2461CD633EE7.jpeg';
+            $img[5] = '/images/property/08ECA71B-610C-1911-8D2F-A0F9AC77FAD0.jpeg';
+            for ($i = 0; $i < 30; $i++) {
+                ?>
+                <li>
+                    <div class="property">
+                        <div class="image" style="background-image: url(<?php echo $img[rand(0, 5)]; ?>);">
+                            <ul>
+                                <li>MLS® S12F43-67</li>
+
+
+                            </ul>
+                        </div>
+                        <h2>Apartment</h2>
+                        <h3>#107 320 Salter Street</h3>
+                        <ul class="configs">
+                            <li><i class="fa fa-bed"></i> 2 bedrooms</li>
+                            <li><i class="fa fa-bath"></i> 2 bathrooms</li>
+                        </ul>
+
+                        <ul class="values">
+                            <li>CAD (C$) 650,000
+                                <small>Selling price</small>
+                            </li>
+                            <li>CAD (C$) 1,530
+                                <small>Rental price</small>
+                            </li>
+                        </ul>
+                        <div class="actions">
+                            <?php View::ActionLink('<i class="fa fa-eye"></i> Details', 'Details', 'Property', true, 'Property Details', '', 1, array('id' => 165), array('class' => 'btn btn-success')); ?>
+                            <?php View::ActionLink('<i class="fa fa-edit"></i>', 'Edit', 'Property', true, 'Edit Property', '', 1, array('id' => 165), array('class' => 'btn btn-link')); ?>
+                            <?php View::ActionLink('<i class="fa fa-trash"></i>', 'Delete', 'Property', true, 'Edit Property', '', 1, array('id' => 165), array('class' => 'btn btn-link')); ?>
+                        </div>
+                    </div>
+                </li>
+            <?php } ?>
+        </ul>
+    </div>
+</div>

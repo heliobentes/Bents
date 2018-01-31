@@ -2720,6 +2720,10 @@ $(document).ready(function () {
     TriggerNotificationClose();
     CountNotifications();
 
+    window.onpopstate = function(e){
+        $('body').html(e.state.content);
+    }
+
 
     //menu toggle
     $('#main-nav > li > a').unbind('click').on('click', function () {
@@ -3091,7 +3095,7 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
 
             if(container==1) {
                 document.title = title + ' | Reaws';
-                history.pushState(null, null, url);
+                history.pushState({content:$('body').html()}   , null, '/'+url);
 
             }
 
@@ -3513,4 +3517,13 @@ var PropertyAdd = {
             });
         }
     }
-};
+}; 
+//comment 2
+    let b = 1;                       
+    //comment 1
+
+
+    let c = 2;
+ 
+    let d = 3;
+ let e = 4; //comment 

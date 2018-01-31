@@ -9,6 +9,10 @@ $(document).ready(function () {
     TriggerNotificationClose();
     CountNotifications();
 
+    window.onpopstate = function(e){
+        $('body').html(e.state.content);
+    }
+
 
     //menu toggle
     $('#main-nav > li > a').unbind('click').on('click', function () {
@@ -380,7 +384,7 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
 
             if(container==1) {
                 document.title = title + ' | Reaws';
-                history.pushState(null, null, url);
+                history.pushState({content:$('body').html()}   , null, '/'+url);
 
             }
 
