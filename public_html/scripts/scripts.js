@@ -9,8 +9,28 @@ $(document).ready(function () {
     TriggerNotificationClose();
     CountNotifications();
 
-    window.onpopstate = function(e){
-        $('body').html(e.state.content);
+    window.onpopstate = function (e) {
+        //document.location.reload();
+
+        switch (e.state.containers) {
+            case 1:
+                $('.content').addClass('one').removeClass('three').removeClass('two');
+                break;
+            case 2:
+                $('.content').removeClass('one').removeClass('three').addClass('two');
+                break;
+            case 3:
+                $('.content').removeClass('one').addClass('three').removeClass('two');
+                break;
+            default:
+                $('.content').addClass('one').removeClass('three').removeClass('two');
+
+        }
+        //console.log(e.state);
+        $('#main-container').html(e.state.mainContent).scrollTop(e.state.scrollMainContainer);
+        $('#second-container').html(e.state.secondContent).scrollTop(e.state.scrollSecondContainer);
+        $('#third-container').html(e.state.thirdContent).scrollTop(e.state.scrollThirdContainer);
+        ReloadFunctions();
     }
 
 
@@ -262,10 +282,10 @@ function AddPop(type, title, content, link1, link2, icon = null) {
         '                <h5 class="notification-title">' + title + '</h5>' +
         '                <p>' + content + '</p>';
     if (Array.isArray(link1)) {
-        pop += '<a href="' + link1[0] + '" data-link-ajax="true" data-link-title="' + link1[2] +'" data-link-subtitle="' + link1[3] + '" data-link-data="' + link1[4]  + '" data-link-container="' + link1[5]  + '">' + link1[1] + '</a>';
+        pop += '<a href="' + link1[0] + '" data-link-ajax="true" data-link-title="' + link1[2] + '" data-link-subtitle="' + link1[3] + '" data-link-data="' + link1[4] + '" data-link-container="' + link1[5] + '">' + link1[1] + '</a>';
     }
     if (Array.isArray(link2)) {
-        pop += '<a href="' + link1[0] + '" data-link-ajax="true" data-link-title="' + link2[2] + '" data-link-subtitle="' + link2[3] + '" data-link-data="' + link2[4]  + '" data-link-container="' + link2[5] + '">' + link2[1] + '</a>';
+        pop += '<a href="' + link1[0] + '" data-link-ajax="true" data-link-title="' + link2[2] + '" data-link-subtitle="' + link2[3] + '" data-link-data="' + link2[4] + '" data-link-container="' + link2[5] + '">' + link2[1] + '</a>';
 
     }
 
@@ -363,9 +383,20 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
             window.location = '/Login/Login';
         } else {
 
+            //updating current state to get scroll positions and any other update before updating the new page
+            history.replaceState({
+                containers: $('.content.one').length >0?1:$('.content.two').length >0?2:$('.content.three').length >0?3:1,
+                mainContent: $('#main-container').html(),
+                scrollMainContainer: $('#main-container').scrollTop(),
+                secondContent: $('#second-container').html(),
+                scrollSecondContainer: $('#second-container').scrollTop(),
+                thirdContent: $('#third-container').html(),
+                scrollThirdContainer:$('#third-container').scrollTop()
+            },null);
+            console.log('new state is');
+            console.log(history.state);
 
-
-            $(containerId + ' .content').html(content);
+            $(containerId + ' .container-body').html(content);
 
 
             if (url[0] == '/') {
@@ -382,11 +413,6 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
                 window[objectName].StartUp();
             }
 
-            if(container==1) {
-                document.title = title + ' | Reaws';
-                history.pushState({content:$('body').html()}   , null, '/'+url);
-
-            }
 
             if (subtitle != '') {
                 title += '<small>' + subtitle + '</small>';
@@ -397,7 +423,7 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
             } else {
                 $(containerId + ' .title').hide();
             }
-            switch (container){
+            switch (container) {
                 case 1:
                     $('.content').addClass('one').removeClass('three').removeClass('two');
                     break;
@@ -412,6 +438,32 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
 
             }
             ReloadFunctions();
+
+
+
+            if (container == 1) {
+                document.title = title + ' | Reaws';
+                history.pushState({
+                    containers: container,
+                    mainContent: $('#main-container').html(),
+                    scrollMainContainer:$('#main-container').scrollTop(),
+                    secondContent: $('#second-container').html(),
+                    scrollSecondContainer:$('#second-container').scrollTop(),
+                    thirdContent: $('#third-container').html(),
+                    scrollThirdContainer:$('#third-container').scrollTop()
+                }, null, '/' + url);
+
+            } else {
+                history.pushState({
+                    containers: container,
+                    mainContent: $('#main-container').html(),
+                    scrollMainContainer:$('#main-container').scrollTop(),
+                    secondContent: $('#second-container').html(),
+                    scrollSecondContainer:$('#second-container').scrollTop(),
+                    thirdContent: $('#third-container').html(),
+                    scrollThirdContainer:$('#third-container').scrollTop()
+                }, null, window.location);
+            }
         }
     });
 

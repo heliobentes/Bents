@@ -132,7 +132,7 @@ use Bents\Core\Globalization\Globalization;
     <div class="content one">
         <div class="container" id="main-container">
             <h1 class="title"><?php echo View::$title; ?></h1>
-            <div class="content">
+            <div class="container-body">
                 <?php View::RenderBody(); ?>
             </div>
         </div>
@@ -141,7 +141,7 @@ use Bents\Core\Globalization\Globalization;
                 <small>Subtitle for column 2</small>
             </h1>
             <i class="far fa-times-circle close-container" id="close-container-2"></i>
-            <div class="content">
+            <div class="container-body">
                 Content for column 2
                 <button onclick="$('.content').removeClass('two').removeClass('one').addClass('three')"
                         class="btn btn-primary">Open container 3
@@ -152,7 +152,7 @@ use Bents\Core\Globalization\Globalization;
         <div class="container" id="third-container">
             <h1 class="title">Title for column 3 very big overflow of text</h1>
             <i class="far fa-times-circle  close-container" id="close-container-3"></i>
-            <div class="content">
+            <div class="container-body">
                 Content for column 3
             </div>
         </div>

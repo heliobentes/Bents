@@ -38,22 +38,24 @@ namespace Bents\App\Controller {
 
         }
 
-        public function Filter(){
-            $this->RenderView("","Property/_Filter");
+        public function Filter()
+        {
+            $this->RenderView("", "Property/_Filter");
         }
 
         /**
          * @authorize
          *
          */
-public function List(){
+        public function List()
+        {
 
-    $PropertyFilter = new PropertyFilter($_POST['PropertyFilter']);
-    $PropertyDAO = new PropertyDAO();
-    $Properties = $PropertyDAO->GetPropertiesByFilter($PropertyFilter);
+            $PropertyFilter = new PropertyFilter($_POST['PropertyFilter']??null);
+            $PropertyDAO = new PropertyDAO();
+            $Properties = $PropertyDAO->GetPropertiesByFilter($PropertyFilter);
 
-        $this->RenderView($Properties);
-}
+            $this->RenderView($Properties);
+        }
 
 
         /**
@@ -84,17 +86,19 @@ public function List(){
             $this->RenderView();
 
         }
+
         /**
          * @authorize
          *
          */
-        public function Save(){
+        public function Save()
+        {
 
-            if(isset($_POST['Property'])) {
+            if (isset($_POST['Property'])) {
                 $Property = new Property($_POST['Property']);
 
                 //Address
-                if(isset($_POST['Address'])) {
+                if (isset($_POST['Address'])) {
                     $Address = new Address($_POST['Address']);
                     $AddressDAO = new AddressDAO();
                     $idAddress = $AddressDAO->SaveAddress($Address);
@@ -127,7 +131,6 @@ public function List(){
             }
 
         }
-
 
 
     }
