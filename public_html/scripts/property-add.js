@@ -1,7 +1,7 @@
 'use strict';
 
 var PropertyAdd = {
-    pendingList: Array(),
+    pendingList: [],
     idProperty: 0,
     ignoreImages: false,
     placeSearch: '',
@@ -19,6 +19,18 @@ var PropertyAdd = {
         $('#add-property .submit').on('click', function () {
             $("#add-property").submit();
         });
+
+        //blocking addres to be autofilled
+
+        $('#google_address_autocomplete').on('focus', function () {
+            $('#google_address_autocomplete').attr('autocomplete', 'nope');
+        });
+        $('#google_address_autocomplete').on('click', function () {
+            $('#google_address_autocomplete').attr('autocomplete', 'nope');
+        });
+        $('#google_address_autocomplete').on('keyup', function () {
+            $('#google_address_autocomplete').attr('autocomplete', 'nope');
+        })
 
 
         $("#add-property").submit(function (event) {
@@ -55,10 +67,13 @@ var PropertyAdd = {
                             } else {
                                 $('#add-property .tabs .tabs-navigation li:last-child()').hide();
                                 $('#add-property .tabs .actions-bottom').hide();
+
+                                $('#add-property').html("<h4>"+__('This Property has already been saved!')+"</h4><p>"+__('Please start over')+"</p>");
                                 OpenLink('/Property/Details/' + json.lastId, __('Property details'), '');
                             }
                             AddPop('success', __('Property was saved!'), content);
                             PropertyAdd.ignoreImages = false;
+                            console.log(PropertyAdd.pendingList);
                         } else {
                             AddPop('danger', __('An error occurred while trying to save this property'), json.error);
                         }
@@ -86,12 +101,14 @@ var PropertyAdd = {
         //fileupload
         var ul = $('#images-preview');
 
-        $('#drop button').unbind('click').on('click',function () {
+        $('#drop button').unbind('click').on('click', function () {
             // Simulate a click on the file input button
             // to show the file browser dialog
             $(this).parent().find('input').click();
         });
         // Initialize the jQuery File Upload plugin
+        ul.html("");
+        PropertyAdd.pendingList = [];
         $('#add-property').fileupload({
             url: '/Image/UploadPropertyPicture',
             autoUpload: false,
@@ -181,7 +198,8 @@ var PropertyAdd = {
                 $(this).remove();
             });
             PropertyAdd.pendingList.pop(data);
-            if(PropertyAdd.pendingList.length<=0){
+            if (PropertyAdd.pendingList.length <= 0) {
+                $('#add-property').html("<h4>"+__('This Property has already been saved!')+"</h4><p>"+__('Please start over')+"</p>");
                 OpenLink('/Property/Details/' + PropertyAdd.idProperty, __('Property details'), '');
                 AddPop('success', __('Images saved!'), __('This property is fully saved'), ['/Property/Details/' + PropertyAdd.idProperty, '<i class="fa fa-eye"></i> ' + __('See it'), __('Property details'), '']);
 
@@ -195,6 +213,11 @@ var PropertyAdd = {
 
 
 //Property Description
+        if ($('#property-description').hasClass('trumbowyg-textarea')) {
+            let parentElement = $('#property-description').parent().parent();
+            $('#property-description').appendTo(parentElement);
+            parentElement.find('.trumbowyg').remove();
+        }
         $('#property-description').trumbowyg({
             svgPath: '/plugins/trumbowyg/ui/icons.svg',
             autogrow: true,
@@ -217,6 +240,11 @@ var PropertyAdd = {
         });
 
 //Property Description
+        if ($('#internal-observations').hasClass('trumbowyg-textarea')) {
+            let parentElement = $('#internal-observations').parent().parent();
+            $('#internal-observations').appendTo(parentElement);
+            parentElement.find('.trumbowyg').remove();
+        }
         $('#internal-observations').trumbowyg({
             svgPath: '/plugins/trumbowyg/ui/icons.svg',
             autogrow: true,
@@ -230,7 +258,7 @@ var PropertyAdd = {
                 ['removeformat']
             ]
         });
-
+        $(".spinner").spinner('delay', 0);
 //spinner score
         $(".spinner-score").spinner('delay', 0).spinner('changed', function (e, newVal, oldVal) {
             PropertyAdd.drawScoreCharts();
@@ -240,7 +268,8 @@ var PropertyAdd = {
     sendAllImages: function () {
         $('#drop').slideUp('fast');
         PropertyAdd.pendingList.forEach(function (data) {
-            data.submit();
+            var sub = data.submit();
+            console.log(sub);
         });
         //PropertyAdd.pendingList = [];
     },
@@ -369,6 +398,8 @@ var PropertyAdd = {
             document.getElementById('unit_number').focus();
         }, 100);
         $('#address-filled').slideDown('fast');
+
+        $('#google_address_autocomplete').attr('autocomplete', 'nope');
     },
 
 // Bias the autocomplete object to the user's geographical location,
@@ -388,5 +419,7 @@ var PropertyAdd = {
                 PropertyAdd.autocomplete.setBounds(circle.getBounds());
             });
         }
+
+        $('#google_address_autocomplete').attr('autocomplete', 'nope');
     }
 };

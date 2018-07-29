@@ -63,7 +63,8 @@ namespace Bents\App\DAO {
                                 `availability`, 
                                 `observations`, 
                                 `buildingName`, 
-                                `openHouse`, 
+                                `openHouseFrom`,
+                                `openHouseTo`, 
                                 `negotiation`, 
                                 `title`, 
                                 `showScore`, 
@@ -118,7 +119,8 @@ namespace Bents\App\DAO {
             $stmt->bindValue(':availability', $Property->availability);
             $stmt->bindValue(':observations', $Property->observations);
             $stmt->bindValue(':buildingName', $Property->buildingName);
-            $stmt->bindValue(':openHouse', $Property->openHouse);
+            $stmt->bindValue(':openHouseFrom', $Property->openHouseFrom);
+            $stmt->bindValue(':openHouseTo', $Property->openHouseTo);
             $stmt->bindValue(':negotiation', $Property->negotiation);
             $stmt->bindValue(':title', $Property->title);
             $stmt->bindValue(':showScore', $Property->showScore);

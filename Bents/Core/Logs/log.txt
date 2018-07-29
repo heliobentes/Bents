@@ -323,3 +323,9 @@ Cannot add or update a child row: a foreign key constraint fails (`reaws`.`Image
 SQLSTATE[HY000] [2002] Connection refused
 ========================
 
+======== ERROR ========
+07-28-2018 22:05:04
+/Users/heliobentes/Projetos/Reaws/Bents/App/DAO/ImageDAO.php at line 51
+Column 'idProperty' cannot be null
+========================
+

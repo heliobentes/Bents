@@ -92,20 +92,20 @@ $laundryTypes = View::$bag['laundryTypes'];
                         </div>
                         <div class="field inline">
                             <i class="fa fa-bed"></i> <?php echo View::__('Bedrooms'); ?>
-                            <div class="input-group" data-trigger="spinner">
+                            <div class="input-group spinner" data-trigger="spinner">
                                 <button type="button" class="btn btn-default" data-spin="down"><i
                                             class="fa fa-minus"></i></button>
-                                <input type="text" value="1" name="Property[bedrooms]">
+                                <input type="text" value="1" name="Property[bedrooms]"data-min="0" data-max="100">
                                 <button type="button" class="btn btn-default" data-spin="up"><i class="fa fa-plus"></i>
                                 </button>
                             </div>
                         </div>
                         <div class="field inline">
                             <i class="fa fa-bath"></i> <?php echo View::__('Bathrooms'); ?>
-                            <div class="input-group" data-trigger="spinner">
+                            <div class="input-group spinner" data-trigger="spinner">
                                 <button type="button" class="btn btn-default" data-spin="down"><i
                                             class="fa fa-minus"></i></button>
-                                <input type="text" value="1" name="Property[bathrooms]">
+                                <input type="text" value="1" name="Property[bathrooms]"data-min="0" data-max="100">
                                 <button type="button" class="btn btn-default" data-spin="up"><i class="fa fa-plus"></i>
                                 </button>
                             </div>
@@ -124,7 +124,7 @@ $laundryTypes = View::$bag['laundryTypes'];
                         <hr class="divisor"/>
                         <div class="field">
                             <?php echo View::__('Property title'); ?>
-                            <input type="text" size="50" name="Property[title]">
+                            <input type="text" size="80" name="Property[title]">
                         </div>
                         <div class="field">
                             <?php echo View::__('Property descrition'); ?>
@@ -158,25 +158,38 @@ $laundryTypes = View::$bag['laundryTypes'];
                         </div>
 
                         <hr class="divisor"/>
-                        <div class="field inline">
+                        <div class="field">
                             <?php echo View::__('Availability'); ?>
                             <div class="input-group">
-                                <input type="text" size="10" readonly value="<?php echo strftime("%Y-%m-%d"); ?>"
+                                <input type="text" size="10" readonly value="<?php echo strftime("%d-%m-%Y"); ?>"
                                        name="Property[availability]">
-                                <button class="btn btn-default"><i class="fa fa-calendar-alt"></i></button>
+                                <button type="button" class="btn btn-default"><i class="fa fa-calendar-alt"></i></button>
                             </div>
                             <small>Date format: dd-mm-yyyy</small>
                         </div>
 
                         <div class="field inline">
-                            <label><input type="checkbox" name="Property[openhouse]"
-                                          value="1"> <?php echo View::__('Open House'); ?>  </label>
+                            <?php echo View::__('Open house from'); ?>
+                            <div class="input-group">
+                                <input type="text" size="10" readonly value="<?php echo strftime("%d-%m-%Y"); ?>"
+                                       name="Property[availability]">
+                                <button type="button" class="btn btn-default"><i class="fa fa-calendar-alt"></i></button>
+                            </div>
+                            <small>Date format: dd-mm-yyyy</small>
                         </div>
-
+                        <div class="field inline">
+                            <?php echo View::__('To'); ?>
+                            <div class="input-group">
+                                <input type="text" size="10" readonly value="<?php echo strftime("%d-%m-%Y"); ?>"
+                                       name="Property[availability]">
+                                <button type="button" class="btn btn-default"><i class="fa fa-calendar-alt"></i></button>
+                            </div>
+                            <small>&nbsp;</small>
+                        </div>
 
                         <hr class="divisor"/>
                         <div class="field">
-                            <?php echo View::__('Internal observations'); ?>
+                            <?php echo View::__('Internal notes'); ?>
                             <textarea id="internal-observations" name="Property[observations]">
 
                         </textarea>
@@ -215,7 +228,7 @@ $laundryTypes = View::$bag['laundryTypes'];
                     <div class="main-col">
                         <div class="field">
                             <?php echo View::__('Find an address'); ?>
-                            <input type="text" size="50" id="google_address_autocomplete" autocomplete="false"
+                            <input type="text" size="50" id="google_address_autocomplete" autocomplete="nope"
                                    onFocus="PropertyAdd.geolocate()">
                             <small> <?php echo View::__('Start typing the address and the system will fill up the fields'); ?></small>
                         </div>
@@ -272,7 +285,7 @@ $laundryTypes = View::$bag['laundryTypes'];
                             </div>
                             <div class="field">
                                 <?php echo View::__('Postal code'); ?>
-                                <input type="text" size="5" id="postal_code" name="Address[postalCode]">
+                                <input type="text" size="10" id="postal_code" name="Address[postalCode]">
                             </div>
                         </div>
                     </div>

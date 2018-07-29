@@ -34,7 +34,7 @@ namespace Bents\App\Controller {
                 $fileType = mime_content_type($temp);
 
                 if(in_array($fileType,$allowedTypes)){
-                    if ($fileSize < 1000000) {
+                    if ($fileSize < 10000000) {
                         //Compressing and saving image to the disc
                         $this->CompressAndSaveImage($temp,$destination,80);
                         //saving to the database

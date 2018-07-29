@@ -19,12 +19,11 @@ class DataManipulator
         return preg_replace("/\D+/", "", $str_value);
     }
 
-    static function ConverterDataParaDB($data)
+    static function ConvertDateToDB($data)
     {
         $dataConvertida = implode("-", array_reverse(explode("/", $data)));
 
-        //{TODO} Verificar se a data é uma data válida (Fazer na classe DataValidator)
-        $eh_valida = true;
+        $eh_valida = DataValidator::isValidDateTime($dataConvertida);
         if ($eh_valida) {
             return $dataConvertida;
         } else {

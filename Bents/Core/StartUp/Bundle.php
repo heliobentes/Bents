@@ -42,6 +42,7 @@ namespace Bents\Core\StartUp {
             $script[] = 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/i18n/'.$language.'.js';
             $script[] = 'scripts/jquery.spinner.min.js';
             $script[] = 'plugins/trumbowyg/trumbowyg.min.js';
+            $script[] = 'plugins/jquery-ui/jquery-ui.min.js';
             $script[] = 'plugins/trumbowyg/plugins/colors/trumbowyg.colors.min.js';
             $script[] = 'https://www.gstatic.com/charts/loader.js';
             $script[] = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCAebtVrx8yzcCCmOvD3n1Fr_06afhhubU&libraries=places';

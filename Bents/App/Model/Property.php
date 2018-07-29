@@ -119,9 +119,13 @@ namespace Bents\App\Model {
          */
         public $buildingName;
         /**
-         * @var bool
+         * @var \DateTime
          */
-        public $openHouse;
+        public $openHouseFrom;
+        /**
+         * @var \DateTime
+         */
+        public $openHouseTo;
         /**
          * @var string
          */
@@ -183,7 +187,8 @@ namespace Bents\App\Model {
             if (isset($Property['availability']))$this->availability = filter_var($Property['availability'],FILTER_SANITIZE_STRING);
             if (isset($Property['observations']))$this->observations = $Property['observations'];
             if (isset($Property['buildingName']))$this->buildingName = filter_var($Property['buildingName'],FILTER_SANITIZE_STRING);
-            if (isset($Property['openHouse']))$this->openHouse = filter_var($Property['openHouse'],FILTER_VALIDATE_BOOLEAN);
+            if (isset($Property['openHouseFrom']))$this->openHouseFrom = filter_var($Property['openHouseFrom'],FILTER_SANITIZE_STRING);
+            if (isset($Property['openHouseTo']))$this->openHouseTo = filter_var($Property['openHouseTo'],FILTER_SANITIZE_STRING);
             if (isset($Property['negotiation']))$this->negotiation = filter_var($Property['negotiation'],FILTER_SANITIZE_STRING);
             if (isset($Property['title']))$this->title = filter_var($Property['title'],FILTER_SANITIZE_STRING);
             if (isset($Property['showScore']))$this->showScore = filter_var($Property['showScore'],FILTER_VALIDATE_BOOLEAN);

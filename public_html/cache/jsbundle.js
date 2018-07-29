@@ -273,7 +273,7 @@ google.maps = google.maps || {};
   
   google.maps.Load = function(apiLoad) {
     delete google.maps.Load;
-    apiLoad([0.009999999776482582,[null,[["https://khms0.googleapis.com/kh?v=803\u0026hl=en-US\u0026","https://khms1.googleapis.com/kh?v=803\u0026hl=en-US\u0026"],null,null,null,1,"803",["https://khms0.google.com/kh?v=803\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=803\u0026hl=en-US\u0026"]],null,null,null,null,[["https://cbks0.googleapis.com/cbk?","https://cbks1.googleapis.com/cbk?"]],[["https://khms0.googleapis.com/kh?v=117\u0026hl=en-US\u0026","https://khms1.googleapis.com/kh?v=117\u0026hl=en-US\u0026"],null,null,null,null,"117",["https://khms0.google.com/kh?v=117\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=117\u0026hl=en-US\u0026"]],[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]],null,null,null,[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]]],["en-US","US",null,0,null,null,"https://maps.gstatic.com/mapfiles/","https://csi.gstatic.com","https://maps.googleapis.com","https://maps.googleapis.com",null,"https://maps.google.com","https://gg.google.com","https://maps.gstatic.com/maps-api-v3/api/images/","https://www.google.com/maps",0,"https://www.google.com"],["https://maps.googleapis.com/maps-api-v3/api/js/33/9","3.33.9"],[318886115],1,null,null,null,null,null,"",["places"],null,1,"https://khms.googleapis.com/mz?v=803\u0026","AIzaSyCAebtVrx8yzcCCmOvD3n1Fr_06afhhubU","https://earthbuilder.googleapis.com","https://earthbuilder.googleapis.com",null,"https://mts.googleapis.com/maps/vt/icon",[["https://maps.googleapis.com/maps/vt"],["https://maps.googleapis.com/maps/vt"],null,null,null,null,null,null,null,null,null,null,["https://www.google.com/maps/vt"],"/maps/vt",429000000,429],2,500,[null,null,null,null,"https://www.google.com/maps/preview/log204","","https://static.panoramio.com.storage.googleapis.com/photos/",["https://geo0.ggpht.com/cbk","https://geo1.ggpht.com/cbk","https://geo2.ggpht.com/cbk","https://geo3.ggpht.com/cbk"],"https://maps.googleapis.com/maps/api/js/GeoPhotoService.GetMetadata","https://maps.googleapis.com/maps/api/js/GeoPhotoService.SingleImageSearch",["https://lh3.ggpht.com/","https://lh4.ggpht.com/","https://lh5.ggpht.com/","https://lh6.ggpht.com/"]],null,null,null,null,"/maps/api/js/ApplicationService.GetEntityDetails",0,null,null,null,null,[],["33.9"],1,0,[1]], loadScriptTime);
+    apiLoad([0.009999999776482582,[null,[["https://khms0.googleapis.com/kh?v=803\u0026hl=en-US\u0026","https://khms1.googleapis.com/kh?v=803\u0026hl=en-US\u0026"],null,null,null,1,"803",["https://khms0.google.com/kh?v=803\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=803\u0026hl=en-US\u0026"]],null,null,null,null,[["https://cbks0.googleapis.com/cbk?","https://cbks1.googleapis.com/cbk?"]],[["https://khms0.googleapis.com/kh?v=117\u0026hl=en-US\u0026","https://khms1.googleapis.com/kh?v=117\u0026hl=en-US\u0026"],null,null,null,null,"117",["https://khms0.google.com/kh?v=117\u0026hl=en-US\u0026","https://khms1.google.com/kh?v=117\u0026hl=en-US\u0026"]],[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]],null,null,null,[["https://mts0.googleapis.com/mapslt?hl=en-US\u0026","https://mts1.googleapis.com/mapslt?hl=en-US\u0026"]]],["en-US","US",null,0,null,null,"https://maps.gstatic.com/mapfiles/","https://csi.gstatic.com","https://maps.googleapis.com","https://maps.googleapis.com",null,"https://maps.google.com","https://gg.google.com","https://maps.gstatic.com/maps-api-v3/api/images/","https://www.google.com/maps",0,"https://www.google.com"],["https://maps.googleapis.com/maps-api-v3/api/js/33/9","3.33.9"],[569966961],1,null,null,null,null,null,"",["places"],null,1,"https://khms.googleapis.com/mz?v=803\u0026","AIzaSyCAebtVrx8yzcCCmOvD3n1Fr_06afhhubU","https://earthbuilder.googleapis.com","https://earthbuilder.googleapis.com",null,"https://mts.googleapis.com/maps/vt/icon",[["https://maps.googleapis.com/maps/vt"],["https://maps.googleapis.com/maps/vt"],null,null,null,null,null,null,null,null,null,null,["https://www.google.com/maps/vt"],"/maps/vt",429000000,429],2,500,[null,null,null,null,"https://www.google.com/maps/preview/log204","","https://static.panoramio.com.storage.googleapis.com/photos/",["https://geo0.ggpht.com/cbk","https://geo1.ggpht.com/cbk","https://geo2.ggpht.com/cbk","https://geo3.ggpht.com/cbk"],"https://maps.googleapis.com/maps/api/js/GeoPhotoService.GetMetadata","https://maps.googleapis.com/maps/api/js/GeoPhotoService.SingleImageSearch",["https://lh3.ggpht.com/","https://lh4.ggpht.com/","https://lh5.ggpht.com/","https://lh6.ggpht.com/"]],null,null,null,null,"/maps/api/js/ApplicationService.GetEntityDetails",0,null,null,null,null,[],["33.9"],1,0,[1]], loadScriptTime);
   };
   var loadScriptTime = (new Date).getTime();
 })();
@@ -2734,6 +2734,7 @@ $(document).ready(function () {
     CountNotifications();
 
     window.onpopstate = function (e) {
+        $('#loader').show();
         //document.location.reload();
 
         switch (e.state.containers) {
@@ -2754,12 +2755,20 @@ $(document).ready(function () {
         $('#main-container').html(e.state.mainContent).scrollTop(e.state.scrollMainContainer);
         $('#second-container').html(e.state.secondContent).scrollTop(e.state.scrollSecondContainer);
         $('#third-container').html(e.state.thirdContent).scrollTop(e.state.scrollThirdContainer);
+
+        //Restarting and regenerating elements for the current page
+        StartUpCurrentPage(window.location.pathname);
         ReloadFunctions();
+
+        //highlighting the menu item
+        HighlightActiveMenuItem();
+
+        $('#loader').hide();
     }
 
 
     //menu toggle
-    $('#main-nav > li > a').unbind('click').on('click', function () {
+    $('#main-nav > li > a').off('click').on('click', function () {
         $('#main-nav > li').removeClass('active');
         $('#main-nav > li > ul').removeClass('open');
         $(this).parent().addClass('active');
@@ -2767,10 +2776,13 @@ $(document).ready(function () {
     });
 
     //active link
-    $('#main-nav > li > ul > li > a').unbind('click').on('click', function () {
+    $('#main-nav > li > ul > li').on('click', function () {
         $('#main-nav > li > ul > li').removeClass('active');
-        $(this).parent().addClass('active');
+        $(this).addClass('active');
     });
+
+//highlighting menu item
+    HighlightActiveMenuItem()
 
 
     //notifications toggle
@@ -2876,9 +2888,13 @@ function ReloadFunctions() {
     });
 
     //loading select2 on default configuration
+
+    $('.select2:not(select)').remove();
+
     $('.select2').select2({
         language: language
     });
+
 
     //tabs
     $('.tabs .tabs-navigation li:not(.actions)').unbind('click').on('click', function () {
@@ -3103,39 +3119,30 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
             AddPop('danger', __('Error!'), __('An error occurred while trying to access this function, please try again later or contact us.'));
         }
     }).done(function (content) {
+
+
         if (content == 'userNotLogged') {
             window.location = '/Login/Login';
         } else {
 
             //updating current state to get scroll positions and any other update before updating the new page
             history.replaceState({
-                containers: $('.content.one').length >0?1:$('.content.two').length >0?2:$('.content.three').length >0?3:1,
+                containers: $('.content.one').length > 0 ? 1 : $('.content.two').length > 0 ? 2 : $('.content.three').length > 0 ? 3 : 1,
                 mainContent: $('#main-container').html(),
                 scrollMainContainer: $('#main-container').scrollTop(),
                 secondContent: $('#second-container').html(),
                 scrollSecondContainer: $('#second-container').scrollTop(),
                 thirdContent: $('#third-container').html(),
-                scrollThirdContainer:$('#third-container').scrollTop()
-            },null);
+                scrollThirdContainer: $('#third-container').scrollTop()
+            }, null);
             console.log('new state is');
             console.log(history.state);
 
             $(containerId + ' .container-body').html(content);
 
 
-            if (url[0] == '/') {
-                url = url.substring(1, url.length);
-            }
-            let currentObject = url.split('/');
-            let objectName = '';
-            if (currentObject[1] == undefined) {
-                objectName = currentObject[0] + "Index";
-            } else {
-                objectName = currentObject[0] + currentObject[1];
-            }
-            if (window[objectName] != undefined) {
-                window[objectName].StartUp();
-            }
+            //starting the page
+            StartUpCurrentPage(url);
 
 
             if (subtitle != '') {
@@ -3164,37 +3171,79 @@ function OpenLink(url, title = '', subtitle = '', data = '', container = 1) {
             ReloadFunctions();
 
 
-
             if (container == 1) {
+                if (url[0] == '/') {
+                    url = url.substring(1, url.length);
+                }
                 document.title = title + ' | Reaws';
                 history.pushState({
                     containers: container,
                     mainContent: $('#main-container').html(),
-                    scrollMainContainer:$('#main-container').scrollTop(),
+                    scrollMainContainer: $('#main-container').scrollTop(),
                     secondContent: $('#second-container').html(),
-                    scrollSecondContainer:$('#second-container').scrollTop(),
+                    scrollSecondContainer: $('#second-container').scrollTop(),
                     thirdContent: $('#third-container').html(),
-                    scrollThirdContainer:$('#third-container').scrollTop()
+                    scrollThirdContainer: $('#third-container').scrollTop()
                 }, null, '/' + url);
 
             } else {
                 history.pushState({
                     containers: container,
                     mainContent: $('#main-container').html(),
-                    scrollMainContainer:$('#main-container').scrollTop(),
+                    scrollMainContainer: $('#main-container').scrollTop(),
                     secondContent: $('#second-container').html(),
-                    scrollSecondContainer:$('#second-container').scrollTop(),
+                    scrollSecondContainer: $('#second-container').scrollTop(),
                     thirdContent: $('#third-container').html(),
-                    scrollThirdContainer:$('#third-container').scrollTop()
-                }, null, window.location);
+                    scrollThirdContainer: $('#third-container').scrollTop()
+                }, null, window.location.pathname);
             }
+
+//highlighting menu item
+            HighlightActiveMenuItem();
         }
     });
 
+}
+
+function HighlightActiveMenuItem() {
+    $('#main-nav > li > ul > li').removeClass('active');
+    $("#main-nav > li > ul > li > a[href='" + window.location.pathname + "']").parent().addClass('active');
+
+
+    $('#main-nav > li').removeClass('active');
+    $('#main-nav > li > ul').removeClass('open');
+
+    let elementIndex = 0;
+
+    if ($("#main-nav > li > ul > li > a[href='" + window.location.pathname + "']").length > 1) {
+        elementIndex = $("#main-nav > li > ul > li > a[href='" + window.location.pathname + "']").length - 1;
+    }
+
+    $("#main-nav > li > ul > li > a[href='" + window.location.pathname + "']").eq(elementIndex).parent().parent().parent().addClass('active');
+    $("#main-nav > li > ul > li > a[href='" + window.location.pathname + "']").eq(elementIndex).parent().parent().parent().find('ul').addClass('open');
+
+}
+
+function StartUpCurrentPage(url) {
+
+    console.log(url);
+    if (url[0] == '/') {
+        url = url.substring(1, url.length);
+    }
+    let currentObject = url.split('/');
+    let objectName = '';
+    if (currentObject[1] == undefined) {
+        objectName = currentObject[0] + "Index";
+    } else {
+        objectName = currentObject[0] + currentObject[1];
+    }
+    if (window[objectName] != undefined) {
+        window[objectName].StartUp();
+    }
 } 'use strict';
 
 var PropertyAdd = {
-    pendingList: Array(),
+    pendingList: [],
     idProperty: 0,
     ignoreImages: false,
     placeSearch: '',
@@ -3212,6 +3261,18 @@ var PropertyAdd = {
         $('#add-property .submit').on('click', function () {
             $("#add-property").submit();
         });
+
+        //blocking addres to be autofilled
+
+        $('#google_address_autocomplete').on('focus', function () {
+            $('#google_address_autocomplete').attr('autocomplete', 'nope');
+        });
+        $('#google_address_autocomplete').on('click', function () {
+            $('#google_address_autocomplete').attr('autocomplete', 'nope');
+        });
+        $('#google_address_autocomplete').on('keyup', function () {
+            $('#google_address_autocomplete').attr('autocomplete', 'nope');
+        })
 
 
         $("#add-property").submit(function (event) {
@@ -3248,10 +3309,13 @@ var PropertyAdd = {
                             } else {
                                 $('#add-property .tabs .tabs-navigation li:last-child()').hide();
                                 $('#add-property .tabs .actions-bottom').hide();
+
+                                $('#add-property').html("<h4>"+__('This Property has already been saved!')+"</h4><p>"+__('Please start over')+"</p>");
                                 OpenLink('/Property/Details/' + json.lastId, __('Property details'), '');
                             }
                             AddPop('success', __('Property was saved!'), content);
                             PropertyAdd.ignoreImages = false;
+                            console.log(PropertyAdd.pendingList);
                         } else {
                             AddPop('danger', __('An error occurred while trying to save this property'), json.error);
                         }
@@ -3279,12 +3343,14 @@ var PropertyAdd = {
         //fileupload
         var ul = $('#images-preview');
 
-        $('#drop button').unbind('click').on('click',function () {
+        $('#drop button').unbind('click').on('click', function () {
             // Simulate a click on the file input button
             // to show the file browser dialog
             $(this).parent().find('input').click();
         });
         // Initialize the jQuery File Upload plugin
+        ul.html("");
+        PropertyAdd.pendingList = [];
         $('#add-property').fileupload({
             url: '/Image/UploadPropertyPicture',
             autoUpload: false,
@@ -3374,7 +3440,8 @@ var PropertyAdd = {
                 $(this).remove();
             });
             PropertyAdd.pendingList.pop(data);
-            if(PropertyAdd.pendingList.length<=0){
+            if (PropertyAdd.pendingList.length <= 0) {
+                $('#add-property').html("<h4>"+__('This Property has already been saved!')+"</h4><p>"+__('Please start over')+"</p>");
                 OpenLink('/Property/Details/' + PropertyAdd.idProperty, __('Property details'), '');
                 AddPop('success', __('Images saved!'), __('This property is fully saved'), ['/Property/Details/' + PropertyAdd.idProperty, '<i class="fa fa-eye"></i> ' + __('See it'), __('Property details'), '']);
 
@@ -3388,6 +3455,11 @@ var PropertyAdd = {
 
 
 //Property Description
+        if ($('#property-description').hasClass('trumbowyg-textarea')) {
+            let parentElement = $('#property-description').parent().parent();
+            $('#property-description').appendTo(parentElement);
+            parentElement.find('.trumbowyg').remove();
+        }
         $('#property-description').trumbowyg({
             svgPath: '/plugins/trumbowyg/ui/icons.svg',
             autogrow: true,
@@ -3410,6 +3482,11 @@ var PropertyAdd = {
         });
 
 //Property Description
+        if ($('#internal-observations').hasClass('trumbowyg-textarea')) {
+            let parentElement = $('#internal-observations').parent().parent();
+            $('#internal-observations').appendTo(parentElement);
+            parentElement.find('.trumbowyg').remove();
+        }
         $('#internal-observations').trumbowyg({
             svgPath: '/plugins/trumbowyg/ui/icons.svg',
             autogrow: true,
@@ -3423,7 +3500,7 @@ var PropertyAdd = {
                 ['removeformat']
             ]
         });
-
+        $(".spinner").spinner('delay', 0);
 //spinner score
         $(".spinner-score").spinner('delay', 0).spinner('changed', function (e, newVal, oldVal) {
             PropertyAdd.drawScoreCharts();
@@ -3433,7 +3510,8 @@ var PropertyAdd = {
     sendAllImages: function () {
         $('#drop').slideUp('fast');
         PropertyAdd.pendingList.forEach(function (data) {
-            data.submit();
+            var sub = data.submit();
+            console.log(sub);
         });
         //PropertyAdd.pendingList = [];
     },
@@ -3562,6 +3640,8 @@ var PropertyAdd = {
             document.getElementById('unit_number').focus();
         }, 100);
         $('#address-filled').slideDown('fast');
+
+        $('#google_address_autocomplete').attr('autocomplete', 'nope');
     },
 
 // Bias the autocomplete object to the user's geographical location,
@@ -3581,5 +3661,7 @@ var PropertyAdd = {
                 PropertyAdd.autocomplete.setBounds(circle.getBounds());
             });
         }
+
+        $('#google_address_autocomplete').attr('autocomplete', 'nope');
     }
 };
